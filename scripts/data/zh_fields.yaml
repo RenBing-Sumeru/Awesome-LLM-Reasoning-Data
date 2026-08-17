@@ -1,0 +1,105 @@
+# Replacement Chinese text for `header_zh.json`.
+#
+# A bare string sets `one_line_summary_ch`; a mapping sets the named fields.
+#
+# 69 published cards shipped a `one_line_summary_ch` that still carried English:
+# either a half-filled template ("X 将 <english phrase> 做成可审计的评测面"), a
+# generic placeholder that summarised nothing ("本 Card 记录《English Title》…"), or
+# the English sentence verbatim. Each entry below is translated from that card's
+# `one_line_summary`, so the Chinese page holds Chinese only.
+#
+# Six more carried a long English run in `paper_type_ch` or `best_for_ch`; those are
+# at the end of the file. Author names and short inline terms such as `Best-of-N`
+# stay in Latin script on purpose: a reader searches for those.
+#
+# `scripts/normalize_library.py` writes these into `header_zh.json`. Keeping the
+# file after application makes the change reviewable and re-runnable.
+
+aa-intelligence-index-2026: "Artificial Analysis 智能指数把多个评测按权重合成为单一的模型质量分数。"
+agent-rlvr-2025: "Agent-RLVR 收集经测试验证的软件智能体轨迹与教师引导的重试记录，再把同一任务的正负样本对复用于监督微调、离线 DPO 和推理时的补丁奖励模型。"
+agentbench-2023: "AgentBench 提供带明确评测契约的工具使用与智能体环境评测面，用各环境特有的成功与失败信号量化推理、决策和指令遵循行为。"
+agentboard-2024: "AgentBoard 提供带明确评测契约的智能体环境评测面，除任务成功率外还用进度指标刻画多轮交互中的逐步推进。"
+agentdebug-failure-trajectories-2025: "AgentErrorBench 发布 200 条带标注的 ALFWorld、WebShop 与 GAIA 失败轨迹，含 17 类错误分类、最小根因与纠正反馈；标注一致性与回放元数据仍是主要审计缺口。"
+answer-convergence-early-stopping-2025: "当部分思维链的答案趋于稳定时提前终止推理，可选配 logit 调整或学习式停止预测器。（论文未披露的发布、回放与审计细节保留为未知。）"
+arena-hard-auto-2024: "Arena-Hard-Auto 把源自竞技场高难提示的自动成对评审集做成可审计的评测面。"
+ares-rag-evaluation-2023: "ARES 把带合成训练数据与预测驱动推断的自动化检索增强生成评测做成可审计的评测面。"
+babilong-2024: "BABILong 把超长上下文下的大海捞针式推理做成可审计的评测面。"
+berkeley-function-calling-leaderboard-2024: "BFCL 把带抽象语法树与执行检查的函数及 API 调用生成做成可审计的评测面。"
+big-bench-2022: "BIG-bench 把社区协作构建的多样化语言模型任务集做成可审计的评测面。"
+bigcodebench-code-generation-2024: "BigCodeBench 把调用多样函数库并附带测试的复杂 Python 任务做成可审计的评测面。"
+bon-coverage-optimality-2025: "该论文形式化刻画了 Best-of-N 在何时会对不完美的奖励模型过度优化，并提出以卡方正则化的拒绝采样器 InferenceTimePessimism，在数学、科学与指令遵循任务上评测。"
+browseconf-2026: "BrowseConf 用模型自述的置信度决定网页智能体的采样何时停止、何时重试。（论文未披露的发布、回放与审计细节保留为未知。）"
+charxiv-2024: "CharXiv 把取自 arXiv 论文的图表理解做成可审计的评测面。"
+cmmlu-2023: "CMMLU 把中文多任务语言理解题做成可审计的评测面。"
+codeelo-2025: "CodeElo 把提交至官方评测机的近期 Codeforces 题目做成可审计的评测面。"
+complexmcp-2026: "ComplexMCP 提供带明确评测契约的工具使用与智能体环境评测面，在确定但多样的沙盒状态下评判成功率，并对检索、验证与恢复三类失败做轨迹分析。"
+credit-budgeted-icpc-style-coding-2026: "该工作把带额度预算的 ICPC 风格编程评测做成可审计的评测面，让智能体为每一次决策付出成本。"
+criticbench-2024: "CriticBench 把跨领域的生成、批判与纠正推理做成可审计的评测面。"
+cruxeval-2024: "CRUXEval 把由执行结果核验的代码输入输出推理做成可审计的评测面。"
+cybench-2024: "Cybench 把带 flag、子任务与命令执行的夺旗与网络安全任务做成可审计的评测面。"
+datascibench-2025: "DataSciBench 把配有可执行指标框架的数据科学任务做成可审计的评测面。"
+deepdiver-2025: "DeepDiver 在 WebPuzzle 上用真实网页的迭代式检索增强生成与 GRPO 训练 7B 策略，以答案评判加条件化搜索奖励研究搜索深度如何随信息需求变化。"
+demystifying-multi-agent-debate-2026: "DMAD 采样 10 个候选、挑出五个互异答案，训练五轮同质辩论来表达并使用 0 到 10 的置信度，奖励涵盖正确性、校准度、参与度与格式；开源了代码但未发布完整轨迹。"
+ds-1000-2022: "DS-1000 把带可执行测试与 API 约束的数据科学代码补全做成可审计的评测面。"
+dsbench-2024: "DSBench 把基于真实文件的数据分析与建模任务做成可审计的评测面。"
+dynamath-2024: "DynaMath 把程序化生成的视觉数学变体题做成可审计的评测面。"
+dynamic-early-exit-reasoning-2025: "DEER 在推理的转折处试探性给出答案，当模型自信度足够高时提前退出；官方仓库只发布了论文实现的一部分，且没有可复用的采样语料。"
+facts-grounding-2025: "FACTS Grounding 把带公开与私有划分、由评审集成打分的长文档依据核查做成可审计的评测面。"
+folio-2022: "FOLIO 把自然语言形式的一阶逻辑推理做成可审计的评测面。"
+fs-researcher-2026: "FS-Researcher 把资料存档与笔记保存在共享的文件系统工作区中，以支撑长程研究任务。（论文未披露的发布、回放与审计细节保留为未知。）"
+go-browse-2025: "Go-Browse 通过图前沿式任务发现、视觉语言模型可行性判定与带前缀及不带前缀的浏览器采样，发布 WebArena 克隆环境的原始与处理后轨迹以及一个 Qwen 检查点。"
+infinitebench-2024: "InfiniteBench 把检索、代码、数学、小说与对话上超过十万词元的长上下文任务做成可审计的评测面。"
+judgebench-2024: "JudgeBench 把知识、推理、数学与代码领域的客观答案对评判做成可审计的评测面。"
+kernelbench-2025: "KernelBench 把带正确性与加速比检查的 CUDA 核函数生成做成可审计的评测面。"
+leandojo-benchmark-2023: "LeanDojo Benchmark 把带检索与追踪环境的 Lean 定理证明做成可审计的评测面。"
+learning-generative-selection-2026: "自动验证过的数学与代码候选集用于训练 1.7B 的 DAPO 策略，让它在 Best-of-N 候选上推理并返回一个验证正确候选的编号。"
+livecodebench-contamination-free-code-2024: "LiveCodeBench 把近期竞赛题的执行、修复与输出预测做成可审计的评测面。"
+longbench-2023: "LongBench 把中英双语的长文档问答、摘要、少样本与代码任务做成可审计的评测面。"
+longvideobench-2024: "LongVideoBench 把需要指代上下文推理的长视频语言问答做成可审计的评测面。"
+majority-bests-2025: "MoB 从固定的候选池中估计奖励排序后 Best-of-m 分布的众数答案，并发布提示、生成结果、抽取答案、正确性与奖励分数以支持离线选择研究。"
+matharena-2025: "MathArena 把新发布的数学竞赛与当期赛题做成可审计的评测面。"
+mathvista-2023: "MathVista 把基于示意图、图表与插图的视觉数学推理做成可审计的评测面。"
+metascale-2025: "MetaScale 用 UCB 与模型中介的演化在与问题相关的认知策略上搜索，并在固定推理预算下由结果奖励模型选出最终回答。"
+mm-browsecomp-2025: "MM-BrowseComp 把需要图像与视频证据的多模态浏览问答做成可审计的评测面。"
+mmlu-pro-2024: "MMLU-Pro 把经清洗、含十个选项的更高难度 MMLU 风格题目做成可审计的评测面。"
+mmmu-2023: "MMMU 把大学水平的多模态学科题目做成可审计的评测面。"
+mmmu-pro-2024: "MMMU-Pro 把含纯视觉设定的对抗性多模态学科问答做成可审计的评测面。"
+modex-2026: "ModeX 通过递归分离出稠密的 n-gram 相似度簇并返回其最大度中心点，从已有的开放式回答中挑选结果；ModeX-Lite 在解码过程中应用同一思路。"
+mt-bench-chatbot-arena-2023: "MT-Bench 与 Chatbot Arena 把 GPT-4 的成对及多轮评判和人类竞技场投票做成可审计的评测面。"
+olympiadbench-2024: "OlympiadBench 把双语奥赛级数学与物理题（含多模态题目）做成可审计的评测面。"
+omni-math-2024: "Omni-MATH 把带子领域与难度标注的奥赛级数学题做成可审计的评测面。"
+processbench-error-identification-2024: "ProcessBench 把数学推理中最早出错步骤的定位做成可审计的评测面。"
+replay-failures-as-successes-2025: "HiR 挑出部分成功的失败采样，按其已满足的约束改写它们，并在强化学习中回放。（论文未披露的发布、回放与审计细节保留为未知。）"
+rethinking-optimal-verification-granularity-2025: "VG-Search 通过控制验证器的调用频率，在前缀剪枝收益与推理开销之间做权衡。（论文未披露的发布、回放与审计细节保留为未知。）"
+revise-intrinsic-self-verification-2025: "ReVISE 把失败与成功的推理路径转成偏好对，用于内生的自我验证与改写。（论文未披露的发布、回放与审计细节保留为未知。）"
+robomonkey-vla-2025: "RoboMonkey 用基于均方根误差偏好训练的验证器，对采样出的视觉语言动作候选排序。（论文未披露的发布、回放与审计细节保留为未知。）"
+score-self-correct-rl-2024: "SCoRe 在学习者自身的两轮纠正轨迹上训练，先做 KL 约束的初始化，再用进度整形的多轮强化学习配合程序化结果奖励。"
+seal-vla-2025: "SEAL 先模拟候选动作，再选出与视觉语言动作模型文字计划最一致的动作序列。（论文未披露的发布、回放与审计细节保留为未知。）"
+self-certainty-bon-2025: "这项 NeurIPS 2025 工作用完整词元分布为每个采样回答打分以做 Best-of-N 选择，并可通过 Borda 投票把置信度排名与答案频次结合。"
+speculative-search-2025: "这项 ICML 2025 工作是一种树搜索加速器，接受过程奖励模型打分高于历史阈值的小模型思路，并用无损的大模型推测解码替换被拒绝的思路。"
+supergpqa-2025: "SuperGPQA 把横跨众多研究生学科的高难度问答做成可审计的评测面。"
+tau-bench-tool-agent-user-2024: "Tau-Bench 把零售与航空场景下的用户、智能体与工具对话及数据库状态判分做成可审计的评测面。"
+video-mmmu-2025: "Video-MMMU 把专家视频上的感知、理解与迁移应用问答做成可审计的评测面。"
+visualprm-2025: "VisualPRM400K 把 16 次续写的前缀成功率转成二元多模态步骤标签用于训练 8B 过程奖励模型，但原始发布未包含这些标签背后的续写记录与判定台账。"
+webagent-r1-2025: "WebAgent-R1 用 9,460 条轨迹做行为克隆预热，配合异步的当前策略 WebArena 采样、M-GRPO 与二元终止奖励；在线轨迹与检查点均未发布。"
+webarena-realistic-web-environment-2023: "WebArena 把自建真实网站上带功能性检查的浏览器任务做成可审计的评测面。"
+webevolver-2025: "WebEvolver 联合训练 Llama-3.3-70B 的策略模型与世界模型，发布了两者的监督微调消息数据，并使用合成采样与世界模型前瞻；原始轨迹与回放元数据未发布。"
+
+# --- paper_type_ch / best_for_ch ------------------------------------------------
+
+agenttrek-2025:
+  paper_type_ch: "以网页教程驱动的智能体轨迹构造配方、数据发布与实时浏览器环境报告"
+big-bench-2022:
+  paper_type_ch: "TMLR 与 arXiv 的评测基准与评测面"
+collaborative-reasoner-coral-2025:
+  paper_type_ch: "合成多轮协作推理对话的构造配方、混合验证器与 DPO/SFT 模型报告"
+  best_for_ch: "研究多智能体自博弈、对话树采样、基于信念的反馈、同前缀偏好构造，或审计仅开源代码这类发布的读者"
+gdpval-2025:
+  paper_type_ch: "OpenAI 研究报告与 arXiv 的专业工作成果评测基准"
+spreadsheetbench-2-business-workflows-2026:
+  paper_type_ch: "arXiv 的商业电子表格工作流评测基准"
+
+# --- track 13 batch -------------------------------------------------------------
+
+judge-verdict-benchmark-2026: "公开的投稿材料界定了一个衡量事实性评审可靠度的基准。"
+judgeboard-2025: "面向多个数据集评测推理类评审模型的公开基准页面。"

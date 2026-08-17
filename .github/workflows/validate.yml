@@ -22,12 +22,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           npm ci --prefix apps/ask-atlas
-      - name: Validate data
-        run: python scripts/validate_data.py
+      # `library/` is the only source of truth; both checks re-render into a temporary
+      # directory and fail if anything committed drifts from the cards.
+      - name: Check published site
+        run: python scripts/build_site.py --check
+      - name: Check README and track pages
+        run: python scripts/render_docs.py --check
       - name: Secret scan
         run: python scripts/secret_scan.py
-      - name: Check site data
-        run: python scripts/render_site.py --check
       - name: Check Ask backend URL config safety
         run: |
           set -euo pipefail
@@ -36,19 +38,5 @@ jobs:
         run: python scripts/check_ask_entrypoints.py
       - name: Check Ask production RAG corpus
         run: npm --prefix apps/ask-atlas run rag:check
-      - name: Check paper pages
-        run: python scripts/render_papers.py --check
-      - name: Check README generated sections
-        run: python scripts/render_readme.py --check
-      - name: Check card Ask links
-        run: python scripts/add_card_ask_links.py --check
-      - name: Check card index
-        run: python scripts/render_cards.py --check
       - name: Test Ask the Atlas backend
         run: npm --prefix apps/ask-atlas test
-      - name: Coverage report
-        run: python scripts/coverage_report.py
-      - name: Link check soft
-        run: python scripts/check_links.py --soft
-      - name: Summarize counts
-        run: python scripts/summarize_counts.py

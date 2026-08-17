@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ask the Atlas</title>
+  <link rel="stylesheet" href="/assets/ask.css?v=ask-atlas-app-20260714-2">
+</head>
+<body class="ask-page">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">Awesome LLM Reasoning Data</a>
+      <nav class="navlinks" aria-label="Primary">
+        <a data-i18n="nav.site" href="https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/">Site home</a>
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
+        <button id="langToggle" type="button">中文</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="head">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Source-grounded research assistant</p>
+      <h1 data-i18n="hero.title">Ask the Atlas</h1>
+      <p class="lede" data-i18n="hero.lede">Ask about post-training reasoning data: verifiers and rewards, agent trajectories, benchmarks, and audits.</p>
+      <p class="evidence" data-i18n="hero.note">Answers cite the companion paper and atlas cards first; model background is always labeled.</p>
+    </section>
+
+    <p id="contextPill" class="contextpill" hidden></p>
+
+    <form id="askForm" class="composer">
+      <textarea id="question" rows="4" data-i18n-placeholder="composer.placeholder" placeholder="Ask about post-training reasoning data, PRMs, RLVR, verifier design, agent trajectories, benchmark contamination, or any paper card…"></textarea>
+      <div class="bar">
+        <label class="model">
+          <span data-i18n="model.label">Model</span>
+          <select id="modelSelect">
+            <option value="auto" data-i18n="model.auto">Auto</option>
+            <option value="deep" data-i18n="model.deep">Deep reasoning</option>
+            <option value="fast" data-i18n="model.fast">Fast answers</option>
+          </select>
+        </label>
+        <button id="askButton" class="ask" type="submit" data-i18n="composer.ask">Ask</button>
+      </div>
+    </form>
+
+    <div class="modes" id="modeList" aria-label="Question mode">
+      <span class="label" data-i18n="mode.title">Mode</span>
+      <button type="button" data-mode="explain" class="active" data-i18n="mode.explain">Explain</button>
+      <button type="button" data-mode="find_papers" data-i18n="mode.find">Find papers</button>
+      <button type="button" data-mode="compare" data-i18n="mode.compare">Compare</button>
+      <button type="button" data-mode="build" data-i18n="mode.build">Build data</button>
+      <button type="button" data-mode="audit" data-i18n="mode.audit">Audit</button>
+      <button type="button" data-mode="quiz" data-i18n="mode.quiz">Quiz me</button>
+    </div>
+
+    <section class="listblock">
+      <p class="klabel" data-i18n="sugg.title">Suggested questions</p>
+      <ul id="suggestions" class="linelist"></ul>
+    </section>
+
+    <section class="listblock" id="historySection" hidden>
+      <p class="klabel">
+        <span data-i18n="hist.title">Recent questions</span>
+        <button id="clearHistory" type="button" data-i18n="hist.clear">Clear</button>
+      </p>
+      <ul id="historyList" class="linelist"></ul>
+    </section>
+
+    <section id="answerSection" class="answer" hidden aria-live="polite">
+      <span class="apill" data-i18n="answer.pill">Demo preview · no model call</span>
+      <p id="answerQuestion" class="q"></p>
+      <div id="answerBody"></div>
+      <div class="sources">
+        <p class="klabel" data-i18n="src.title">Sources</p>
+        <ol id="sources"></ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sitefooter">
+    <div class="wrap">
+      <span data-i18n="footer.tag">Awesome LLM Reasoning Data · Ask the Atlas</span>
+      <a data-i18n="footer.site" href="https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/">Back to the site</a>
+      <a data-i18n="footer.repo" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub repository</a>
+    </div>
+  </footer>
+
+  <script src="/assets/ask-i18n.js?v=ask-atlas-app-20260714-2"></script>
+  <script src="/assets/ask.js?v=ask-atlas-app-20260714-2" type="module"></script>
+</body>
+</html>
