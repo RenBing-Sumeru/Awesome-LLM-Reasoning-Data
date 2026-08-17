@@ -100,6 +100,6 @@
     <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.475;0.515;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
       <text x="836" y="621" text-anchor="end" font-size="15.5" fill="#f43f5e">13 · 审计与失效模式</text></g>
 
-    <text x="450" y="680" text-anchor="middle" font-size="19" fill="#a18a72">3 大板块 · 14 个方向 · 280+ 篇论文</text>
+    <text x="450" y="680" text-anchor="middle" font-size="19" fill="#a18a72">3 大板块 · 14 个方向 · 1285 张卡片</text>
   </g>
 </svg>

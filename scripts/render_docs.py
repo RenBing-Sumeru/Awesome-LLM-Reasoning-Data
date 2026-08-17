@@ -17,6 +17,7 @@ Outputs (all generated, safe to delete):
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -684,6 +685,29 @@ def render_readme(tracks: list, counts: dict, packs: list, by_id: dict, entries:
     return "\n".join(out)
 
 
+# ---------------------------------------------------------------- cover caption
+
+# The cover figures are hand-drawn and hand-animated, so only their caption line is
+# generated. Everything else in the file is left byte-for-byte alone.
+COVER_CAPTION = {
+    "en": (re.compile(r"(>)\d+ groups · \d+ tracks · [^<]*(<)"),
+           "{groups} groups · {tracks} tracks · {cards} cards"),
+    "zh": (re.compile(r"(>)\d+ 大板块 · \d+ 个方向 · [^<]*(<)"),
+           "{groups} 大板块 · {tracks} 个方向 · {cards} 张卡片"),
+}
+
+
+def stamp_cover_caption(path: Path, counts: dict, lang: str) -> None:
+    if not path.exists():
+        return
+    pattern, template = COVER_CAPTION[lang]
+    caption = template.format(groups=len(L.GROUPS), tracks=counts["tracks_total"], cards=counts["cards"])
+    text = path.read_text(encoding="utf-8")
+    updated, hits = pattern.subn(rf"\g<1>{caption}\g<2>", text)
+    if hits and updated != text:
+        path.write_text(updated, encoding="utf-8")
+
+
 # ---------------------------------------------------------------- build
 
 def build(target: Path) -> dict:
@@ -694,8 +718,8 @@ def build(target: Path) -> dict:
     packs = reading_paths.resolve(entries)
     by_id = {entry["id"]: entry for entry in entries}
 
-    # assets/cover*.svg and assets/sample_shape*.svg are hand-drawn and hand-tuned;
-    # this generator references them and never rewrites them.
+    for lang in ("en", "zh"):
+        stamp_cover_caption(target / "assets" / I18N[lang]["cover"], counts, lang)
     for lang in ("en", "zh"):
         readme = "README.md" if lang == "en" else "README_zh.md"
         (target / readme).write_text(render_readme(tracks, counts, packs, by_id, entries, lang), encoding="utf-8")
@@ -717,6 +741,13 @@ def main() -> int:
     if args.check:
         with tempfile.TemporaryDirectory() as tmp:
             temp = Path(tmp)
+            # The cover figures are inputs whose caption this generator stamps, so the
+            # check needs a copy to stamp before it can spot a stale caption.
+            (temp / "assets").mkdir(parents=True, exist_ok=True)
+            for name in ("cover.svg", "cover_zh.svg"):
+                source = ROOT / "assets" / name
+                if source.exists():
+                    (temp / "assets" / name).write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
             build(temp)
             problems = []
             for path in sorted(temp.rglob("*")):
