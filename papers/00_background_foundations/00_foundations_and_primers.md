@@ -2,7 +2,7 @@
 
 > Surveys, primers, classic post-training lineages, data documentation, and evaluation background for readers entering the field.
 
-[Back to all tracks](README.md) · [Searchable site](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **56** cards · **22** Read first
+[Back to all tracks](README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **56** cards · **22** Read first
 
 Use this track when you need the map before the terrain: vocabulary, taxonomies, historical lineages, and recurring audit questions.
 

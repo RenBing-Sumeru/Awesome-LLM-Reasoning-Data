@@ -2,7 +2,7 @@
 
 > Instruction-response examples, human demonstrations, synthetic instructions, rationales, chain-of-thought traces, and teacher-written reasoning targets.
 
-[返回全部方向](README_zh.md) · [可检索站点](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **101** 张卡片 · **82** 必读
+[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **101** 张卡片 · **82** 必读
 
 Use this track to understand how reasoning behavior is serialized before preference, verifier, or environment feedback is added.
 

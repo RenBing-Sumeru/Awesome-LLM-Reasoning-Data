@@ -2,7 +2,7 @@
 
 > Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
 
-[Back to all tracks](README.md) · [Searchable site](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **107** cards · **63** Read first
+[Back to all tracks](README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **107** cards · **63** Read first
 
 Use this track to interpret claims about how much data, verifier strength, RL, and inference budget contribute to reasoning gains.
 

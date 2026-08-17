@@ -2,7 +2,7 @@
 
 > Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contamination-resistant benchmarks.
 
-[返回全部方向](README_zh.md) · [可检索站点](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **121** 张卡片 · **36** 必读
+[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **121** 张卡片 · **36** 必读
 
 Use this track to understand what an evaluation surface measures and whether it can safely become a feedback source.
 

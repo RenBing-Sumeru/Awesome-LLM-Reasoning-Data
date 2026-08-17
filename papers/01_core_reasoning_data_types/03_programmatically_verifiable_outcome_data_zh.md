@@ -2,7 +2,7 @@
 
 > Math answers, code execution, unit tests, proof checkers, symbolic predicates, answer extraction, and verifier robustness studies.
 
-[返回全部方向](README_zh.md) · [可检索站点](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **114** 张卡片 · **36** 必读
+[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **114** 张卡片 · **36** 必读
 
 Use this track for the cleanest verifier-bearing reasoning records: final answers or artifacts checked by code, rules, tests, or formal systems.
 

@@ -13,8 +13,8 @@ humanized version of the raw key, so a new key never disappears from the UI.
 from __future__ import annotations
 
 GROUPS = [
-    {"id": "background_foundations", "title": "Foundations", "title_zh": "基础与入门", "cls": "g-found"},
-    {"id": "core_reasoning_data_types", "title": "Core Data Types", "title_zh": "核心数据类型", "cls": "g-types"},
+    {"id": "background_foundations", "title": "Background / Foundations", "title_zh": "基础与入门", "cls": "g-found"},
+    {"id": "core_reasoning_data_types", "title": "Core Reasoning Data Types", "title_zh": "核心推理数据类型", "cls": "g-types"},
     {"id": "data_lifecycle", "title": "Data Lifecycle", "title_zh": "数据生命周期", "cls": "g-life"},
 ]
 

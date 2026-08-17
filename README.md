@@ -1,29 +1,62 @@
-# 🌟 Reasoning Data Card Atlas
+# 🌟 Awesome LLM Reasoning Data
 
 [简体中文](README_zh.md)
 
 > A curated, bilingual card atlas for post-training reasoning data: what data object a paper releases, and what verifies it.
 
-[![cards](https://img.shields.io/badge/cards-1285-2563eb)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
-[![tracks](https://img.shields.io/badge/tracks-14%2F14-0f766e)](papers/README.md)
-[![must read](https://img.shields.io/badge/must%20read-676-ea580c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
-[![bilingual sections](https://img.shields.io/badge/bilingual%20sections-23130-b0447c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
+[![Website](https://img.shields.io/badge/website-live-0f766e)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+[![Ask](https://img.shields.io/badge/Ask-demo%20preview-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
+[![Cards](https://img.shields.io/badge/cards-1285-2563eb)](library/cards/)
+[![Tracks](https://img.shields.io/badge/tracks-14%2F14-0f766e)](papers/README.md)
+[![Must read](https://img.shields.io/badge/must%20read-676-ea580c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 <p align="center">
-  <img src="assets/cover.svg" width="92%" alt="Reasoning Data Card Atlas">
+  <img src="assets/cover.svg" width="92%" alt="Awesome LLM Reasoning Data">
 </p>
 
 Every entry is a full reading card rather than a citation: nine sections written from the primary source, plus the classification that makes the card reusable — who checks the answer, at what granularity, and which objective consumes it.
 
 > When a model becomes better at reasoning after post-training, what data record, feedback signal, verifier, reward, environment, or judge actually made that possible?
 
-- 🔎 Searchable site: [https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
-- 🤖 Ask the Atlas: [https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 - 📄 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
+- 🌐 Project website: [https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+- 🤖 Ask the Atlas: [https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 - 🗂️ Research tracks: [papers/README.md](papers/README.md)
 
-## 📊 Snapshot
+## 🚀 How to Use This Repo
+
+A useful reasoning-data sample is rarely `prompt → answer`. It is usually:
+
+<p align="center">
+  <img src="assets/sample_shape.svg" width="92%" alt="task/context, trace/actions, answer/artifact, verifier/reward/judge/environment, metadata">
+</p>
+
+Pick the path that matches your goal:
+
+| Your goal | Suggested route |
+|---|---|
+| New to the field | Walk the [Learning Path](#-learning-path) from Stage 1, starting with [00 · Start here](docs/00_start_here.md) |
+| Building a dataset | Follow the [construction cookbook](docs/05_construction_cookbook.md), then take the *Build a dataset* [reading path](#-reading-paths) |
+| Designing a verifier | Start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and the *Design a verifier* [reading path](#-reading-paths) |
+| Auditing a claim | Read [audit and failure modes](docs/09_audit_and_failure_modes.md), then the *Audit a claim* [reading path](#-reading-paths) |
+| Looking for a specific paper | Search the [project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/), or grep [library/cards/](library/cards/) |
+| Contributing | Read [CONTRIBUTING.md](CONTRIBUTING.md) and pick up open work from [reports/library_report.md](reports/library_report.md) |
+
+## 🔥 Latest Updates
+
+| Date | Update |
+|---|---|
+| 2026-08-17 | All **14 tracks** are integrated. The library holds **1285 published cards** with **23130 bilingual sections**. |
+| 2026-08-17 | Collapsed papers filed under more than one entry_id, folded the facet vocabulary onto `library/vocabulary.yaml`, and made every Chinese field Chinese-only. |
+| 2026-08-17 | Rebuilt the site, READMEs, and track pages from the library, so every count here is reproducible. **241 cards** stay unpublished by review. |
+
+> Review stays conservative: a card any curator rejected, or that nobody ruled on, stays out of the published pool instead of being promoted.
+
+<details>
+<summary>📊 Snapshot</summary>
 
 | Metric | Count |
 |---|---:|
@@ -33,11 +66,13 @@ Every entry is a full reading card rather than a citation: nine sections written
 | Bilingual sections | 23130 |
 | Held back by review | 241 |
 
+</details>
+
 ## 📚 Contents
 
 Fourteen tracks in three groups. Each track page carries a read-first table, the full card list, and an audit checklist.
 
-### Foundations `00`
+### 🧭 1 · Background / Foundations `00`
 
 <blockquote>
 
@@ -47,12 +82,13 @@ Fourteen tracks in three groups. Each track page carries a read-first table, the
 Surveys, primers, classic post-training lineages, data documentation, and evaluation background for readers entering the field.
 
 - Best for: Use this track when you need the map before the terrain: vocabulary, taxonomies, historical lineages, and recurring audit questions.
+- Verified by: Unknown 39, Programmatic 8, Mixed 6, Judgment required 4
 
 </details>
 
 </blockquote>
 
-### Core Data Types `01–07`
+### 🧬 2 · Core Reasoning Data Types `01–07`
 
 <blockquote>
 
@@ -62,6 +98,7 @@ Surveys, primers, classic post-training lineages, data documentation, and evalua
 Instruction-response examples, human demonstrations, synthetic instructions, rationales, chain-of-thought traces, and teacher-written reasoning targets.
 
 - Best for: Use this track to understand how reasoning behavior is serialized before preference, verifier, or environment feedback is added.
+- Verified by: Mixed 82, Programmatic 35, Judgment required 30, Environmental 6
 
 </details>
 
@@ -71,6 +108,7 @@ Instruction-response examples, human demonstrations, synthetic instructions, rat
 Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, critiques, and rubric-conditioned feedback records.
 
 - Best for: Use this track to compare preference and reward signals before they become training objectives or evaluation proxies.
+- Verified by: Judgment required 90, Mixed 17, Programmatic 10, Environmental 1
 
 </details>
 
@@ -80,6 +118,7 @@ Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, 
 Math answers, code execution, unit tests, proof checkers, symbolic predicates, answer extraction, and verifier robustness studies.
 
 - Best for: Use this track for the cleanest verifier-bearing reasoning records: final answers or artifacts checked by code, rules, tests, or formal systems.
+- Verified by: Programmatic 108, Mixed 12, Environmental 6, Judgment required 4
 
 </details>
 
@@ -89,6 +128,7 @@ Math answers, code execution, unit tests, proof checkers, symbolic predicates, a
 Step-level labels, process reward models, rollout values, first-error localization, automatic process supervision, and PRM evaluation.
 
 - Best for: Use this track to move from final-answer feedback to intermediate feedback attached to reasoning steps or trace states.
+- Verified by: Judgment required 91, Mixed 15, Programmatic 6, Environmental 3
 
 </details>
 
@@ -98,6 +138,7 @@ Step-level labels, process reward models, rollout values, first-error localizati
 Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCTS records, selected/rejected candidates, and test-time compute logs.
 
 - Best for: Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
+- Verified by: Mixed 46, Programmatic 40, Judgment required 19, Environmental 8, Unknown 4
 
 </details>
 
@@ -107,6 +148,7 @@ Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCT
 Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes, replayable trajectories, and terminal predicates.
 
 - Best for: Use this track to understand how interactive environments become post-training data sources and feedback contracts.
+- Verified by: Mixed 62, Programmatic 35, Environmental 34, Judgment required 13, Unknown 1
 
 </details>
 
@@ -116,12 +158,13 @@ Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes,
 LLM-as-judge data, human/expert judgment, medical and safety rubrics, factuality, legal and financial reasoning, and rubric reward models.
 
 - Best for: Use this track when correctness needs a rubric, expert judgment, grounding evidence, or calibrated evaluator rather than a cheap programmatic checker.
+- Verified by: Judgment required 91, Mixed 17, Programmatic 4, Environmental 1
 
 </details>
 
 </blockquote>
 
-### Data Lifecycle `08–13`
+### 🛠️ 3 · Data Lifecycle `08–13`
 
 <blockquote>
 
@@ -131,6 +174,7 @@ LLM-as-judge data, human/expert judgment, medical and safety rubrics, factuality
 Prompt sourcing, teacher traces, rejection sampling, self-play, filtering, verifier refresh, open releases, lineage, and release metadata.
 
 - Best for: Use this track to learn how reasoning datasets are actually built, filtered, packaged, and released.
+- Verified by: Mixed 61, Programmatic 43, Judgment required 19, Environmental 12
 
 </details>
 
@@ -140,6 +184,7 @@ Prompt sourcing, teacher traces, rejection sampling, self-play, filtering, verif
 How data enters SFT, distillation, preference optimization, reward modeling, PRM training, RLVR, agent training, evaluation, reranking, and audit.
 
 - Best for: Use this track to connect a data object to the objective or system component that consumes it.
+- Verified by: Judgment required 59, Mixed 40, Programmatic 23, Unknown 7, Environmental 3
 
 </details>
 
@@ -149,6 +194,7 @@ How data enters SFT, distillation, preference optimization, reward modeling, PRM
 Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
 
 - Best for: Use this track to interpret claims about how much data, verifier strength, RL, and inference budget contribute to reasoning gains.
+- Verified by: Mixed 76, Programmatic 21, Judgment required 9, Unknown 3, Environmental 1
 
 </details>
 
@@ -158,6 +204,7 @@ Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling 
 Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contamination-resistant benchmarks.
 
 - Best for: Use this track to understand what an evaluation surface measures and whether it can safely become a feedback source.
+- Verified by: Programmatic 68, Mixed 38, Environmental 33, Judgment required 18
 
 </details>
 
@@ -167,6 +214,7 @@ Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contami
 DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each frontier-style report discloses or hides about data.
 
 - Best for: Use this track to read frontier model reports as partial data-disclosure documents rather than only model-performance announcements.
+- Verified by: Mixed 82, Unknown 11, Programmatic 10, Judgment required 5, Environmental 2
 
 </details>
 
@@ -176,12 +224,44 @@ DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each f
 Benchmark contamination, search-time leakage, hidden lineage, reward hacking, verifier gaming, LLM-as-judge attacks, spurious rewards, and reproducibility failures.
 
 - Best for: Use this track when you want to know how reasoning-data claims can fail and how to audit them before reuse.
+- Verified by: Mixed 88, Unknown 7, Judgment required 7, Programmatic 4, Environmental 2
 
 </details>
 
 </blockquote>
 
-## 🛤️ Reading paths
+## 🛤️ Learning Path
+
+Four stages, in reading order. Each stage starts from the learning guides, then hands over to the matching reading path above.
+
+**🌱 Stage 1 · Build the mental model** — what the field studies and how the data is organized
+
+- [00 · Start here](docs/00_start_here.md)
+- [01 · What is post-training reasoning data?](docs/01_what_is_post_training_reasoning_data.md)
+- [02 · Verifier-anchored taxonomy](docs/02_verifier_anchored_taxonomy.md)
+- Stage reading path: [Start here](#-reading-paths) · 22 matching cards
+
+**🔬 Stage 2 · Know the data objects** — what a well-formed sample looks like and how quality is measured
+
+- [03 · Reasoning data objects](docs/03_reasoning_data_objects.md)
+- [04 · Data quality](docs/04_data_quality.md)
+- Stage reading path: [Design a verifier](#-reading-paths) · 199 matching cards
+
+**⚙️ Stage 3 · Construct, verify, and train** — how data is produced, scored, trained on, and scaled
+
+- [05 · Construction cookbook](docs/05_construction_cookbook.md)
+- [06 · Verifiers and rewards](docs/06_verifiers_and_rewards.md)
+- [07 · Agent trajectory data](docs/07_agent_trajectory_data.md)
+- [08 · Scaling and test-time compute](docs/08_scaling_and_test_time_compute.md)
+- Stage reading path: [Build a dataset](#-reading-paths) · 374 matching cards
+
+**🕵️ Stage 4 · Audit and practice** — how to catch leakage and gaming, then apply it in engineering
+
+- [09 · Audit and failure modes](docs/09_audit_and_failure_modes.md)
+- [10 · Industry onboarding path](docs/10_industry_onboarding_path.md)
+- Stage reading path: [Audit a claim](#-reading-paths) · 72 matching cards
+
+### Reading paths
 
 Routes through the collection for different goals. Each is a live query over the library, so it stays in sync as cards land.
 
@@ -352,6 +432,56 @@ Learn how reasoning-data claims fail before reusing one.
 20. [MathArena: Evaluating LLMs on Uncontaminated Math Competitions](https://arxiv.org/abs/2505.23281) (2025) — MathArena exposes newly released math competitions and current contest math as an auditable evaluation surface.
 
 </details>
+
+## 🌐 Project Website
+
+The site is generated from the same library as this README, so every number on it matches the cards. It brings together:
+
+| Module | What you can do |
+|---|---|
+| 🗂️ Track browsing | Fourteen tracks in three groups, each showing how many cards it holds |
+| 🛤️ Reading paths | Six routes resolved live from the library, so a new card joins the route it belongs to |
+| ⚖️ Contract filters | Narrow by source role, verification contract, supervision granularity, training use, and construction layer |
+| 🔎 Full-text search | Search titles, authors, summaries, tags, and domains across every published card |
+| 🃏 Card drawer | Open a card's nine sections in one language at a time, with every pinned artifact link |
+| 🤖 Ask | A source-grounded assistant, reachable from any card or from the current search slice |
+
+<details>
+<summary>🧩 Repository layout</summary>
+
+| Path | What it is for |
+|---|---|
+| [library/](library/cards/) | The only source of truth: one directory per card with metadata, a Chinese header, and nine bilingual reading sections. |
+| [library/vocabulary.yaml](library/vocabulary.yaml) | Controlled vocabulary for the five classification facets, with the synonyms that fold onto it. |
+| [library/reading_paths.yaml](library/reading_paths.yaml) | Each curated route stored as a facet query. |
+| [atlas.yaml](atlas.yaml) | Publishing rules: integrated tracks, review exclusions, and whether the curated detail blocks are published. |
+| [papers/](papers/README.md) | One browsable page per track in both languages, with a read-first table and an audit checklist. |
+| [docs/](docs/) | The learning guides and the generated project website. |
+| [scripts/](scripts/) | Generators and batch tooling; `scripts/atlas/` is the shared layer. |
+| [reports/](reports/) | What the library still owes: held-back cards, folded vocabulary, duplicates, and normalization edits. |
+| [apps/ask-atlas/](apps/ask-atlas/) | The Ask backend. The published page runs without it. |
+
+</details>
+
+## 🤝 Contributing
+
+Please do not submit only a paper title. A card carries official links, the five classification facets, a bilingual one-line summary, and nine bilingual reading sections written from the primary source. Start with [CONTRIBUTING.md](CONTRIBUTING.md); the open work is listed in [reports/library_report.md](reports/library_report.md) and [ROADMAP.md](ROADMAP.md).
+
+<details>
+<summary>🧱 Review verdicts</summary>
+
+| Verdict | Meaning |
+|---|---|
+| `promoted` | A curator accepted the card; it publishes. |
+| `candidate` | Under consideration but complete; it publishes. |
+| `rejected` | A curator ruled it out; it stays in the library but never publishes. |
+| no verdict | Nobody ruled on it, so it is treated as unreviewed and stays unpublished. |
+
+</details>
+
+## 📜 Citation
+
+If this repository helps your related work, dataset construction, verifier design, or reading group, please cite the companion paper and link this repository. See [CITATION.cff](CITATION.cff).
 
 ## 📄 License
 

@@ -2,7 +2,7 @@
 
 > LLM-as-judge data, human/expert judgment, medical and safety rubrics, factuality, legal and financial reasoning, and rubric reward models.
 
-[Back to all tracks](README.md) · [Searchable site](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **101** cards · **31** Read first
+[Back to all tracks](README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **101** cards · **31** Read first
 
 Use this track when correctness needs a rubric, expert judgment, grounding evidence, or calibrated evaluator rather than a cheap programmatic checker.
 

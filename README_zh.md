@@ -1,29 +1,62 @@
-# 🌟 Reasoning Data Card Atlas
+# 🌟 Awesome LLM Reasoning Data
 
 [English](README.md)
 
 > 后训练推理数据的双语卡片图谱：一篇论文发布了什么数据对象，又由什么来验证它。
 
-[![cards](https://img.shields.io/badge/cards-1285-2563eb)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
-[![tracks](https://img.shields.io/badge/tracks-14%2F14-0f766e)](papers/README_zh.md)
-[![must read](https://img.shields.io/badge/must%20read-676-ea580c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
-[![bilingual sections](https://img.shields.io/badge/bilingual%20sections-23130-b0447c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
+[![Website](https://img.shields.io/badge/website-live-0f766e)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+[![Ask](https://img.shields.io/badge/Ask-demo%20preview-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
+[![Cards](https://img.shields.io/badge/cards-1285-2563eb)](library/cards/)
+[![Tracks](https://img.shields.io/badge/tracks-14%2F14-0f766e)](papers/README_zh.md)
+[![Must read](https://img.shields.io/badge/must%20read-676-ea580c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 <p align="center">
-  <img src="assets/cover_zh.svg" width="92%" alt="Reasoning Data Card Atlas">
+  <img src="assets/cover_zh.svg" width="92%" alt="Awesome LLM Reasoning Data">
 </p>
 
 每个条目都是一张完整的阅读卡片，而不是一条引用：九个章节全部依据一手论文写成，再加上让卡片可被复用的分类——答案由谁验证、验证到什么粒度、又被哪个训练目标消费。
 
 > 当模型在后训练之后推理能力变强，究竟是哪份数据记录、哪种反馈信号、验证器、奖励、环境或评审让它成为可能？
 
-- 🔎 可检索站点: [https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
-- 🤖 问答助手: [https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 - 📄 配套论文: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
+- 🌐 项目网站: [https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+- 🤖 问答助手: [https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 - 🗂️ 研究方向: [papers/README_zh.md](papers/README_zh.md)
 
-## 📊 数据快照
+## 🚀 如何使用这个仓库
+
+一份有用的推理数据样本很少只是 `prompt → answer`，它通常是：
+
+<p align="center">
+  <img src="assets/sample_shape_zh.svg" width="92%" alt="任务与上下文、轨迹与动作、答案与产物、验证器与奖励与评审与环境、元数据">
+</p>
+
+选择与你目标匹配的路线：
+
+| 你的目标 | 推荐路线 |
+|---|---|
+| 刚接触这个领域 | 从[学习路径](#-学习路径)的阶段 1 开始，先读 [00 · 从这里开始](docs/00_start_here.md) |
+| 要构造一份数据集 | 先读[构造手册](docs/05_construction_cookbook.md)，再走「构造一份数据集」[阅读路径](#-阅读路径) |
+| 要设计验证器 | 从[验证器与奖励](docs/06_verifiers_and_rewards.md)开始，再走「设计验证器与奖励」[阅读路径](#-阅读路径) |
+| 要审计一个结论 | 先读[审计与失效模式](docs/09_audit_and_failure_modes.md)，再走「审计一个结论」[阅读路径](#-阅读路径) |
+| 在找某一篇具体论文 | 用[项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)检索，或直接 grep [library/cards/](library/cards/) |
+| 想参与贡献 | 阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，从 [reports/library_report.md](reports/library_report.md) 里挑一项待办 |
+
+## 🔥 最近更新
+
+| 日期 | 更新内容 |
+|---|---|
+| 2026-08-17 | **14 个方向**全部接入，卡片库有 **1285 张已发布卡片**、**23130 个双语章节**。 |
+| 2026-08-17 | 合并了同一论文的重复条目，把各方向的词表归并到 `library/vocabulary.yaml`，并让每个中文字段不再混入英文。 |
+| 2026-08-17 | 站点、README 与方向页全部由卡片库重建，因此这里的每个数字都可复现。**241 张卡片**因审核未通过而不发布。 |
+
+> 审核保持保守：任一策展人标记为拒绝、或无人裁决的卡片，都不进入发布池，而不是被顺势收录。
+
+<details>
+<summary>📊 数据快照</summary>
 
 | 指标 | 数量 |
 |---|---:|
@@ -33,11 +66,13 @@
 | 双语章节 | 23130 |
 | 审核未通过 | 241 |
 
+</details>
+
 ## 📚 目录
 
 三大板块共十四个方向。每个方向页都包含必读表格、完整卡片列表与审计清单。
 
-### 基础与入门 `00`
+### 🧭 1 · 基础与入门 `00`
 
 <blockquote>
 
@@ -47,12 +82,13 @@
 Surveys, primers, classic post-training lineages, data documentation, and evaluation background for readers entering the field.
 
 - 适合读者: Use this track when you need the map before the terrain: vocabulary, taxonomies, historical lineages, and recurring audit questions.
+- 验证方式: 未知 39, 程序化 8, 混合 6, 需评审 4
 
 </details>
 
 </blockquote>
 
-### 核心数据类型 `01–07`
+### 🧬 2 · 核心推理数据类型 `01–07`
 
 <blockquote>
 
@@ -62,6 +98,7 @@ Surveys, primers, classic post-training lineages, data documentation, and evalua
 Instruction-response examples, human demonstrations, synthetic instructions, rationales, chain-of-thought traces, and teacher-written reasoning targets.
 
 - 适合读者: Use this track to understand how reasoning behavior is serialized before preference, verifier, or environment feedback is added.
+- 验证方式: 混合 82, 程序化 35, 需评审 30, 环境判定 6
 
 </details>
 
@@ -71,6 +108,7 @@ Instruction-response examples, human demonstrations, synthetic instructions, rat
 Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, critiques, and rubric-conditioned feedback records.
 
 - 适合读者: Use this track to compare preference and reward signals before they become training objectives or evaluation proxies.
+- 验证方式: 需评审 90, 混合 17, 程序化 10, 环境判定 1
 
 </details>
 
@@ -80,6 +118,7 @@ Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, 
 Math answers, code execution, unit tests, proof checkers, symbolic predicates, answer extraction, and verifier robustness studies.
 
 - 适合读者: Use this track for the cleanest verifier-bearing reasoning records: final answers or artifacts checked by code, rules, tests, or formal systems.
+- 验证方式: 程序化 108, 混合 12, 环境判定 6, 需评审 4
 
 </details>
 
@@ -89,6 +128,7 @@ Math answers, code execution, unit tests, proof checkers, symbolic predicates, a
 Step-level labels, process reward models, rollout values, first-error localization, automatic process supervision, and PRM evaluation.
 
 - 适合读者: Use this track to move from final-answer feedback to intermediate feedback attached to reasoning steps or trace states.
+- 验证方式: 需评审 91, 混合 15, 程序化 6, 环境判定 3
 
 </details>
 
@@ -98,6 +138,7 @@ Step-level labels, process reward models, rollout values, first-error localizati
 Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCTS records, selected/rejected candidates, and test-time compute logs.
 
 - 适合读者: Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
+- 验证方式: 混合 46, 程序化 40, 需评审 19, 环境判定 8, 未知 4
 
 </details>
 
@@ -107,6 +148,7 @@ Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCT
 Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes, replayable trajectories, and terminal predicates.
 
 - 适合读者: Use this track to understand how interactive environments become post-training data sources and feedback contracts.
+- 验证方式: 混合 62, 程序化 35, 环境判定 34, 需评审 13, 未知 1
 
 </details>
 
@@ -116,12 +158,13 @@ Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes,
 LLM-as-judge data, human/expert judgment, medical and safety rubrics, factuality, legal and financial reasoning, and rubric reward models.
 
 - 适合读者: Use this track when correctness needs a rubric, expert judgment, grounding evidence, or calibrated evaluator rather than a cheap programmatic checker.
+- 验证方式: 需评审 91, 混合 17, 程序化 4, 环境判定 1
 
 </details>
 
 </blockquote>
 
-### 数据生命周期 `08–13`
+### 🛠️ 3 · 数据生命周期 `08–13`
 
 <blockquote>
 
@@ -131,6 +174,7 @@ LLM-as-judge data, human/expert judgment, medical and safety rubrics, factuality
 Prompt sourcing, teacher traces, rejection sampling, self-play, filtering, verifier refresh, open releases, lineage, and release metadata.
 
 - 适合读者: Use this track to learn how reasoning datasets are actually built, filtered, packaged, and released.
+- 验证方式: 混合 61, 程序化 43, 需评审 19, 环境判定 12
 
 </details>
 
@@ -140,6 +184,7 @@ Prompt sourcing, teacher traces, rejection sampling, self-play, filtering, verif
 How data enters SFT, distillation, preference optimization, reward modeling, PRM training, RLVR, agent training, evaluation, reranking, and audit.
 
 - 适合读者: Use this track to connect a data object to the objective or system component that consumes it.
+- 验证方式: 需评审 59, 混合 40, 程序化 23, 未知 7, 环境判定 3
 
 </details>
 
@@ -149,6 +194,7 @@ How data enters SFT, distillation, preference optimization, reward modeling, PRM
 Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
 
 - 适合读者: Use this track to interpret claims about how much data, verifier strength, RL, and inference budget contribute to reasoning gains.
+- 验证方式: 混合 76, 程序化 21, 需评审 9, 未知 3, 环境判定 1
 
 </details>
 
@@ -158,6 +204,7 @@ Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling 
 Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contamination-resistant benchmarks.
 
 - 适合读者: Use this track to understand what an evaluation surface measures and whether it can safely become a feedback source.
+- 验证方式: 程序化 68, 混合 38, 环境判定 33, 需评审 18
 
 </details>
 
@@ -167,6 +214,7 @@ Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contami
 DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each frontier-style report discloses or hides about data.
 
 - 适合读者: Use this track to read frontier model reports as partial data-disclosure documents rather than only model-performance announcements.
+- 验证方式: 混合 82, 未知 11, 程序化 10, 需评审 5, 环境判定 2
 
 </details>
 
@@ -176,12 +224,44 @@ DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each f
 Benchmark contamination, search-time leakage, hidden lineage, reward hacking, verifier gaming, LLM-as-judge attacks, spurious rewards, and reproducibility failures.
 
 - 适合读者: Use this track when you want to know how reasoning-data claims can fail and how to audit them before reuse.
+- 验证方式: 混合 88, 未知 7, 需评审 7, 程序化 4, 环境判定 2
 
 </details>
 
 </blockquote>
 
-## 🛤️ 阅读路径
+## 🛤️ 学习路径
+
+四个阶段，按阅读顺序排列。每个阶段先读学习指南，再交给上面对应的阅读路径。
+
+**🌱 阶段 1 · 建立心智模型** — 这个领域研究什么，数据如何组织
+
+- [00 · 从这里开始](docs/00_start_here.md)
+- [01 · 什么是后训练推理数据](docs/01_what_is_post_training_reasoning_data.md)
+- [02 · 以验证器为锚的分类法](docs/02_verifier_anchored_taxonomy.md)
+- 阶段阅读路径: [从这里开始](#-阅读路径) · 22 张匹配卡片
+
+**🔬 阶段 2 · 认识数据对象** — 一份规范样本长什么样，质量如何衡量
+
+- [03 · 推理数据对象](docs/03_reasoning_data_objects.md)
+- [04 · 数据质量](docs/04_data_quality.md)
+- 阶段阅读路径: [设计验证器与奖励](#-阅读路径) · 199 张匹配卡片
+
+**⚙️ 阶段 3 · 构造、验证与训练** — 数据如何生成、打分、进入训练并规模化
+
+- [05 · 构造手册](docs/05_construction_cookbook.md)
+- [06 · 验证器与奖励](docs/06_verifiers_and_rewards.md)
+- [07 · 智能体轨迹数据](docs/07_agent_trajectory_data.md)
+- [08 · 规模化与推理时计算](docs/08_scaling_and_test_time_compute.md)
+- 阶段阅读路径: [构造一份数据集](#-阅读路径) · 374 张匹配卡片
+
+**🕵️ 阶段 4 · 审计与实践** — 如何发现泄漏与作弊，再落到工程实践
+
+- [09 · 审计与失效模式](docs/09_audit_and_failure_modes.md)
+- [10 · 工业上手路径](docs/10_industry_onboarding_path.md)
+- 阶段阅读路径: [审计一个结论](#-阅读路径) · 72 张匹配卡片
+
+### 阅读路径
 
 面向不同目标的阅读路线。每条都是对卡片库的实时查询，会随卡片入库自动更新。
 
@@ -352,6 +432,56 @@ Benchmark contamination, search-time leakage, hidden lineage, reward hacking, ve
 20. [MathArena: Evaluating LLMs on Uncontaminated Math Competitions](https://arxiv.org/abs/2505.23281) (2025) — MathArena 把新发布的数学竞赛与当期赛题做成可审计的评测面。
 
 </details>
+
+## 🌐 项目网站
+
+网站与这份 README 由同一个卡片库生成，因此上面的每个数字都与卡片一致。它整合了：
+
+| 模块 | 你可以做什么 |
+|---|---|
+| 🗂️ 按方向浏览 | 三大板块十四个方向，每个方向显示自己的卡片数 |
+| 🛤️ 阅读路径 | 六条路线由卡片库实时解析，新卡片入库后自动进入所属路线 |
+| ⚖️ 契约筛选 | 按论文角色、验证契约、监督粒度、训练用途与构造环节收窄范围 |
+| 🔎 全文检索 | 在全部已发布卡片的标题、作者、摘要、标签与领域中检索 |
+| 🃏 卡片抽屉 | 一次只用一种语言展开卡片的九个章节，并列出全部已核验的产物链接 |
+| 🤖 问答助手 | 有据可依的助手，可从任意卡片或当前筛选结果直接进入 |
+
+<details>
+<summary>🧩 仓库结构</summary>
+
+| 路径 | 用途 |
+|---|---|
+| [library/](library/cards/) | 唯一的数据真源：每张卡片一个目录，含元数据、中文头与九个双语阅读章节。 |
+| [library/vocabulary.yaml](library/vocabulary.yaml) | 五个分类维度的受控词表，以及归并到它的同义词。 |
+| [library/reading_paths.yaml](library/reading_paths.yaml) | 每条策展路线以 facet 查询的形式存储。 |
+| [atlas.yaml](atlas.yaml) | 发布规则：已接入的方向、审核排除项，以及策展细节区块是否公开。 |
+| [papers/](papers/README_zh.md) | 每个方向一页、中英各一份，含必读表格与审计清单。 |
+| [docs/](docs/) | 学习指南与生成的项目网站。 |
+| [scripts/](scripts/) | 生成器与批次工具，`scripts/atlas/` 是共享层。 |
+| [reports/](reports/) | 卡片库尚欠的工作：未发布卡片、归并的词表、重复项与归一改动。 |
+| [apps/ask-atlas/](apps/ask-atlas/) | Ask 后端。已发布的问答页面不依赖它即可运行。 |
+
+</details>
+
+## 🤝 参与贡献
+
+请不要只提交一个论文标题。一张卡片需要官方链接、五个分类维度、双语一句话摘要，以及依据一手论文写成的九个双语阅读章节。请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)；待办事项列在 [reports/library_report.md](reports/library_report.md) 与 [ROADMAP.md](ROADMAP.md)。
+
+<details>
+<summary>🧱 审核裁决</summary>
+
+| 裁决 | 含义 |
+|---|---|
+| `promoted` | 策展人已接受，进入发布池。 |
+| `candidate` | 仍在考虑但内容完整，进入发布池。 |
+| `rejected` | 策展人已否决，留在库中但不发布。 |
+| 无裁决 | 无人裁决，视为未审核，不发布。 |
+
+</details>
+
+## 📜 引用
+
+如果这个仓库对你的相关研究、数据集构造、验证器设计或读书会有帮助，请引用配套论文并链接本仓库，详见 [CITATION.cff](CITATION.cff)。
 
 ## 📄 许可
 
