@@ -2,7 +2,7 @@
 
 > Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCTS records, selected/rejected candidates, and test-time compute logs.
 
-[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **103** 张卡片 · **58** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **103** 张卡片 · **58** 必读
 
 Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
 

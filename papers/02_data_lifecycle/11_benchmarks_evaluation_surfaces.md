@@ -2,7 +2,7 @@
 
 > Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contamination-resistant benchmarks.
 
-[Back to all tracks](README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **121** cards · **36** Read first
+[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **121** cards · **36** Read first
 
 Use this track to understand what an evaluation surface measures and whether it can safely become a feedback source.
 

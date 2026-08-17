@@ -2,7 +2,7 @@
 
 > Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCTS records, selected/rejected candidates, and test-time compute logs.
 
-[Back to all tracks](README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **103** cards · **58** Read first
+[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **103** cards · **58** Read first
 
 Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
 

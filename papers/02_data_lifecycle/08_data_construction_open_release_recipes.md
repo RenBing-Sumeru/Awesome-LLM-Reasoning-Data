@@ -2,7 +2,7 @@
 
 > Prompt sourcing, teacher traces, rejection sampling, self-play, filtering, verifier refresh, open releases, lineage, and release metadata.
 
-[Back to all tracks](README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **107** cards · **76** Read first
+[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **107** cards · **76** Read first
 
 Use this track to learn how reasoning datasets are actually built, filtered, packaged, and released.
 

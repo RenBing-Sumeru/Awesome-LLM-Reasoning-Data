@@ -11,7 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from atlas import config, cover, labels as L, paths as reading_paths
+from atlas import config, labels as L, paths as reading_paths
 from atlas.cards import (
     ALIASES_APPLIED,
     UNKNOWN_VALUES,

@@ -39,9 +39,9 @@ Pick the path that matches your goal:
 | Your goal | Suggested route |
 |---|---|
 | New to the field | Walk the [Learning Path](#-learning-path) from Stage 1, starting with [00 · Start here](docs/00_start_here.md) |
-| Building a dataset | Follow the [construction cookbook](docs/05_construction_cookbook.md), then take the *Build a dataset* [reading path](#-reading-paths) |
-| Designing a verifier | Start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and the *Design a verifier* [reading path](#-reading-paths) |
-| Auditing a claim | Read [audit and failure modes](docs/09_audit_and_failure_modes.md), then the *Audit a claim* [reading path](#-reading-paths) |
+| Building a dataset | Follow the [construction cookbook](docs/05_construction_cookbook.md), then take the *Build a dataset* [reading path](#reading-paths) |
+| Designing a verifier | Start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and the *Design a verifier* [reading path](#reading-paths) |
+| Auditing a claim | Read [audit and failure modes](docs/09_audit_and_failure_modes.md), then the *Audit a claim* [reading path](#reading-paths) |
 | Looking for a specific paper | Search the [project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/), or grep [library/cards/](library/cards/) |
 | Contributing | Read [CONTRIBUTING.md](CONTRIBUTING.md) and pick up open work from [reports/library_report.md](reports/library_report.md) |
 
@@ -239,13 +239,13 @@ Four stages, in reading order. Each stage starts from the learning guides, then 
 - [00 · Start here](docs/00_start_here.md)
 - [01 · What is post-training reasoning data?](docs/01_what_is_post_training_reasoning_data.md)
 - [02 · Verifier-anchored taxonomy](docs/02_verifier_anchored_taxonomy.md)
-- Stage reading path: [Start here](#-reading-paths) · 22 matching cards
+- Stage reading path: [Start here](#reading-paths) · 22 matching cards
 
 **🔬 Stage 2 · Know the data objects** — what a well-formed sample looks like and how quality is measured
 
 - [03 · Reasoning data objects](docs/03_reasoning_data_objects.md)
 - [04 · Data quality](docs/04_data_quality.md)
-- Stage reading path: [Design a verifier](#-reading-paths) · 199 matching cards
+- Stage reading path: [Design a verifier](#reading-paths) · 199 matching cards
 
 **⚙️ Stage 3 · Construct, verify, and train** — how data is produced, scored, trained on, and scaled
 
@@ -253,13 +253,13 @@ Four stages, in reading order. Each stage starts from the learning guides, then 
 - [06 · Verifiers and rewards](docs/06_verifiers_and_rewards.md)
 - [07 · Agent trajectory data](docs/07_agent_trajectory_data.md)
 - [08 · Scaling and test-time compute](docs/08_scaling_and_test_time_compute.md)
-- Stage reading path: [Build a dataset](#-reading-paths) · 374 matching cards
+- Stage reading path: [Build a dataset](#reading-paths) · 374 matching cards
 
 **🕵️ Stage 4 · Audit and practice** — how to catch leakage and gaming, then apply it in engineering
 
 - [09 · Audit and failure modes](docs/09_audit_and_failure_modes.md)
 - [10 · Industry onboarding path](docs/10_industry_onboarding_path.md)
-- Stage reading path: [Audit a claim](#-reading-paths) · 72 matching cards
+- Stage reading path: [Audit a claim](#reading-paths) · 72 matching cards
 
 ### Reading paths
 

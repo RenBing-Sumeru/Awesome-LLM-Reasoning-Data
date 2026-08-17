@@ -39,9 +39,9 @@
 | 你的目标 | 推荐路线 |
 |---|---|
 | 刚接触这个领域 | 从[学习路径](#-学习路径)的阶段 1 开始，先读 [00 · 从这里开始](docs/00_start_here.md) |
-| 要构造一份数据集 | 先读[构造手册](docs/05_construction_cookbook.md)，再走「构造一份数据集」[阅读路径](#-阅读路径) |
-| 要设计验证器 | 从[验证器与奖励](docs/06_verifiers_and_rewards.md)开始，再走「设计验证器与奖励」[阅读路径](#-阅读路径) |
-| 要审计一个结论 | 先读[审计与失效模式](docs/09_audit_and_failure_modes.md)，再走「审计一个结论」[阅读路径](#-阅读路径) |
+| 要构造一份数据集 | 先读[构造手册](docs/05_construction_cookbook.md)，再走「构造一份数据集」[阅读路径](#阅读路径) |
+| 要设计验证器 | 从[验证器与奖励](docs/06_verifiers_and_rewards.md)开始，再走「设计验证器与奖励」[阅读路径](#阅读路径) |
+| 要审计一个结论 | 先读[审计与失效模式](docs/09_audit_and_failure_modes.md)，再走「审计一个结论」[阅读路径](#阅读路径) |
 | 在找某一篇具体论文 | 用[项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)检索，或直接 grep [library/cards/](library/cards/) |
 | 想参与贡献 | 阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，从 [reports/library_report.md](reports/library_report.md) 里挑一项待办 |
 
@@ -239,13 +239,13 @@ Benchmark contamination, search-time leakage, hidden lineage, reward hacking, ve
 - [00 · 从这里开始](docs/00_start_here.md)
 - [01 · 什么是后训练推理数据](docs/01_what_is_post_training_reasoning_data.md)
 - [02 · 以验证器为锚的分类法](docs/02_verifier_anchored_taxonomy.md)
-- 阶段阅读路径: [从这里开始](#-阅读路径) · 22 张匹配卡片
+- 阶段阅读路径: [从这里开始](#阅读路径) · 22 张匹配卡片
 
 **🔬 阶段 2 · 认识数据对象** — 一份规范样本长什么样，质量如何衡量
 
 - [03 · 推理数据对象](docs/03_reasoning_data_objects.md)
 - [04 · 数据质量](docs/04_data_quality.md)
-- 阶段阅读路径: [设计验证器与奖励](#-阅读路径) · 199 张匹配卡片
+- 阶段阅读路径: [设计验证器与奖励](#阅读路径) · 199 张匹配卡片
 
 **⚙️ 阶段 3 · 构造、验证与训练** — 数据如何生成、打分、进入训练并规模化
 
@@ -253,13 +253,13 @@ Benchmark contamination, search-time leakage, hidden lineage, reward hacking, ve
 - [06 · 验证器与奖励](docs/06_verifiers_and_rewards.md)
 - [07 · 智能体轨迹数据](docs/07_agent_trajectory_data.md)
 - [08 · 规模化与推理时计算](docs/08_scaling_and_test_time_compute.md)
-- 阶段阅读路径: [构造一份数据集](#-阅读路径) · 374 张匹配卡片
+- 阶段阅读路径: [构造一份数据集](#阅读路径) · 374 张匹配卡片
 
 **🕵️ 阶段 4 · 审计与实践** — 如何发现泄漏与作弊，再落到工程实践
 
 - [09 · 审计与失效模式](docs/09_audit_and_failure_modes.md)
 - [10 · 工业上手路径](docs/10_industry_onboarding_path.md)
-- 阶段阅读路径: [审计一个结论](#-阅读路径) · 72 张匹配卡片
+- 阶段阅读路径: [审计一个结论](#阅读路径) · 72 张匹配卡片
 
 ### 阅读路径
 

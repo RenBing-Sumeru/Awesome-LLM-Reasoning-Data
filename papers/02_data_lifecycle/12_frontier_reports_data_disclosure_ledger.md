@@ -2,7 +2,7 @@
 
 > DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each frontier-style report discloses or hides about data.
 
-[Back to all tracks](README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **104** cards · **78** Read first
+[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **104** cards · **78** Read first
 
 Use this track to read frontier model reports as partial data-disclosure documents rather than only model-performance announcements.
 

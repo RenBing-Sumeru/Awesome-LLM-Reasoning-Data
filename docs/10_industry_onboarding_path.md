@@ -97,18 +97,18 @@ Use the six-week path as a hiring or ramp-up scaffold. By the end, the learner s
 
 ### Representative local cards
 
-- [Openthoughts](../cards/releases/openthoughts.md)
-- [Deepmath 103K](../cards/releases/deepmath_103k.md)
-- [Openmathreasoning](../cards/releases/openmathreasoning.md)
-- [Opencodereasoning Ii](../cards/releases/opencodereasoning_ii.md)
-- [Prm800K](../cards/verifiers/prm800k.md)
-- [Processbench](../cards/verifiers/processbench.md)
-- [Healthbench](../cards/verifiers/healthbench.md)
-- [Webarena](../cards/agents/webarena.md)
-- [Swe Gym](../cards/agents/swe_gym.md)
-- [Deepseek R1](../cards/recipes/deepseek_r1.md)
-- [Kimi K15](../cards/recipes/kimi_k15.md)
-- [S1](../cards/releases/s1.md)
+- [Openthoughts](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openthoughts-data-recipes-2025)
+- [Deepmath 103K](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepmath-103k-2025)
+- [Openmathreasoning](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=aimo2-openmathreasoning-2025)
+- [Opencodereasoning Ii](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Prm800K](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Processbench](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=processbench-error-identification-2024)
+- [Healthbench](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Webarena](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=webarena-realistic-web-environment-2023)
+- [Swe Gym](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=swe-gym-2025)
+- [Deepseek R1](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-r1-2025)
+- [Kimi K15](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimi-k1-5-2025)
+- [S1](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=s1-simple-test-time-scaling-2025)
 
 ### Common traps
 

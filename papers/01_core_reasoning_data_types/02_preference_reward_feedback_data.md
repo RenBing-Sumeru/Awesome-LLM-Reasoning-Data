@@ -2,7 +2,7 @@
 
 > Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, critiques, and rubric-conditioned feedback records.
 
-[Back to all tracks](README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **113** cards · **58** Read first
+[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **113** cards · **58** Read first
 
 Use this track to compare preference and reward signals before they become training objectives or evaluation proxies.
 

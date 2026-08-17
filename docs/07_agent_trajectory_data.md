@@ -80,16 +80,16 @@ Read agent data as infrastructure plus behavior. Ask what the agent could see, w
 
 ### Representative local cards
 
-- [Toolllm Toolbench](../cards/agents/toolllm_toolbench.md)
-- [Webarena](../cards/agents/webarena.md)
-- [Browsergym](../cards/agents/browsergym.md)
-- [Osworld](../cards/agents/osworld.md)
-- [Androidworld](../cards/agents/androidworld.md)
-- [Appworld](../cards/agents/appworld.md)
-- [Swe Gym](../cards/agents/swe_gym.md)
-- [R2E Gym](../cards/agents/r2e_gym.md)
-- [Openhands](../cards/agents/openhands.md)
-- [Opencodereasoning Ii](../cards/releases/opencodereasoning_ii.md)
+- [Toolllm Toolbench](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Webarena](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=webarena-realistic-web-environment-2023)
+- [Browsergym](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Osworld](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=osworld-mcp-2025)
+- [Androidworld](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Appworld](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Swe Gym](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=swe-gym-2025)
+- [R2E Gym](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=r2e-gym-procedural-swe-environments-2025)
+- [Openhands](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Opencodereasoning Ii](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
 
 ### Common traps
 

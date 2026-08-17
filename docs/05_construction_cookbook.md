@@ -71,16 +71,16 @@ Use this lesson as a build ledger. Before generating more examples, write down w
 
 ### Representative local cards
 
-- [Openthoughts](../cards/releases/openthoughts.md)
-- [Limo](../cards/releases/limo.md)
-- [S1](../cards/releases/s1.md)
-- [Dapo](../cards/releases/dapo.md)
-- [Deepseek R1](../cards/recipes/deepseek_r1.md)
-- [Kimi K15](../cards/recipes/kimi_k15.md)
-- [Qwen3](../cards/recipes/qwen3.md)
-- [Magistral](../cards/recipes/magistral.md)
-- [Absolute Zero](../cards/recipes/absolute_zero.md)
-- [Ttrl](../cards/recipes/ttrl.md)
+- [Openthoughts](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openthoughts-data-recipes-2025)
+- [Limo](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=limo-less-is-more-reasoning-2025)
+- [S1](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=s1-simple-test-time-scaling-2025)
+- [Dapo](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dapo-2025)
+- [Deepseek R1](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-r1-2025)
+- [Kimi K15](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimi-k1-5-2025)
+- [Qwen3](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-2025)
+- [Magistral](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=magistral-2025)
+- [Absolute Zero](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=absolute-zero-2025)
+- [Ttrl](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
 
 ### Common traps
 

@@ -75,7 +75,7 @@ function chunkText(text, maxChars = 1600) {
 function sourceType(relPath) {
   if (relPath === "docs/companion_paper_primer.md" || relPath.startsWith("data/primer/")) return "primer";
   if (relPath === "README.md") return "readme";
-  if (relPath.startsWith("cards/")) return "card";
+  if (relPath.startsWith("cards/") || relPath.startsWith("library/cards/")) return "card";
   if (relPath.startsWith("papers/")) return "paper_map";
   if (relPath.startsWith("docs/")) return "guide";
   if (relPath.startsWith("data/")) return "metadata";
@@ -332,8 +332,38 @@ function loadBundledCorpusSources() {
   }
 }
 
+// Cards a curator rejected, or that nobody ruled on, are deliberately kept out of the
+// published pool, so they must not reach the assistant either. The published set is
+// exactly what the site export lists.
+let publishedCardIds = null;
+
+function publishedIds() {
+  if (publishedCardIds) return publishedCardIds;
+  publishedCardIds = new Set();
+  try {
+    const exported = JSON.parse(readText(path.join(REPO_ROOT, "data/_generated/entries.json")));
+    for (const entry of exported) if (entry?.id) publishedCardIds.add(entry.id);
+  } catch {
+    // No export yet: index nothing rather than leaking held-back cards.
+  }
+  return publishedCardIds;
+}
+
+// A card is a directory of records. Only its English reading sections carry prose worth
+// retrieving; the Chinese twins and the YAML/JSON records would multiply the corpus
+// without adding meaning, and `09_citation` is a bibliography stub.
+const CARD_SECTION = /^library\/cards\/([^/]+)\/sources\/(\d\d)_[a-z_]+\.md$/;
+
+function publishedCardSection(relPath) {
+  const match = CARD_SECTION.exec(relPath);
+  if (!match) return false;
+  const [, cardId, section] = match;
+  if (section === "09") return false;
+  return publishedIds().has(cardId);
+}
+
 function buildRepositoryFileSources() {
-  const roots = ["README.md", "docs", "papers", "cards"];
+  const roots = ["README.md", "docs", "papers", "cards", "library/cards"];
   const files = [];
   for (const root of roots) {
     const full = path.join(REPO_ROOT, root);
@@ -347,6 +377,7 @@ function buildRepositoryFileSources() {
   for (const file of files) {
     const rel = path.relative(REPO_ROOT, file);
     if (rel.startsWith("docs/assets/")) continue;
+    if (rel.startsWith("library/cards/") && !publishedCardSection(rel)) continue;
     const type = sourceType(rel);
     const text = readText(file);
     if (!text.trim()) continue;

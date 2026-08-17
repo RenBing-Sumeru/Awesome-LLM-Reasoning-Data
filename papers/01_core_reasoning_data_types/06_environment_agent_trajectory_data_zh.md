@@ -2,7 +2,7 @@
 
 > Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes, replayable trajectories, and terminal predicates.
 
-[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **100** 张卡片 · **41** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **100** 张卡片 · **41** 必读
 
 Use this track to understand how interactive environments become post-training data sources and feedback contracts.
 

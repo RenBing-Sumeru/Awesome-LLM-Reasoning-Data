@@ -2,7 +2,7 @@
 
 > How data enters SFT, distillation, preference optimization, reward modeling, PRM training, RLVR, agent training, evaluation, reranking, and audit.
 
-[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **125** 张卡片 · **98** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **125** 张卡片 · **98** 必读
 
 Use this track to connect a data object to the objective or system component that consumes it.
 

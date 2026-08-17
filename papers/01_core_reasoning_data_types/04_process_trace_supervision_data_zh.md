@@ -2,7 +2,7 @@
 
 > Step-level labels, process reward models, rollout values, first-error localization, automatic process supervision, and PRM evaluation.
 
-[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **106** 张卡片 · **58** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **106** 张卡片 · **58** 必读
 
 Use this track to move from final-answer feedback to intermediate feedback attached to reasoning steps or trace states.
 

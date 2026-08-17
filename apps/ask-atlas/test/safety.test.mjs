@@ -183,10 +183,10 @@ test("project navigation questions are in scope and retrieve project guides", ()
 
 test("valid card and track context allows short referential questions", () => {
   const cases = [
-    ["Explain this card", { entry: "math-shepherd-2024" }],
-    ["Summarize this paper", { entry: "math-shepherd-2024" }],
-    ["这篇论文讲什么？", { entry: "math-shepherd-2024" }],
-    ["解释一下这张卡片", { card: "math_shepherd" }],
+    ["Explain this card", { entry: "math-shepherd-verify-and-reinforce-llm-math-reasoning-2024" }],
+    ["Summarize this paper", { entry: "math-shepherd-verify-and-reinforce-llm-math-reasoning-2024" }],
+    ["这篇论文讲什么？", { entry: "math-shepherd-verify-and-reinforce-llm-math-reasoning-2024" }],
+    ["解释一下这张卡片", { card: "math-shepherd-verify-and-reinforce-llm-math-reasoning-2024" }],
     ["What should I read first?", { track: "process_trace_supervision_data" }],
     ["这个 track 应该先读什么？", { track: "process_trace_supervision_data" }],
   ];
@@ -202,15 +202,15 @@ test("context-only paper questions retrieve the referenced paper before unrelate
   const retrieval = retrieveSources({
     question: "这篇论文讲什么？",
     mode: "explain",
-    entry: "math-shepherd-2024",
+    entry: "math-shepherd-verify-and-reinforce-llm-math-reasoning-2024",
   });
   assert.ok(retrieval.results.length > 0);
   assert.equal(
-    retrieval.results[0].path.includes("math_shepherd") || retrieval.results[0].id === "entry:math-shepherd-2024",
+    retrieval.results[0].path.includes("math-shepherd") || retrieval.results[0].id === "entry:math-shepherd-2024",
     true,
     retrieval.results.map((source) => `${source.id}:${source.path}`).join(", "),
   );
-  assert.equal(retrieval.results.some((source) => source.path.includes("cards/agents/androidworld.md")), false);
+  assert.equal(retrieval.results.some((source) => source.path.includes("library/cards/androidworld")), false);
 });
 
 test("referential questions without known context stay out of scope", () => {

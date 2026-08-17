@@ -73,16 +73,16 @@ A good audit starts by asking how the model could win without solving the intend
 
 ### Representative local cards
 
-- [Prm800K](../cards/verifiers/prm800k.md)
-- [Math Shepherd](../cards/verifiers/math_shepherd.md)
-- [Processbench](../cards/verifiers/processbench.md)
-- [Prmbench](../cards/verifiers/prmbench.md)
-- [Rewardbench](../cards/verifiers/rewardbench.md)
-- [Healthbench](../cards/verifiers/healthbench.md)
-- [One Token To Fool Judge](../cards/verifiers/one_token_to_fool_judge.md)
-- [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
-- [Openmathreasoning](../cards/releases/openmathreasoning.md)
-- [Opencodereasoning Ii](../cards/releases/opencodereasoning_ii.md)
+- [Prm800K](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Math Shepherd](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=math-shepherd-verify-and-reinforce-llm-math-reasoning-2024)
+- [Processbench](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=processbench-error-identification-2024)
+- [Prmbench](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=prmbench-v-2026)
+- [Rewardbench](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=rewardbench-evaluating-reward-models-2025)
+- [Healthbench](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [One Token To Fool Judge](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Spurious Rewards](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=spurious-rewards-2025)
+- [Openmathreasoning](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=aimo2-openmathreasoning-2025)
+- [Opencodereasoning Ii](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
 
 ### Common traps
 

@@ -2,7 +2,7 @@
 
 > Surveys, primers, classic post-training lineages, data documentation, and evaluation background for readers entering the field.
 
-[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **56** 张卡片 · **22** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **56** 张卡片 · **22** 必读
 
 Use this track when you need the map before the terrain: vocabulary, taxonomies, historical lineages, and recurring audit questions.
 

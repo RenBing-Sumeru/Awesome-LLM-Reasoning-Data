@@ -78,16 +78,16 @@ When reading scaling work, separate training-time compute from test-time compute
 
 ### Representative local cards
 
-- [S1](../cards/releases/s1.md)
-- [Dapo](../cards/releases/dapo.md)
-- [Deepseek R1](../cards/recipes/deepseek_r1.md)
-- [Kimi K15](../cards/recipes/kimi_k15.md)
-- [Minimax M1](../cards/recipes/minimax_m1.md)
-- [Ttrl](../cards/recipes/ttrl.md)
-- [Absolute Zero](../cards/recipes/absolute_zero.md)
-- [Llama Nemotron](../cards/recipes/llama_nemotron.md)
-- [Phi4 Reasoning](../cards/recipes/phi4_reasoning.md)
-- [Qwen3](../cards/recipes/qwen3.md)
+- [S1](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=s1-simple-test-time-scaling-2025)
+- [Dapo](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dapo-2025)
+- [Deepseek R1](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-r1-2025)
+- [Kimi K15](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimi-k1-5-2025)
+- [Minimax M1](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=minimax-m1-2025)
+- [Ttrl](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Absolute Zero](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=absolute-zero-2025)
+- [Llama Nemotron](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=llama-nemotron-2025)
+- [Phi4 Reasoning](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=phi-4-reasoning-vision-15b-2026)
+- [Qwen3](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-2025)
 
 ### Common traps
 

@@ -2,7 +2,7 @@
 
 > Benchmark contamination, search-time leakage, hidden lineage, reward hacking, verifier gaming, LLM-as-judge attacks, spurious rewards, and reproducibility failures.
 
-[返回全部方向](README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **104** 张卡片 · **56** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **104** 张卡片 · **56** 必读
 
 Use this track when you want to know how reasoning-data claims can fail and how to audit them before reuse.
 

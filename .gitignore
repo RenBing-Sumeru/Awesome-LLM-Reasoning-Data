@@ -17,7 +17,6 @@ CODEX_*.md
 
 # Build artifacts
 node_modules/
-site/
 dist/
 build/
 

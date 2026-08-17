@@ -251,7 +251,7 @@ def render_track_page(track: dict, entries: list, lang: str) -> str:
         "",
         f"> {md_escape(track['summary'])}",
         "",
-        f"[{s['back']}](README{s['suffix']}.md) · [{s['site']}]({SITE_URL}) · "
+        f"[{s['back']}](../README{s['suffix']}.md) · [{s['site']}]({SITE_URL}) · "
         f"**{len(mine)}** {s['papers']} · **{len(must)}** {s['read_first']}",
         "",
     ]
@@ -438,11 +438,11 @@ ROUTES = {
         ("New to the field", "Walk the [Learning Path](#-learning-path) from Stage 1, starting with "
                              "[00 · Start here](docs/00_start_here.md)"),
         ("Building a dataset", "Follow the [construction cookbook](docs/05_construction_cookbook.md), then take "
-                               "the *Build a dataset* [reading path](#-reading-paths)"),
+                               "the *Build a dataset* [reading path](#reading-paths)"),
         ("Designing a verifier", "Start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and the "
-                                 "*Design a verifier* [reading path](#-reading-paths)"),
+                                 "*Design a verifier* [reading path](#reading-paths)"),
         ("Auditing a claim", "Read [audit and failure modes](docs/09_audit_and_failure_modes.md), then the "
-                             "*Audit a claim* [reading path](#-reading-paths)"),
+                             "*Audit a claim* [reading path](#reading-paths)"),
         ("Looking for a specific paper", "Search the [project website]({site}), or grep "
                                           "[library/cards/](library/cards/)"),
         ("Contributing", "Read [CONTRIBUTING.md](CONTRIBUTING.md) and pick up open work from "
@@ -450,9 +450,9 @@ ROUTES = {
     ],
     "zh": [
         ("刚接触这个领域", "从[学习路径](#-学习路径)的阶段 1 开始，先读 [00 · 从这里开始](docs/00_start_here.md)"),
-        ("要构造一份数据集", "先读[构造手册](docs/05_construction_cookbook.md)，再走「构造一份数据集」[阅读路径](#-阅读路径)"),
-        ("要设计验证器", "从[验证器与奖励](docs/06_verifiers_and_rewards.md)开始，再走「设计验证器与奖励」[阅读路径](#-阅读路径)"),
-        ("要审计一个结论", "先读[审计与失效模式](docs/09_audit_and_failure_modes.md)，再走「审计一个结论」[阅读路径](#-阅读路径)"),
+        ("要构造一份数据集", "先读[构造手册](docs/05_construction_cookbook.md)，再走「构造一份数据集」[阅读路径](#阅读路径)"),
+        ("要设计验证器", "从[验证器与奖励](docs/06_verifiers_and_rewards.md)开始，再走「设计验证器与奖励」[阅读路径](#阅读路径)"),
+        ("要审计一个结论", "先读[审计与失效模式](docs/09_audit_and_failure_modes.md)，再走「审计一个结论」[阅读路径](#阅读路径)"),
         ("在找某一篇具体论文", "用[项目网站]({site})检索，或直接 grep [library/cards/](library/cards/)"),
         ("想参与贡献", "阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，从 "
                    "[reports/library_report.md](reports/library_report.md) 里挑一项待办"),
@@ -529,7 +529,7 @@ def render_learning_path(packs: list, lang: str) -> str:
     s = I18N[lang]
     index = lang_index(lang)
     by_id = {pack["id"]: pack for pack in packs}
-    anchor = "#-reading-paths" if lang == "en" else "#-阅读路径"
+    anchor = "#reading-paths" if lang == "en" else "#阅读路径"
     out = [f"## 🛤️ {s['learning']}", "", s["learning_note"], ""]
     for emoji, guides, path_id, title, blurb in LEARNING_PATH:
         out += [f"**{emoji} {title[index]}** — {blurb[index]}", ""]

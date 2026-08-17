@@ -20,8 +20,8 @@
 
 ## Practical Cards
 
-- [Card Index](../cards/README.md)
-- [Release Cards](../cards/releases/)
-- [Verifier Cards](../cards/verifiers/)
-- [Agent Cards](../cards/agents/)
-- [Recipe Cards](../cards/recipes/)
+- [Card Index](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+- [Release Cards](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#search)
+- [Verifier Cards](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gsm8k-2021)
+- [Agent Cards](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=agent-sft-2025)
+- [Recipe Cards](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mobilellm-r1-2025)
