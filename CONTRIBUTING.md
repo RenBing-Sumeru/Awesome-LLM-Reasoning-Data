@@ -43,15 +43,8 @@ A card is a directory under `library/cards/<entry_id>/`. Its `paper.yaml` must c
 Alongside `paper.yaml` a card needs `header_zh.json` for the Chinese summary, reading
 priority, paper type, and intended reader, plus `sources/` holding nine English and nine
 Chinese reading sections. `python scripts/validate_library.py` checks all of it.
-- `recipe_metadata`
-- `audit`
-- `one_line_summary`
-- `why_it_matters`
-- `tags`
-- `status`
-- `curation_level`
 
-Use `unknown`, `needs_search`, or `ambiguous` when evidence is missing. Do not fill uncertain fields with plausible-sounding guesses.
+Use `unknown`, or record the gap under `needs`, when evidence is missing. Do not fill an uncertain field with a plausible-sounding guess.
 
 ## Writing Summaries
 
@@ -69,23 +62,27 @@ Good:
 
 Avoid generic praise such as "important paper for LLMs" or "useful for reasoning."
 
-## Adding a Card
+## Writing the Reading Sections
 
-Cards live under `cards/releases/`, `cards/verifiers/`, `cards/agents/`, `cards/recipes/`, `cards/failures/`, or `cards/benchmarks/`.
+`sources/` holds nine sections, each as an English file and a Chinese twin:
 
-Each card should include:
+| File | What it answers |
+|---|---|
+| `01_problem` | What gap or auditing difficulty the work addresses |
+| `02_core_idea` | The central contribution in its own terms |
+| `03_method` | How the data is produced, filtered, and checked |
+| `04_evidence` | What the results actually establish |
+| `05_novelty` | What is new relative to the nearest prior work |
+| `06_limitations` | Where the claim stops holding |
+| `07_usefulness` | How a builder or auditor would reuse it |
+| `08_reading_notes` | What to watch for while reading the paper |
+| `09_citation` | The citation and which official record it follows |
 
-- TL;DR
-- What the work is
-- Data object
-- Verifier / reward / judge / environment
-- Construction recipe
-- Post-training use
-- Audit questions
-- Risks / limitations
-- Official links and citation notes
+Write the Chinese twin as Chinese. The site never mixes languages on one page, so a
+section left half-translated reaches a Chinese reader as English. Technical terms such as
+`Best-of-N` or `pass@k` stay in their original form; whole English clauses do not.
 
-If information is unknown, write `unknown` and explain what should be checked next.
+If information is unknown, write `unknown` and say what should be checked next.
 
 ## Recording a gap
 

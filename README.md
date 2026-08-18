@@ -43,6 +43,7 @@ Pick the path that matches your goal:
 | Designing a verifier | Start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and the *Design a verifier* [reading path](#reading-paths) |
 | Auditing a claim | Read [audit and failure modes](docs/09_audit_and_failure_modes.md), then the *Audit a claim* [reading path](#reading-paths) |
 | Looking for a specific paper | Search the [project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/), or grep [library/cards/](library/cards/) |
+| Reusing the collection | Load [exports/papers.csv](exports/papers.csv), [papers.json](exports/papers.json), or [papers.bib](exports/papers.bib) — every published card, regenerated from the library |
 | Contributing | Read [CONTRIBUTING.md](CONTRIBUTING.md) and pick up open work from [reports/library_report.md](reports/library_report.md) |
 
 ## 🔥 Latest Updates
@@ -458,6 +459,7 @@ The site is generated from the same library as this README, so every number on i
 | [papers/](papers/README.md) | One browsable page per track in both languages, with a read-first table and an audit checklist. |
 | [docs/](docs/) | The learning guides and the generated project website. |
 | [scripts/](scripts/) | Generators and batch tooling; `scripts/atlas/` is the shared layer. |
+| [exports/](exports/) | CSV, JSON, and BibTeX of every published card, for reuse outside this site. |
 | [reports/](reports/) | What the library still owes: held-back cards, folded vocabulary, duplicates, and normalization edits. |
 | [apps/ask-atlas/](apps/ask-atlas/) | The Ask backend. The published page runs without it. |
 

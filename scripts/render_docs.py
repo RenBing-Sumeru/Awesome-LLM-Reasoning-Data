@@ -446,6 +446,10 @@ ROUTES = {
                              "*Audit a claim* [reading path](#reading-paths)"),
         ("Looking for a specific paper", "Search the [project website]({site}), or grep "
                                           "[library/cards/](library/cards/)"),
+        ("Reusing the collection", "Load [exports/papers.csv](exports/papers.csv), "
+                                   "[papers.json](exports/papers.json), or "
+                                   "[papers.bib](exports/papers.bib) — every published card, regenerated "
+                                   "from the library"),
         ("Contributing", "Read [CONTRIBUTING.md](CONTRIBUTING.md) and pick up open work from "
                          "[reports/library_report.md](reports/library_report.md)"),
     ],
@@ -455,6 +459,9 @@ ROUTES = {
         ("要设计验证器", "从[验证器与奖励](docs/06_verifiers_and_rewards.md)开始，再走「设计验证器与奖励」[阅读路径](#阅读路径)"),
         ("要审计一个结论", "先读[审计与失效模式](docs/09_audit_and_failure_modes.md)，再走「审计一个结论」[阅读路径](#阅读路径)"),
         ("在找某一篇具体论文", "用[项目网站]({site})检索，或直接 grep [library/cards/](library/cards/)"),
+        ("想复用整个合集", "加载 [exports/papers.csv](exports/papers.csv)、"
+                    "[papers.json](exports/papers.json) 或 [papers.bib](exports/papers.bib)"
+                    "——全部已发布卡片，由卡片库重新生成"),
         ("想参与贡献", "阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，从 "
                    "[reports/library_report.md](reports/library_report.md) 里挑一项待办"),
     ],
@@ -493,6 +500,7 @@ STRUCTURE = {
                                          "and an audit checklist."),
         ("[docs/](docs/)", "The learning guides and the generated project website."),
         ("[scripts/](scripts/)", "Generators and batch tooling; `scripts/atlas/` is the shared layer."),
+        ("[exports/](exports/)", "CSV, JSON, and BibTeX of every published card, for reuse outside this site."),
         ("[reports/](reports/)", "What the library still owes: held-back cards, folded vocabulary, duplicates, "
                                   "and normalization edits."),
         ("[apps/ask-atlas/](apps/ask-atlas/)", "The Ask backend. The published page runs without it."),
@@ -505,6 +513,7 @@ STRUCTURE = {
         ("[papers/](papers/README_zh.md)", "每个方向一页、中英各一份，含必读表格与审计清单。"),
         ("[docs/](docs/)", "学习指南与生成的项目网站。"),
         ("[scripts/](scripts/)", "生成器与批次工具，`scripts/atlas/` 是共享层。"),
+        ("[exports/](exports/)", "全部已发布卡片的 CSV、JSON 与 BibTeX，供站外复用。"),
         ("[reports/](reports/)", "卡片库尚欠的工作：未发布卡片、归并的词表、重复项与归一改动。"),
         ("[apps/ask-atlas/](apps/ask-atlas/)", "Ask 后端。已发布的问答页面不依赖它即可运行。"),
     ],

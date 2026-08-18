@@ -72,6 +72,14 @@ function chunkText(text, maxChars = 1600) {
   return chunks;
 }
 
+// Cards a reader asking about process supervision should meet first. Slugs, not paths,
+// so a rename or a missing card degrades quietly instead of silently scoring nothing.
+const PRM_ANCHOR_SLUGS = [
+  "prm800k", "lets-verify-step-by-step", "math-shepherd", "omegaprm",
+  "processbench", "prmbench", "rewarding-progress",
+];
+
+
 function sourceType(relPath) {
   if (relPath === "docs/companion_paper_primer.md" || relPath.startsWith("data/primer/")) return "primer";
   if (relPath === "README.md") return "readme";
@@ -538,10 +546,9 @@ export function retrieveSources({ question, mode = "explain", track = "", entry 
     }
     if ((queryText.includes("prm") || queryText.includes("process reward") || queryText.includes("process supervision"))) {
       if (source.path.includes("01_core_reasoning_data_types/04_process_trace_supervision_data")) score += 80;
-      if (source.path.includes("cards/verifiers/prm")) score += 55;
-      if (source.path.includes("cards/verifiers/math_shepherd")) score += 45;
-      if (source.path.includes("cards/verifiers/omegaprm")) score += 45;
-      if (source.path.includes("cards/verifiers/processbench")) score += 35;
+      // Matched on the entry_id slug rather than a fixed path: card ids carry a
+      // descriptive tail and a publication year, and a card named here may not exist.
+      if (source.type === "card" && PRM_ANCHOR_SLUGS.some((slug) => source.path.includes(slug))) score += 45;
       if (source.text.toLowerCase().includes("process reward")) score += 15;
     }
     if (score > 0) {

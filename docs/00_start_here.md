@@ -30,7 +30,7 @@ Use four layers: taxonomy, quality, construction, and scaling. Each layer asks w
 ## Practical checklist
 
 - [ ] Pick a path.
-- [ ] Use data/papers.yaml for metadata.
+- [ ] Put the metadata in `library/cards/<entry_id>/paper.yaml`.
 - [ ] Use cards when adding resources.
 - [ ] Keep unknowns explicit.
 

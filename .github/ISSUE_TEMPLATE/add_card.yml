@@ -4,17 +4,17 @@ title: "[Card] <work name>"
 labels: ["card", "metadata"]
 body:
   - type: input
-    id: card_path
+    id: entry_id
     attributes:
-      label: Proposed card path
-      description: Example cards/releases/openthoughts.md or cards/verifiers/prm800k.md
+      label: Proposed entry_id
+      description: A lowercase slug ending in the publication year, for example math-shepherd-verify-and-reinforce-llm-math-reasoning-2024. The card becomes library/cards/<entry_id>/.
     validations:
       required: true
   - type: input
-    id: entry_id
+    id: tracks
     attributes:
-      label: data/papers.yaml entry_id
-      description: The card should link to an existing entry_id when possible.
+      label: Research track(s)
+      description: One or two ids from library/categories.yaml, for example process_trace_supervision_data.
     validations:
       required: true
   - type: textarea

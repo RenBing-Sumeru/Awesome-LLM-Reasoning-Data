@@ -7,7 +7,7 @@ body:
     id: target
     attributes:
       label: Entry ID or file path
-      description: Example deepseek-r1-2025 or cards/recipes/deepseek_r1.md
+      description: The entry_id, for example deepseek-r1-2025. The card lives at library/cards/<entry_id>/.
     validations:
       required: true
   - type: dropdown
