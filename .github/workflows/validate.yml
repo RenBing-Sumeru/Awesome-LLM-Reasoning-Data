@@ -25,7 +25,7 @@ jobs:
       # Data legality first: the render checks below only prove the generated files match
       # the library, not that the library itself is well formed.
       - name: Validate the card library
-        run: python scripts/validate_library.py
+        run: python scripts/validate_library.py --max-warnings 16
       # `library/` is the only source of truth; these checks re-render into a temporary
       # directory and fail if anything committed drifts from the cards.
       - name: Check published site

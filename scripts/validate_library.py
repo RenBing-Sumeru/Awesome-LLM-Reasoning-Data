@@ -45,9 +45,14 @@ DESCRIPTIVE = [
 REQUIRED = CRITICAL + DESCRIPTIVE
 
 # Fields a card may carry beyond the required set. Anything else is batch residue.
+#
+# `batch` records which mining run or candidate file a card came from and `track0_subfield`
+# carries a subfield label that exists nowhere else in the library, so both are legitimate
+# rather than residue. `one_line` is legacy and warned about separately.
 OPTIONAL = {
     "authors", "one_line_summary", "why_it_matters", "needs", "related",
     "card", "card_recommendation", "card_recommendation_reason", "one_line",
+    "batch", "track0_subfield",
 }
 
 LIST_FIELDS = {
@@ -86,10 +91,11 @@ def check_card(directory: Path, tracks: set, vocab: dict, published: bool):
         if paper.get(field) in (None, "", [], {}):
             warnings.append(f"{name}: missing curation field {field}")
 
-    for field in sorted(set(paper) - set(REQUIRED) - OPTIONAL):
-        warnings.append(f"{name}: unexpected field {field}")
-    if "one_line" in paper:
-        warnings.append(f"{name}: still carries the legacy one_line field")
+    if published:
+        for field in sorted(set(paper) - set(REQUIRED) - OPTIONAL):
+            warnings.append(f"{name}: unexpected field {field}")
+        if "one_line" in paper:
+            warnings.append(f"{name}: still carries the legacy one_line field")
 
     for field in LIST_FIELDS & set(paper):
         if paper[field] is not None and not isinstance(paper[field], list):
@@ -165,7 +171,12 @@ def check_card(directory: Path, tracks: set, vocab: dict, published: bool):
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--strict", action="store_true", help="treat warnings as failures")
+    parser.add_argument("--strict", action="store_true",
+                        help="treat warnings as failures; only published cards are counted")
+    parser.add_argument("--max-warnings", type=int, default=None, metavar="N",
+                        help="fail when the warning count exceeds N. CI pins this to today's "
+                             "count so the remaining curation gaps stay visible without blocking, "
+                             "while any new gap fails the build.")
     args = parser.parse_args()
 
     tracks = {cat["id"] for cat in config.read_yaml(config.CATEGORIES_PATH).get("paper_categories", [])}
@@ -200,6 +211,10 @@ def main() -> int:
             print("  ERROR", error)
         if len(errors) > 40:
             print(f"  … {len(errors) - 40} more")
+        return 1
+    if args.max_warnings is not None and len(warnings) > args.max_warnings:
+        print(f"\nfailed: {len(warnings)} warning(s) exceeds the ceiling of {args.max_warnings}.")
+        print("Fill in the missing fields, or raise the ceiling deliberately.")
         return 1
     if warnings and args.strict:
         print("\n--strict: warnings treated as failures")

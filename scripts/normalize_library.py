@@ -12,6 +12,12 @@ Four inconsistencies accumulated as batches arrived from different track owners:
 4. Chinese header text. Entries in `scripts/data/zh_fields.yaml` replace a
    `one_line_summary_ch`, `paper_type_ch`, or `best_for_ch` that still carried a
    long English run. Author names and short inline terms stay in Latin script.
+5. Duplicated header fields. `reading_priority`, `paper_type`, `best_for`, and
+   `confidence` in `paper.yaml` shadow the `*_ch` values in `header_zh.json` that the
+   site actually reads, so the same fact had two homes and one was silently ignored.
+   The English copies are removed. `category` goes too: it predates the track union in
+   `category_ids`. `batch` and `track0_subfield` stay — they carry provenance and
+   subfield labels that exist nowhere else.
 
 Only cards in the published pool are touched, and `queue.json` and `review.json`
 are never written, so every manual review verdict survives untouched. Dry run by
@@ -39,16 +45,52 @@ CARDS = config.CARDS
 BACKUP = ROOT / ".backup"
 ZH_FIXES = Path(__file__).resolve().parent / "data" / "zh_fields.yaml"
 
+# Shadow copies of header_zh.json values, plus a category snapshot taken before tracks
+# were unioned. None of them is read by anything.
+SHADOW_FIELDS = ("reading_priority", "paper_type", "best_for", "confidence", "category")
+
 # `<slug>-<year>.<venue>.<n>` or `<slug>-<yymm>.<arxiv-number>`
 ID_SUFFIX = re.compile(r"\.(?:[a-z][\w\-]*\.)?\d+$")
 TRAILING_YEAR = re.compile(r"-(\d{4})$")
 
 
 def dump_yaml(path: Path, payload: dict) -> None:
-    path.write_text(
-        yaml.safe_dump(payload, allow_unicode=True, sort_keys=False, default_flow_style=False, width=120),
-        encoding="utf-8",
-    )
+    path.write_text(serialize_yaml(payload), encoding="utf-8")
+
+
+def serialize_yaml(payload: dict) -> str:
+    """The canonical `paper.yaml` form: block style, source key order, wrapped at 120.
+
+    `merge_batches.py` and `dedupe_papers.py` write the same shape, so every card the
+    tooling has touched already looks like this. Cards that arrived in a batch's compact
+    flow style and were never edited are the odd ones out.
+    """
+    return yaml.safe_dump(payload, allow_unicode=True, sort_keys=False,
+                          default_flow_style=False, width=120)
+
+
+def reformat_untouched(written: set, log: collections.Counter) -> list:
+    """Restyle every card that no normalization rule is already rewriting.
+
+    Without this the library keeps two YAML styles at once and every later edit converts
+    one more card, so formatting noise would keep leaking into unrelated diffs. Content is
+    untouched: the payload is re-serialized, not modified. Held-back cards are included
+    because style is not content, and leaving them out would just preserve the split.
+    """
+    pending = []
+    for directory in sorted(CARDS.iterdir()):
+        if not directory.is_dir() or directory in written:
+            continue
+        path = directory / "paper.yaml"
+        if not path.exists():
+            continue
+        raw = path.read_text(encoding="utf-8")
+        payload = yaml.safe_load(raw) or {}
+        if serialize_yaml(payload) != raw:
+            pending.append((path, payload))
+    if pending:
+        log[f"paper.yaml: restyled to the canonical block form"] += len(pending)
+    return pending
 
 
 def canonical_id(entry_id: str, year) -> str:
@@ -118,6 +160,11 @@ def plan_card(directory: Path, vocab: dict, zh_fixes: dict, log: collections.Cou
             one_line_change = "divergent removed"
             log["one_line: divergent text removed"] += 1
         paper.pop("one_line", None)
+
+    shadow_removed = [field for field in SHADOW_FIELDS if field in paper]
+    for field in shadow_removed:
+        paper.pop(field, None)
+        log[f"{field}: shadow copy of the Chinese header removed"] += 1
 
     new_id = canonical_id(entry_id, paper.get("year"))
     renamed = new_id != entry_id
@@ -272,8 +319,9 @@ def main() -> int:
             print(f"  {old}  ->  {new} (already present)")
         print()
 
-    report = write_report(plans, log, args.apply, blocked, duplicate_titles(plans))
     touched = [p for p in plans if p["touched"]]
+    restyle = reformat_untouched({p["dir"] for p in touched}, log)
+    report = write_report(plans, log, args.apply, blocked, duplicate_titles(plans))
     print(f"published cards inspected: {len(plans)}")
     print(f"cards to change:           {len(touched)}")
     for key, count in log.most_common():
@@ -285,6 +333,8 @@ def main() -> int:
         return 0
 
     backup_root = BACKUP / dt.datetime.now().strftime("%Y%m%d-%H%M%S-normalize")
+    for path, payload in restyle:
+        path.write_text(serialize_yaml(payload), encoding="utf-8")
     for plan in touched:
         directory = plan["dir"]
         backup_root.mkdir(parents=True, exist_ok=True)

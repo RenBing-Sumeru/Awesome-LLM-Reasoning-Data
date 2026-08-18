@@ -7,6 +7,8 @@ __pycache__/
 *.bak
 *.tmp
 .DS_Store
+.venv/
+.backup/
 .codex_scratch/
 CODEX_*.md
 *_PROMPT*.md
