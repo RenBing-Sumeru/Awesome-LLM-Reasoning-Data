@@ -39,7 +39,7 @@ Use this order when deciding what to add next:
 ## Curation Rules
 
 - Prefer fewer verified, useful entries over many guessed links.
-- Keep `needs_search` visible until official primary sources are pinned.
+- Keep every gap visible under `needs` until an official primary source is pinned.
 - Do not promote an entry as curated unless it explains data object, feedback contract, training use, and audit risk.
 - Keep papers in multiple categories when the data object genuinely crosses axes.
 - Avoid generic LLM reasoning papers that do not expose a post-training data, verifier, reward, environment, benchmark, or audit lesson.
@@ -50,20 +50,18 @@ Before publishing a public update, run:
 
 ```bash
 python3 scripts/validate_library.py
-python3 scripts/render_docs.py --check
-python3 scripts/render_docs.py --check
 python3 scripts/build_site.py --check
-python3 scripts/render_cards.py --check
-python3 scripts/check_links.py --soft
+python3 scripts/render_docs.py --check
+python3 scripts/render_exports.py --check
 node --check docs/assets/site.js
 git diff --check
 ```
 
-For larger releases, also run a live external-link sample:
-
-```bash
-python3 scripts/check_links.py --live --limit 100 --workers 8
-```
+Still owed: a link checker. The published cards pin roughly 5,400 distinct URLs, and
+nothing in CI has opened any of them. A sample of 60 primary links returned 200 for 59,
+with the one failure an OpenReview PDF that refuses `HEAD`, so there is no sign of
+systematic rot — but "no sign" is not a check. A rate-limited verifier writing
+`reports/link_check.md` belongs here before the collection is cited.
 
 ## What Not To Add
 

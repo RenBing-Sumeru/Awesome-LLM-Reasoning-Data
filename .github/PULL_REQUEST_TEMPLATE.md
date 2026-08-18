@@ -45,13 +45,11 @@
 - [ ] Official primary link is verified.
 - [ ] Code/data/model/project links are official or clearly marked missing.
 - [ ] No guessed or hallucinated links are included.
-- [ ] Missing official sources are marked `needs_search`.
-- [ ] Entry has source role, verification contract, supervision granularity, and training use.
-- [ ] Entry has `one_line_summary` and `why_it_matters`.
-- [ ] Card path is valid if `curation_level` is `L4_carded` or `L5_audit_ready`.
+- [ ] Missing official sources are recorded under `needs`, not guessed.
+- [ ] Card has source role, verification contract, supervision granularity, training use, and construction layer, all drawn from `library/vocabulary.yaml`.
+- [ ] Card has `one_line_summary` plus a Chinese `one_line_summary_ch`, and each reads as its own language.
+- [ ] All nine reading sections exist in both languages.
 - [ ] `python scripts/validate_library.py` passes.
 - [ ] `python scripts/build_site.py --check` passes.
 - [ ] `python scripts/render_docs.py --check` passes.
-- [ ] `python scripts/render_docs.py --check` passes.
-- [ ] `python scripts/render_cards.py --check` passes.
-- [ ] `python scripts/check_links.py --soft` passes.
+- [ ] `python scripts/render_exports.py --check` passes.

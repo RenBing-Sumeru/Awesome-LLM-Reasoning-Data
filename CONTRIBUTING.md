@@ -87,9 +87,9 @@ Each card should include:
 
 If information is unknown, write `unknown` and explain what should be checked next.
 
-## Marking `needs_search`
+## Recording a gap
 
-Use `needs_search` when an official paper, venue, arXiv, DOI, code, data, or project page is not yet pinned. Missing links should remain visible in `reports/needs_search.md`; do not hide them inside verified sections.
+When an official paper, venue, arXiv, DOI, code, data, or project page is not yet pinned, leave the artifact key out and record the gap under `needs` in `paper.yaml`. Gaps stay visible in `reports/library_report.md`; do not hide them behind a plausible-looking guess.
 
 ## Local Validation
 
@@ -99,10 +99,7 @@ Before opening a PR, run:
 python scripts/validate_library.py
 python scripts/build_site.py --check
 python scripts/render_docs.py --check
-python scripts/render_docs.py --check
-python scripts/render_cards.py --check
-python scripts/coverage_report.py
-python scripts/check_links.py --soft
+python scripts/render_exports.py --check
 ```
 
 If you changed generated artifacts, run the corresponding renderer without `--check` first.
