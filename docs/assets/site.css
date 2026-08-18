@@ -648,6 +648,14 @@ h2 { font-family: var(--serif); font-weight: 500; font-size: 26px; }
   color: var(--muted);
 }
 
+.curatednote {
+  border-top: 1px solid var(--hairline);
+  margin-top: 34px;
+  padding-top: 18px;
+  font-size: 13.5px;
+  color: var(--faint);
+}
+
 .note { border-left: 3px solid var(--hairline); padding-left: 14px; font-size: 13.5px; color: var(--muted); }
 
 /* ---------- responsive ---------- */

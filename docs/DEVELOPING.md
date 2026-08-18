@@ -36,7 +36,8 @@ paper_cards/
 ├── incoming/               # batch drop zone; archive/ holds merged batches
 ├── papers/                 # generated — one browsable page per track, both languages
 ├── assets/                 # generated — README cover art
-├── site/                   # generated — safe to delete and rebuild
+├── docs/                   # learning guides plus the generated site
+├── exports/                # generated — CSV, JSON, BibTeX
 ├── reports/                # generated — build, merge, and normalization findings
 └── .backup/                # every card a tool overwrote, by timestamp
 ```
@@ -45,9 +46,11 @@ paper_cards/
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python scripts/build_site.py            # regenerate site/
-.venv/bin/python scripts/render_docs.py           # regenerate README, papers/, assets/
-.venv/bin/python scripts/build_site.py --check    # fail if site/ drifts from library/
+.venv/bin/python scripts/build_site.py            # regenerate docs/
+.venv/bin/python scripts/render_docs.py           # regenerate README, papers/, cover caption
+.venv/bin/python scripts/render_exports.py        # regenerate exports/
+.venv/bin/python scripts/validate_library.py      # fail on a malformed card
+.venv/bin/python scripts/build_site.py --check    # fail if docs/ drifts from library/
 .venv/bin/python scripts/render_docs.py --check   # fail if the documents drift
 .venv/bin/python scripts/serve.py                 # preview at http://127.0.0.1:8787
 ```
@@ -63,7 +66,7 @@ newer `site.js`.
 ## What the site publishes
 
 `build_site.py` emits a lean `entries.json` for search and filtering plus one
-`site/assets/data/cards/<entry_id>.json` per card, loaded on demand when a reader
+`docs/assets/data/cards/<entry_id>.json` per card, loaded on demand when a reader
 opens the detail drawer.
 
 Three switches in `atlas.yaml` control what reaches it.
@@ -72,7 +75,7 @@ Three switches in `atlas.yaml` control what reaches it.
 |---|---|
 | `integrated_tracks` | Tracks absent from the list render as pending even when a cross-tagged card mentions them, so the coverage figure stays honest. |
 | `excluded_search_status`, `exclude_unreviewed`, `excluded_ids` | A card rejected by any curator, or that nobody ruled on, is dropped from the pool: no entry, no detail file, no count. |
-| `show_detail_blocks` | While `false`, the curated data object, construction recipe, audit ledger, gap list, and verification record are neither rendered nor written into `site/assets/data/`, so unpublished curation cannot be read out of the JSON. |
+| `show_detail_blocks` | While `false`, the curated data object, construction recipe, audit ledger, gap list, and verification record are neither rendered nor written into `docs/assets/data/`, so unpublished curation cannot be read out of the JSON. |
 
 ## Reading paths
 
@@ -85,7 +88,7 @@ them as collapsible lists.
 
 ## Ask the Atlas
 
-`site/ask/` is the assistant's shell, generated from `scripts/data/ask.html`. It calls
+`docs/ask/` is the assistant's shell, generated from `scripts/data/ask.html`. It calls
 no backend: it reads `mode`, `entry`, and `question` from the query string, keeps history
 in localStorage, and renders a demo answer that is labelled as such. Card drawers and the
 search results link into it with a prefilled question, so the reading surface and the

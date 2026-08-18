@@ -49,10 +49,10 @@ Use this order when deciding what to add next:
 Before publishing a public update, run:
 
 ```bash
-python3 scripts/validate_data.py
-python3 scripts/render_readme.py --check
-python3 scripts/render_papers.py --check
-python3 scripts/render_site.py --check
+python3 scripts/validate_library.py
+python3 scripts/render_docs.py --check
+python3 scripts/render_docs.py --check
+python3 scripts/build_site.py --check
 python3 scripts/render_cards.py --check
 python3 scripts/check_links.py --soft
 node --check docs/assets/site.js

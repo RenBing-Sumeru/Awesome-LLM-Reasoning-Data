@@ -179,7 +179,7 @@ export function collectLaunchReadiness() {
     "Canonical GitHub Pages Ask route",
     fileExists("docs/ask/index.html") ? "pass" : "block",
     fileExists("docs/ask/index.html") ? "docs/ask/index.html exists for /ask/." : "docs/ask/index.html is missing.",
-    "Generate the Pages Ask route with scripts/render_site.py.",
+    "Generate the Pages Ask route with scripts/build_site.py.",
   ));
   checks.push(check(
     "Public Pages",

@@ -23,11 +23,11 @@ Prefer official sources in this order:
 6. Official dataset/model page, including Hugging Face when it is the release source.
 7. Secondary sources only when no primary paper exists; label them clearly.
 
-Never guess arXiv IDs, GitHub repositories, DOI links, or Hugging Face pages. If unsure, set the missing field to `null` and mark the entry as `needs_search`.
+Never guess arXiv IDs, GitHub repositories, DOI links, or Hugging Face pages. If unsure, set the missing field to `null` and record the gap in `needs`.
 
 ## Required Metadata
 
-For `data/papers.yaml`, include:
+A card is a directory under `library/cards/<entry_id>/`. Its `paper.yaml` must carry:
 
 - `id`, `title`, `year`, `venue`, `authors`
 - `source_role`
@@ -37,7 +37,12 @@ For `data/papers.yaml`, include:
 - `training_use`
 - `construction_layer`
 - `artifacts` with official links or `null`
-- `data_object`
+- `data_object`, `recipe_metadata`, and `audit`
+- `category_ids` drawn from `library/categories.yaml`, and facet values drawn from `library/vocabulary.yaml`
+
+Alongside `paper.yaml` a card needs `header_zh.json` for the Chinese summary, reading
+priority, paper type, and intended reader, plus `sources/` holding nine English and nine
+Chinese reading sections. `python scripts/validate_library.py` checks all of it.
 - `recipe_metadata`
 - `audit`
 - `one_line_summary`
@@ -91,10 +96,10 @@ Use `needs_search` when an official paper, venue, arXiv, DOI, code, data, or pro
 Before opening a PR, run:
 
 ```bash
-python scripts/validate_data.py
-python scripts/render_site.py --check
-python scripts/render_papers.py --check
-python scripts/render_readme.py --check
+python scripts/validate_library.py
+python scripts/build_site.py --check
+python scripts/render_docs.py --check
+python scripts/render_docs.py --check
 python scripts/render_cards.py --check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft

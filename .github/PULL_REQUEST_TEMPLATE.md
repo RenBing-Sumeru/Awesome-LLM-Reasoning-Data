@@ -49,9 +49,9 @@
 - [ ] Entry has source role, verification contract, supervision granularity, and training use.
 - [ ] Entry has `one_line_summary` and `why_it_matters`.
 - [ ] Card path is valid if `curation_level` is `L4_carded` or `L5_audit_ready`.
-- [ ] `python scripts/validate_data.py` passes.
-- [ ] `python scripts/render_site.py --check` passes.
-- [ ] `python scripts/render_papers.py --check` passes.
-- [ ] `python scripts/render_readme.py --check` passes.
+- [ ] `python scripts/validate_library.py` passes.
+- [ ] `python scripts/build_site.py --check` passes.
+- [ ] `python scripts/render_docs.py --check` passes.
+- [ ] `python scripts/render_docs.py --check` passes.
 - [ ] `python scripts/render_cards.py --check` passes.
 - [ ] `python scripts/check_links.py --soft` passes.

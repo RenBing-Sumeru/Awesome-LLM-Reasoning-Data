@@ -408,9 +408,9 @@ npm --prefix apps/ask-atlas run production:live
 npm --prefix apps/ask-atlas run config:check
 npm --prefix apps/ask-atlas run db:check
 npm --prefix apps/ask-atlas test
-python3 scripts/render_readme.py --check
-python3 scripts/render_site.py --check
-python3 scripts/validate_data.py
+python3 scripts/render_docs.py --check
+python3 scripts/build_site.py --check
+python3 scripts/validate_library.py
 ```
 
 `launch:check` uses the same safe readiness snapshot shown in the private

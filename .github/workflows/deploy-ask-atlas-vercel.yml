@@ -257,7 +257,7 @@ jobs:
           git pull --ff-only origin "$GITHUB_REF_NAME"
           python3 scripts/set_ask_backend_url.py "$ASK_ATLAS_BASE_URL"
           python3 scripts/set_ask_backend_url.py --check --require-url
-          python3 scripts/render_readme.py
+          python3 scripts/render_docs.py
           if git diff --quiet -- docs/assets/ask-config.js README.md README_zh.md; then
             echo "Public Ask config and README launch status already match the configured backend."
             exit 0

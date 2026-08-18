@@ -640,12 +640,12 @@ rg -n "paper title|short title|arxiv id|existing id" data cards papers README.md
 常用生成命令：
 
 ```bash
-python scripts/render_site.py
-python scripts/render_papers.py
-python scripts/render_readme.py
+python scripts/build_site.py
+python scripts/render_docs.py
+python scripts/render_docs.py
 python scripts/render_cards.py
 python scripts/coverage_report.py
-python scripts/export_csv_json.py
+python scripts/render_exports.py
 python scripts/build_bib_index.py
 python scripts/summarize_counts.py
 ```
@@ -653,9 +653,9 @@ python scripts/summarize_counts.py
 检查模式：
 
 ```bash
-python scripts/render_site.py --check
-python scripts/render_papers.py --check
-python scripts/render_readme.py --check
+python scripts/build_site.py --check
+python scripts/render_docs.py --check
+python scripts/render_docs.py --check
 python scripts/render_cards.py --check
 ```
 
@@ -685,8 +685,8 @@ python scripts/render_cards.py --check
 元数据改动后运行：
 
 ```bash
-python scripts/render_site.py
-python scripts/render_site.py --check
+python scripts/build_site.py
+python scripts/build_site.py --check
 ```
 
 不要把 secret 放进 `docs/`，因为 GitHub Pages 会公开发布。
@@ -734,14 +734,14 @@ npm --prefix apps/ask-atlas run production:status
 正常 PR 前运行：
 
 ```bash
-python scripts/validate_data.py
+python scripts/validate_library.py
 python scripts/secret_scan.py
-python scripts/render_site.py --check
+python scripts/build_site.py --check
 python scripts/set_ask_backend_url.py --check
 python scripts/check_ask_entrypoints.py
 npm --prefix apps/ask-atlas run rag:check
-python scripts/render_papers.py --check
-python scripts/render_readme.py --check
+python scripts/render_docs.py --check
+python scripts/render_docs.py --check
 python scripts/add_card_ask_links.py --check
 python scripts/render_cards.py --check
 python scripts/coverage_report.py
@@ -861,14 +861,14 @@ npm ci --prefix apps/ask-atlas
 完整普通 PR 检查：
 
 ```bash
-python scripts/validate_data.py
+python scripts/validate_library.py
 python scripts/secret_scan.py
-python scripts/render_site.py --check
+python scripts/build_site.py --check
 python scripts/set_ask_backend_url.py --check
 python scripts/check_ask_entrypoints.py
 npm --prefix apps/ask-atlas run rag:check
-python scripts/render_papers.py --check
-python scripts/render_readme.py --check
+python scripts/render_docs.py --check
+python scripts/render_docs.py --check
 python scripts/add_card_ask_links.py --check
 python scripts/render_cards.py --check
 python scripts/coverage_report.py
@@ -885,12 +885,12 @@ npm --prefix apps/ask-atlas test
 重新生成常见输出：
 
 ```bash
-python scripts/render_site.py
-python scripts/render_papers.py
-python scripts/render_readme.py
+python scripts/build_site.py
+python scripts/render_docs.py
+python scripts/render_docs.py
 python scripts/render_cards.py
 python scripts/coverage_report.py
-python scripts/export_csv_json.py
+python scripts/render_exports.py
 python scripts/build_bib_index.py
 python scripts/summarize_counts.py
 ```

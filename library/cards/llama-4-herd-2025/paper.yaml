@@ -2,7 +2,8 @@ id: llama-4-herd-2025
 title: 'The Llama 4 Herd: The Beginning of a New Era of Natively Multimodal AI Innovation'
 year: 2025
 venue: Meta research publication
-authors: unknown
+authors:
+- unknown
 source_role:
 - model_report
 - construction_recipe

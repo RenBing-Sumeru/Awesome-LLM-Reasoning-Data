@@ -163,5 +163,5 @@ jobs:
           ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
           ASK_ATLAS_PAGES_BASE_URL: ${{ vars.ASK_ATLAS_PAGES_BASE_URL }}
         run: |
-          python3 scripts/render_readme.py --check
+          python3 scripts/render_docs.py --check
           npm --prefix apps/ask-atlas run production:live -- --ci

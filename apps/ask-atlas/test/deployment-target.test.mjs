@@ -100,7 +100,7 @@ test("Vercel deploy workflow separates production secrets from Pages config publ
   assert.match(deployJob, /Smoke test deployed backend/);
   assert.match(publishJob, /\n    permissions:\n      contents: write\n/);
   assert.match(publishJob, /scripts\/set_ask_backend_url\.py "\$ASK_ATLAS_BASE_URL"/);
-  assert.match(publishJob, /scripts\/render_readme\.py/);
+  assert.match(publishJob, /scripts\/render_docs\.py/);
   assert.match(publishJob, /git pull --ff-only origin "\$GITHUB_REF_NAME"/);
   assert.match(publishJob, /git diff --quiet -- docs\/assets\/ask-config\.js README\.md README_zh\.md/);
   assert.match(publishJob, /git add docs\/assets\/ask-config\.js README\.md README_zh\.md/);
@@ -115,7 +115,7 @@ test("launch gate workflow is read-only and serialized with production deploymen
   assert.match(workflow, /\npermissions:\n  contents: read\n/);
   assert.match(workflow, /\nconcurrency:\n  group: ask-atlas-production\n  cancel-in-progress: false\n/);
   assert.match(workflow, /Verify public launch surface is synchronized/);
-  assert.match(workflow, /scripts\/render_readme\.py --check/);
+  assert.match(workflow, /scripts\/render_docs\.py --check/);
   assert.match(workflow, /run production:live -- --ci/);
   assert.doesNotMatch(workflow, /contents: write/);
 });

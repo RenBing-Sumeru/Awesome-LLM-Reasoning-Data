@@ -22,12 +22,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           npm ci --prefix apps/ask-atlas
-      # `library/` is the only source of truth; both checks re-render into a temporary
+      # Data legality first: the render checks below only prove the generated files match
+      # the library, not that the library itself is well formed.
+      - name: Validate the card library
+        run: python scripts/validate_library.py
+      # `library/` is the only source of truth; these checks re-render into a temporary
       # directory and fail if anything committed drifts from the cards.
       - name: Check published site
         run: python scripts/build_site.py --check
       - name: Check README and track pages
         run: python scripts/render_docs.py --check
+      - name: Check exports
+        run: python scripts/render_exports.py --check
       - name: Secret scan
         run: python scripts/secret_scan.py
       - name: Check Ask backend URL config safety

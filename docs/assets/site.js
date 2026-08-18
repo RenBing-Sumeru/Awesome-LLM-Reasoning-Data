@@ -40,6 +40,7 @@ const T = {
     explain: "Explain",
     audit: "Audit",
     compare: "Compare",
+    curatedEnOnly: "",
     yes: "yes",
     no: "no",
     search: "search",
@@ -78,6 +79,7 @@ const T = {
     explain: "解读",
     audit: "审计",
     compare: "对比",
+    curatedEnOnly: "这张卡片的数据对象、构造配方与审计账本目前只有英文，切到 EN 查看。",
     yes: "是",
     no: "否",
     search: "关键词",
@@ -501,6 +503,20 @@ function drawerHtml(card) {
       )).join("")}</ul></section>`
     : "";
 
+  // The curated blocks are written in English only, so the Chinese side links across
+  // rather than mixing languages on one page.
+  const curated = zh
+    ? (card.data_object?.length
+        ? `<p class="curatednote">${esc(T.curatedEnOnly)}</p>`
+        : "")
+    : [
+        kvBlock(T.dataObject, card.data_object),
+        kvBlock(T.recipe, card.recipe_metadata),
+        kvBlock(T.audit, card.audit),
+        needs,
+        kvBlock(T.verification, card.verification),
+      ].join("");
+
   const chips = list => list.map(item => `<span>${esc(item)}</span>`).join("");
   const tail = [];
   if (card.domains.length) {
@@ -524,11 +540,7 @@ function drawerHtml(card) {
     </div>
     ${meta.join("")}
     ${sections}
-    ${kvBlock(T.dataObject, card.data_object)}
-    ${kvBlock(T.recipe, card.recipe_metadata)}
-    ${kvBlock(T.audit, card.audit)}
-    ${needs}
-    ${kvBlock(T.verification, card.verification)}
+    ${curated}
     ${tail.join("")}`;
 }
 

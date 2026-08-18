@@ -39,7 +39,8 @@ excluded_ids:
   - infinitymath-2024
   - spa-bench-2025
 
-# The curated data object, construction recipe, audit ledger, and gap list live in
-# every paper.yaml but are not published yet. While this is false they are neither
-# rendered nor written into site/assets/data/, so nothing leaks through the JSON.
-show_detail_blocks: false
+# The curated data object, construction recipe, audit ledger, gap list, and
+# verification record are published. Their prose only exists in English, so the drawer
+# shows them on the English side only; the Chinese side stays Chinese until the fields
+# are translated. Setting this to false withholds them from the JSON entirely.
+show_detail_blocks: true
