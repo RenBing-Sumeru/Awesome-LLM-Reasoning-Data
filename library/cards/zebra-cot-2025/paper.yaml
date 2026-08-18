@@ -100,10 +100,6 @@ one_line_summary: Zebra-CoT serializes both textual thoughts and intermediate im
   aids during multi-step reasoning.
 why_it_matters: Text-only CoT cannot demonstrate sketching, visual search, or intermediate spatial transformations, and off-the-shelf
   VLMs are too weak to bootstrap such traces reliably.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: visual chain-of-thought SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

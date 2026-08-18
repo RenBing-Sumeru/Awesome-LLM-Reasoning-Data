@@ -85,10 +85,6 @@ tags:
 why_it_matters: It gives readers a concrete vocabulary for separating task automation from broader scientific responsibility.
 one_line_summary: An EMNLP 2025 survey of how LLM roles in scientific discovery evolve from tools to increasingly autonomous
   agents.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers studying LLM agents, scientific workflows, and human-AI collaboration.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable evidence for autonomy across scientific settings'

@@ -92,10 +92,6 @@ tags:
 status: verified
 one_line_summary: DynaMiCS repeatedly probes data-source effects and optimizes SFT mixture weights to improve targets without
   violating protected capabilities.
-reading_priority: essential
-paper_type: Constraint-aware dynamic SFT data-mixture optimization study
-best_for: Readers balancing specialization data against explicit safety or capability-retention constraints.
-confidence: high
 why_it_matters: It makes protected evaluation domains part of the data-consumption decision.
 curation_level: L4_carded
 verification:

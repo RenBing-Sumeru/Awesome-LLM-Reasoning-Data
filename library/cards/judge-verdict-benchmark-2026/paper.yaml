@@ -1,5 +1,5 @@
 id: judge-verdict-benchmark-2026
-title: "Judge's Verdict: A Comprehensive Analysis of LLM Judge Capability Through Human Agreement"
+title: 'Judge''s Verdict: A Comprehensive Analysis of LLM Judge Capability Through Human Agreement'
 year: 2025
 venue: arXiv preprint; under review at ICLR 2026
 authors:
@@ -70,7 +70,8 @@ audit:
   confidence: medium
   notes: Official primary page and public artifact URL recorded on 2026-07-19. Public submission materials define a benchmark
     for factual judge reliability.
-inclusion_reason: 'The benchmark distinguishes correlation from chance-corrected human agreement and makes the reliability-versus-nuance trade-off of LLM judges explicit.'
+inclusion_reason: The benchmark distinguishes correlation from chance-corrected human agreement and makes the reliability-versus-nuance
+  trade-off of LLM judges explicit.
 related: []
 tags:
 - audit

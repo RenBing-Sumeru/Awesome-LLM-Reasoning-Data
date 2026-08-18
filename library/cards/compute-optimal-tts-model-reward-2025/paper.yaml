@@ -89,10 +89,6 @@ tags:
 status: verified
 one_line_summary: The study shows that optimal inference-time search depends jointly on generator, verifier, and problem difficulty
   rather than model size alone.
-reading_priority: useful
-paper_type: Empirical compute-optimal test-time scaling study
-best_for: Readers comparing PRM-guided sampling and search across different model sizes and task difficulties.
-confidence: high
 why_it_matters: It makes reward-model compatibility an explicit part of selecting a practical test-time scaling strategy.
 curation_level: L4_carded
 verification:

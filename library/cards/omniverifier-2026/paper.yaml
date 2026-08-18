@@ -91,6 +91,7 @@ verification:
   verified_at: '2026-07-19'
   verified_by: curation
   confidence: medium
-  notes: ICLR 2026 Oral status verified on the official project repository; ICML 2026 refers to the separate OmniVerifier-M1 follow-up and is not this paper's venue.
+  notes: ICLR 2026 Oral status verified on the official project repository; ICML 2026 refers to the separate OmniVerifier-M1
+    follow-up and is not this paper's venue.
 category_ids:
 - audit_failure_contamination_verifier_attacks

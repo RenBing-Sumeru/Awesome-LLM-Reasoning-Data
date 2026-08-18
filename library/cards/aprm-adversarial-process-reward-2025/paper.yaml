@@ -90,10 +90,6 @@ tags:
 status: verified
 one_line_summary: APRM trains a generator to create PRM-deceiving wrong steps and continuously feeds those hard negatives
   back into process reward modeling.
-reading_priority: essential
-paper_type: Adversarial process-supervision construction and process reward model training study
-best_for: Readers designing adaptive negative-data curricula for step-level reward models.
-confidence: medium
 why_it_matters: It changes the source and hardness distribution of negative process labels as the reward model improves.
 curation_level: L4_carded
 verification:

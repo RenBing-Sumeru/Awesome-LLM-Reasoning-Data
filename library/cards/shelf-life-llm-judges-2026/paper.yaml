@@ -2,7 +2,13 @@ id: shelf-life-llm-judges-2026
 title: 'On the Shelf Life of Finetuned LLM-Judges: Future Proofing, Backward Compatibility, and Question Generalization'
 year: 2026
 venue: ICLR 2026
-authors: [Janvijay Singh, Austin Xu, Yilun Zhou, Yefan Zhou, Dilek Hakkani-Tür, Shafiq Joty]
+authors:
+- Janvijay Singh
+- Austin Xu
+- Yilun Zhou
+- Yefan Zhou
+- Dilek Hakkani-Tür
+- Shafiq Joty
 source_role:
 - audit_failure
 verification_contract:

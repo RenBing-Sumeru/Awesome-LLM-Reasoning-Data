@@ -92,10 +92,6 @@ status: verified
 one_line_summary: ShareGPT4V distills 100K GPT-4V captions into a captioner that expands dense visual supervision to 1.2M
   images.
 why_it_matters: turning caption quality into an explicit, scalable data stage before multimodal SFT
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: creating detailed visual grounding targets before question-answer SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

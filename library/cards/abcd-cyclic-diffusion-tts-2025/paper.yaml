@@ -82,10 +82,6 @@ tags:
 status: verified
 one_line_summary: ABCD uses cyclic diffusion search to adapt exploration depth and stopping time to the available inference
   budget.
-reading_priority: recommended
-paper_type: Adaptive diffusion inference scaling study
-best_for: Readers studying budget allocation beyond autoregressive sampling.
-confidence: high
 why_it_matters: It makes denoising depth and search termination explicit test-time scaling decisions.
 curation_level: L4_carded
 verification:

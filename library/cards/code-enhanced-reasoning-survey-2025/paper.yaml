@@ -94,10 +94,6 @@ why_it_matters: It clarifies why code can supply decomposition, execution feedba
   does not provide.
 one_line_summary: An EMNLP 2025 survey of code as a structured, executable medium for reasoning and of reasoning as a driver
   of code intelligence.
-paper_type: Code-enhanced reasoning survey
-reading_priority: strong
-best_for: Readers comparing natural-language reasoning, code intermediates, execution feedback, and code-agent workflows.
-confidence: high
 status: verified
 needs:
 - 'unknown: directly comparable environments, tests, and execution budgets across surveyed methods'

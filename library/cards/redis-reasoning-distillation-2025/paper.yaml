@@ -80,10 +80,6 @@ tags:
 - reasoning-data
 status: verified
 one_line_summary: ReDis distils rule generation and rule following into smaller models for inductive in-context learning.
-reading_priority: essential
-paper_type: Reasoning-data construction and supervised fine-tuning study
-best_for: Readers studying how reasoning records enter post-training.
-confidence: high
 why_it_matters: It makes a reasoning-data consumption decision explicit.
 curation_level: L4_carded
 verification:

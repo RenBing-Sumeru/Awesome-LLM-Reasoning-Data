@@ -102,10 +102,6 @@ status: verified
 one_line_summary: Tulu 2 connects a 326K instruction mixture, scalable DPO, open checkpoints, and common evaluation in one
   reproducible adaptation suite.
 why_it_matters: It exposes which instruction records and preference pairs drive each stage of an open assistant recipe.
-reading_priority: recommended
-paper_type: Open instruction-tuning and preference-optimization recipe
-best_for: Researchers building or auditing open assistants across SFT data, DPO feedback, checkpoints, and evaluation.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

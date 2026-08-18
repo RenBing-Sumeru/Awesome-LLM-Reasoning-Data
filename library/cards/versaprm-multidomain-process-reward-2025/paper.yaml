@@ -116,10 +116,6 @@ tags:
 status: verified
 one_line_summary: VersaPRM creates and releases multi-domain step-labeled reasoning traces, then trains a process reward model
   that improves test-time selection beyond mathematics.
-reading_priority: essential
-paper_type: Synthetic process-supervision data release and multi-domain process reward model study
-best_for: Readers building process labels, reward models, or test-time search systems outside narrowly mathematical tasks.
-confidence: high
 why_it_matters: It demonstrates that diversity and label construction in process data determine where a reward model remains
   useful, not merely which optimizer is applied.
 curation_level: L4_carded

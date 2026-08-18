@@ -82,10 +82,6 @@ tags:
 - tacl-2024
 one_line_summary: A TACL survey of quantization, pruning, and distillation for practical LLM deployment.
 why_it_matters: It frames compression as a trade-off between resource use and task quality rather than a single speed-up claim.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers choosing or evaluating LLM compression methods for constrained deployment.
-confidence: high
 status: verified
 needs:
 - unknown

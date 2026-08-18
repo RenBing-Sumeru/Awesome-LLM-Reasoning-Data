@@ -98,10 +98,6 @@ tags:
 status: verified
 one_line_summary: ShareGPT4Video releases 40K long temporal captions and a captioner for scaling video-language supervision.
 why_it_matters: treating long temporally structured captions as the intermediate data engine for video instruction tuning
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: constructing temporal reasoning SFT records from public videos
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

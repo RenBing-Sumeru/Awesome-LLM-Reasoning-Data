@@ -1,11 +1,11 @@
 # Normalization report
 
-Applied.
+Dry run — nothing written.
 
 - published cards inspected: 1285
-- cards changed: 2
+- cards changed: 0
 - entry_ids renamed: 0
-- Chinese header fields replaced: 2
+- Chinese header fields replaced: 0
 
 Held-back cards and every `queue.json` / `review.json` are left untouched, so
 the manual review verdicts are unchanged.
@@ -14,7 +14,6 @@ the manual review verdicts are unchanged.
 
 | edit | cards |
 |---|---:|
-| `one_line_summary_ch: translated` | 2 |
 
 ## entry_id renames
 

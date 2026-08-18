@@ -1,28 +1,92 @@
 id: iterative-deepening-sampling-2025
-title: "Iterative Deepening Sampling as Efficient Test-Time Scaling"
+title: Iterative Deepening Sampling as Efficient Test-Time Scaling
 year: 2025
 venue: arXiv preprint
-authors: [Weizhe Chen, Sven Koenig, Bistra Dilkina]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [full_episode]
-domains: [mathematical-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2502.05449, arxiv: https://arxiv.org/abs/2502.05449, venue: null, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2502.05449}
-data_object: {prompt_source: "Math500 and AIME reasoning benchmarks.", trace_author: "A fixed reasoning language model producing self-reflective samples.", answer_format: "Initial answers, reflected revisions, iterative deepening samples, and final answers.", process_fields: [prompt, initial_trace, reflection, revised_trace, sampling_depth, final_answer], environment_or_substrate: "Training-free iterative sampling inference pipeline.", verifier_or_reward: "The model's own self-correction behavior.", terminal_predicate: "Benchmark answer correctness under a sample budget."}
-recipe_metadata: {base_model: "Reported reasoning language models.", teacher: null, generator: "Fixed language model repeatedly prompted for self-correction.", filtering_rule: "Allocate later sampling to progressively deeper self-reflection.", sampling_protocol: "Generate an answer, use it to trigger iterative self-correction, and sample at increasing depth.", rollout_count: "See paper for task-specific budgets.", temperature: null, inference_budget: "Number and depth of sampled self-reflection trajectories.", optimizer_or_scaffold: "Iterative Deepening Sampling."}
-audit: {source_mixture: "Official arXiv paper.", split: "See primary paper for protocols.", decontamination: "Not separately claimed.", license: "Check model and benchmark terms before reuse.", lineage: "https://arxiv.org/abs/2502.05449", known_failure_modes: [unproductive_reflection, correlated_samples, depth_overhead, incorrect_self_correction], citation_status: verified, confidence: medium, notes: "Paper author affiliations checked on 2026-07-20: University of Southern California and University of California, Irvine; no official code or data link was identified."}
-inclusion_reason: "It allocates sampling depth at inference time to trigger model self-correction without changing model parameters."
+authors:
+- Weizhe Chen
+- Sven Koenig
+- Bistra Dilkina
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2502.05449
+  arxiv: https://arxiv.org/abs/2502.05449
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.05449
+data_object:
+  prompt_source: Math500 and AIME reasoning benchmarks.
+  trace_author: A fixed reasoning language model producing self-reflective samples.
+  answer_format: Initial answers, reflected revisions, iterative deepening samples, and final answers.
+  process_fields:
+  - prompt
+  - initial_trace
+  - reflection
+  - revised_trace
+  - sampling_depth
+  - final_answer
+  environment_or_substrate: Training-free iterative sampling inference pipeline.
+  verifier_or_reward: The model's own self-correction behavior.
+  terminal_predicate: Benchmark answer correctness under a sample budget.
+recipe_metadata:
+  base_model: Reported reasoning language models.
+  teacher: null
+  generator: Fixed language model repeatedly prompted for self-correction.
+  filtering_rule: Allocate later sampling to progressively deeper self-reflection.
+  sampling_protocol: Generate an answer, use it to trigger iterative self-correction, and sample at increasing depth.
+  rollout_count: See paper for task-specific budgets.
+  temperature: null
+  inference_budget: Number and depth of sampled self-reflection trajectories.
+  optimizer_or_scaffold: Iterative Deepening Sampling.
+audit:
+  source_mixture: Official arXiv paper.
+  split: See primary paper for protocols.
+  decontamination: Not separately claimed.
+  license: Check model and benchmark terms before reuse.
+  lineage: https://arxiv.org/abs/2502.05449
+  known_failure_modes:
+  - unproductive_reflection
+  - correlated_samples
+  - depth_overhead
+  - incorrect_self_correction
+  citation_status: verified
+  confidence: medium
+  notes: 'Paper author affiliations checked on 2026-07-20: University of Southern California and University of California,
+    Irvine; no official code or data link was identified.'
+inclusion_reason: It allocates sampling depth at inference time to trigger model self-correction without changing model parameters.
 related: []
-tags: [test-time-compute, iterative-sampling, self-correction, reasoning-efficiency]
+tags:
+- test-time-compute
+- iterative-sampling
+- self-correction
+- reasoning-efficiency
 status: verified
-one_line_summary: "Iterative Deepening Sampling uses progressively deeper self-correction samples to improve fixed-model reasoning at test time."
-reading_priority: useful
-paper_type: Training-free iterative test-time sampling study
-best_for: Readers exploring self-correction as an inference-time compute allocation mechanism.
-confidence: medium
-why_it_matters: "It studies how to obtain more useful reasoning samples from a fixed model instead of merely increasing independent rollouts."
+one_line_summary: Iterative Deepening Sampling uses progressively deeper self-correction samples to improve fixed-model reasoning
+  at test time.
+why_it_matters: It studies how to obtain more useful reasoning samples from a fixed model instead of merely increasing independent
+  rollouts.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: medium, notes: "Official arXiv primary source checked; no official code or data artifact was identified."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv primary source checked; no official code or data artifact was identified.
+category_ids:
+- scaling_rlvr_test_time_compute

@@ -108,10 +108,6 @@ one_line_summary: Logics-STEM curates millions of long-CoT STEM records and uses
   synthesize targeted data for a second SFT or RLVR stage.
 why_it_matters: It links large-scale data curation, explicit decontamination, sampling, and failure-targeted post-training
   in one disclosed pipeline.
-reading_priority: recommended
-paper_type: STEM long-CoT dataset and failure-driven post-training report
-best_for: Researchers curating large STEM reasoning mixtures or targeting second-stage training at model failures.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

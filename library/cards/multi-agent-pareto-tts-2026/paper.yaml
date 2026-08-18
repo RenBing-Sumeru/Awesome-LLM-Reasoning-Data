@@ -97,10 +97,6 @@ tags:
 status: verified
 one_line_summary: This study shows that mixture-of-agents can dominate matched-budget single-agent scaling and gives concrete
   parallel-versus-sequential allocation rules.
-reading_priority: recommended
-paper_type: Comparative test-time scaling efficiency study
-best_for: Readers choosing a practical multi-agent inference configuration under a fixed accuracy, latency, or hardware budget.
-confidence: high
 why_it_matters: It compares scaling mechanisms at matched cost and demonstrates that the allocation of parallel agents and
   sequential aggregation, not only total compute, determines efficiency.
 curation_level: L4_carded

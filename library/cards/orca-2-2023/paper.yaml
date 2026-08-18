@@ -104,10 +104,6 @@ status: verified
 one_line_summary: Orca 2 elicits task-specific reasoning strategies from GPT-4 and erases the strategy prompt during SFT so
   a smaller model learns both how and when to reason.
 why_it_matters: It changes teacher imitation from copying one response style to training on strategy-tailored answer traces.
-reading_priority: recommended
-paper_type: teacher reasoning strategy distillation
-best_for: Readers designing teacher-generated reasoning demonstrations for smaller models.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

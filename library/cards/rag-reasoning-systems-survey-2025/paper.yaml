@@ -103,11 +103,6 @@ tags:
 - survey
 why_it_matters: It separates using reasoning to improve retrieval from using retrieval to supply missing premises for reasoning.
 one_line_summary: A 2025 EMNLP Findings survey that maps how retrieval and multi-step reasoning can strengthen each other.
-paper_type: RAG-reasoning survey
-reading_priority: strong
-best_for: Readers building or evaluating systems that must search for evidence while solving multi-step, knowledge-intensive
-  tasks.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable reporting of retrieval corpus, search policy, evidence attribution, and inference budget across surveyed

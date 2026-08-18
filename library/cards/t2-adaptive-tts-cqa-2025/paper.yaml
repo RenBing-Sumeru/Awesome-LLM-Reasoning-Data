@@ -1,28 +1,108 @@
 id: t2-adaptive-tts-cqa-2025
-title: "T2: An Adaptive Test-Time Scaling Strategy for Contextual Question Answering"
+title: 'T2: An Adaptive Test-Time Scaling Strategy for Contextual Question Answering'
 year: 2025
 venue: EMNLP 2025
-authors: [Zhengyi Zhao, Shubo Zhang, Zezhong Wang, Huimin Wang, Yutian Zhao, Bin Liang, Yefeng Zheng, Binyang Li, Kam-Fai Wong, Xian Wu]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [full_episode, answer_level]
-domains: [question-answering, multi_hop_reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://aclanthology.org/2025.emnlp-main.185/, arxiv: null, venue: https://aclanthology.org/2025.emnlp-main.185/, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2025.emnlp-main.185}
-data_object: {prompt_source: "Seven contextual QA benchmarks: SQuAD, HotpotQA, NewsQA, Gaokao, HQA, TriviaQA, and BioASQ.", trace_author: "Language models that generate similar-question strategies and final answers.", answer_format: "Question templates, similar document-question examples, selected reasoning strategies, focused evidence segments, and answers.", process_fields: [document, question, question_template, similar_example, reasoning_strategy, focused_context, answer], environment_or_substrate: "Contextual question answering at inference.", verifier_or_reward: "Multi-criteria strategy evaluation and benchmark answer metrics.", terminal_predicate: "The answer matches the reference under the paper's evaluation metrics."}
-recipe_metadata: {base_model: "Qwen2.5-32B-Instruct, GPT-4o, and QwQ-32B-Preview among models reported by the paper.", teacher: null, generator: "LLM-generated similar questions, documents, and candidate reasoning strategies.", filtering_rule: "Retain structurally similar questions above a similarity threshold; select strategy using coverage and uniqueness criteria.", sampling_protocol: "Decompose question, synthesize similar examples and strategies, evaluate candidates, then answer with focused context.", rollout_count: null, temperature: null, inference_budget: "Adaptive reasoning depth and inference time per question.", optimizer_or_scaffold: "T2 Think-to-Think strategy selection."}
-audit: {source_mixture: "Official EMNLP paper and ACL Anthology record.", split: "Reported benchmark test sets; see the primary paper for protocol details.", decontamination: "Not separately claimed in the primary source.", license: "ACL paper access is public; verify each evaluation dataset's terms before reuse.", lineage: "https://aclanthology.org/2025.emnlp-main.185/", known_failure_modes: [synthetic_example_error, strategy_mismatch, retrieval_noise, inference_overhead], citation_status: verified, confidence: high, notes: "Title, authors, affiliations, venue, DOI, method, benchmarks, and reported efficiency figures checked against the official EMNLP paper on 2026-07-20."}
-inclusion_reason: "It directly allocates reasoning depth and context-processing effort at inference according to an automatically selected strategy."
+authors:
+- Zhengyi Zhao
+- Shubo Zhang
+- Zezhong Wang
+- Huimin Wang
+- Yutian Zhao
+- Bin Liang
+- Yefeng Zheng
+- Binyang Li
+- Kam-Fai Wong
+- Xian Wu
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- question-answering
+- multi_hop_reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.185/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.185/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.185
+data_object:
+  prompt_source: 'Seven contextual QA benchmarks: SQuAD, HotpotQA, NewsQA, Gaokao, HQA, TriviaQA, and BioASQ.'
+  trace_author: Language models that generate similar-question strategies and final answers.
+  answer_format: Question templates, similar document-question examples, selected reasoning strategies, focused evidence segments,
+    and answers.
+  process_fields:
+  - document
+  - question
+  - question_template
+  - similar_example
+  - reasoning_strategy
+  - focused_context
+  - answer
+  environment_or_substrate: Contextual question answering at inference.
+  verifier_or_reward: Multi-criteria strategy evaluation and benchmark answer metrics.
+  terminal_predicate: The answer matches the reference under the paper's evaluation metrics.
+recipe_metadata:
+  base_model: Qwen2.5-32B-Instruct, GPT-4o, and QwQ-32B-Preview among models reported by the paper.
+  teacher: null
+  generator: LLM-generated similar questions, documents, and candidate reasoning strategies.
+  filtering_rule: Retain structurally similar questions above a similarity threshold; select strategy using coverage and uniqueness
+    criteria.
+  sampling_protocol: Decompose question, synthesize similar examples and strategies, evaluate candidates, then answer with
+    focused context.
+  rollout_count: null
+  temperature: null
+  inference_budget: Adaptive reasoning depth and inference time per question.
+  optimizer_or_scaffold: T2 Think-to-Think strategy selection.
+audit:
+  source_mixture: Official EMNLP paper and ACL Anthology record.
+  split: Reported benchmark test sets; see the primary paper for protocol details.
+  decontamination: Not separately claimed in the primary source.
+  license: ACL paper access is public; verify each evaluation dataset's terms before reuse.
+  lineage: https://aclanthology.org/2025.emnlp-main.185/
+  known_failure_modes:
+  - synthetic_example_error
+  - strategy_mismatch
+  - retrieval_noise
+  - inference_overhead
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, affiliations, venue, DOI, method, benchmarks, and reported efficiency figures checked against the
+    official EMNLP paper on 2026-07-20.
+inclusion_reason: It directly allocates reasoning depth and context-processing effort at inference according to an automatically
+  selected strategy.
 related: []
-tags: [test-time-compute, adaptive-reasoning, contextual-question-answering, strategy-selection, efficiency]
+tags:
+- test-time-compute
+- adaptive-reasoning
+- contextual-question-answering
+- strategy-selection
+- efficiency
 status: verified
-one_line_summary: "T2 selects a question-specific reasoning strategy from analogous examples to spend more inference effort only where it is useful."
-reading_priority: useful
-paper_type: Adaptive test-time scaling framework for contextual question answering
-best_for: Readers studying adaptive inference budgets and strategy selection for retrieval-grounded reasoning.
-confidence: high
-why_it_matters: "It replaces a fixed think-long-or-think-short policy with per-question strategy selection and reports both quality and time." 
+one_line_summary: T2 selects a question-specific reasoning strategy from analogous examples to spend more inference effort
+  only where it is useful.
+why_it_matters: It replaces a fixed think-long-or-think-short policy with per-question strategy selection and reports both
+  quality and time.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official ACL paper and record were checked; no official code, data, or project release link was identified on the primary record."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and record were checked; no official code, data, or project release link was identified on the
+    primary record.
+category_ids:
+- scaling_rlvr_test_time_compute

@@ -85,10 +85,6 @@ tags:
 - emnlp-2024
 one_line_summary: An EMNLP 2024 survey of why LLM answers can be factually wrong and how factuality is evaluated and improved.
 why_it_matters: It shows why a fluent answer is not enough and why factuality checks for open-ended generation remain difficult.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers designing factuality evaluations or interpreting claims about hallucination reduction.
-confidence: high
 status: verified
 needs:
 - unknown

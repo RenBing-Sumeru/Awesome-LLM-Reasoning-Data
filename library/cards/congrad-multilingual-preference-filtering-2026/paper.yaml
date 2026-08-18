@@ -101,11 +101,6 @@ tags:
 status: verified
 one_line_summary: CONGRAD filters self-generated multilingual preference pairs by their alignment with a de-conflicted consensus
   gradient before DPO consumes them.
-reading_priority: essential
-paper_type: Multilingual preference-data filtering and iterative alignment study
-best_for: Readers designing multilingual preference-learning pipelines that must retain useful cross-lingual transfer without
-  letting one language's updates damage another's.
-confidence: high
 why_it_matters: It operationalizes cross-language training interference as a record-selection criterion instead of treating
   all generated preference pairs as equally safe to optimize on.
 curation_level: L4_carded

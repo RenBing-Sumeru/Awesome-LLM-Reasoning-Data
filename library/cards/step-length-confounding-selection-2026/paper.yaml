@@ -97,10 +97,6 @@ tags:
 status: verified
 one_line_summary: ASLEC removes step-length bias from likelihood-based reasoning-data selection by dropping or regressing
   out first-token effects.
-reading_priority: essential
-paper_type: Reasoning-data selection audit, debiasing method, and data release
-best_for: Readers using likelihood or naturalness scores to curate multi-step reasoning SFT traces.
-confidence: high
 why_it_matters: It exposes how a formatting-dependent denominator can silently change which reasoning traces are trained on.
 curation_level: L4_carded
 verification:

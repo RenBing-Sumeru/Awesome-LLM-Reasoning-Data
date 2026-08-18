@@ -96,10 +96,6 @@ status: verified
 one_line_summary: UltraChat generates both sides of 1.47M topic-steered conversations, turning explicit user-demand sectors
   into multi-turn SFT data.
 why_it_matters: It makes synthetic user-turn provenance and conversational context visible in a large chat-training corpus.
-reading_priority: recommended
-paper_type: Synthetic multi-turn conversation data construction
-best_for: Researchers generating or auditing large multi-turn chat SFT corpora.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

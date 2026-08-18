@@ -87,10 +87,6 @@ tags:
 why_it_matters: It makes the intermediate visual state a first-class object when judging whether a multimodal explanation
   is grounded.
 one_line_summary: An ACL survey of multimodal reasoning processes that alternate between text and visual state updates.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers building or evaluating image-grounded reasoning data for multimodal models.
-confidence: high
 status: verified
 needs:
 - 'unknown: common measures of faithfulness for visual intermediate states'

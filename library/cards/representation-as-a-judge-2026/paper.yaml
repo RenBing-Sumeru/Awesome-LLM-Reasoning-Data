@@ -75,7 +75,7 @@ audit:
   - 'L2 candidate only: full paper reading is required before interpreting a detector score or reusing the data.'
   citation_status: verified
   confidence: high
-  notes: 'Published at ICLR 2026; official OpenReview paper, code, and Hugging Face release checked.'
+  notes: Published at ICLR 2026; official OpenReview paper, code, and Hugging Face release checked.
 inclusion_reason: 'Track 13 candidate: the central contribution audits contamination, verifier or judge failure, reward hacking,
   or evaluation reliability.'
 related: []

@@ -96,10 +96,6 @@ tags:
 status: verified
 one_line_summary: DJPO builds three complementary DPO pair types to train generalized LLM judges from critiques, direct decisions,
   and response deductions.
-reading_priority: essential
-paper_type: Foundational judge preference-data construction study
-best_for: Readers building reusable LLM judges or judge-derived reward signals from heterogeneous evaluation annotations.
-confidence: high
 why_it_matters: It turns judgment labels and generated critiques into structured preference data that train a judge to evaluate,
   explain, and understand responses.
 curation_level: L4_carded

@@ -113,10 +113,6 @@ one_line_summary: Self-RAG releases 150K instruction outputs augmented with pass
   SFT.
 why_it_matters: It exposes a trainable record where retrieval decisions, passage relevance, claim support, and output utility
   are explicit tokens.
-reading_priority: must read
-paper_type: reflection-token instruction dataset and retrieval-augmented generation recipe
-best_for: Researchers building or auditing retrieval-aware critique and factuality SFT records.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

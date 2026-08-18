@@ -97,10 +97,6 @@ one_line_summary: Distribution-aligned sequence distillation selects and stages 
   before training a 4B reasoning student.
 why_it_matters: Small reasoning models often imitate long traces token by token even when the teacher and student sequence
   distributions are badly mismatched.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: 4B long-CoT SFT distillation
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

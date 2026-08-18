@@ -86,10 +86,6 @@ tags:
 one_line_summary: A NAACL 2024 survey of estimating and calibrating how reliable an LLM's answer is likely to be.
 why_it_matters: It makes confidence a measurable reliability question rather than treating a model's fluent style as evidence
   of correctness.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers designing selective answering, confidence displays, or reliability evaluations for LLMs.
-confidence: high
 status: verified
 needs:
 - unknown

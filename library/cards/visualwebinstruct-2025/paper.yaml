@@ -108,10 +108,6 @@ one_line_summary: VisualWebInstruct turns image-guided web search into 906,160 m
   extraction, consistency filtering, and source-answer alignment.
 why_it_matters: It provides a concrete large-scale recipe for obtaining visual reasoning supervision beyond narrow synthetic
   diagrams or small academic datasets.
-reading_priority: recommended
-paper_type: multimodal reasoning instruction dataset and construction recipe
-best_for: Researchers building or auditing web-derived multimodal SFT corpora.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

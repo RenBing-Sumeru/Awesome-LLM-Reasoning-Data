@@ -1,28 +1,90 @@
 id: optimal-transport-test-time-verification-2026
-title: "Test-time Verification via Optimal Transport: Coverage, ROC, & Sub-optimality"
+title: 'Test-time Verification via Optimal Transport: Coverage, ROC, & Sub-optimality'
 year: 2026
 venue: ICLR 2026
-authors: [Arpan Mukherjee, Marcello Bullo, Debabrota Basu, Deniz Gündüz]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [answer_level]
-domains: [reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [scaling_report]
-artifacts: {paper: https://openreview.net/pdf/3b8ca7276952cb6b3b2a12f0ae5794d8de2e819d.pdf, arxiv: https://arxiv.org/abs/2510.18982, venue: https://iclr.cc/virtual/2026/papers.html, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2510.18982}
-data_object: {prompt_source: "Reasoning prompts evaluated with Qwen, Llama, and Gemma models in the paper.", trace_author: "Language-model generator in the verification pipeline.", answer_format: "Generated answers, verifier assessments, and selected outputs.", process_fields: [prompt, generator_coverage, verifier_region, sampling_policy, selected_answer], environment_or_substrate: "Verifier-based inference-time sampling.", verifier_or_reward: "Imperfect test-time verifier.", terminal_predicate: "Verifier-mediated answer selection and empirical task outcome."}
-recipe_metadata: {base_model: "Qwen, Llama, and Gemma models reported in the paper.", teacher: null, generator: "Reference LLM sampled by sequential or batched procedures.", filtering_rule: "Verifier-mediated sampling; see paper for exact construction.", sampling_protocol: "Analyzed sequential and batched sampling algorithms.", rollout_count: null, temperature: null, inference_budget: "Candidate coverage and verification effort at inference.", optimizer_or_scaffold: "Optimal-transport analysis of generator, verifier, and sampling algorithm."}
-audit: {source_mixture: "Official ICLR 2026 paper PDF, ICLR program listing, and primary arXiv record.", split: "See the primary paper.", decontamination: "Not separately claimed.", license: "Verify any downstream model and benchmark terms before reuse.", lineage: "https://arxiv.org/abs/2510.18982", known_failure_modes: [imperfect_verifier, saturation, sampling_suboptimality], citation_status: verified, confidence: high, notes: "Primary paper title, author list, ICLR 2026 status, affiliations, and arXiv link checked on 2026-07-20."}
-inclusion_reason: "It analyzes how verifier accuracy, generator coverage, and sampling choices jointly determine inference-time scaling behavior."
+authors:
+- Arpan Mukherjee
+- Marcello Bullo
+- Debabrota Basu
+- Deniz Gündüz
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://openreview.net/pdf/3b8ca7276952cb6b3b2a12f0ae5794d8de2e819d.pdf
+  arxiv: https://arxiv.org/abs/2510.18982
+  venue: https://iclr.cc/virtual/2026/papers.html
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.18982
+data_object:
+  prompt_source: Reasoning prompts evaluated with Qwen, Llama, and Gemma models in the paper.
+  trace_author: Language-model generator in the verification pipeline.
+  answer_format: Generated answers, verifier assessments, and selected outputs.
+  process_fields:
+  - prompt
+  - generator_coverage
+  - verifier_region
+  - sampling_policy
+  - selected_answer
+  environment_or_substrate: Verifier-based inference-time sampling.
+  verifier_or_reward: Imperfect test-time verifier.
+  terminal_predicate: Verifier-mediated answer selection and empirical task outcome.
+recipe_metadata:
+  base_model: Qwen, Llama, and Gemma models reported in the paper.
+  teacher: null
+  generator: Reference LLM sampled by sequential or batched procedures.
+  filtering_rule: Verifier-mediated sampling; see paper for exact construction.
+  sampling_protocol: Analyzed sequential and batched sampling algorithms.
+  rollout_count: null
+  temperature: null
+  inference_budget: Candidate coverage and verification effort at inference.
+  optimizer_or_scaffold: Optimal-transport analysis of generator, verifier, and sampling algorithm.
+audit:
+  source_mixture: Official ICLR 2026 paper PDF, ICLR program listing, and primary arXiv record.
+  split: See the primary paper.
+  decontamination: Not separately claimed.
+  license: Verify any downstream model and benchmark terms before reuse.
+  lineage: https://arxiv.org/abs/2510.18982
+  known_failure_modes:
+  - imperfect_verifier
+  - saturation
+  - sampling_suboptimality
+  citation_status: verified
+  confidence: high
+  notes: Primary paper title, author list, ICLR 2026 status, affiliations, and arXiv link checked on 2026-07-20.
+inclusion_reason: It analyzes how verifier accuracy, generator coverage, and sampling choices jointly determine inference-time
+  scaling behavior.
 related: []
-tags: [test-time-compute, verifier, optimal-transport, sampling, theory]
+tags:
+- test-time-compute
+- verifier
+- optimal-transport
+- sampling
+- theory
 status: verified
-one_line_summary: "This work models verifier-guided test-time scaling as optimal transport, exposing coverage, verifier, and sampling trade-offs."
-reading_priority: essential
-paper_type: Theoretical and empirical test-time verification study
-best_for: Readers designing or auditing verifier-guided candidate generation and selection.
-confidence: high
-why_it_matters: "It explains why extra samples can help, stop helping, or hurt when verification is imperfect."
+one_line_summary: This work models verifier-guided test-time scaling as optimal transport, exposing coverage, verifier, and
+  sampling trade-offs.
+why_it_matters: It explains why extra samples can help, stop helping, or hurt when verification is imperfect.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official ICLR publication PDF and arXiv primary source checked; no official code or dataset artifact identified."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR publication PDF and arXiv primary source checked; no official code or dataset artifact identified.
+category_ids:
+- scaling_rlvr_test_time_compute

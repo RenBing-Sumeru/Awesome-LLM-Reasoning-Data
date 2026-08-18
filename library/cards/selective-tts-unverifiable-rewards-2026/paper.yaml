@@ -2,27 +2,106 @@ id: selective-tts-unverifiable-rewards-2026
 title: 'Scaling Unverifiable Rewards: A Case Study on Visual Insights'
 year: 2026
 venue: Findings of ACL 2026
-authors: [Shuyu Gan, James Mooney, Pan Hao, Renxiang Wang, Mingyi Hong, Qianwen Wang, Dongyeop Kang]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level, full_episode]
-domains: [agentic-reasoning, data-analysis]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://aclanthology.org/2026.findings-acl.1724/, arxiv: null, venue: https://aclanthology.org/2026.findings-acl.1724/, code: https://minnesotanlp.github.io/insight-scaling-webpage, data: null, project: https://minnesotanlp.github.io/insight-scaling-webpage, huggingface: null, doi: https://doi.org/10.18653/v1/2026.findings-acl.1724}
-data_object: {prompt_source: 'Five public tabular datasets processed by a multi-agent visual-insight workflow.', trace_author: 'Agents generate data profiles, chart plans and code, visualizations, insights, and judge feedback across branching pipeline stages.', answer_format: 'Dataset metadata, profile, chart code and image, candidate insight, local judge score, pruning decision, final report, and human or judge evaluation.', process_fields: [dataset_metadata, profile, chart, insight, stage_score, prune_ratio, report, quality_score], environment_or_substrate: 'A four-stage multi-agent pipeline for data profiling, visualization, insight generation, and verification.', verifier_or_reward: 'Stage-local LLM judges; the selected harsh judge is aligned to human expert scoring.', terminal_predicate: 'Human-aligned report-quality scores for correctness, specificity, interpretive value, and actionability.'}
-recipe_metadata: {base_model: 'LLM and vision-language-model agents specified in the official paper and project page.', teacher: 'Not applicable; stage-specific LLM judges provide test-time selection signals.', generator: 'Branching multi-agent pipeline creates profiles, charts, and chart-grounded insights.', filtering_rule: 'At each stage, low-scoring branches are pruned according to a configured pruning ratio before the next stage receives them.', sampling_protocol: 'Compare fixed-budget baseline, selective stage-wise pruning, random pruning, and final-stage-only pruning.', rollout_count: 'Eight runs in the reported small-scale ablation; see official paper for stage-specific branching details.', temperature: 'See official paper and released project materials.', inference_budget: 'Matched LLM-call budget across compared conditions.', optimizer_or_scaffold: 'Process-based, stage-wise compute allocation with local judges and early branch pruning.'}
-audit: {source_mixture: 'Official ACL paper and official project page.', split: 'Five public tabular datasets and human evaluation of generated visual-insight reports.', decontamination: 'No formal contamination audit is claimed.', license: 'Verify source-dataset, model, and project-page licenses before reuse.', lineage: 'https://aclanthology.org/2026.findings-acl.1724/', known_failure_modes: [judge-misalignment, open-ended-reward-subjectivity, small-dataset-coverage, pipeline-specific-results, human-oversight-need], citation_status: verified, confidence: high, notes: 'Official ACL PDF and the project URL in the paper were checked on 2026-07-21. All authors list the University of Minnesota.'}
-inclusion_reason: 'It reallocates a fixed test-time budget across pipeline stages and prunes branches using local evaluators, directly studying how inference compute can scale multi-agent performance when the final reward is not programmatically verifiable.'
+authors:
+- Shuyu Gan
+- James Mooney
+- Pan Hao
+- Renxiang Wang
+- Mingyi Hong
+- Qianwen Wang
+- Dongyeop Kang
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- agentic-reasoning
+- data-analysis
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1724/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.1724/
+  code: https://minnesotanlp.github.io/insight-scaling-webpage
+  data: null
+  project: https://minnesotanlp.github.io/insight-scaling-webpage
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1724
+data_object:
+  prompt_source: Five public tabular datasets processed by a multi-agent visual-insight workflow.
+  trace_author: Agents generate data profiles, chart plans and code, visualizations, insights, and judge feedback across branching
+    pipeline stages.
+  answer_format: Dataset metadata, profile, chart code and image, candidate insight, local judge score, pruning decision,
+    final report, and human or judge evaluation.
+  process_fields:
+  - dataset_metadata
+  - profile
+  - chart
+  - insight
+  - stage_score
+  - prune_ratio
+  - report
+  - quality_score
+  environment_or_substrate: A four-stage multi-agent pipeline for data profiling, visualization, insight generation, and verification.
+  verifier_or_reward: Stage-local LLM judges; the selected harsh judge is aligned to human expert scoring.
+  terminal_predicate: Human-aligned report-quality scores for correctness, specificity, interpretive value, and actionability.
+recipe_metadata:
+  base_model: LLM and vision-language-model agents specified in the official paper and project page.
+  teacher: Not applicable; stage-specific LLM judges provide test-time selection signals.
+  generator: Branching multi-agent pipeline creates profiles, charts, and chart-grounded insights.
+  filtering_rule: At each stage, low-scoring branches are pruned according to a configured pruning ratio before the next stage
+    receives them.
+  sampling_protocol: Compare fixed-budget baseline, selective stage-wise pruning, random pruning, and final-stage-only pruning.
+  rollout_count: Eight runs in the reported small-scale ablation; see official paper for stage-specific branching details.
+  temperature: See official paper and released project materials.
+  inference_budget: Matched LLM-call budget across compared conditions.
+  optimizer_or_scaffold: Process-based, stage-wise compute allocation with local judges and early branch pruning.
+audit:
+  source_mixture: Official ACL paper and official project page.
+  split: Five public tabular datasets and human evaluation of generated visual-insight reports.
+  decontamination: No formal contamination audit is claimed.
+  license: Verify source-dataset, model, and project-page licenses before reuse.
+  lineage: https://aclanthology.org/2026.findings-acl.1724/
+  known_failure_modes:
+  - judge-misalignment
+  - open-ended-reward-subjectivity
+  - small-dataset-coverage
+  - pipeline-specific-results
+  - human-oversight-need
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF and the project URL in the paper were checked on 2026-07-21. All authors list the University of
+    Minnesota.
+inclusion_reason: It reallocates a fixed test-time budget across pipeline stages and prunes branches using local evaluators,
+  directly studying how inference compute can scale multi-agent performance when the final reward is not programmatically
+  verifiable.
 related: []
-tags: [test-time-scaling, multi-agent, process-refinement, branch-pruning, unverifiable-reward]
+tags:
+- test-time-scaling
+- multi-agent
+- process-refinement
+- branch-pruning
+- unverifiable-reward
 status: verified
-one_line_summary: 'Selective TTS uses stage-specific judges to prune weak branches early in a data-analysis agent pipeline, improving visual-insight quality under a fixed compute budget.'
-reading_priority: recommended
-paper_type: Multi-agent stage-wise test-time scaling study
-best_for: Readers designing long, multi-stage agent workflows where final quality is subjective and compute must be allocated before the final output is visible.
-confidence: high
-why_it_matters: 'It shows that test-time scaling need not repeatedly refine one answer: a fixed budget can be distributed across process stages to reduce judge-error propagation.'
+one_line_summary: Selective TTS uses stage-specific judges to prune weak branches early in a data-analysis agent pipeline,
+  improving visual-insight quality under a fixed compute budget.
+why_it_matters: 'It shows that test-time scaling need not repeatedly refine one answer: a fixed budget can be distributed
+  across process stages to reduce judge-error propagation.'
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official ACL paper and project page checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and project page checked.
+category_ids:
+- scaling_rlvr_test_time_compute

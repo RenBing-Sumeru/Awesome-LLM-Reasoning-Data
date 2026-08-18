@@ -133,10 +133,6 @@ one_line_summary: UltraInteract turns objectively checked reasoning actions and 
   and companion preference pairs.
 why_it_matters: It exposes how instructions, actor-generated rationales, execution feedback, critiques, and correctness decisions
   become reusable reasoning post-training records.
-reading_priority: must read
-paper_type: reasoning demonstration dataset and preference-tree construction recipe
-best_for: Researchers constructing or auditing math, code, and logic rationale data for SFT.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

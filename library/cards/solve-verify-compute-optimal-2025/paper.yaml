@@ -91,10 +91,6 @@ tags:
 status: verified
 one_line_summary: The paper shows when solution sampling beats generative verification and fits scaling laws for allocating
   compute between them.
-reading_priority: essential
-paper_type: Compute-optimal test-time scaling analysis for solving and generative verification
-best_for: Readers designing a verifier-aware inference budget for mathematical or scientific reasoning.
-confidence: high
 why_it_matters: It measures verification cost rather than treating a stronger verifier as free, yielding an actionable solve-versus-verify
   allocation rule.
 curation_level: L4_carded

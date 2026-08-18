@@ -88,10 +88,6 @@ tags:
 why_it_matters: It helps distinguish a reasoning-chain technique from the task, evidence, and limitation with which it is
   reported.
 one_line_summary: An ACL 2024 survey that organizes chain-of-thought reasoning methods, current frontiers, and open questions.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers building a clear mental model of chain-of-thought methods before comparing individual papers.
-confidence: high
 status: verified
 needs:
 - 'unknown: common evaluation protocols across chain-of-thought studies'

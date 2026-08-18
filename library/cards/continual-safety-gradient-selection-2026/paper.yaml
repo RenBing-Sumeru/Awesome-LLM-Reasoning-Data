@@ -87,11 +87,6 @@ tags:
 status: verified
 one_line_summary: The paper preserves continual safety alignment by excluding high-gradient task records and training on moderate-gradient
   examples instead.
-reading_priority: useful
-paper_type: Gradient-based continual fine-tuning data-selection study
-best_for: Readers adapting aligned models to benign domains who need a data-level safeguard against safety drift without adding
-  a safe replay set.
-confidence: high
 why_it_matters: It shows that even benign records have unequal alignment cost and makes that cost a direct training-selection
   criterion.
 curation_level: L4_carded

@@ -89,11 +89,6 @@ tags:
 why_it_matters: It helps readers distinguish a chain's representation from the task for which that chain is used.
 one_line_summary: A COLING 2025 survey that classifies Chain-of-X methods by their intermediate nodes and their application
   tasks.
-paper_type: Chain-of-X survey
-reading_priority: strong
-best_for: Readers who know Chain-of-Thought and want a structured view of its extensions across reasoning, tools, and other
-  tasks.
-confidence: high
 status: verified
 needs:
 - 'unknown: controlled comparisons that isolate the effect of the chain structure from model, prompting, and task choice'

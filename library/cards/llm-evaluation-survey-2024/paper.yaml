@@ -96,10 +96,6 @@ tags:
 why_it_matters: It prevents reasoning-data projects from treating one benchmark score as a complete capability claim.
 one_line_summary: A high-impact survey that turns “evaluate an LLM” into concrete choices about target, dataset, protocol,
   and metric.
-paper_type: Survey and evaluation taxonomy
-reading_priority: strong
-best_for: Readers designing an evaluation suite or interpreting reasoning benchmark scores.
-confidence: high
 status: verified
 needs:
 - 'unknown: a single evaluation protocol that remains valid across models, tasks, and deployment settings'

@@ -93,11 +93,6 @@ tags:
 status: verified
 one_line_summary: SparsePO learns sparse token masks that independently weight reward and KL contributions inside preference
   optimization.
-reading_priority: essential
-paper_type: Sparse token-level preference-optimization study
-best_for: Readers studying how token-level reward and regularization choices reshape preference-training signals without collecting
-  new annotations.
-confidence: high
 why_it_matters: It makes each token's reward and KL contribution an explicit learnable part of the training record rather
   than an implicit consequence of a response-level loss.
 curation_level: L4_carded

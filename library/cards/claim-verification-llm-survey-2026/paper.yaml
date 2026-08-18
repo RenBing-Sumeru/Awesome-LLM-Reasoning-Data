@@ -83,10 +83,6 @@ why_it_matters: It separates evidence retrieval from the model's final decision,
   the cause of failure.
 one_line_summary: An ACL 2026 survey of LLM claim-verification pipelines, including retrieval, prompting, fine-tuning, and
   English datasets.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers studying factuality, retrieval-augmented generation, and automated verification.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable evidence standards and evaluation protocols across datasets'

@@ -2,27 +2,83 @@ id: multi-agent-verification-2025
 title: 'Multi-Agent Verification: Scaling Test-Time Compute with Multiple Verifiers'
 year: 2025
 venue: ICLR 2025 MCDC Workshop
-authors: [Shalev Lifshitz, Sheila A. McIlraith, Yilun Du]
-source_role: [verifier_reward, scaling_study]
-verification_contract: [judgment_required]
-supervision_granularity: [answer_level]
-domains: [reasoning]
-training_use: [test_time_compute]
-construction_layer: [reward_verifier_layer, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2502.20379, arxiv: https://arxiv.org/abs/2502.20379, venue: null, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2502.20379}
-data_object: {prompt_source: Tasks in paper experiments, trace_author: Candidate generator, answer_format: Candidates and aspect-verifier scores, process_fields: [prompt, candidates, verifier_scores, selection], environment_or_substrate: Multi-agent verification, verifier_or_reward: Aspect verifiers, terminal_predicate: Task correctness}
-recipe_metadata: {base_model: See paper, teacher: null, generator: Best-of-n candidate sampling, filtering_rule: Multi-verifier aggregation, sampling_protocol: Best-of-n, rollout_count: null, temperature: null, inference_budget: Candidate and verifier calls, optimizer_or_scaffold: BoN-MAV}
-audit: {source_mixture: Official arXiv paper, split: See paper, decontamination: Verify benchmark overlap, license: Verify source assets, lineage: 'Primary source: https://arxiv.org/abs/2502.20379', known_failure_modes: [Correlated verifier errors, Cost growth], citation_status: verified, confidence: high, notes: Primary source checked on 2026-07-20.}
+authors:
+- Shalev Lifshitz
+- Sheila A. McIlraith
+- Yilun Du
+source_role:
+- verifier_reward
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2502.20379
+  arxiv: https://arxiv.org/abs/2502.20379
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.20379
+data_object:
+  prompt_source: Tasks in paper experiments
+  trace_author: Candidate generator
+  answer_format: Candidates and aspect-verifier scores
+  process_fields:
+  - prompt
+  - candidates
+  - verifier_scores
+  - selection
+  environment_or_substrate: Multi-agent verification
+  verifier_or_reward: Aspect verifiers
+  terminal_predicate: Task correctness
+recipe_metadata:
+  base_model: See paper
+  teacher: null
+  generator: Best-of-n candidate sampling
+  filtering_rule: Multi-verifier aggregation
+  sampling_protocol: Best-of-n
+  rollout_count: null
+  temperature: null
+  inference_budget: Candidate and verifier calls
+  optimizer_or_scaffold: BoN-MAV
+audit:
+  source_mixture: Official arXiv paper
+  split: See paper
+  decontamination: Verify benchmark overlap
+  license: Verify source assets
+  lineage: 'Primary source: https://arxiv.org/abs/2502.20379'
+  known_failure_modes:
+  - Correlated verifier errors
+  - Cost growth
+  citation_status: verified
+  confidence: high
+  notes: Primary source checked on 2026-07-20.
 inclusion_reason: It explicitly studies verifier count as a test-time scaling axis.
 related: []
-tags: [test-time-compute, verifier-ensemble, best-of-n]
+tags:
+- test-time-compute
+- verifier-ensemble
+- best-of-n
 status: verified
 one_line_summary: MAV scales test-time verification by aggregating multiple aspect-specific verifiers over best-of-n candidates.
-reading_priority: useful
-paper_type: Multi-verifier test-time scaling study
-best_for: Readers studying verifier ensembles under inference budgets.
-confidence: high
 why_it_matters: It separates gains from more verifier judgments from gains from more generated candidates.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: Primary paper checked.}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper checked.
+category_ids:
+- scaling_rlvr_test_time_compute

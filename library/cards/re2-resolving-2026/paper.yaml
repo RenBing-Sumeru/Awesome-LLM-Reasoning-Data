@@ -2,28 +2,87 @@ id: re2-resolving-2026
 title: 'Re²: Unlocking LLM Reasoning via Reinforcement Learning with Re-solving'
 year: 2026
 venue: ICLR 2026
-authors: ['Pinzheng Wang', 'Shuli Xu', 'Juntao Li', 'Yu Luo', 'Dong Li', 'Jianye Hao', 'Min Zhang']
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [answer_level]
-domains: [reasoning, software-engineering]
-training_use: [test_time_compute]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2603.07197, arxiv: https://arxiv.org/abs/2603.07197, venue: https://iclr.cc/virtual/2026/poster/10010421, code: https://github.com/PinzhengWang322/rl-resolving, data: null, project: null, huggingface: null, doi: null}
-data_object: {prompt_source: "Official paper tasks.", trace_author: "Test-time reasoning system.", answer_format: "Trajectories, decisions, and final outcome.", process_fields: [prompt, trace, budget, selection, outcome], environment_or_substrate: "Test-time scaling.", verifier_or_reward: "Paper-specific signal.", terminal_predicate: "Official evaluator."}
-recipe_metadata: {base_model: "See official paper.", teacher: null, generator: "Test-time procedure.", filtering_rule: "See official paper.", sampling_protocol: "See official paper.", rollout_count: null, temperature: null, inference_budget: "Explicitly measured in the paper.", optimizer_or_scaffold: "Paper-specific."}
-audit: {source_mixture: "Official paper record.", split: "See paper.", decontamination: "Not separately claimed.", license: "Verify artifacts before reuse.", lineage: 'https://arxiv.org/abs/2603.07197', known_failure_modes: ["Model and deployment dependence"], citation_status: verified, confidence: high, notes: "Official paper and institutions checked."}
-inclusion_reason: "It studies allocation or use of test-time computation for reasoning."
+authors:
+- Pinzheng Wang
+- Shuli Xu
+- Juntao Li
+- Yu Luo
+- Dong Li
+- Jianye Hao
+- Min Zhang
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- software-engineering
+training_use:
+- test_time_compute
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2603.07197
+  arxiv: https://arxiv.org/abs/2603.07197
+  venue: https://iclr.cc/virtual/2026/poster/10010421
+  code: https://github.com/PinzhengWang322/rl-resolving
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: Official paper tasks.
+  trace_author: Test-time reasoning system.
+  answer_format: Trajectories, decisions, and final outcome.
+  process_fields:
+  - prompt
+  - trace
+  - budget
+  - selection
+  - outcome
+  environment_or_substrate: Test-time scaling.
+  verifier_or_reward: Paper-specific signal.
+  terminal_predicate: Official evaluator.
+recipe_metadata:
+  base_model: See official paper.
+  teacher: null
+  generator: Test-time procedure.
+  filtering_rule: See official paper.
+  sampling_protocol: See official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Explicitly measured in the paper.
+  optimizer_or_scaffold: Paper-specific.
+audit:
+  source_mixture: Official paper record.
+  split: See paper.
+  decontamination: Not separately claimed.
+  license: Verify artifacts before reuse.
+  lineage: https://arxiv.org/abs/2603.07197
+  known_failure_modes:
+  - Model and deployment dependence
+  citation_status: verified
+  confidence: high
+  notes: Official paper and institutions checked.
+inclusion_reason: It studies allocation or use of test-time computation for reasoning.
 related: []
-tags: [test-time-compute, reasoning, scaling]
+tags:
+- test-time-compute
+- reasoning
+- scaling
 status: verified
-one_line_summary: "Re²: Unlocking LLM Reasoning via Reinforcement Learning with Re-solving"
-reading_priority: essential
-paper_type: Test-time scaling study
-best_for: Readers studying inference-budget allocation.
-confidence: high
+one_line_summary: 'Re²: Unlocking LLM Reasoning via Reinforcement Learning with Re-solving'
 why_it_matters: It makes a test-time decision auditable.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official sources checked."}
-category_ids: [scaling_rlvr_test_time_compute]
-
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official sources checked.
+category_ids:
+- scaling_rlvr_test_time_compute

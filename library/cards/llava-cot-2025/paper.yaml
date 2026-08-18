@@ -108,10 +108,6 @@ one_line_summary: LLaVA-CoT-100k turns 99k VQA pairs into four-stage summary-cap
   multimodal SFT.
 why_it_matters: It exposes a compact, inspectable target schema for teaching a VLM to organize perception and reasoning before
   answering.
-reading_priority: must read
-paper_type: multimodal rationale dataset and structured-reasoning model report
-best_for: Researchers building or auditing staged visual-reasoning SFT data.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

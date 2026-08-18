@@ -114,10 +114,6 @@ one_line_summary: Eagle 2 studies each data strategy from scratch and releases t
   mixture with per-source licensing metadata.
 why_it_matters: Frontier VLM reports rarely disclose how raw multimodal sources are selected, reformatted, balanced, and filtered
   into a competitive post-training mixture.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: frontier VLM post-training SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

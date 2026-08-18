@@ -93,11 +93,6 @@ tags:
 status: verified
 one_line_summary: DOSE selects visual instruction data with off-the-shelf text-quality and image-text-alignment scores, then
   uses distribution-aware sampling to retain quality without collapsing coverage.
-reading_priority: essential
-paper_type: Multimodal instruction-data selection study
-best_for: Readers designing efficient visual instruction-tuning subsets when training a task-specific selector is too expensive
-  or risks corpus exposure.
-confidence: high
 why_it_matters: It makes the selection distribution itself part of the training-data design, rather than treating high score
   alone as sufficient evidence of a useful example.
 curation_level: L4_carded

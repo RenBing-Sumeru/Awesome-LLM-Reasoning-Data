@@ -85,11 +85,6 @@ tags:
 why_it_matters: It offers a concrete way to choose puzzle evaluations and distinguish a convincing-looking answer from constraint-respecting
   reasoning.
 one_line_summary: An EMNLP 2024 survey of language-model puzzle solving, organized around rule-based and rule-less puzzles.
-paper_type: Puzzle-solving reasoning survey
-reading_priority: strong
-best_for: Readers selecting puzzle datasets, comparing prompting with neuro-symbolic methods, or studying logical inference
-  limits.
-confidence: high
 status: verified
 needs:
 - 'unknown: directly comparable scoring conventions across puzzle benchmarks'

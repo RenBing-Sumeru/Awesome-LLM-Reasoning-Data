@@ -113,10 +113,6 @@ one_line_summary: SoundMind converts 6,446 logical triplets into aligned text an
   entailment labels for audio-language SFT and rule-reward training.
 why_it_matters: Audio-language reasoning lacked an open corpus that aligns spoken questions, long spoken reasoning, text annotations,
   and objectively checkable final labels.
-reading_priority: must read
-paper_type: open audio reasoning dataset and reinforcement-learning study
-best_for: building and auditing spoken chain-of-thought SFT or rule-reward training data
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

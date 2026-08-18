@@ -2,13 +2,29 @@ id: cats-calibrated-ttc-2026
 title: 'CaTS: Calibrated Test-Time Scaling for Efficient LLM Reasoning'
 year: 2026
 venue: ICLR 2026
-authors: [Chengsong Huang, Langlin Huang, Jixuan Leng, Jiacheng Liu, Jiaxin Huang]
-source_role: [scaling_study, verifier_reward]
-verification_contract: [mixed]
-supervision_granularity: [answer_level, scalar_reward]
-domains: [reasoning, mathematics]
-training_use: [test_time_compute, distillation]
-construction_layer: [optimizer_scaffold, scaling_report]
+authors:
+- Chengsong Huang
+- Langlin Huang
+- Jixuan Leng
+- Jiacheng Liu
+- Jiaxin Huang
+source_role:
+- scaling_study
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- reasoning
+- mathematics
+training_use:
+- test_time_compute
+- distillation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
 artifacts:
   paper: https://arxiv.org/abs/2503.00031
   arxiv: https://arxiv.org/abs/2503.00031
@@ -22,7 +38,13 @@ data_object:
   prompt_source: Reasoning tasks across nine benchmark datasets.
   trace_author: The evaluated language model samples repeated candidate answers.
   answer_format: Prompt, sampled answers, self-consistency-derived confidence, calibrated confidence, and stopping decision.
-  process_fields: [prompt, candidates, confidence, calibrated_confidence, sample_budget, stopping_decision]
+  process_fields:
+  - prompt
+  - candidates
+  - confidence
+  - calibrated_confidence
+  - sample_budget
+  - stopping_decision
   environment_or_substrate: Repeated-sampling inference with a fixed average sample budget.
   verifier_or_reward: Confidence is distilled from self-consistency and used for adaptive sampling or early stopping.
   terminal_predicate: Benchmark answer correctness.
@@ -42,19 +64,22 @@ audit:
   decontamination: No dedicated release-wide audit stated; check benchmark overlap before reuse.
   license: Verify benchmark, model, and code licenses separately.
   lineage: 'Primary sources: https://arxiv.org/abs/2503.00031; https://iclr.cc/virtual/2026/poster/10007848'
-  known_failure_modes: [Calibration may shift across domains, Confidence quality depends on the base model, Savings require budget accounting that includes calibration cost]
+  known_failure_modes:
+  - Calibration may shift across domains
+  - Confidence quality depends on the base model
+  - Savings require budget accounting that includes calibration cost
   citation_status: verified
   confidence: high
   notes: Official ICLR record and paper checked on 2026-07-20; code link requires release-level verification before deployment.
 inclusion_reason: It turns calibrated confidence into an explicit policy for allocating a finite repeated-sampling budget.
 related: []
-tags: [test-time-compute, calibration, adaptive-sampling, self-consistency]
+tags:
+- test-time-compute
+- calibration
+- adaptive-sampling
+- self-consistency
 status: verified
 one_line_summary: CaTS distills self-consistency confidence to allocate repeated-sampling budget and stop easy queries early.
-reading_priority: essential
-paper_type: Calibrated adaptive test-time-scaling study
-best_for: Readers designing confidence-guided sampling or budget-matched reasoning evaluation.
-confidence: high
 why_it_matters: It makes the confidence estimator and the sample budget part of the same reproducible inference contract.
 curation_level: L4_carded
 verification:
@@ -64,4 +89,5 @@ verification:
   verified_by: curation
   confidence: high
   notes: Official ICLR poster and primary paper checked; repository should be independently pinned before reuse.
-category_ids: [scaling_rlvr_test_time_compute]
+category_ids:
+- scaling_rlvr_test_time_compute

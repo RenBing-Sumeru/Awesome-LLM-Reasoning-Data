@@ -85,10 +85,6 @@ tags:
 why_it_matters: It clarifies the boundary between generating a plan in prose and constructing a formal model that a planner
   can reliably use.
 one_line_summary: A Findings ACL 2025 survey of using language models to formalize planning specifications for automated planners.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers exploring language-model assistance for long-horizon planning and formal planning-model construction.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable evaluation of formalization quality and planner outcomes across surveyed systems'

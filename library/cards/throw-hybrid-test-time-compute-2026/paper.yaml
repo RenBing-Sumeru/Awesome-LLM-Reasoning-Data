@@ -92,11 +92,6 @@ tags:
 status: verified
 one_line_summary: THROW uses early PRM scores to spend less search on easy prompts and selectively expand promising branches
   for hard ones.
-reading_priority: essential
-paper_type: Adaptive hybrid test-time compute study
-best_for: Readers serving batch-1 reasoning workloads who must balance parallel sampling throughput against the sequential
-  scoring cost of beam search.
-confidence: high
 why_it_matters: It turns query difficulty into a concrete switching rule between two common search families instead of applying
   the same compute budget to every prompt.
 curation_level: L4_carded

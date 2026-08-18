@@ -1,28 +1,108 @@
 id: zip-rc-introspection-2025
-title: 'Zero-Overhead Introspection for Adaptive Test-Time Compute'
+title: Zero-Overhead Introspection for Adaptive Test-Time Compute
 year: 2025
 venue: ICLR 2026
-authors: [Rohin Manvi, Joey Hong, Tim Seyde, Maxime Labonne, Mathias Lechner, Sergey Levine]
-source_role: [scaling_study, infrastructure]
-verification_contract: [mixed]
-supervision_granularity: [token_level, full_episode]
-domains: [mathematical-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2512.01457, arxiv: https://arxiv.org/abs/2512.01457, venue: 'https://openreview.net/forum?id=GqZYGOYuF2', code: https://github.com/rohinmanvi/ZIP-RC, data: null, project: https://rohinmanvi.github.io/ZIP-RC/, huggingface: null, doi: https://doi.org/10.48550/arXiv.2512.01457}
-data_object: {prompt_source: 'DeepScaleR, MATH training split, and GSM8K training split; evaluations use AIME 2024, AMC 2023, MATH-500, and GSM8K.', trace_author: 'Qwen3-1.7B, LFM2-1.2B Math, and LFM2-350M Math.', answer_format: 'Token prefixes with a predicted joint distribution over terminal reward and remaining length, plus prefix-tree search actions.', process_fields: [prompt, prefix, reward_bin, remaining_length_bin, joint_prediction, meta_action, selected_completion, compute_cost], environment_or_substrate: 'Parallel prefix-tree decoding with a compute-and-latency-aware meta-MDP.', verifier_or_reward: 'A learned verifier supplies rollout reward labels; the ZIP head predicts reward and remaining length from reserved logits.', terminal_predicate: 'A completed sample is selected at the search horizon under a chosen utility trade-off.'}
-recipe_metadata: {base_model: 'Qwen3-1.7B, LFM2-1.2B Math, and LFM2-350M Math.', teacher: 'On-policy rollout labels scored by a learned verifier.', generator: 'The ZIP-RC augmented language model.', filtering_rule: 'Maximize a utility combining expected best reward, expected total compute, and expected latency; prune or branch prefixes accordingly.', sampling_protocol: 'Reserve output-vocabulary logits for a reward-length grid, predict the grid at each prefix, then choose a multiset of prefixes to expand.', rollout_count: 'Roughly 100k labeled on-policy rollouts across models for training; evaluation caps ZIP-RC sampling at eight samples in matched-cost comparisons.', temperature: 'See official repository and paper for model-specific decoding.', inference_budget: 'Normalized compute and best-case latency, combined by a configurable generation-cost coefficient.', optimizer_or_scaffold: 'ZIP auxiliary prediction plus ZIP-RC sampling utility over a prefix-tree meta-MDP.'}
-audit: {source_mixture: 'Official ICLR OpenReview record, arXiv paper, project page, and official repository.', split: 'Training corpus combines DeepScaleR, MATH train, and GSM8K train; see paper for exact composition.', decontamination: 'Check benchmark overlap and verifier-training sources before reuse.', license: 'Check repository, models, data, and verifier terms before reuse.', lineage: 'https://arxiv.org/abs/2512.01457', known_failure_modes: [joint-prediction-miscalibration, low-sample-diversity, verifier-error, vocabulary-reservation-impact, utility-weight-sensitivity], citation_status: verified, confidence: high, notes: 'Official PDF, ICLR 2026 record, project page, and repository checked on 2026-07-20. Affiliations are UC Berkeley, MIT CSAIL, and Liquid AI.'}
-inclusion_reason: 'It predicts reward and remaining cost at every decoding prefix, then uses those signals to allocate branches and pruning at test time.'
+authors:
+- Rohin Manvi
+- Joey Hong
+- Tim Seyde
+- Maxime Labonne
+- Mathias Lechner
+- Sergey Levine
+source_role:
+- scaling_study
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- token_level
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2512.01457
+  arxiv: https://arxiv.org/abs/2512.01457
+  venue: https://openreview.net/forum?id=GqZYGOYuF2
+  code: https://github.com/rohinmanvi/ZIP-RC
+  data: null
+  project: https://rohinmanvi.github.io/ZIP-RC/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2512.01457
+data_object:
+  prompt_source: DeepScaleR, MATH training split, and GSM8K training split; evaluations use AIME 2024, AMC 2023, MATH-500,
+    and GSM8K.
+  trace_author: Qwen3-1.7B, LFM2-1.2B Math, and LFM2-350M Math.
+  answer_format: Token prefixes with a predicted joint distribution over terminal reward and remaining length, plus prefix-tree
+    search actions.
+  process_fields:
+  - prompt
+  - prefix
+  - reward_bin
+  - remaining_length_bin
+  - joint_prediction
+  - meta_action
+  - selected_completion
+  - compute_cost
+  environment_or_substrate: Parallel prefix-tree decoding with a compute-and-latency-aware meta-MDP.
+  verifier_or_reward: A learned verifier supplies rollout reward labels; the ZIP head predicts reward and remaining length
+    from reserved logits.
+  terminal_predicate: A completed sample is selected at the search horizon under a chosen utility trade-off.
+recipe_metadata:
+  base_model: Qwen3-1.7B, LFM2-1.2B Math, and LFM2-350M Math.
+  teacher: On-policy rollout labels scored by a learned verifier.
+  generator: The ZIP-RC augmented language model.
+  filtering_rule: Maximize a utility combining expected best reward, expected total compute, and expected latency; prune or
+    branch prefixes accordingly.
+  sampling_protocol: Reserve output-vocabulary logits for a reward-length grid, predict the grid at each prefix, then choose
+    a multiset of prefixes to expand.
+  rollout_count: Roughly 100k labeled on-policy rollouts across models for training; evaluation caps ZIP-RC sampling at eight
+    samples in matched-cost comparisons.
+  temperature: See official repository and paper for model-specific decoding.
+  inference_budget: Normalized compute and best-case latency, combined by a configurable generation-cost coefficient.
+  optimizer_or_scaffold: ZIP auxiliary prediction plus ZIP-RC sampling utility over a prefix-tree meta-MDP.
+audit:
+  source_mixture: Official ICLR OpenReview record, arXiv paper, project page, and official repository.
+  split: Training corpus combines DeepScaleR, MATH train, and GSM8K train; see paper for exact composition.
+  decontamination: Check benchmark overlap and verifier-training sources before reuse.
+  license: Check repository, models, data, and verifier terms before reuse.
+  lineage: https://arxiv.org/abs/2512.01457
+  known_failure_modes:
+  - joint-prediction-miscalibration
+  - low-sample-diversity
+  - verifier-error
+  - vocabulary-reservation-impact
+  - utility-weight-sensitivity
+  citation_status: verified
+  confidence: high
+  notes: Official PDF, ICLR 2026 record, project page, and repository checked on 2026-07-20. Affiliations are UC Berkeley,
+    MIT CSAIL, and Liquid AI.
+inclusion_reason: It predicts reward and remaining cost at every decoding prefix, then uses those signals to allocate branches
+  and pruning at test time.
 related: []
-tags: [test-time-compute, introspection, adaptive-search, verifier, prefix-pruning]
+tags:
+- test-time-compute
+- introspection
+- adaptive-search
+- verifier
+- prefix-pruning
 status: verified
-one_line_summary: 'ZIP-RC reuses reserved logits to predict reward and remaining length without an extra inference pass, then allocates prefix-tree search by utility.'
-reading_priority: essential
-paper_type: Zero-overhead introspection and adaptive test-time search study
-best_for: Readers building adaptive parallel decoding that jointly controls answer quality, compute, and latency.
-confidence: high
-why_it_matters: 'It makes the reward–cost estimate itself an in-model inference object instead of paying for a separate verifier pass at every search decision.'
+one_line_summary: ZIP-RC reuses reserved logits to predict reward and remaining length without an extra inference pass, then
+  allocates prefix-tree search by utility.
+why_it_matters: It makes the reward–cost estimate itself an in-model inference object instead of paying for a separate verifier
+  pass at every search decision.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official ICLR record, paper, project page, and public repository checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR record, paper, project page, and public repository checked.
+category_ids:
+- scaling_rlvr_test_time_compute

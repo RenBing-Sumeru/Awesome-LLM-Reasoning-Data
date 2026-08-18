@@ -90,10 +90,6 @@ status: verified
 one_line_summary: STaR repeatedly turns answer-correct model rationales into new SFT data, bootstrapping reasoning from few
   demonstrations.
 why_it_matters: It shows how answer keys can replace large-scale rationale annotation when terminal correctness is reliable.
-reading_priority: must read
-paper_type: Iterative rationale self-training
-best_for: Researchers building answer-verifiable reasoning SFT data from questions that lack written rationales.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

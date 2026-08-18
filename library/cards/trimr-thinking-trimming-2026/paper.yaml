@@ -1,28 +1,101 @@
 id: trimr-thinking-trimming-2026
-title: "TrimR: Verifier-based Training-Free Thinking Trimming for Efficient Test-Time Scaling"
+title: 'TrimR: Verifier-based Training-Free Thinking Trimming for Efficient Test-Time Scaling'
 year: 2026
 venue: ICLR 2026
-authors: [Weizhe Lin, Xing Li, Zhiyuan Yang, Xiaojin Fu, Hui-Ling Zhen, Yaoyuan Wang, Xianzhi Yu, Wulong Liu, Xiaosong Li, Mingxuan Yuan]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level, full_episode]
-domains: [mathematical-reasoning, general-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://iclr.cc/virtual/2026/poster/10007390, arxiv: https://arxiv.org/abs/2505.17155, venue: https://iclr.cc/virtual/2026/poster/10007390, code: null, data: null, project: null, huggingface: null, doi: null}
-data_object: {prompt_source: "MATH500, AIME 2024/2025, and GPQA reasoning benchmarks used in the paper.", trace_author: "Large reasoning models under TrimR intervention.", answer_format: "Segmented thoughts, verifier decisions, intervention prompts, truncated traces, and final answers.", process_fields: [prompt, sub_thought, verifier_decision, intervention, token_count, final_answer], environment_or_substrate: "Asynchronous online serving on Ascend NPUs and vLLM.", verifier_or_reward: "A lightweight pretrained instruction-tuned verifier for answer existence and equivalence checks.", terminal_predicate: "Task accuracy measured jointly with inference runtime and token consumption."}
-recipe_metadata: {base_model: "QwQ-32B, DeepSeek-R1-Distill-Qwen-32B, Pangu-R-38B, and reported baselines.", teacher: null, generator: "The running large reasoning model.", filtering_rule: "Identify redundant repeated thoughts, overthinking, or unresolved underthinking from verifier checks.", sampling_protocol: "Segment a chain of thought, query a verifier, then issue a gentle or forced intervention when appropriate.", rollout_count: null, temperature: null, inference_budget: "Reasoning tokens, decoding runtime, and serving throughput budget.", optimizer_or_scaffold: "Training-free TrimR controller with asynchronous online deployment."}
-audit: {source_mixture: "Official ICLR 2026 page, final conference PDF, and arXiv version.", split: "See primary paper for benchmark protocols.", decontamination: "Not separately claimed.", license: "Check source model, benchmark, and implementation terms before reuse.", lineage: "https://iclr.cc/virtual/2026/poster/10007390", known_failure_modes: [incorrect_verifier_decision, premature_truncation, missed_underthinking, added_serving_overhead], citation_status: verified, confidence: high, notes: "Final ICLR 2026 metadata and Huawei affiliations checked on 2026-07-20."}
-inclusion_reason: "It allocates inference computation by detecting redundant or insufficient intermediate reasoning during deployment."
+authors:
+- Weizhe Lin
+- Xing Li
+- Zhiyuan Yang
+- Xiaojin Fu
+- Hui-Ling Zhen
+- Yaoyuan Wang
+- Xianzhi Yu
+- Wulong Liu
+- Xiaosong Li
+- Mingxuan Yuan
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+- general-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://iclr.cc/virtual/2026/poster/10007390
+  arxiv: https://arxiv.org/abs/2505.17155
+  venue: https://iclr.cc/virtual/2026/poster/10007390
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: MATH500, AIME 2024/2025, and GPQA reasoning benchmarks used in the paper.
+  trace_author: Large reasoning models under TrimR intervention.
+  answer_format: Segmented thoughts, verifier decisions, intervention prompts, truncated traces, and final answers.
+  process_fields:
+  - prompt
+  - sub_thought
+  - verifier_decision
+  - intervention
+  - token_count
+  - final_answer
+  environment_or_substrate: Asynchronous online serving on Ascend NPUs and vLLM.
+  verifier_or_reward: A lightweight pretrained instruction-tuned verifier for answer existence and equivalence checks.
+  terminal_predicate: Task accuracy measured jointly with inference runtime and token consumption.
+recipe_metadata:
+  base_model: QwQ-32B, DeepSeek-R1-Distill-Qwen-32B, Pangu-R-38B, and reported baselines.
+  teacher: null
+  generator: The running large reasoning model.
+  filtering_rule: Identify redundant repeated thoughts, overthinking, or unresolved underthinking from verifier checks.
+  sampling_protocol: Segment a chain of thought, query a verifier, then issue a gentle or forced intervention when appropriate.
+  rollout_count: null
+  temperature: null
+  inference_budget: Reasoning tokens, decoding runtime, and serving throughput budget.
+  optimizer_or_scaffold: Training-free TrimR controller with asynchronous online deployment.
+audit:
+  source_mixture: Official ICLR 2026 page, final conference PDF, and arXiv version.
+  split: See primary paper for benchmark protocols.
+  decontamination: Not separately claimed.
+  license: Check source model, benchmark, and implementation terms before reuse.
+  lineage: https://iclr.cc/virtual/2026/poster/10007390
+  known_failure_modes:
+  - incorrect_verifier_decision
+  - premature_truncation
+  - missed_underthinking
+  - added_serving_overhead
+  citation_status: verified
+  confidence: high
+  notes: Final ICLR 2026 metadata and Huawei affiliations checked on 2026-07-20.
+inclusion_reason: It allocates inference computation by detecting redundant or insufficient intermediate reasoning during
+  deployment.
 related: []
-tags: [test-time-compute, reasoning-compression, verifier, early-exit, serving]
+tags:
+- test-time-compute
+- reasoning-compression
+- verifier
+- early-exit
+- serving
 status: verified
-one_line_summary: "TrimR uses a lightweight verifier to trim redundant reasoning online and preserve computation for unresolved traces."
-reading_priority: essential
-paper_type: Test-time reasoning efficiency and online serving study
-best_for: Readers studying verifier-guided compression and adaptive stopping for reasoning models.
-confidence: high
-why_it_matters: "It demonstrates a deployed, training-free route from intermediate thought checks to lower test-time cost."
+one_line_summary: TrimR uses a lightweight verifier to trim redundant reasoning online and preserve computation for unresolved
+  traces.
+why_it_matters: It demonstrates a deployed, training-free route from intermediate thought checks to lower test-time cost.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official ICLR page and final OpenReview paper checked; no public code or data link was identified."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR page and final OpenReview paper checked; no public code or data link was identified.
+category_ids:
+- scaling_rlvr_test_time_compute

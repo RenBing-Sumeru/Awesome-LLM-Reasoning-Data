@@ -94,10 +94,6 @@ tags:
 status: verified
 one_line_summary: ChartAssistant couples chart-to-table alignment with a released multitask ChartSFT conversation corpus.
 why_it_matters: using table reconstruction as an explicit bridge into a universal chart instruction mixture
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: building one assistant for chart extraction, QA, and reasoning
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

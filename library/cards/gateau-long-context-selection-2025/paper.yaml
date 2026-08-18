@@ -93,10 +93,6 @@ tags:
 - attention
 status: verified
 one_line_summary: GATEAU selects long SFT records using context-window perplexity gaps and attention-relevance alignment.
-reading_priority: essential
-paper_type: Long-context instruction-data selection study
-best_for: Readers curating long instruction data that must teach genuine long-range dependency use.
-confidence: high
 why_it_matters: It turns long-range dependence into an explicit criterion for which records are admitted to long-context SFT.
 curation_level: L4_carded
 verification:

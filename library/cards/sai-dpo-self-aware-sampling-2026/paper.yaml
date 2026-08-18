@@ -93,10 +93,6 @@ tags:
 status: verified
 one_line_summary: SAI-DPO repeatedly selects preference-training records using model-relative knowledge weaknesses and self-aware
   difficulty.
-reading_priority: essential
-paper_type: Dynamic mathematical-reasoning data selection for offline preference optimization
-best_for: Readers building learner-adaptive preference datasets for iterative mathematical reasoning training.
-confidence: high
 why_it_matters: It turns changing learner competence into an explicit policy for which preference pairs enter the next optimization
   round.
 curation_level: L4_carded

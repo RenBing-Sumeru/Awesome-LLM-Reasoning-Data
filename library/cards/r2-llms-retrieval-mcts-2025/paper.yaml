@@ -88,10 +88,6 @@ tags:
 status: verified
 one_line_summary: R2-LLMs uses coarse-to-fine retrieval inside PRM-guided MCTS so additional test-time compute explores reasoning
   paths with relevant external evidence.
-reading_priority: recommended
-paper_type: Retrieval-augmented test-time search study
-best_for: Readers comparing search-time retrieval and process verification for mathematical reasoning.
-confidence: high
 why_it_matters: It makes retrieval an active component of the test-time compute allocation rather than a static prompt prefix.
 curation_level: L4_carded
 verification:

@@ -99,10 +99,6 @@ one_line_summary: Nemotron-Math generates six supervision modes per source famil
   for long-context distillation.
 why_it_matters: Existing math supervision rarely combines several reasoning budgets, very long traces, community questions,
   and tool-integrated variants under one comparable schema.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: long-context mathematical reasoning SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

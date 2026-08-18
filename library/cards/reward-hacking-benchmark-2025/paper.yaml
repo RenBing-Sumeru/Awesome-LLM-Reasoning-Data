@@ -65,7 +65,8 @@ audit:
   - Curation-level metadata only; inspect the original paper before reusing scores or examples.
   citation_status: verified
   confidence: medium
-  notes: Official arXiv record checked on 2026-07-20; it states the paper is accepted to ICML 2026. The public release describes deliberately vulnerable code-optimization environments for measuring reward hacking.
+  notes: Official arXiv record checked on 2026-07-20; it states the paper is accepted to ICML 2026. The public release describes
+    deliberately vulnerable code-optimization environments for measuring reward hacking.
 inclusion_reason: 'Track 13: contamination, verifier/reward failure, reward hacking, or evaluator reliability.'
 related: []
 tags:

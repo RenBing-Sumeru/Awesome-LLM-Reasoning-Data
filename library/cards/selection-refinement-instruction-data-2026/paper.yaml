@@ -80,10 +80,6 @@ tags:
 - data-selection
 status: verified
 one_line_summary: Instruction data optimization identifies valuable records and iteratively refines weak ones before SFT.
-reading_priority: essential
-paper_type: Training-data selection or reward-design study
-best_for: Readers studying post-training data consumption and optimization objectives.
-confidence: high
 why_it_matters: It makes the training-data decision inspectable.
 curation_level: L4_carded
 verification:

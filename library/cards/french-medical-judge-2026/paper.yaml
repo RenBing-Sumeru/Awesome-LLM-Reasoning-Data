@@ -73,7 +73,7 @@ audit:
     source: https://aclanthology.org/2026.healing-1.12.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'Evaluates generator-aware, domain-specific judge reliability for medical open-ended QA.'
+inclusion_reason: Evaluates generator-aware, domain-specific judge reliability for medical open-ended QA.
 related: []
 tags:
 - paper-page-backed

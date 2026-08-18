@@ -87,10 +87,6 @@ one_line_summary: Nex Agent-SFT reselects tasks from the Nex ecosystem, regenera
   and publishes six splits under one message-and-tools contract.
 why_it_matters: Agent data is fragmented by environment and schema, making it hard to train one model across coding, research,
   browsing, and tool calling.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: agent SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

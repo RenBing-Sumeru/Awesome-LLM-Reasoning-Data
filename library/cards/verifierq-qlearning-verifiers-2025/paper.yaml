@@ -86,10 +86,6 @@ tags:
 status: verified
 one_line_summary: VerifierQ trains an utterance-level Q-value verifier offline, aiming to select stronger multistep mathematical
   solutions under a test-time compute budget.
-reading_priority: useful
-paper_type: Offline Q-learning verifier study for test-time scaling
-best_for: Readers studying learned process verifiers as selectors for multiple reasoning rollouts.
-confidence: high
 why_it_matters: It exposes verifier training, not just generator sampling, as a scaling lever and tests it against PRM and
   majority voting.
 curation_level: L4_carded

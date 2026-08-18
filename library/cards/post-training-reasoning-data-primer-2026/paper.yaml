@@ -94,11 +94,6 @@ one_line_summary: This primer organizes more than 150 studies into a practical m
   construction choices, and scaling limits.
 why_it_matters: It prevents data recipes from being compared without their verifier, base model, trajectory, scale, and lineage
   context.
-reading_priority: recommended
-paper_type: post-training reasoning-data primer
-best_for: Researchers deciding what reasoning data to collect, how to verify it, and which scaling claims transfer to their
-  setting.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

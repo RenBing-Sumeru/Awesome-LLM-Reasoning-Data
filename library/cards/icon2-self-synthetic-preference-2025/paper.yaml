@@ -98,10 +98,6 @@ tags:
 status: verified
 one_line_summary: ICON2 filters self-synthesized instructions by representation consistency and directly generates chosen
   and rejected responses through opposite internal steering directions.
-reading_priority: essential
-paper_type: Self-synthetic preference-data construction and DPO study
-best_for: Readers building target-model-specific preference corpora without repeated sampling or external judging.
-confidence: high
 why_it_matters: It makes a target model's representation space an explicit source of both data-selection and pair-construction
   decisions.
 curation_level: L4_carded

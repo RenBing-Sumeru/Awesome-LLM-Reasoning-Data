@@ -78,10 +78,6 @@ tags:
 status: verified
 one_line_summary: Scorio evaluates how statistical ranking remains stable when reasoning models receive different test-time
   sampling budgets.
-reading_priority: useful
-paper_type: Test-time scaling evaluation and statistical-ranking study
-best_for: Readers benchmarking or selecting reasoning models under repeated inference.
-confidence: high
 why_it_matters: It treats the number of test-time trials as part of the evaluation protocol, not a hidden implementation detail.
 curation_level: L4_carded
 verification:

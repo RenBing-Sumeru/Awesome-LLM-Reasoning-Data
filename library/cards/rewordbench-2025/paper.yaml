@@ -95,5 +95,3 @@ verification:
   notes: Official primary page plus public artifact recorded; venue status is explicit.
 category_ids:
 - audit_failure_contamination_verifier_attacks
-category:
-- audit_failure_contamination_verifier_attacks

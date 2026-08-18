@@ -105,11 +105,6 @@ tags:
 status: verified
 one_line_summary: Timely Machine makes wall-clock time, rather than token length, the test-time budget for tool agents and
   trains policies to adapt their interaction strategy to latency.
-reading_priority: essential
-paper_type: Agentic test-time scaling benchmark and time-aware RL study
-best_for: Readers operating tool-using agents where tool delay and model generation speed jointly determine whether extra
-  reasoning can fit a real deadline.
-confidence: high
 why_it_matters: It identifies wall-clock latency as a missing allocation variable and demonstrates that the best model size
   and interaction policy can reverse as tools become slower.
 curation_level: L4_carded

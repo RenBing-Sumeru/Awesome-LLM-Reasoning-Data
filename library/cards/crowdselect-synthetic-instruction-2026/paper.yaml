@@ -79,10 +79,6 @@ tags:
 status: verified
 one_line_summary: CrowdSelect selects synthetic instruction pairs with complementary signals from multiple LLM responses and
   reward-model assessments.
-reading_priority: essential
-paper_type: Training-data selection or reward-design study
-best_for: Readers studying post-training data consumption and optimization objectives.
-confidence: high
 why_it_matters: It makes the training-data decision inspectable.
 curation_level: L4_carded
 verification:

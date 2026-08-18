@@ -106,10 +106,6 @@ one_line_summary: SmolTalk combines inherited and newly generated conversations 
   weights through ablations and manual mixture review.
 why_it_matters: Small language models need broad instruction coverage, but existing open chat mixtures were too small or uneven
   for the paper's compact-model training budget.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: SmolLM2 instruction SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

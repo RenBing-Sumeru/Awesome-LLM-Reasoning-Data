@@ -1,28 +1,114 @@
 id: agentic-test-time-scaling-2025
-title: 'Scaling Test-time Compute for LLM Agents'
+title: Scaling Test-time Compute for LLM Agents
 year: 2025
 venue: arXiv preprint
-authors: [King Zhu, Hanhao Li, Siwei Wu, Tianshun Xing, Dehua Ma, Xiangru Tang, Minghao Liu, Jian Yang, Jiaheng Liu, Yuchen Eleanor Jiang, Changwang Zhang, Chenghua Lin, Jun Wang, Ge Zhang, Wangchunshu Zhou]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level, full_episode]
-domains: [agentic-reasoning, tool-use]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2506.12928, arxiv: https://arxiv.org/abs/2506.12928, venue: null, code: https://github.com/OPPO-PersonalAI/OAgents, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2506.12928}
-data_object: {prompt_source: 'GAIA validation set with 165 multimodal web-and-file agent tasks.', trace_author: 'GPT-4.1, Claude-3-7, Gemini-2.5-Pro, Claude-3-5, and agent rollouts.', answer_format: 'Tool-use trajectories, step scores, reflection summaries, candidate answers, verifier comparisons, and merged results.', process_fields: [task, observation, action, tool_result, trajectory, verifier_score, reflection_trigger, candidate_answer, merged_answer], environment_or_substrate: 'SmolAgents CodeAgent with tool calls and optional multi-agent rollout sampling.', verifier_or_reward: 'Process reward model scoring or list-wise comparison of candidate actions and trajectories.', terminal_predicate: 'GAIA task answer after result merging.'}
-recipe_metadata: {base_model: 'GPT-4.1 for most experiments; mixed rollout models in diversity studies.', teacher: null, generator: 'CodeAgent tool-use rollouts.', filtering_rule: 'Select candidates with voting, scalar scoring, or list-wise comparison; trigger reflection when a step score falls below a threshold.', sampling_protocol: 'Compare BoN, step-wise BoN, beam search, tree search, and diverse multi-agent rollouts at fixed widths.', rollout_count: 'Sampling width 4 in principal parallel-search comparisons.', temperature: null, inference_budget: 'Parallel rollout width, step-wise branching, verifier calls, and reflection frequency.', optimizer_or_scaffold: 'Agentic Test-Time Scaling framework.'}
-audit: {source_mixture: 'Official arXiv paper and official OPPO-PersonalAI repository.', split: 'GAIA validation has 165 samples across three difficulty levels.', decontamination: 'Check tool, web, and benchmark protocol versions before reuse.', license: 'Check code, model, GAIA, and tool terms before reuse.', lineage: 'https://arxiv.org/abs/2506.12928', known_failure_modes: [tool-environment-drift, rollout-correlation, verifier-error, reflection-disruption, hidden-cost], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. The PDF presents the affiliation as OPPO AI Agent Team and links the official OAgents repository.'}
-inclusion_reason: 'It directly studies how parallel rollouts, reflection, verification, merging, and rollout diversity change agent performance under added inference compute.'
+authors:
+- King Zhu
+- Hanhao Li
+- Siwei Wu
+- Tianshun Xing
+- Dehua Ma
+- Xiangru Tang
+- Minghao Liu
+- Jian Yang
+- Jiaheng Liu
+- Yuchen Eleanor Jiang
+- Changwang Zhang
+- Chenghua Lin
+- Jun Wang
+- Ge Zhang
+- Wangchunshu Zhou
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- agentic-reasoning
+- tool-use
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2506.12928
+  arxiv: https://arxiv.org/abs/2506.12928
+  venue: null
+  code: https://github.com/OPPO-PersonalAI/OAgents
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.12928
+data_object:
+  prompt_source: GAIA validation set with 165 multimodal web-and-file agent tasks.
+  trace_author: GPT-4.1, Claude-3-7, Gemini-2.5-Pro, Claude-3-5, and agent rollouts.
+  answer_format: Tool-use trajectories, step scores, reflection summaries, candidate answers, verifier comparisons, and merged
+    results.
+  process_fields:
+  - task
+  - observation
+  - action
+  - tool_result
+  - trajectory
+  - verifier_score
+  - reflection_trigger
+  - candidate_answer
+  - merged_answer
+  environment_or_substrate: SmolAgents CodeAgent with tool calls and optional multi-agent rollout sampling.
+  verifier_or_reward: Process reward model scoring or list-wise comparison of candidate actions and trajectories.
+  terminal_predicate: GAIA task answer after result merging.
+recipe_metadata:
+  base_model: GPT-4.1 for most experiments; mixed rollout models in diversity studies.
+  teacher: null
+  generator: CodeAgent tool-use rollouts.
+  filtering_rule: Select candidates with voting, scalar scoring, or list-wise comparison; trigger reflection when a step score
+    falls below a threshold.
+  sampling_protocol: Compare BoN, step-wise BoN, beam search, tree search, and diverse multi-agent rollouts at fixed widths.
+  rollout_count: Sampling width 4 in principal parallel-search comparisons.
+  temperature: null
+  inference_budget: Parallel rollout width, step-wise branching, verifier calls, and reflection frequency.
+  optimizer_or_scaffold: Agentic Test-Time Scaling framework.
+audit:
+  source_mixture: Official arXiv paper and official OPPO-PersonalAI repository.
+  split: GAIA validation has 165 samples across three difficulty levels.
+  decontamination: Check tool, web, and benchmark protocol versions before reuse.
+  license: Check code, model, GAIA, and tool terms before reuse.
+  lineage: https://arxiv.org/abs/2506.12928
+  known_failure_modes:
+  - tool-environment-drift
+  - rollout-correlation
+  - verifier-error
+  - reflection-disruption
+  - hidden-cost
+  citation_status: verified
+  confidence: high
+  notes: Official PDF checked on 2026-07-20. The PDF presents the affiliation as OPPO AI Agent Team and links the official
+    OAgents repository.
+inclusion_reason: It directly studies how parallel rollouts, reflection, verification, merging, and rollout diversity change
+  agent performance under added inference compute.
 related: []
-tags: [test-time-compute, agents, tool-use, reflection, listwise-verification]
+tags:
+- test-time-compute
+- agents
+- tool-use
+- reflection
+- listwise-verification
 status: verified
-one_line_summary: 'This study maps which test-time scaling mechanisms improve tool-using language agents and finds selective reflection, list-wise comparison, and diverse rollouts effective.'
-reading_priority: useful
-paper_type: Systematic agentic test-time scaling study
-best_for: Readers adapting reasoning-time search and verification methods to tool-using agents.
-confidence: high
-why_it_matters: 'It shows that test-time scaling choices interact with agent trajectories, tool actions, and result merging rather than transferring mechanically from single-answer reasoning.'
+one_line_summary: This study maps which test-time scaling mechanisms improve tool-using language agents and finds selective
+  reflection, list-wise comparison, and diverse rollouts effective.
+why_it_matters: It shows that test-time scaling choices interact with agent trajectories, tool actions, and result merging
+  rather than transferring mechanically from single-answer reasoning.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official arXiv PDF and paper-linked public code repository checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv PDF and paper-linked public code repository checked.
+category_ids:
+- scaling_rlvr_test_time_compute

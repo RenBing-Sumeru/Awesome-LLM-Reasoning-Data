@@ -93,10 +93,6 @@ tags:
 status: verified
 one_line_summary: The method filters fine-grained preference records by cross-aspect consensus before standard DPO, retaining
   samples with the most negative preference divergence.
-reading_priority: essential
-paper_type: Fine-grained preference-data selection and alignment study
-best_for: Readers curating preference data with several annotated values or behavioral aspects.
-confidence: high
 why_it_matters: It turns cross-aspect conflict into a measurable training-data exclusion rule instead of asking a single holistic
   label to resolve every value tradeoff.
 curation_level: L4_carded

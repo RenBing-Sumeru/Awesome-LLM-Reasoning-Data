@@ -94,10 +94,6 @@ tags:
 status: verified
 one_line_summary: SeaPO creates deliberately more erroneous rejected responses so preference optimization can suppress targeted
   reasoning, logic, and hallucination errors.
-reading_priority: essential
-paper_type: Synthetic preference-negative construction study
-best_for: Readers designing preference data when reward-model ranking produces weak or nearly tied negative responses.
-confidence: high
 why_it_matters: It changes the content and severity of negative preference evidence, making the data itself encode the failure
   modes training should reduce.
 curation_level: L4_carded

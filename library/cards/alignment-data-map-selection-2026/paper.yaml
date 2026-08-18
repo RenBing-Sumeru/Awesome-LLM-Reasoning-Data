@@ -93,10 +93,6 @@ tags:
 status: verified
 one_line_summary: Alignment Data Map selects preference records by jointly measuring response quality and within-prompt variability,
   while exposing likely label mismatches.
-reading_priority: essential
-paper_type: Preference-data selection and annotation-diagnosis study
-best_for: Readers who need to select or audit preference data beyond a reward-margin heuristic before DPO or SimPO training.
-confidence: high
 why_it_matters: It makes absolute response quality and ambiguity jointly visible before a preference record is sent to training.
 curation_level: L4_carded
 verification:

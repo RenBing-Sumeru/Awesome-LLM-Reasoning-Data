@@ -74,14 +74,15 @@ audit:
     source: https://arxiv.org/pdf/2507.16587.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'Empirical audit of LLM-judge reliability for code generation and code summarization.'
+inclusion_reason: Empirical audit of LLM-judge reliability for code generation and code summarization.
 related: []
 tags:
 - llm-as-a-judge
 - code-evaluation
 - audit
 status: verified
-one_line_summary: Tests whether LLM judges reliably assess code correctness and code-summary quality against executable and human references.
+one_line_summary: Tests whether LLM judges reliably assess code correctness and code-summary quality against executable and
+  human references.
 why_it_matters: It quantifies judge failures that can make automated code evaluation or reward signals unsafe.
 curation_level: L4_chinese_review_ready
 verification:
@@ -92,6 +93,4 @@ verification:
   confidence: medium
   notes: Official primary paper page recorded; artifact availability stated without inference.
 category_ids:
-- audit_failure_contamination_verifier_attacks
-category:
 - audit_failure_contamination_verifier_attacks

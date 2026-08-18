@@ -94,11 +94,6 @@ tags:
 status: verified
 one_line_summary: DynamicFocalPO schedules preference-pair weighting from easy, already-correctly-ranked records toward harder
   records as training progresses.
-reading_priority: useful
-paper_type: Curriculum-based preference-optimization study
-best_for: Readers who have an offline preference dataset and need a lightweight way to control the order in which ambiguous
-  or misranked pairs influence DPO training.
-confidence: high
 why_it_matters: It makes training time an explicit part of how the optimizer consumes preference records instead of assigning
   every pair a fixed influence for the entire run.
 curation_level: L4_carded

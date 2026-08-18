@@ -100,10 +100,6 @@ one_line_summary: MindLoom extracts reusable thought modes from verified solutio
   scarcity control, and keeps 9,230 judged-correct SFT records.
 why_it_matters: It makes reasoning-data composition auditable through mode tuples, retrieval scores, provenance filters, and
   rollout decisions.
-reading_priority: recommended
-paper_type: compositional reasoning-data synthesis method and dataset
-best_for: Researchers generating STEM SFT data from reusable reasoning transformations.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

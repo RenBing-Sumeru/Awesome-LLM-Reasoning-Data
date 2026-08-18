@@ -92,5 +92,3 @@ verification:
   notes: Official primary source and public artifact release checked; L4 reading remains pending.
 category_ids:
 - audit_failure_contamination_verifier_attacks
-category:
-- audit_failure_contamination_verifier_attacks

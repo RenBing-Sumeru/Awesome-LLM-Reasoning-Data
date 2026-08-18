@@ -90,10 +90,6 @@ tags:
 - 2025
 why_it_matters: It gives students a disciplined way to compare answer quality against trace length, time, and computation.
 one_line_summary: A 2025 survey of how to reduce redundant reasoning without confusing fewer tokens with better reasoning.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers working with long reasoning traces, test-time budgets, or efficiency claims.
-confidence: high
 status: verified
 needs:
 - 'unknown: a standard protocol that jointly reports accuracy, trace quality, latency, and cost'

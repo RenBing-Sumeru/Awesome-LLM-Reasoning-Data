@@ -72,7 +72,7 @@ audit:
     source: https://arxiv.org/pdf/2504.11972.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'Controlled audit of LLM-judge reliability against human labels for extractive QA.'
+inclusion_reason: Controlled audit of LLM-judge reliability against human labels for extractive QA.
 related: []
 tags:
 - llm-as-a-judge
@@ -90,6 +90,4 @@ verification:
   confidence: medium
   notes: Official primary paper page recorded; artifact availability stated without inference.
 category_ids:
-- audit_failure_contamination_verifier_attacks
-category:
 - audit_failure_contamination_verifier_attacks

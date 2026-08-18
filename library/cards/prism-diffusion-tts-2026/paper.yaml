@@ -2,27 +2,102 @@ id: prism-diffusion-tts-2026
 title: 'Prism: Efficient Test-Time Scaling via Hierarchical Search and Self-Verification for Discrete Diffusion Language Models'
 year: 2026
 venue: ICML 2026
-authors: ['Jinbin Bai', 'Yixuan Li', 'Yuchen Zhu', 'Yi Xin', 'Qingyu Shi', 'Aosong Feng', 'Xiaohong Liu', 'Molei Tao', 'Jianru Xue', 'Xiangtai Li', 'Ming-Hsuan Yang']
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level, answer_level]
-domains: [mathematical-reasoning, software-engineering]
-training_use: [test_time_compute, evaluation]
-construction_layer: [scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2602.01842, arxiv: https://arxiv.org/abs/2602.01842, venue: 'https://openreview.net/forum?id=QrC8OgQyOI', code: https://github.com/viiika/Prism, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2602.01842}
-data_object: {prompt_source: 'Four mathematical-reasoning and code-generation benchmarks.', trace_author: 'Discrete diffusion language models under Prism search.', answer_format: 'Partially denoised candidate trajectories, self-evaluations, and final answers.', process_fields: [prompt, denoising_state, branch, remasking_decision, self_verification, function_evaluations, outcome], environment_or_substrate: 'Discrete diffusion language model inference.', verifier_or_reward: 'Self-Verified Feedback from self-evaluation prompts on intermediate completions.', terminal_predicate: 'Benchmark answer correctness or code-task success.'}
-recipe_metadata: {base_model: 'LLaDA 8B Instruct, Dream 7B Instruct, and LLaDA 2.0-mini.', teacher: null, generator: 'Hierarchical Trajectory Search with local partial-remasking branches.', filtering_rule: 'Self-verified feedback ranks and prunes intermediate trajectories.', sampling_protocol: 'Search branches in an early-to-mid denoising window.', rollout_count: 'Budget-dependent.', temperature: null, inference_budget: 'Number of function evaluations; compared against repeated-sampling baselines.', optimizer_or_scaffold: 'Prism (Pruning, Remasking, and Integrated Self-verification Method).'}
-audit: {source_mixture: 'Official ICML 2026 OpenReview record, paper PDF, arXiv record, and linked official code repository.', split: 'Official benchmark splits; see paper for task-specific protocols.', decontamination: 'Not separately claimed in the checked source.', license: 'OpenReview record is CC BY 4.0; verify repository license before reuse.', lineage: 'Primary sources: https://openreview.net/forum?id=QrC8OgQyOI and https://arxiv.org/abs/2602.01842', known_failure_modes: ['Self-evaluation can mis-rank partially denoised states.', 'Results are specific to the tested discrete diffusion models and tasks.', 'Function-evaluation savings do not by themselves establish wall-clock or hardware savings.'], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. Institution evidence is on the paper first page: National University of Singapore; Collov Labs; Xi''an Jiaotong University; Georgia Institute of Technology; Shanghai Innovation Institute; Peking University; Yale University; UC Merced.'}
-inclusion_reason: 'It studies how inference-time search, verification, and compute allocation can be adapted and measured for discrete diffusion language models.'
+authors:
+- Jinbin Bai
+- Yixuan Li
+- Yuchen Zhu
+- Yi Xin
+- Qingyu Shi
+- Aosong Feng
+- Xiaohong Liu
+- Molei Tao
+- Jianru Xue
+- Xiangtai Li
+- Ming-Hsuan Yang
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical-reasoning
+- software-engineering
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2602.01842
+  arxiv: https://arxiv.org/abs/2602.01842
+  venue: https://openreview.net/forum?id=QrC8OgQyOI
+  code: https://github.com/viiika/Prism
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2602.01842
+data_object:
+  prompt_source: Four mathematical-reasoning and code-generation benchmarks.
+  trace_author: Discrete diffusion language models under Prism search.
+  answer_format: Partially denoised candidate trajectories, self-evaluations, and final answers.
+  process_fields:
+  - prompt
+  - denoising_state
+  - branch
+  - remasking_decision
+  - self_verification
+  - function_evaluations
+  - outcome
+  environment_or_substrate: Discrete diffusion language model inference.
+  verifier_or_reward: Self-Verified Feedback from self-evaluation prompts on intermediate completions.
+  terminal_predicate: Benchmark answer correctness or code-task success.
+recipe_metadata:
+  base_model: LLaDA 8B Instruct, Dream 7B Instruct, and LLaDA 2.0-mini.
+  teacher: null
+  generator: Hierarchical Trajectory Search with local partial-remasking branches.
+  filtering_rule: Self-verified feedback ranks and prunes intermediate trajectories.
+  sampling_protocol: Search branches in an early-to-mid denoising window.
+  rollout_count: Budget-dependent.
+  temperature: null
+  inference_budget: Number of function evaluations; compared against repeated-sampling baselines.
+  optimizer_or_scaffold: Prism (Pruning, Remasking, and Integrated Self-verification Method).
+audit:
+  source_mixture: Official ICML 2026 OpenReview record, paper PDF, arXiv record, and linked official code repository.
+  split: Official benchmark splits; see paper for task-specific protocols.
+  decontamination: Not separately claimed in the checked source.
+  license: OpenReview record is CC BY 4.0; verify repository license before reuse.
+  lineage: 'Primary sources: https://openreview.net/forum?id=QrC8OgQyOI and https://arxiv.org/abs/2602.01842'
+  known_failure_modes:
+  - Self-evaluation can mis-rank partially denoised states.
+  - Results are specific to the tested discrete diffusion models and tasks.
+  - Function-evaluation savings do not by themselves establish wall-clock or hardware savings.
+  citation_status: verified
+  confidence: high
+  notes: 'Official PDF checked on 2026-07-20. Institution evidence is on the paper first page: National University of Singapore;
+    Collov Labs; Xi''an Jiaotong University; Georgia Institute of Technology; Shanghai Innovation Institute; Peking University;
+    Yale University; UC Merced.'
+inclusion_reason: It studies how inference-time search, verification, and compute allocation can be adapted and measured for
+  discrete diffusion language models.
 related: []
-tags: [test-time-compute, discrete-diffusion-language-models, search, self-verification, reasoning]
+tags:
+- test-time-compute
+- discrete-diffusion-language-models
+- search
+- self-verification
+- reasoning
 status: verified
-one_line_summary: 'Prism allocates denoising-time compute through hierarchical search, partial remasking, and self-verification for discrete diffusion language models.'
-reading_priority: useful
-paper_type: Test-time scaling method study
-best_for: Readers adapting inference-time search and verification to discrete diffusion language models.
-confidence: high
+one_line_summary: Prism allocates denoising-time compute through hierarchical search, partial remasking, and self-verification
+  for discrete diffusion language models.
 why_it_matters: It makes the search state, verifier signal, and cost unit explicit for non-autoregressive reasoning inference.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official ICML record, arXiv paper, affiliations, and linked code URL checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ICML record, arXiv paper, affiliations, and linked code URL checked.
+category_ids:
+- scaling_rlvr_test_time_compute

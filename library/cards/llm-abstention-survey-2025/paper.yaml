@@ -84,10 +84,6 @@ tags:
 - survey
 why_it_matters: It treats declining to answer as a decision that must be both useful and accountable to context.
 one_line_summary: A TACL 2025 survey organizing LLM abstention through the query, model, and human values.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers studying hallucination mitigation, selective prediction, and safe answer policies.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable measures balancing answer coverage and abstention quality'

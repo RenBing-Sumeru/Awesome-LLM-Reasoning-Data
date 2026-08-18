@@ -102,10 +102,6 @@ tags:
 status: verified
 one_line_summary: DeepVerifier converts agent failure rubrics into targeted test-time checks and feedback loops that improve
   deep-research-agent answers through repeated verification and retry.
-reading_priority: essential
-paper_type: Agent verification and test-time scaling study
-best_for: Readers building web-enabled agents that must spend additional inference compute on evidence-based self-correction.
-confidence: high
 why_it_matters: It operationalizes verification as a repeatable inference loop rather than a final judge call, making extra
   agent compute target diagnosed failure points.
 curation_level: L4_carded

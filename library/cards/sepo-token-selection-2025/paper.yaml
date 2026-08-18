@@ -97,10 +97,6 @@ tags:
 status: verified
 one_line_summary: SePO trains a small DPO oracle to select only high-value chosen tokens and low-value rejected tokens for
   preference optimization.
-reading_priority: essential
-paper_type: Token-level selective preference-optimization study
-best_for: Readers reducing preference-training cost or noise by selecting token-level supervision from existing pairwise data.
-confidence: high
 why_it_matters: It turns response-level preferences into an explicit token mask that determines which supervision signals
   reach the target policy.
 curation_level: L4_carded

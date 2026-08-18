@@ -93,10 +93,6 @@ status: verified
 one_line_summary: MMC packages more than 409K chart QA records and 250K alignment examples from scientific and non-scientific
   charts.
 why_it_matters: combining scientific-chart mining with a large unified chart instruction and alignment mixture
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: training a general chart assistant across scientific and everyday visualizations
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

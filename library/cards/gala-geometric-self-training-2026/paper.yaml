@@ -94,11 +94,6 @@ tags:
 status: verified
 one_line_summary: GALA selects geometrically representative problems, prospectively generates diverse verified traces, and
   validates mini-batches before self-training.
-reading_priority: useful
-paper_type: Self-training data selection and trajectory prospecting study
-best_for: Readers designing data-efficient verified-trace self-training pipelines that need to reduce redundant synthetic
-  reasoning.
-confidence: high
 why_it_matters: It combines subset selection, trajectory construction, and mini-batch validation into the training-data consumer
   rather than treating them as separate offline filters.
 curation_level: L4_carded

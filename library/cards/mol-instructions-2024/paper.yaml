@@ -92,10 +92,6 @@ status: verified
 one_line_summary: Mol-Instructions unifies more than two million molecule, protein, and biomedical-text targets under one
   instruction schema.
 why_it_matters: a shared instruction interface across symbolic biomolecular objects and natural language
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: training one model to answer molecule, protein, and biomedical text instructions
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

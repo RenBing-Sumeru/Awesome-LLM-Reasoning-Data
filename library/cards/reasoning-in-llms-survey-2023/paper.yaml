@@ -89,10 +89,6 @@ status: verified
 one_line_summary: This survey separates supervised reasoning, inference-time elicitation, self-improvement, evaluation, and
   interpretation into distinct claim types.
 why_it_matters: It prevents prompt gains, training effects, benchmark scores, and faithful-reasoning claims from being conflated.
-reading_priority: recommended
-paper_type: LLM reasoning field survey and decision map
-best_for: Researchers screening reasoning papers or separating data, prompting, training, evaluation, and interpretation claims.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

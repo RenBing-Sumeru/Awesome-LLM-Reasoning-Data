@@ -95,10 +95,6 @@ tags:
 status: verified
 one_line_summary: DocOwl 1.5 combines four million structure records with 25K answer-filtered document explanations.
 why_it_matters: linking document structure supervision to rationale-bearing downstream conversations
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: training an OCR-free assistant to answer and explain document questions
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

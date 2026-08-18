@@ -103,10 +103,6 @@ tags:
 status: verified
 one_line_summary: PaCoRe coordinates large parallel trajectory pools through compact messages, allowing multi-million-token
   effective reasoning without exceeding a model’s context window.
-reading_priority: essential
-paper_type: Parallel coordinated test-time scaling and RL study
-best_for: Readers investigating high-budget reasoning beyond sequential context limits.
-confidence: high
 why_it_matters: It makes cross-trajectory synthesis a learned test-time capability and reports scaling curves at explicitly
   stated token budgets.
 curation_level: L4_carded

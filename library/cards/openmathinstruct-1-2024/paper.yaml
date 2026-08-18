@@ -110,10 +110,6 @@ one_line_summary: OpenMathInstruct-1 releases 1.8M verified GSM8K/MATH code-inte
   traces under a commercially permissive license.
 why_it_matters: It demonstrates that prompt design, large sampling budgets, execution, and fair data selection can replace
   a closed teacher for math SFT.
-reading_priority: must read
-paper_type: open mathematical reasoning demonstration dataset and SFT recipe
-best_for: Researchers synthesizing math CoT with open models or auditing answer-verified code-interpreter traces.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

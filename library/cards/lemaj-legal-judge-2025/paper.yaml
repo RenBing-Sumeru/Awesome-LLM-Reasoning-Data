@@ -79,7 +79,7 @@ audit:
     source: https://aclanthology.org/2025.nllp-1.23.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'Reference-free legal judging with explicit claim-level decomposition and expert-alignment evaluation.'
+inclusion_reason: Reference-free legal judging with explicit claim-level decomposition and expert-alignment evaluation.
 related: []
 tags:
 - legal-llm-judge

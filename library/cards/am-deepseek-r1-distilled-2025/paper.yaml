@@ -90,10 +90,6 @@ one_line_summary: AM-Distilled unifies 1.4 million R1 responses and routes math,
   execution, or reward-model review.
 why_it_matters: Large reasoning teachers are useful for distillation, but public students lack a bilingual, cross-domain corpus
   whose verification rule changes with the task type.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: reasoning SFT and distillation
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

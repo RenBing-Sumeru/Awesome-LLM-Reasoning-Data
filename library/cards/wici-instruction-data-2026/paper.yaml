@@ -74,10 +74,6 @@ tags:
 status: verified
 one_line_summary: wICI ranks instruction data by how much a candidate demonstration reduces difficulty for semantically related
   peers.
-reading_priority: essential
-paper_type: Training-data selection or reward-design study
-best_for: Readers studying post-training data consumption and optimization objectives.
-confidence: high
 why_it_matters: It makes the training-data decision inspectable.
 curation_level: L4_carded
 verification:

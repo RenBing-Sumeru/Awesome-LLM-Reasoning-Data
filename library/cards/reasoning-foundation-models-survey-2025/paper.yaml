@@ -115,10 +115,6 @@ tags:
 why_it_matters: It helps readers separate a reasoning claim from the particular prompt, data, model, and score behind that
   claim.
 one_line_summary: A 2025 survey that connects reasoning tasks to the models, data, methods, and benchmarks used to study them.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers who need a broad, structured map before choosing a reasoning-data topic or benchmark.
-confidence: high
 status: verified
 needs:
 - 'unknown: one common protocol for comparing reasoning results across modalities and benchmarks'

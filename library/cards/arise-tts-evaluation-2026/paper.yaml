@@ -84,10 +84,6 @@ tags:
 status: verified
 one_line_summary: ARISE evaluates test-time scaling by rewarding per-sample improvements and penalizing accuracy regressions
   that consume more tokens.
-reading_priority: useful
-paper_type: Test-time scaling evaluation-metric study
-best_for: Readers comparing reasoning models’ quality-cost scaling behavior.
-confidence: high
 why_it_matters: It prevents a model from appearing efficient when it spends extra tokens to turn correct answers into errors.
 curation_level: L4_carded
 verification:

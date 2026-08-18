@@ -93,10 +93,6 @@ tags:
 status: verified
 one_line_summary: LongAlign-10k packages long documents, instructions, and answers with length-aware training metadata.
 why_it_matters: treating context-length distribution and batch grouping as auditable properties of an instruction dataset
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: aligning an extended-context base model to follow long-document instructions
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

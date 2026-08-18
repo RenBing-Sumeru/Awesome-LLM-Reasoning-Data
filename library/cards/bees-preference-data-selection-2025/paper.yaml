@@ -95,10 +95,6 @@ tags:
 status: verified
 one_line_summary: BeeS selects DPO pairs with high confidence across external and implicit reward margins, improving alignment
   while training on much less preference data.
-reading_priority: essential
-paper_type: Preference-data selection and direct preference optimization study
-best_for: Readers curating noisy preference pairs for data-efficient alignment training.
-confidence: high
 why_it_matters: It demonstrates that preference-pair selection can improve both alignment quality and training efficiency
   without changing the downstream loss.
 curation_level: L4_carded

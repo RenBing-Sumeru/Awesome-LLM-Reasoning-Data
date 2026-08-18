@@ -81,10 +81,6 @@ tags:
 - survey
 why_it_matters: It makes language coverage a concrete part of reasoning-data and benchmark design rather than an afterthought.
 one_line_summary: A Findings EMNLP 2025 survey of multilingual reasoning methods, training resources, and evaluation benchmarks.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers comparing multilingual reasoning methods, data resources, and benchmark results.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable data coverage and evaluation conditions across languages'

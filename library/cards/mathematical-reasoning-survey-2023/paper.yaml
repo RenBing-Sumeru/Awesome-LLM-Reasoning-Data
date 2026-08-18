@@ -83,10 +83,6 @@ tags:
 - survey
 why_it_matters: It turns a broad area into concrete choices about problem types, data, evaluation, and model methods.
 one_line_summary: An ACL 2023 survey of mathematical-reasoning tasks, datasets, methods, benchmarks, and future directions.
-paper_type: Survey and benchmark overview
-reading_priority: strong
-best_for: Readers who need to map mathematical reasoning problems and proof tasks to data and evaluation choices.
-confidence: high
 status: verified
 needs:
 - 'unknown: directly comparable protocols across mathematical reasoning benchmarks'

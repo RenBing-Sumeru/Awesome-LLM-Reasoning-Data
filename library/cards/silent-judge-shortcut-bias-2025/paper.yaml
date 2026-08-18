@@ -2,7 +2,10 @@ id: silent-judge-shortcut-bias-2025
 title: 'The Silent Judge: Unacknowledged Shortcut Bias in LLM-as-a-Judge'
 year: 2025
 venue: NeurIPS 2025 Reliable ML Workshop
-authors: [Arash Marioriyad, Mohammad Hossein Rohban, Mahdieh Soleymani Baghshah]
+authors:
+- Arash Marioriyad
+- Mohammad Hossein Rohban
+- Mahdieh Soleymani Baghshah
 source_role:
 - audit_failure
 verification_contract:

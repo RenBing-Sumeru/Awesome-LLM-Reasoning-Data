@@ -93,10 +93,6 @@ tags:
 - sft
 status: verified
 one_line_summary: 3DS filters domain SFT records by target-model quality, decomposed moderate difficulty, and diversity.
-reading_priority: essential
-paper_type: Model-centric domain instruction-data selection study
-best_for: Readers adapting a known model to a noisy specialized instruction pool.
-confidence: high
 why_it_matters: It makes target-model knowledge compatibility and learnable difficulty explicit before records are admitted
   to SFT.
 curation_level: L4_carded

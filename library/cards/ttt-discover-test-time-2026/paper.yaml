@@ -93,10 +93,6 @@ tags:
 status: verified
 one_line_summary: TTT-Discover uses problem-specific test-time reinforcement learning to search for one high-reward scientific
   or engineering solution rather than merely sample from a frozen model.
-reading_priority: essential
-paper_type: Test-time reinforcement learning and discovery study
-best_for: Readers studying whether test-time compute can include learning updates, not only sampling or search.
-confidence: high
 why_it_matters: It expands the test-time scaling boundary from inference over frozen parameters to targeted optimization on
   the active problem.
 curation_level: L4_carded

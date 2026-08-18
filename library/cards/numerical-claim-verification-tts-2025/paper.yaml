@@ -80,10 +80,6 @@ tags:
 status: verified
 one_line_summary: VerifierFC uses claim complexity to decide when to sample multiple fact-checking paths and a process verifier
   to select among them.
-reading_priority: useful
-paper_type: Adaptive verifier-guided test-time scaling study
-best_for: Readers allocating reasoning budgets for evidence-grounded, non-mathematical decisions.
-confidence: high
 why_it_matters: It shows that selective expansion can outperform uniform expansion when verification difficulty varies sharply
   by instance.
 curation_level: L4_carded

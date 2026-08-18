@@ -98,11 +98,6 @@ tags:
 status: verified
 one_line_summary: Self-Steering Optimization trains a policy-derived generator to synthesize accurate, near-on-policy preference
   pairs for later preference optimization.
-reading_priority: essential
-paper_type: Automated preference-data generation study
-best_for: Readers designing self-generated preference data who need to control both pair correctness and how probable rejected
-  responses remain under the target policy.
-confidence: high
 why_it_matters: It makes response-distribution control part of the preference-record construction stage instead of assuming
   that principle prompting alone yields trainable pairs.
 curation_level: L4_carded

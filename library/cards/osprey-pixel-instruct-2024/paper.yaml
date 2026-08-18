@@ -93,10 +93,6 @@ status: verified
 one_line_summary: Osprey releases 724K conversations whose targets are conditioned on arbitrary pixel masks rather than coarse
   boxes.
 why_it_matters: making arbitrary masks first-class fields in instruction-response records
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: training an assistant to reason about an exact segmented object or part
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

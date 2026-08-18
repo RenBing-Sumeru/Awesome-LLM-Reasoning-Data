@@ -1,28 +1,121 @@
 id: general-agentbench-test-time-scaling-2026
-title: 'Benchmark Test-Time Scaling of General LLM Agents'
+title: Benchmark Test-Time Scaling of General LLM Agents
 year: 2026
 venue: arXiv preprint
-authors: [Xiaochuan Li, Ryan Ming, Pranav Setlur, Abhijay Paladugu, Andy Tang, Hao Kang, Shuai Shao, Rong Jin, Chenyan Xiong]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [full_episode]
-domains: [agentic-reasoning, information-seeking, mathematical-reasoning, software-engineering]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2602.18998, arxiv: https://arxiv.org/abs/2602.18998, venue: null, code: https://github.com/cxcscmu/General-AgentBench, data: null, project: null, huggingface: null, doi: null}
-data_object: {prompt_source: 'Seven existing agent benchmarks covering web search, web navigation, software engineering, terminal work, long-context reasoning, tool use, and mathematical reasoning.', trace_author: 'Ten evaluated frontier and open-weight language models generate interactive trajectories through a unified tool interface.', answer_format: 'Task prompt, tool-call trajectory, observations, final response, task score, sequential-scaling result, parallel-sampling result, pass@k, and self-choice outcome.', process_fields: [task, tool_registry, trajectory, interaction_turns, sampled_trajectories, final_answer, task_reward, pass_at_k, self_choice], environment_or_substrate: 'General AgentBench exposes all benchmark environments through a common Model Context Protocol tool interface.', verifier_or_reward: 'Each underlying benchmark applies its own task-specific execution or answer metric; parallel scaling additionally tests whether the model can select a successful trajectory.', terminal_predicate: "A trajectory is successful when the underlying benchmark's official task metric marks its final outcome as correct or complete."}
-recipe_metadata: {base_model: 'GPT-OSS-120B, Qwen3-235B-A22B, Qwen3-Next, DeepSeek-V3.2, DeepSeek-R1, Gemini 2.5 Flash, Gemini 2.5 Pro, Claude Haiku 4.5, Claude Sonnet 4.5, and GPT-5.', teacher: 'Not applicable; this is an evaluation benchmark rather than a supervised training recipe.', generator: 'Each evaluated LLM agent interacts with the shared tool registry at temperature 0.7.', filtering_rule: 'The study reports benchmark outcomes under fixed sequential-turn and parallel-sample budgets; it does not curate a training set.', sampling_protocol: "Sequential scaling gives an agent extra interaction turns for reflection or exploration; parallel scaling samples K independent trajectories and compares oracle pass@K with the agent's own final choice.", rollout_count: 'Varied K for the reported parallel-scaling curves; consult the official repository and paper configurations for each benchmark-specific budget.', temperature: '0.7.', inference_budget: 'Additional interaction turns for sequential scaling and multiple complete trajectories for parallel scaling.', optimizer_or_scaffold: 'No learned optimizer is proposed; the benchmark diagnoses context-ceiling and verification-gap behavior under common scaling controls.'}
-audit: {source_mixture: 'Official arXiv paper and official General-AgentBench GitHub repository.', split: 'The reported suite samples BrowseComp (124), WebVoyager (65), SWE-Bench Verified (50), Terminal-Bench (80), MathHay (75), Tau2 (50), and MCP-Bench (52) tasks.', decontamination: 'The paper evaluates public benchmarks but does not establish a universal contamination audit for all assessed frontier models.', license: 'Check the repository and each underlying benchmark separately before redistribution or commercial use.', lineage: 'https://arxiv.org/abs/2602.18998', known_failure_modes: [context-ceiling, verifier-selection-error, benchmark-mixture-dependence, tool-interface-mismatch, model-version-drift], citation_status: verified, confidence: high, notes: 'Official arXiv PDF and official GitHub repository checked on 2026-07-20. The paper lists Carnegie Mellon University and Meta affiliations.'}
-inclusion_reason: 'It directly measures whether sequential and parallel inference budgets improve general LLM-agent performance, and identifies the context ceiling and verification gap that limit such scaling.'
+authors:
+- Xiaochuan Li
+- Ryan Ming
+- Pranav Setlur
+- Abhijay Paladugu
+- Andy Tang
+- Hao Kang
+- Shuai Shao
+- Rong Jin
+- Chenyan Xiong
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- agentic-reasoning
+- information-seeking
+- mathematical-reasoning
+- software-engineering
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2602.18998
+  arxiv: https://arxiv.org/abs/2602.18998
+  venue: null
+  code: https://github.com/cxcscmu/General-AgentBench
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: Seven existing agent benchmarks covering web search, web navigation, software engineering, terminal work,
+    long-context reasoning, tool use, and mathematical reasoning.
+  trace_author: Ten evaluated frontier and open-weight language models generate interactive trajectories through a unified
+    tool interface.
+  answer_format: Task prompt, tool-call trajectory, observations, final response, task score, sequential-scaling result, parallel-sampling
+    result, pass@k, and self-choice outcome.
+  process_fields:
+  - task
+  - tool_registry
+  - trajectory
+  - interaction_turns
+  - sampled_trajectories
+  - final_answer
+  - task_reward
+  - pass_at_k
+  - self_choice
+  environment_or_substrate: General AgentBench exposes all benchmark environments through a common Model Context Protocol
+    tool interface.
+  verifier_or_reward: Each underlying benchmark applies its own task-specific execution or answer metric; parallel scaling
+    additionally tests whether the model can select a successful trajectory.
+  terminal_predicate: A trajectory is successful when the underlying benchmark's official task metric marks its final outcome
+    as correct or complete.
+recipe_metadata:
+  base_model: GPT-OSS-120B, Qwen3-235B-A22B, Qwen3-Next, DeepSeek-V3.2, DeepSeek-R1, Gemini 2.5 Flash, Gemini 2.5 Pro, Claude
+    Haiku 4.5, Claude Sonnet 4.5, and GPT-5.
+  teacher: Not applicable; this is an evaluation benchmark rather than a supervised training recipe.
+  generator: Each evaluated LLM agent interacts with the shared tool registry at temperature 0.7.
+  filtering_rule: The study reports benchmark outcomes under fixed sequential-turn and parallel-sample budgets; it does not
+    curate a training set.
+  sampling_protocol: Sequential scaling gives an agent extra interaction turns for reflection or exploration; parallel scaling
+    samples K independent trajectories and compares oracle pass@K with the agent's own final choice.
+  rollout_count: Varied K for the reported parallel-scaling curves; consult the official repository and paper configurations
+    for each benchmark-specific budget.
+  temperature: 0.7.
+  inference_budget: Additional interaction turns for sequential scaling and multiple complete trajectories for parallel scaling.
+  optimizer_or_scaffold: No learned optimizer is proposed; the benchmark diagnoses context-ceiling and verification-gap behavior
+    under common scaling controls.
+audit:
+  source_mixture: Official arXiv paper and official General-AgentBench GitHub repository.
+  split: The reported suite samples BrowseComp (124), WebVoyager (65), SWE-Bench Verified (50), Terminal-Bench (80), MathHay
+    (75), Tau2 (50), and MCP-Bench (52) tasks.
+  decontamination: The paper evaluates public benchmarks but does not establish a universal contamination audit for all assessed
+    frontier models.
+  license: Check the repository and each underlying benchmark separately before redistribution or commercial use.
+  lineage: https://arxiv.org/abs/2602.18998
+  known_failure_modes:
+  - context-ceiling
+  - verifier-selection-error
+  - benchmark-mixture-dependence
+  - tool-interface-mismatch
+  - model-version-drift
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF and official GitHub repository checked on 2026-07-20. The paper lists Carnegie Mellon University
+    and Meta affiliations.
+inclusion_reason: It directly measures whether sequential and parallel inference budgets improve general LLM-agent performance,
+  and identifies the context ceiling and verification gap that limit such scaling.
 related: []
-tags: [test-time-scaling, agents, parallel-sampling, sequential-scaling, verification, benchmark]
+tags:
+- test-time-scaling
+- agents
+- parallel-sampling
+- sequential-scaling
+- verification
+- benchmark
 status: verified
-one_line_summary: 'General AgentBench evaluates sequential and parallel test-time scaling across general LLM agents and finds that extra trajectories help only when context use and trajectory verification remain reliable.'
-reading_priority: recommended
-paper_type: Test-time scaling benchmark and diagnostic study
-best_for: Readers deciding whether to spend additional turns or parallel rollouts on tool-using agents, and researchers designing verifiers for those rollouts.
-confidence: high
-why_it_matters: 'It shows that a larger inference budget alone does not reliably scale general agents: sequential runs hit a context ceiling, while parallel runs expose a verification gap.'
+one_line_summary: General AgentBench evaluates sequential and parallel test-time scaling across general LLM agents and finds
+  that extra trajectories help only when context use and trajectory verification remain reliable.
+why_it_matters: 'It shows that a larger inference budget alone does not reliably scale general agents: sequential runs hit
+  a context ceiling, while parallel runs expose a verification gap.'
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official arXiv paper and official GitHub repository checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and official GitHub repository checked.
+category_ids:
+- scaling_rlvr_test_time_compute

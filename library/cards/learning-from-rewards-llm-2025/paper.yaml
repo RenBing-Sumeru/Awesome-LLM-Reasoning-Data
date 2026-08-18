@@ -89,10 +89,6 @@ why_it_matters: It prevents Track0 readers from collapsing preference data, rewa
   outputs into one undifferentiated “RLHF” label.
 one_line_summary: A 2025 EMNLP Findings survey that maps reward signals from feedback collection through training, inference,
   and post-inference correction.
-paper_type: Reward-model and learning-strategy survey
-reading_priority: strong
-best_for: Readers who need to separate feedback data, reward-model construction, reward-guided decoding, and preference optimization.
-confidence: high
 status: verified
 needs:
 - 'unknown: common license, split, and contamination conventions across the surveyed reward datasets and benchmarks'

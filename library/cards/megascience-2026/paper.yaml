@@ -91,10 +91,6 @@ one_line_summary: MegaScience combines verified textbook references with source-
   to release a 1.25M seven-discipline reasoning mixture.
 why_it_matters: Open post-training corpora emphasize math and code, while scientific questions often lack trustworthy references
   and sufficiently detailed worked solutions.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: science reasoning SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

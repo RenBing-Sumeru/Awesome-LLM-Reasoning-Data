@@ -101,10 +101,6 @@ one_line_summary: DeepMath-103K retains difficult decontaminated questions, stor
   independent R1 reasoning traces for each problem.
 why_it_matters: Many open math corpora contain easy, duplicated, contaminated, or unverifiable problems, obscuring whether
   training gains come from reasoning quality or leakage.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: mathematical reasoning SFT and RL prompt preparation
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

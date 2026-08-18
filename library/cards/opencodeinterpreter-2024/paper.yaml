@@ -117,11 +117,6 @@ one_line_summary: OpenCodeInterpreter releases 68K multi-turn code conversations
   execution feedback, simulated user guidance, and revisions for SFT.
 why_it_matters: It turns normally transient code-execution and feedback loops into an inspectable training object while exposing
   construction branches, scale, models, code, and data.
-reading_priority: must read
-paper_type: execution-feedback code demonstration dataset and SFT recipe
-best_for: Researchers training code models to revise programs from runtime diagnostics or auditing synthetic multi-turn feedback
-  data.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

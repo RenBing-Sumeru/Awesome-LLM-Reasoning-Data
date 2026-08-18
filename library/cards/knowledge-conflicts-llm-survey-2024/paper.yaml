@@ -83,10 +83,6 @@ tags:
 - survey
 why_it_matters: It makes disagreement between a prompt and a model's learned knowledge explicit and comparable.
 one_line_summary: An EMNLP 2024 survey of conflicts between contextual and parametric knowledge in LLMs.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers studying factual robustness, retrieval-augmented systems, and conflicting evidence.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable evaluation protocols across knowledge-conflict settings'

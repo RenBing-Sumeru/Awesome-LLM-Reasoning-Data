@@ -2,7 +2,12 @@ id: systematic-base-model-rm-2025
 title: A Systematic Analysis of Base Model Choice for Reward Modeling
 year: 2025
 venue: EMNLP 2025
-authors: [Kian Ahrabian, Pegah Jandaghi, Negar Mokhberian, Sai Praneeth Karimireddy, Jay Pujara]
+authors:
+- Kian Ahrabian
+- Pegah Jandaghi
+- Negar Mokhberian
+- Sai Praneeth Karimireddy
+- Jay Pujara
 source_role:
 - audit_failure
 verification_contract:
@@ -27,9 +32,8 @@ artifacts:
   huggingface: null
   doi: null
   venue: https://aclanthology.org/2025.emnlp-main.8/
-  acl: https://aclanthology.org/2025.emnlp-main.8/
-  openreview: null
   acl: null
+  openreview: null
   pmlr: null
   cvf: null
   bibtex: null

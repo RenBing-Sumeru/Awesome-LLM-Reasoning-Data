@@ -94,10 +94,6 @@ tags:
 status: verified
 one_line_summary: Ferret's GRIT corpus serializes points, boxes, and free-form regions into about 1.1M grounded conversations.
 why_it_matters: unifying multiple region granularities in one serialized dialogue contract
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: building an interface where a user circles an arbitrary region and asks for an explanation
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

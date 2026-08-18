@@ -104,11 +104,6 @@ tags:
 status: verified
 one_line_summary: DORM learns validation-regularized weights for heterogeneous preference data so reward-model training emphasizes
   informative uncertainty and downweights likely noise.
-reading_priority: essential
-paper_type: Preference-data reweighting study for reward modeling
-best_for: Readers mixing preference sources who need a principled alternative to hard filtering before reward-model or preference-learning
-  training.
-confidence: high
 why_it_matters: It makes data importance a learned training object and carries that decision through reward modeling to downstream
   policy alignment.
 curation_level: L4_carded

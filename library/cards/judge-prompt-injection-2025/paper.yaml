@@ -71,15 +71,18 @@ audit:
   - Curation-level metadata only; inspect the original paper before reusing scores or examples.
   citation_status: verified
   confidence: medium
-  notes: CCS 2024 primary publication and official implementation verified on 2026-07-24. No official downloadable attack dataset was found.
-inclusion_reason: '以可复核的优化攻击、跨位置评测与防御失效率直接审计 LLM 裁判的注入风险。'
+  notes: CCS 2024 primary publication and official implementation verified on 2026-07-24. No official downloadable attack
+    dataset was found.
+inclusion_reason: 以可复核的优化攻击、跨位置评测与防御失效率直接审计 LLM 裁判的注入风险。
 related: []
 tags:
 - audit
 - round3
 status: verified
-one_line_summary: JudgeDeceiver optimizes a prompt-injection suffix that makes an LLM judge select an attacker-controlled response across response positions.
-why_it_matters: It exposes that swap testing and common detection filters do not secure LLM-as-a-Judge from candidate-controlled instructions.
+one_line_summary: JudgeDeceiver optimizes a prompt-injection suffix that makes an LLM judge select an attacker-controlled
+  response across response positions.
+why_it_matters: It exposes that swap testing and common detection filters do not secure LLM-as-a-Judge from candidate-controlled
+  instructions.
 curation_level: L4_chinese_review_ready
 verification:
   link_verified: true

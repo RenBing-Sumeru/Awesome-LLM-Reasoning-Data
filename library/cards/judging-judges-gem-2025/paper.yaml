@@ -74,7 +74,7 @@ audit:
     source: https://aclanthology.org/2025.gem-1.33.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'Audits LLM-judge agreement with humans and exposes leniency, prompt and reference-order failure modes.'
+inclusion_reason: Audits LLM-judge agreement with humans and exposes leniency, prompt and reference-order failure modes.
 related: []
 tags:
 - llm-as-a-judge

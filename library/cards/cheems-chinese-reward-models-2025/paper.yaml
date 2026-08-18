@@ -83,7 +83,7 @@ audit:
     source: https://aclanthology.org/2025.acl-long.737.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'It exposes a concrete reward-model and evaluation-reliability surface with a public official artifact.'
+inclusion_reason: It exposes a concrete reward-model and evaluation-reliability surface with a public official artifact.
 related: []
 tags:
 - audit

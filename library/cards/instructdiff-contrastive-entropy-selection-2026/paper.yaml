@@ -90,10 +90,6 @@ tags:
 status: verified
 one_line_summary: InstructDiff selects SFT records through calibration-induced NLL and entropy changes, retaining the lowest
   contrastive-entropy examples.
-reading_priority: essential
-paper_type: Domain-adaptive supervised fine-tuning data-selection study
-best_for: Readers selecting a model-specific SFT subset from mixed instruction or reasoning pools.
-confidence: high
 why_it_matters: It connects each candidate response to a measurable model-state change before it is admitted to SFT.
 curation_level: L4_carded
 verification:

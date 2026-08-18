@@ -97,11 +97,6 @@ tags:
 status: verified
 one_line_summary: GSR trains one model to generate and then synthesize a better solution from parallel candidates, allowing
   test-time scaling to recover answers even when voting candidates are all wrong.
-reading_priority: essential
-paper_type: Learned parallel test-time scaling and refinement study
-best_for: Readers building multi-sample reasoning systems that need an answer generator rather than only a vote, reward model,
-  or reranker.
-confidence: high
 why_it_matters: It identifies learned refinement as a distinct scaling capability and provides a matched-budget metric showing
   when it adds value beyond majority voting.
 curation_level: L4_carded

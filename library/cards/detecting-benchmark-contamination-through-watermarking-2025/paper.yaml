@@ -69,12 +69,14 @@ audit:
   - 'L2 candidate only: full paper reading is required before interpreting a detector score or reusing the data.'
   citation_status: verified
   confidence: high
-  notes: 'Full-paper review completed on 2026-07-24. The official code repository is available; no separate official data release was confirmed.'
+  notes: Full-paper review completed on 2026-07-24. The official code repository is available; no separate official data release
+    was confirmed.
   author_institution_metadata:
     source: https://arxiv.org/pdf/2502.17259.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'The central contribution provides a proactive audit mechanism for benchmark contamination and evaluation reliability.'
+inclusion_reason: The central contribution provides a proactive audit mechanism for benchmark contamination and evaluation
+  reliability.
 related: []
 tags:
 - audit

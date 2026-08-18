@@ -1,28 +1,103 @@
 id: reprobe-internal-state-tts-2026
-title: "ReProbe: Efficient Test-Time Scaling of Multi-Step Reasoning by Probing Internal States of Large Language Models"
+title: 'ReProbe: Efficient Test-Time Scaling of Multi-Step Reasoning by Probing Internal States of Large Language Models'
 year: 2026
 venue: ACL 2026
-authors: [Jingwei Ni, Ekaterina Fadeeva, Tianyi Wu, Mubashara Akhtar, Jiaheng Zhang, Elliott Ash, Markus Leippold, Timothy Baldwin, See-Kiong Ng, Artem Shelmanov, Mrinmaya Sachan]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level, answer_level]
-domains: [mathematical-reasoning, planning, general-question-answering]
-training_use: [test_time_compute, evaluation]
-construction_layer: [scaling_report]
-artifacts: {paper: https://aclanthology.org/2026.acl-long.536/, arxiv: null, venue: https://aclanthology.org/2026.acl-long.536/, code: https://reprobe.github.io/, data: https://reprobe.github.io/, project: https://reprobe.github.io/, huggingface: null, doi: https://doi.org/10.18653/v1/2026.acl-long.536}
-data_object: {prompt_source: "Mathematics, planning, and general-knowledge reasoning tasks reported in the paper.", trace_author: "Frozen target LLMs sampled during probe training and inference.", answer_format: "Reasoning steps, internal-state features, credibility scores, and selected trajectories.", process_fields: [prompt, reasoning_step, hidden_state, attention, logits, probe_score, trajectory], environment_or_substrate: "Verifier-guided Best-of-N and beam-search inference.", verifier_or_reward: "Learned reasoning probe over the frozen generator’s internal states.", terminal_predicate: "Step correctness and task correctness."}
-recipe_metadata: {base_model: "Qwen3 and Phi-4 variants reported in the paper.", teacher: "DeepSeek-R1 in the external annotation setting; otherwise the target model self-annotates.", generator: "Frozen target LLM generating chain-of-thought trajectories.", filtering_rule: "Probe estimates step credibility and guides candidate selection.", sampling_protocol: "Best-of-N and beam-search test-time scaling; see paper.", rollout_count: null, temperature: null, inference_budget: "Candidate generation plus a sub-10M-parameter step verifier.", optimizer_or_scaffold: "Transformer-based reasoning probe trained with binary cross-entropy."}
-audit: {source_mixture: "Official ACL 2026 paper and paper-linked ReProbe code/data project page.", split: "Mathematics, planning, and general-knowledge evaluations reported in the paper.", decontamination: "Not separately claimed.", license: "Verify project, model, and benchmark terms before reuse.", lineage: "https://aclanthology.org/2026.acl-long.536/", known_failure_modes: [internal_signal_miscalibration, step_segmentation, annotation_transfer], citation_status: verified, confidence: high, notes: "Title, authors, ACL 2026 venue, institutions, code/data page, and primary experimental claims checked on 2026-07-20."}
-inclusion_reason: "It replaces a large external process reward model with a lightweight verifier that changes step-level inference-time search and selection."
+authors:
+- Jingwei Ni
+- Ekaterina Fadeeva
+- Tianyi Wu
+- Mubashara Akhtar
+- Jiaheng Zhang
+- Elliott Ash
+- Markus Leippold
+- Timothy Baldwin
+- See-Kiong Ng
+- Artem Shelmanov
+- Mrinmaya Sachan
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical-reasoning
+- planning
+- general-question-answering
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.536/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.536/
+  code: https://reprobe.github.io/
+  data: https://reprobe.github.io/
+  project: https://reprobe.github.io/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.536
+data_object:
+  prompt_source: Mathematics, planning, and general-knowledge reasoning tasks reported in the paper.
+  trace_author: Frozen target LLMs sampled during probe training and inference.
+  answer_format: Reasoning steps, internal-state features, credibility scores, and selected trajectories.
+  process_fields:
+  - prompt
+  - reasoning_step
+  - hidden_state
+  - attention
+  - logits
+  - probe_score
+  - trajectory
+  environment_or_substrate: Verifier-guided Best-of-N and beam-search inference.
+  verifier_or_reward: Learned reasoning probe over the frozen generator’s internal states.
+  terminal_predicate: Step correctness and task correctness.
+recipe_metadata:
+  base_model: Qwen3 and Phi-4 variants reported in the paper.
+  teacher: DeepSeek-R1 in the external annotation setting; otherwise the target model self-annotates.
+  generator: Frozen target LLM generating chain-of-thought trajectories.
+  filtering_rule: Probe estimates step credibility and guides candidate selection.
+  sampling_protocol: Best-of-N and beam-search test-time scaling; see paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Candidate generation plus a sub-10M-parameter step verifier.
+  optimizer_or_scaffold: Transformer-based reasoning probe trained with binary cross-entropy.
+audit:
+  source_mixture: Official ACL 2026 paper and paper-linked ReProbe code/data project page.
+  split: Mathematics, planning, and general-knowledge evaluations reported in the paper.
+  decontamination: Not separately claimed.
+  license: Verify project, model, and benchmark terms before reuse.
+  lineage: https://aclanthology.org/2026.acl-long.536/
+  known_failure_modes:
+  - internal_signal_miscalibration
+  - step_segmentation
+  - annotation_transfer
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, ACL 2026 venue, institutions, code/data page, and primary experimental claims checked on 2026-07-20.
+inclusion_reason: It replaces a large external process reward model with a lightweight verifier that changes step-level inference-time
+  search and selection.
 related: []
-tags: [test-time-compute, process-verifier, internal-states, beam-search, reasoning]
+tags:
+- test-time-compute
+- process-verifier
+- internal-states
+- beam-search
+- reasoning
 status: verified
-one_line_summary: "ReProbe uses a small probe over a frozen LLM’s internal states to verify reasoning steps during test-time scaling."
-reading_priority: essential
-paper_type: Step-level verification and efficient test-time scaling study
-best_for: Readers reducing verifier cost in Best-of-N or beam-search reasoning systems.
-confidence: high
-why_it_matters: "It makes step verification depend on signals already produced by the generator, reducing the cost of allocating inference computation."
+one_line_summary: ReProbe uses a small probe over a frozen LLM’s internal states to verify reasoning steps during test-time
+  scaling.
+why_it_matters: It makes step verification depend on signals already produced by the generator, reducing the cost of allocating
+  inference computation.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official ACL record and paper-linked project page checked."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL record and paper-linked project page checked.
+category_ids:
+- scaling_rlvr_test_time_compute

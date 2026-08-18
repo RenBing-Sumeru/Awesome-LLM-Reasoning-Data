@@ -89,10 +89,6 @@ status: verified
 one_line_summary: Quilt-LLaVA converts localized narration from open pathology videos into 107K image-question-explanation
   records.
 why_it_matters: mining expert temporal narration as localized visual demonstrations
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: training a pathology assistant to explain visible morphology
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

@@ -72,19 +72,21 @@ audit:
   - Curation-level metadata only; inspect the original paper before reusing scores or examples.
   citation_status: verified
   confidence: high
-  notes: Official ACL paper and official repository verified; the repository provides code and benchmark test-set preparation, not a newly released dataset contribution.
+  notes: Official ACL paper and official repository verified; the repository provides code and benchmark test-set preparation,
+    not a newly released dataset contribution.
   author_institution_metadata:
     source: https://aclanthology.org/2025.findings-acl.306.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'Audits failure modes and reliability boundaries of fine-tuned LLM judges.'
+inclusion_reason: Audits failure modes and reliability boundaries of fine-tuned LLM judges.
 related: []
 tags:
 - track13
 - audit
 - round3
 status: verified
-one_line_summary: Audits whether fine-tuned LLM judges generalize beyond their training evaluation format, and finds they often behave as task-specific classifiers.
+one_line_summary: Audits whether fine-tuned LLM judges generalize beyond their training evaluation format, and finds they
+  often behave as task-specific classifiers.
 why_it_matters: It shows why strong in-domain judge scores can conceal failures in transfer, fairness, and prompt adaptability.
 curation_level: L4_chinese_review_ready
 verification:

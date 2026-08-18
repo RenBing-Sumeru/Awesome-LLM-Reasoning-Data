@@ -96,10 +96,6 @@ tags:
 status: verified
 one_line_summary: Full-Step-DPO uses a self-supervised process reward model to score every reasoning step and weight preference
   optimization across the full chain.
-reading_priority: essential
-paper_type: Self-supervised step-wise preference optimization study
-best_for: Readers constructing process-supervised preference signals from reasoning rollouts without GPT-4 or human step labels.
-confidence: high
 why_it_matters: It changes both the construction and training consumer of reasoning preference data by retaining reward information
   from every step.
 curation_level: L4_carded

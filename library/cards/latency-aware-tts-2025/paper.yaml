@@ -84,10 +84,6 @@ tags:
 status: verified
 one_line_summary: Latency-aware TTS allocates parallel branches and speculative decoding capacity to maximize reasoning accuracy
   under a time limit.
-reading_priority: essential
-paper_type: Systems-aware test-time scaling study
-best_for: Readers deploying reasoning models under service-level latency constraints.
-confidence: high
 why_it_matters: It shows that token-optimal inference strategies can be slower than concurrent alternatives at the same accuracy.
 curation_level: L4_carded
 verification:

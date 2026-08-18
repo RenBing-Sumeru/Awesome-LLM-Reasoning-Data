@@ -94,5 +94,3 @@ verification:
   notes: Official primary page and public artifact recorded.
 category_ids:
 - audit_failure_contamination_verifier_attacks
-category:
-- audit_failure_contamination_verifier_attacks

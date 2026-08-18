@@ -87,10 +87,6 @@ one_line_summary: Zipping the Thought varies CoT compression in controlled synth
   and RLVR affect step decomposition and length generalization.
 why_it_matters: It separates trace granularity from data volume and optimization, giving concrete rules for designing compressed
   reasoning supervision.
-reading_priority: recommended
-paper_type: controlled study of compressed reasoning data
-best_for: Researchers choosing CoT granularity and SFT/RLVR data budgets.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

@@ -109,10 +109,6 @@ one_line_summary: MuMath-Code releases 600K tool-integrated math demonstrations 
   answer or pseudo-answer checks to retain traces.
 why_it_matters: It makes the transition from natural-language reasoning data to code-interpreter demonstrations explicit and
   ablates the value of prefix reasoning and debugging traces.
-reading_priority: high
-paper_type: tool-integrated mathematical reasoning dataset and two-stage SFT recipe
-best_for: Researchers training math models to interleave natural-language reasoning, Python execution, and error correction.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

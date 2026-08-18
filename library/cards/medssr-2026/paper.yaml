@@ -89,10 +89,6 @@ one_line_summary: MedSSR controls question synthesis with rare-disease knowledge
   combines self-supervised with human-anchored reinforcement learning.
 why_it_matters: Medical reasoning data is expensive to distill and underrepresents rare diseases, so larger generic trace
   sets do not reliably improve the long tail.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: medical reasoning SFT and semi-supervised RL
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

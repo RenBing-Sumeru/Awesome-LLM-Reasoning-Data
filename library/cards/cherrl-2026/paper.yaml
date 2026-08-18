@@ -76,7 +76,8 @@ audit:
     source: https://arxiv.org/pdf/2606.04923.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'The central contribution provides a controlled audit environment for judge bias, reward hacking, and evaluation reliability.'
+inclusion_reason: The central contribution provides a controlled audit environment for judge bias, reward hacking, and evaluation
+  reliability.
 related: []
 tags:
 - audit

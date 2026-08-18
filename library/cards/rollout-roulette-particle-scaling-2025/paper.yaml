@@ -1,28 +1,97 @@
 id: rollout-roulette-particle-scaling-2025
-title: "Rollout Roulette: A Probabilistic Inference Approach to Inference-Time Scaling of LLMs using Particle-Based Monte Carlo Methods"
+title: 'Rollout Roulette: A Probabilistic Inference Approach to Inference-Time Scaling of LLMs using Particle-Based Monte
+  Carlo Methods'
 year: 2025
 venue: NeurIPS 2025
-authors: [Isha Puri, Shivchander Sudalairaj, Guangxuan Xu, Kai Xu, Akash Srivastava]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level, full_episode]
-domains: [mathematical-reasoning, general-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://papers.nips.cc/paper_files/paper/2025/hash/e55c675d3230dbc3bf24c986d6685632-Abstract-Conference.html, arxiv: https://arxiv.org/abs/2502.01618, venue: https://papers.nips.cc/paper_files/paper/2025/hash/e55c675d3230dbc3bf24c986d6685632-Abstract-Conference.html, code: https://github.com/Red-Hat-AI-Innovation-Team/its_hub, data: null, project: https://probabilistic-inference-scaling.github.io/, huggingface: null, doi: https://doi.org/10.48550/arXiv.2502.01618}
-data_object: {prompt_source: "MATH500, AIME 2024, NumGLUE Chemistry, and FinanceBench evaluations.", trace_author: "Policy language models expanded as weighted particle trajectories.", answer_format: "Partial trajectories, PRM scores, particle weights, resampling choices, final outputs, and selected answers.", process_fields: [prompt, partial_trajectory, prm_score, particle_weight, resampling_decision, final_answer], environment_or_substrate: "Particle-filtering inference pipeline with parallel generation and reward scoring.", verifier_or_reward: "Process reward model during expansion and outcome reward model for final comparison.", terminal_predicate: "Benchmark correctness under a constrained generation budget."}
-recipe_metadata: {base_model: "Qwen and Llama small language models, including Qwen2.5-Math models.", teacher: null, generator: "Policy language model expanded at inference time.", filtering_rule: "Stochastically resample weighted particles instead of deterministically pruning by early PRM score.", sampling_protocol: "Generate, score partial trajectories, update weights, resample particles, then select a final answer.", rollout_count: "Reported budgets include 4 and 32 rollouts; see paper for full setup.", temperature: "Ablated in the paper.", inference_budget: "Particle count, rollout count, parallel workers, and iterative expansion budget.", optimizer_or_scaffold: "Particle filtering, Particle Gibbs, and parallel tempering extensions."}
-audit: {source_mixture: "Official NeurIPS proceedings, arXiv HTML paper, and project site.", split: "See primary paper for protocols.", decontamination: "Not separately claimed.", license: "Check repository and benchmark terms before reuse.", lineage: "https://probabilistic-inference-scaling.github.io/", known_failure_modes: [miscalibrated_prm, particle_degeneracy, premature_resampling, reward_hacking], citation_status: verified, confidence: high, notes: "NeurIPS status, MIT CSAIL and Red Hat AI Innovation affiliations, paper, and project link checked on 2026-07-20."}
-inclusion_reason: "It changes how inference-time rollouts are retained and resampled to use computation without deterministic early pruning."
+authors:
+- Isha Puri
+- Shivchander Sudalairaj
+- Guangxuan Xu
+- Kai Xu
+- Akash Srivastava
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+- general-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/hash/e55c675d3230dbc3bf24c986d6685632-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2502.01618
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/e55c675d3230dbc3bf24c986d6685632-Abstract-Conference.html
+  code: https://github.com/Red-Hat-AI-Innovation-Team/its_hub
+  data: null
+  project: https://probabilistic-inference-scaling.github.io/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.01618
+data_object:
+  prompt_source: MATH500, AIME 2024, NumGLUE Chemistry, and FinanceBench evaluations.
+  trace_author: Policy language models expanded as weighted particle trajectories.
+  answer_format: Partial trajectories, PRM scores, particle weights, resampling choices, final outputs, and selected answers.
+  process_fields:
+  - prompt
+  - partial_trajectory
+  - prm_score
+  - particle_weight
+  - resampling_decision
+  - final_answer
+  environment_or_substrate: Particle-filtering inference pipeline with parallel generation and reward scoring.
+  verifier_or_reward: Process reward model during expansion and outcome reward model for final comparison.
+  terminal_predicate: Benchmark correctness under a constrained generation budget.
+recipe_metadata:
+  base_model: Qwen and Llama small language models, including Qwen2.5-Math models.
+  teacher: null
+  generator: Policy language model expanded at inference time.
+  filtering_rule: Stochastically resample weighted particles instead of deterministically pruning by early PRM score.
+  sampling_protocol: Generate, score partial trajectories, update weights, resample particles, then select a final answer.
+  rollout_count: Reported budgets include 4 and 32 rollouts; see paper for full setup.
+  temperature: Ablated in the paper.
+  inference_budget: Particle count, rollout count, parallel workers, and iterative expansion budget.
+  optimizer_or_scaffold: Particle filtering, Particle Gibbs, and parallel tempering extensions.
+audit:
+  source_mixture: Official NeurIPS proceedings, arXiv HTML paper, and project site.
+  split: See primary paper for protocols.
+  decontamination: Not separately claimed.
+  license: Check repository and benchmark terms before reuse.
+  lineage: https://probabilistic-inference-scaling.github.io/
+  known_failure_modes:
+  - miscalibrated_prm
+  - particle_degeneracy
+  - premature_resampling
+  - reward_hacking
+  citation_status: verified
+  confidence: high
+  notes: NeurIPS status, MIT CSAIL and Red Hat AI Innovation affiliations, paper, and project link checked on 2026-07-20.
+inclusion_reason: It changes how inference-time rollouts are retained and resampled to use computation without deterministic
+  early pruning.
 related: []
-tags: [test-time-compute, particle-filtering, prm, search, rollout-allocation]
+tags:
+- test-time-compute
+- particle-filtering
+- prm
+- search
+- rollout-allocation
 status: verified
-one_line_summary: "Rollout Roulette uses particle filtering to preserve diverse reasoning trajectories under process-reward uncertainty."
-reading_priority: essential
-paper_type: Probabilistic inference-time scaling and search study
-best_for: Readers designing robust multi-rollout reasoning under imperfect process reward models.
-confidence: high
-why_it_matters: "It turns reward-guided reasoning search into uncertainty-aware trajectory allocation rather than greedy pruning."
+one_line_summary: Rollout Roulette uses particle filtering to preserve diverse reasoning trajectories under process-reward
+  uncertainty.
+why_it_matters: It turns reward-guided reasoning search into uncertainty-aware trajectory allocation rather than greedy pruning.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official proceedings, arXiv paper, and project page checked."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings, arXiv paper, and project page checked.
+category_ids:
+- scaling_rlvr_test_time_compute

@@ -106,11 +106,6 @@ why_it_matters: It explains why a reasoning trace becomes process supervision on
   feedback contract.
 one_line_summary: A 2026 ACL survey that traces process reward models from labeled reasoning data through construction to
   search and reinforcement-learning use.
-paper_type: Process reward model survey
-reading_priority: essential
-best_for: Readers who need to distinguish raw reasoning traces, step labels, process reward models, search selectors, and
-  outcome rewards.
-confidence: high
 status: verified
 needs:
 - 'unknown: a common license, split policy, and contamination protocol for the surveyed process-supervision releases'

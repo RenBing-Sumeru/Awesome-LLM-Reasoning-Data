@@ -84,10 +84,6 @@ tags:
 status: verified
 one_line_summary: TTA* uses a training-free A*-style search over partial solutions so a small model can spend test-time compute
   on the most promising self-refined branches.
-reading_priority: useful
-paper_type: Training-free A* test-time scaling study
-best_for: Readers designing resource-constrained reasoning search without a separate process reward model.
-confidence: medium
 why_it_matters: It makes the search-tree priority and self-reflection heuristic explicit, exposing a different allocation
   mechanism from repeated full-solution sampling.
 curation_level: L4_carded

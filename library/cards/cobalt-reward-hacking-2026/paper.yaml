@@ -72,7 +72,8 @@ audit:
   confidence: high
   notes: 'Official paper/project and public artifact URL checked on 2026-07-18. Focus: perturbed trajectory data for in-context
     reward-hacking analysis.'
-inclusion_reason: 'The paper measures in-context reward hacking from erroneous execution feedback and evaluates trajectory perturbation as a mitigation.'
+inclusion_reason: The paper measures in-context reward hacking from erroneous execution feedback and evaluates trajectory
+  perturbation as a mitigation.
 related: []
 tags:
 - audit

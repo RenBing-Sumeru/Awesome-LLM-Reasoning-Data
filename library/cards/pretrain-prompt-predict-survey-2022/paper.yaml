@@ -86,10 +86,6 @@ tags:
 - survey
 why_it_matters: It makes a prompt a documented transformation from task data to an answer space, not a casual string.
 one_line_summary: A high-impact systematic survey of the prompt designs that later reasoning prompting builds on.
-paper_type: Systematic survey
-reading_priority: strong
-best_for: Readers designing prompt-derived reasoning data or comparing prompting studies.
-confidence: high
 status: verified
 needs:
 - 'unknown: stable conclusions across prompt templates, demonstrations, models, and answer mappings'

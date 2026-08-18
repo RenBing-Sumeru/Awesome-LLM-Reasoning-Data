@@ -95,10 +95,6 @@ status: verified
 one_line_summary: Superfiltering releases scored Alpaca-family records and tiny subsets selected by GPT-2 instruction-following
   difficulty.
 why_it_matters: using a weak language model's conditional-loss ratio as a data-utility ranking signal
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: selecting a small instruction subset when scoring and training budgets are limited
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

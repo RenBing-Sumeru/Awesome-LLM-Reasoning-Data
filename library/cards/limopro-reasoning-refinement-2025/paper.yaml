@@ -99,11 +99,6 @@ tags:
 status: verified
 one_line_summary: LIMOPro prunes low-importance functional reasoning steps from training traces, producing models that retain
   or improve accuracy while spending fewer tokens at inference.
-reading_priority: essential
-paper_type: Efficient test-time reasoning data and scaling study
-best_for: Readers optimizing reasoning traces for a better accuracy-latency trade-off without indiscriminately compressing
-  the logical solution path.
-confidence: high
 why_it_matters: It ties data-side step pruning to measurable inference-time scaling behavior and separates essential reasoning
   progress from redundant functional text.
 curation_level: L4_carded

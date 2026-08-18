@@ -88,10 +88,6 @@ tags:
 status: verified
 one_line_summary: SPaCe reduces a reasoning pool by semantic-difficulty clusters and uses a progress-aware bandit to schedule
   RFT samples.
-reading_priority: essential
-paper_type: Self-paced reinforcement-fine-tuning data selection and scheduling study
-best_for: Readers building compact, adaptive curricula for verifiable reasoning reinforcement fine-tuning.
-confidence: high
 why_it_matters: It makes record coverage and changing training exposure jointly explicit in a low-budget RFT policy.
 curation_level: L4_carded
 verification:

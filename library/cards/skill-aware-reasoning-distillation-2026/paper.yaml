@@ -89,10 +89,6 @@ tags:
 status: verified
 one_line_summary: Skill-aware distillation samples teacher traces for the student’s weak skills and adds full skill chains
   to the SFT target.
-reading_priority: essential
-paper_type: Skill-centric reasoning-data selection and distillation study
-best_for: Readers building student-adaptive subsets from a structured reasoning-teacher corpus.
-confidence: high
 why_it_matters: It makes the relationship between a reasoning record, a student weakness profile, and the SFT consumer explicit.
 curation_level: L4_carded
 verification:

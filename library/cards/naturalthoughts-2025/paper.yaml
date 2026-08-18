@@ -100,10 +100,6 @@ one_line_summary: NaturalThoughts selects DeepSeek-R1 traces by scale, difficult
   which demonstrations best transfer general STEM reasoning to smaller students.
 why_it_matters: It separates several reasoning-trace selection variables instead of treating all teacher outputs as equally
   useful.
-reading_priority: recommended
-paper_type: general reasoning trace selection and distillation study
-best_for: Readers selecting teacher traces for general STEM SFT or comparing data scale with curation.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

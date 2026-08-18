@@ -85,10 +85,6 @@ tags:
 status: verified
 one_line_summary: Dynamic Cheatsheet uses self-curated persistent memory so a black-box model can reuse lessons discovered
   during earlier inference episodes.
-reading_priority: essential
-paper_type: Test-time learning with adaptive memory
-best_for: Readers studying how repeated inference effort can compound across tasks without parameter updates.
-confidence: high
 why_it_matters: It expands test-time scaling from repeated attempts on one prompt to accumulated, auditable experience over
   a task stream.
 curation_level: L4_carded

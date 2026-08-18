@@ -98,11 +98,6 @@ tags:
 status: verified
 one_line_summary: EasyRL grows a GRPO training set from a few easy labels by selecting consistent or reflection-resolved pseudo-labels
   from progressively harder problems.
-reading_priority: essential
-paper_type: Progressive pseudo-label selection and RL study
-best_for: Readers who need to turn a small verified seed set and a large difficult unlabeled pool into a staged reasoning-training
-  curriculum.
-confidence: high
 why_it_matters: It makes pseudo-label acceptance and deferral an explicit training-data decision instead of treating every
   unlabeled example as equally ready for RL.
 curation_level: L4_carded

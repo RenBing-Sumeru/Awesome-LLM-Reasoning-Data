@@ -93,10 +93,6 @@ status: verified
 one_line_summary: Zero-shot-CoT uses a generic cue and a second answer-extraction call to elicit test-time rationales without
   demonstrations.
 why_it_matters: It defines a minimal visible-rationale baseline while exposing the gap between answer accuracy and step validity.
-reading_priority: must read
-paper_type: Zero-shot chain-of-thought elicitation
-best_for: Researchers establishing a minimal inference-time rationale baseline without hand-written demonstrations.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

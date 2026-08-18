@@ -101,10 +101,6 @@ one_line_summary: LIMA uses 1,000 curated instruction-response pairs to test whe
   more than data volume to learn an assistant style.
 why_it_matters: It turns the quality-versus-quantity claim into a concrete small-data SFT comparison while keeping the preference-only
   evidence boundary visible.
-reading_priority: must read
-paper_type: practical alignment and data-quality primer
-best_for: Readers designing or auditing small, curated instruction-tuning datasets.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

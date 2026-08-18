@@ -86,10 +86,6 @@ one_line_summary: Infinite Problem Generator expands textbook physics seeds into
   formulas and executed numeric solutions make generation verifiable.
 why_it_matters: It provides an operational recipe and record schema for generating physics data with stronger checks than
   answer-only teacher generation.
-reading_priority: recommended
-paper_type: executable physics-data generator and dataset
-best_for: Researchers constructing programmatically checked physics questions or evaluation sets.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

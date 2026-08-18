@@ -102,11 +102,6 @@ tags:
 status: verified
 one_line_summary: PFPO constructs preference pairs for math and code reasoning by evaluating sampled solutions against frontier-generated
   or self-consistent pseudo test cases.
-reading_priority: essential
-paper_type: Pseudo-feedback preference-data construction and reasoning-optimization study
-best_for: Readers who need scalable preference labels for reasoning tasks with executable or answer-checkable tests but lack
-  expert annotations.
-confidence: high
 why_it_matters: It makes the test case, pass score, and pair-margin rule explicit training objects rather than assuming a
   human preference label already exists.
 curation_level: L4_carded

@@ -79,10 +79,6 @@ tags:
 status: verified
 one_line_summary: TOSS masks unsafe response tokens before SFT using a loss-difference signal from safety and utility reference
   models.
-reading_priority: essential
-paper_type: Token-level data selection for safe supervised fine-tuning
-best_for: Readers studying safety fine-tuning and safety--utility-aware data filtering.
-confidence: high
 why_it_matters: It makes the connection between a data object and its training objective inspectable.
 curation_level: L4_carded
 verification:

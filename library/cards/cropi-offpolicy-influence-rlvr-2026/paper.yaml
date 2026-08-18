@@ -106,11 +106,6 @@ tags:
 status: verified
 one_line_summary: CROPI uses offline trajectories and projected gradient influence to refresh the 10-percent RLVR subset that
   receives each stage of GRPO training.
-reading_priority: essential
-paper_type: Off-policy influence-guided RLVR data-selection study
-best_for: Readers building targeted or compute-limited RLVR systems who need a policy-dependent selection rule without paying
-  for fresh rollouts over the full prompt pool.
-confidence: high
 why_it_matters: It connects a prompt-selection decision to an explicit approximation of its expected contribution to validation
   objectives, then refreshes that decision during training.
 curation_level: L4_carded

@@ -94,11 +94,6 @@ tags:
 status: verified
 one_line_summary: UAPO learns a prompt-conditioned utility anchor so paired and unpaired preference records can be used under
   an uncertainty-aware objective.
-reading_priority: useful
-paper_type: Uncertainty-aware offline preference-optimization study
-best_for: Readers trying to reuse imbalanced or unpaired preference records instead of dropping them to satisfy pairwise DPO
-  requirements.
-confidence: high
 why_it_matters: It treats the availability and uncertainty of preference records as part of the objective rather than assuming
   every usable example already has a clean winner-loser pair.
 curation_level: L4_carded

@@ -74,8 +74,10 @@ tags:
 - audit
 - round3
 status: verified
-one_line_summary: Controlled clean-versus-contaminated models show that SFT and GRPO can resurface leakage after extended pre-training.
-why_it_matters: It makes post-training a necessary stage in contamination audits rather than treating base-model measurements as definitive.
+one_line_summary: Controlled clean-versus-contaminated models show that SFT and GRPO can resurface leakage after extended
+  pre-training.
+why_it_matters: It makes post-training a necessary stage in contamination audits rather than treating base-model measurements
+  as definitive.
 curation_level: L4_chinese_review_ready
 verification:
   link_verified: true

@@ -68,7 +68,7 @@ audit:
   citation_status: verified
   confidence: high
   notes: Studies backdoor threats against LLM evaluators and defenses for compromised judges.
-inclusion_reason: 'Exposes and mitigates data-centric backdoors in LLM evaluator pipelines.'
+inclusion_reason: Exposes and mitigates data-centric backdoors in LLM evaluator pipelines.
 related: []
 tags:
 - track13

@@ -74,12 +74,12 @@ audit:
   - The labels audit StarCoder's disclosed corpus and do not certify leakage status for other or closed models.
   citation_status: verified
   confidence: high
-  notes: 'Full paper and official Hugging Face release reviewed; formal venue was not found during verification.'
+  notes: Full paper and official Hugging Face release reviewed; formal venue was not found during verification.
   author_institution_metadata:
     source: https://arxiv.org/pdf/2502.06215.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'Audits benchmark contamination and supplies manually verified leakage records plus cleaned evaluation data.'
+inclusion_reason: Audits benchmark contamination and supplies manually verified leakage records plus cleaned evaluation data.
 related: []
 tags:
 - benchmark-contamination
@@ -87,7 +87,8 @@ tags:
 - audit
 status: verified
 one_line_summary: Measures and removes verified pre-training leakage across 83 software-engineering benchmarks.
-why_it_matters: It gives concrete evidence that benchmark contamination can inflate LLM evaluation and a release to mitigate it.
+why_it_matters: It gives concrete evidence that benchmark contamination can inflate LLM evaluation and a release to mitigate
+  it.
 curation_level: L4_chinese_review_ready
 verification:
   link_verified: true

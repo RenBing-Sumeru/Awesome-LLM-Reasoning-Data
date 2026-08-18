@@ -95,10 +95,6 @@ one_line_summary: NATURALREASONING scales domain-diverse question generation, at
   responses, and exposes those records for distillation or self-training.
 why_it_matters: Open reasoning supervision is concentrated in math and code, so students see too few difficult questions from
   ordinary scientific and social domains.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: reasoning SFT, knowledge distillation, and filtered self-training
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

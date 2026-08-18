@@ -67,7 +67,8 @@ audit:
   citation_status: verified
   confidence: high
   notes: Official ICLR record, arXiv paper, author affiliation, method, and reported evidence checked on 2026-07-20.
-inclusion_reason: It formalizes how pass@k performance should scale with sampling and submission budgets, making test-time compute allocation auditable.
+inclusion_reason: It formalizes how pass@k performance should scale with sampling and submission budgets, making test-time
+  compute allocation auditable.
 related: []
 tags:
 - test-time-compute
@@ -75,12 +76,10 @@ tags:
 - inference-scaling
 - reward-model
 status: verified
-one_line_summary: Best-of-Majority gives a minimax-optimal, scaling-monotonic way to allocate sampled candidates under a Pass@k inference budget.
-reading_priority: essential
-paper_type: Test-time inference-scaling theory and mathematical-reasoning evaluation
-best_for: Readers designing pass@k evaluation or reward-model-guided inference under finite sampling budgets.
-confidence: high
-why_it_matters: It separates the sampling budget, submission budget, and reward-model error rather than treating more samples as an automatic gain.
+one_line_summary: Best-of-Majority gives a minimax-optimal, scaling-monotonic way to allocate sampled candidates under a Pass@k
+  inference budget.
+why_it_matters: It separates the sampling budget, submission budget, and reward-model error rather than treating more samples
+  as an automatic gain.
 curation_level: L4_carded
 verification:
   link_verified: true
@@ -88,6 +87,7 @@ verification:
   verified_at: '2026-07-20'
   verified_by: curation
   confidence: high
-  notes: Official ICLR poster record and primary arXiv paper checked; no official code or standalone data release was declared in the checked sources.
+  notes: Official ICLR poster record and primary arXiv paper checked; no official code or standalone data release was declared
+    in the checked sources.
 category_ids:
 - scaling_rlvr_test_time_compute

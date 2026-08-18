@@ -114,10 +114,6 @@ one_line_summary: R1-Onevision formalizes images for a language reasoner, filter
   more than 155K demonstrations for visual reasoning SFT.
 why_it_matters: It exposes a concrete image-to-description-to-reasoning record rather than treating multimodal reasoning supervision
   as an opaque final answer.
-reading_priority: recommended
-paper_type: multimodal reasoning data construction and post-training
-best_for: Researchers building visual CoT corpora or auditing whether textual reasoning remains grounded in images.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

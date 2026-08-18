@@ -2,27 +2,101 @@ id: pat-planning-after-trial-2026
 title: 'PaT: Planning-after-Trial for Efficient Test-Time Code Generation'
 year: 2026
 venue: ACL 2026 Long Papers
-authors: [Youngsik Yoon, Sungjae Lee, Seockbean Song, Siwei Wang, Wei Chen, Jungseul Ok]
-source_role: [scaling_study]
-verification_contract: [programmatic]
-supervision_granularity: [answer_level, full_episode]
-domains: [code-generation]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: 'https://aclanthology.org/2026.acl-long.1703/', arxiv: null, venue: 'https://aclanthology.org/2026.acl-long.1703/', code: null, data: null, project: null, huggingface: null, doi: 'https://doi.org/10.18653/v1/2026.acl-long.1703'}
-data_object: {prompt_source: 'HumanEval, HumanEval+, MBPP, MBPP+, and xCodeEval.', trace_author: 'Generator and planner language models produce direct programs, decomposition plans, helper functions, and composed programs.', answer_format: 'Specification, candidate program, sandbox test outcomes, optional plan, subproblem specifications, verified helpers, and final program.', process_fields: [specification, candidate_program, test_result, planning_trigger, plan, subproblem, helper_function, composed_program], environment_or_substrate: 'Sandboxed Python execution over generated unit tests.', verifier_or_reward: 'Program execution on test cases triggers planning only when all direct candidates fail.', terminal_predicate: 'Return immediately on a fully passing direct program or after verified recursive decomposition and composition.'}
-recipe_metadata: {base_model: 'Qwen3 4B/8B/14B/32B, Llama-3.1-8B-Instruct, and DeepSeek-Coder-V2-Lite-Instruct.', teacher: null, generator: 'Cost-efficient generator with optional stronger planner in heterogeneous configuration.', filtering_rule: 'Invoke the planner only if all Best-of-N direct candidates fail verification.', sampling_protocol: 'Best-of-N direct trial first; recursively solve planned subproblems only after failure.', rollout_count: 'Five direct candidates in the reported Best-of-N comparison.', temperature: 'See official paper implementation details.', inference_budget: 'Generator, planner, helper-generation, and test-execution cost.', optimizer_or_scaffold: 'Training-free Planning-after-Trial policy.'}
-audit: {source_mixture: 'Official ACL PDF.', split: 'HumanEval, MBPP, EvalPlus variants, and xCodeEval categories.', decontamination: 'No separate contamination audit is claimed.', license: 'Verify model, benchmark, generated-test, and execution-environment terms before reuse.', lineage: 'https://aclanthology.org/2026.acl-long.1703/', known_failure_modes: [weak-test-suite, planning-trigger-error, recursive-cost-growth, sandbox-mismatch], citation_status: verified, confidence: high, notes: 'Official ACL PDF checked on 2026-07-21. It lists POSTECH and Microsoft Research Asia. The checked paper provides detailed implementation but no official code or data repository URL.'}
-inclusion_reason: 'It uses programmatic verification failure to allocate expensive planning and recursive code-generation computation only where direct sampling is insufficient.'
+authors:
+- Youngsik Yoon
+- Sungjae Lee
+- Seockbean Song
+- Siwei Wang
+- Wei Chen
+- Jungseul Ok
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- code-generation
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1703/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.1703/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1703
+data_object:
+  prompt_source: HumanEval, HumanEval+, MBPP, MBPP+, and xCodeEval.
+  trace_author: Generator and planner language models produce direct programs, decomposition plans, helper functions, and
+    composed programs.
+  answer_format: Specification, candidate program, sandbox test outcomes, optional plan, subproblem specifications, verified
+    helpers, and final program.
+  process_fields:
+  - specification
+  - candidate_program
+  - test_result
+  - planning_trigger
+  - plan
+  - subproblem
+  - helper_function
+  - composed_program
+  environment_or_substrate: Sandboxed Python execution over generated unit tests.
+  verifier_or_reward: Program execution on test cases triggers planning only when all direct candidates fail.
+  terminal_predicate: Return immediately on a fully passing direct program or after verified recursive decomposition and composition.
+recipe_metadata:
+  base_model: Qwen3 4B/8B/14B/32B, Llama-3.1-8B-Instruct, and DeepSeek-Coder-V2-Lite-Instruct.
+  teacher: null
+  generator: Cost-efficient generator with optional stronger planner in heterogeneous configuration.
+  filtering_rule: Invoke the planner only if all Best-of-N direct candidates fail verification.
+  sampling_protocol: Best-of-N direct trial first; recursively solve planned subproblems only after failure.
+  rollout_count: Five direct candidates in the reported Best-of-N comparison.
+  temperature: See official paper implementation details.
+  inference_budget: Generator, planner, helper-generation, and test-execution cost.
+  optimizer_or_scaffold: Training-free Planning-after-Trial policy.
+audit:
+  source_mixture: Official ACL PDF.
+  split: HumanEval, MBPP, EvalPlus variants, and xCodeEval categories.
+  decontamination: No separate contamination audit is claimed.
+  license: Verify model, benchmark, generated-test, and execution-environment terms before reuse.
+  lineage: https://aclanthology.org/2026.acl-long.1703/
+  known_failure_modes:
+  - weak-test-suite
+  - planning-trigger-error
+  - recursive-cost-growth
+  - sandbox-mismatch
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF checked on 2026-07-21. It lists POSTECH and Microsoft Research Asia. The checked paper provides
+    detailed implementation but no official code or data repository URL.
+inclusion_reason: It uses programmatic verification failure to allocate expensive planning and recursive code-generation computation
+  only where direct sampling is insufficient.
 related: []
-tags: [test-time-compute, code-generation, planning, verification, adaptive-inference]
+tags:
+- test-time-compute
+- code-generation
+- planning
+- verification
+- adaptive-inference
 status: verified
-one_line_summary: 'PaT tries inexpensive direct code generation first and invokes a planner only after all verified trials fail, improving the code-generation cost-performance frontier.'
-reading_priority: useful
-paper_type: Verification-triggered adaptive test-time code-generation study
-best_for: Readers designing code agents with sandbox feedback and heterogeneous model costs.
-confidence: high
-why_it_matters: 'It uses an executable failure signal, rather than a learned difficulty score, to decide when an expensive reasoning module is worth calling.'
+one_line_summary: PaT tries inexpensive direct code generation first and invokes a planner only after all verified trials
+  fail, improving the code-generation cost-performance frontier.
+why_it_matters: It uses an executable failure signal, rather than a learned difficulty score, to decide when an expensive
+  reasoning module is worth calling.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official ACL paper verified; no official code/data repository link appears in the checked PDF.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper verified; no official code/data repository link appears in the checked PDF.
+category_ids:
+- scaling_rlvr_test_time_compute

@@ -93,10 +93,6 @@ tags:
 - survey
 why_it_matters: It prevents data, training, inference, and agent design from being compared as if they were the same intervention.
 one_line_summary: A TMLR survey that maps reasoning by when it is achieved and which system components perform it.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers choosing between trace data, training, test-time scaling, tools, and multi-agent designs.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable evaluation across standalone and agentic reasoning systems'

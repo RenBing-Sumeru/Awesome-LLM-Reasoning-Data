@@ -93,10 +93,6 @@ one_line_summary: General-Reasoner crawls broad questions, normalizes answer typ
   to retain questions with scoreable answers.
 why_it_matters: Rule-based answer checkers work for math but reject equivalent free-form answers in science and professional
   domains, blocking broad RL data collection.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: multi-domain reasoning RL
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

@@ -117,10 +117,6 @@ tags:
 status: verified
 one_line_summary: Aya publishes 204,114 human-authored instruction-response pairs across 65 languages with task provenance.
 why_it_matters: community-scale native multilingual instruction authorship with explicit task and language provenance
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: adding human-authored multilingual supervision to an English-heavy SFT mixture
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

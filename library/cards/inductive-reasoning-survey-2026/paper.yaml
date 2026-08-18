@@ -98,10 +98,6 @@ tags:
 why_it_matters: It distinguishes learning a general rule from merely producing a plausible answer on a familiar pattern.
 one_line_summary: An ACL 2026 survey that organizes inductive reasoning methods by post-training, exploration, data augmentation,
   and evaluation.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers comparing how data, post-training, and inference-time exploration affect generalization from examples.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable disclosure of data sources, inference budgets, and benchmark construction across the surveyed papers'

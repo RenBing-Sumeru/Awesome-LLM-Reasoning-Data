@@ -91,10 +91,6 @@ tags:
 why_it_matters: It gives readers a compact way to reason about where iterative reasoning systems obtain data, quality signals,
   and real improvements.
 one_line_summary: An ACL survey of growing reasoning ability by jointly improving training data and models.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers designing synthetic reasoning data pipelines or studying iterative model improvement.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable reporting for data quality, training cost, and improvement across iteration rounds'

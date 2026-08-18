@@ -97,11 +97,6 @@ why_it_matters: It gives Track0 readers a vocabulary for separating a better dat
   or training budget.
 one_line_summary: A 2025 ACL survey that treats data selection, quality, synthesis, compression, and self-evolution as distinct
   levers in efficient post-training.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers who need a data-centric route from general post-training into construction, quality, distillation, and audit
-  tracks.
-confidence: high
 status: verified
 needs:
 - 'unknown: per-paper licenses, splits, and contamination evidence for the surveyed primary releases'

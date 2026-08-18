@@ -109,11 +109,6 @@ tags:
 status: verified
 one_line_summary: VRPO makes the value model a noise-regulating part of RL training so uncertain rewards produce more reliable
   advantage signals.
-reading_priority: useful
-paper_type: Robust reinforcement-learning objective and value-modeling study
-best_for: Readers training LLMs with noisy rule-based or learned rewards who need to diagnose reward-hacking and unstable
-  advantage estimates.
-confidence: high
 why_it_matters: It treats value estimation as the place where noisy training feedback can be filtered before it becomes a
   policy update.
 curation_level: L4_carded

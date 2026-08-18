@@ -1,28 +1,91 @@
 id: tts-reasoning-machine-translation-2026
-title: "Test-Time Scaling of Reasoning Models for Machine Translation"
+title: Test-Time Scaling of Reasoning Models for Machine Translation
 year: 2026
 venue: EACL 2026
-authors: [Zihao Li, Shaoxiong Ji, Jörg Tiedemann]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [full_episode, answer_level]
-domains: [machine-translation]
-training_use: [test_time_compute, evaluation]
-construction_layer: [scaling_report]
-artifacts: {paper: https://aclanthology.org/2026.eacl-long.133/, arxiv: null, venue: https://aclanthology.org/2026.eacl-long.133/, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2026.eacl-long.133}
-data_object: {prompt_source: "Eight machine-translation benchmarks across literary, biomedical, cultural, terminology, and retrieval settings.", trace_author: "Twelve evaluated reasoning models.", answer_format: "Translation drafts, reasoning traces, post-edited translations, and quality scores.", process_fields: [source_text, reasoning_budget, thinking_tokens, draft_translation, post_edit, quality_score], environment_or_substrate: "Budget-controlled translation and self-correction.", verifier_or_reward: "Reference-based and reference-free metrics plus an LLM judge for literary texts.", terminal_predicate: "Translation quality under reported metrics."}
-recipe_metadata: {base_model: "Qwen-3, Cogito, DRT, and Grok-3-Mini models reported in the paper.", teacher: null, generator: "Reasoning-model translation with controlled thinking budget.", filtering_rule: "Natural stopping, forced wait extrapolation, or post-editing protocol.", sampling_protocol: "Reasoning-budget experiments; see paper.", rollout_count: null, temperature: null, inference_budget: "Thinking tokens and optional second-stage post-editing.", optimizer_or_scaffold: "Budget forcing and post-editing evaluation protocol."}
-audit: {source_mixture: "Official EACL 2026 paper and ACL Anthology record.", split: "Eight benchmarks reported in the paper.", decontamination: "Not separately claimed.", license: "Verify benchmark and model terms before reuse.", lineage: "https://aclanthology.org/2026.eacl-long.133/", known_failure_modes: [forced_overthinking, domain_shift, metric_dependence], citation_status: verified, confidence: high, notes: "Title, authors, venue, DOI, affiliations, benchmark scope, and findings checked against the official ACL PDF on 2026-07-20."}
-inclusion_reason: "It measures when additional inference-time reasoning budget helps, plateaus, or harms a concrete task and compares direct generation with self-correcting post-editing."
+authors:
+- Zihao Li
+- Shaoxiong Ji
+- Jörg Tiedemann
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- machine-translation
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.eacl-long.133/
+  arxiv: null
+  venue: https://aclanthology.org/2026.eacl-long.133/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.eacl-long.133
+data_object:
+  prompt_source: Eight machine-translation benchmarks across literary, biomedical, cultural, terminology, and retrieval settings.
+  trace_author: Twelve evaluated reasoning models.
+  answer_format: Translation drafts, reasoning traces, post-edited translations, and quality scores.
+  process_fields:
+  - source_text
+  - reasoning_budget
+  - thinking_tokens
+  - draft_translation
+  - post_edit
+  - quality_score
+  environment_or_substrate: Budget-controlled translation and self-correction.
+  verifier_or_reward: Reference-based and reference-free metrics plus an LLM judge for literary texts.
+  terminal_predicate: Translation quality under reported metrics.
+recipe_metadata:
+  base_model: Qwen-3, Cogito, DRT, and Grok-3-Mini models reported in the paper.
+  teacher: null
+  generator: Reasoning-model translation with controlled thinking budget.
+  filtering_rule: Natural stopping, forced wait extrapolation, or post-editing protocol.
+  sampling_protocol: Reasoning-budget experiments; see paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Thinking tokens and optional second-stage post-editing.
+  optimizer_or_scaffold: Budget forcing and post-editing evaluation protocol.
+audit:
+  source_mixture: Official EACL 2026 paper and ACL Anthology record.
+  split: Eight benchmarks reported in the paper.
+  decontamination: Not separately claimed.
+  license: Verify benchmark and model terms before reuse.
+  lineage: https://aclanthology.org/2026.eacl-long.133/
+  known_failure_modes:
+  - forced_overthinking
+  - domain_shift
+  - metric_dependence
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, venue, DOI, affiliations, benchmark scope, and findings checked against the official ACL PDF on 2026-07-20.
+inclusion_reason: It measures when additional inference-time reasoning budget helps, plateaus, or harms a concrete task and
+  compares direct generation with self-correcting post-editing.
 related: []
-tags: [test-time-compute, machine-translation, budget-allocation, self-correction, evaluation]
+tags:
+- test-time-compute
+- machine-translation
+- budget-allocation
+- self-correction
+- evaluation
 status: verified
-one_line_summary: "This study shows that test-time reasoning helps translation mainly with task-specialized models and post-editing, not by indiscriminately lengthening thought."
-reading_priority: useful
-paper_type: Cross-domain test-time scaling evaluation study
-best_for: Readers testing whether reasoning budgets transfer beyond mathematics and code.
-confidence: high
-why_it_matters: "It identifies boundary conditions under which more inference computation becomes useful rather than wasteful."
+one_line_summary: This study shows that test-time reasoning helps translation mainly with task-specialized models and post-editing,
+  not by indiscriminately lengthening thought.
+why_it_matters: It identifies boundary conditions under which more inference computation becomes useful rather than wasteful.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official ACL record checked; no official code or dataset link identified on the primary record."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL record checked; no official code or dataset link identified on the primary record.
+category_ids:
+- scaling_rlvr_test_time_compute

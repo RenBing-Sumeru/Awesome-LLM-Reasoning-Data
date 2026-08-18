@@ -68,15 +68,17 @@ audit:
   - Curation-level metadata only; inspect the original paper before reusing scores or examples.
   citation_status: verified
   confidence: medium
-  notes: Official OpenReview page and public code repository verified. The repository uses clean/leaked data directories but does not document a separately downloadable dataset, scale, split, or license.
-inclusion_reason: 'It studies contamination as a reliability failure of reasoning evaluation and offers public analysis code.'
+  notes: Official OpenReview page and public code repository verified. The repository uses clean/leaked data directories but
+    does not document a separately downloadable dataset, scale, split, or license.
+inclusion_reason: It studies contamination as a reliability failure of reasoning evaluation and offers public analysis code.
 related: []
 tags:
 - track13
 - audit
 - round3
 status: verified
-one_line_summary: A mechanistic account links contaminated reasoning to geometric narrowing and tests an intervention that restores base-model consistency.
+one_line_summary: A mechanistic account links contaminated reasoning to geometric narrowing and tests an intervention that
+  restores base-model consistency.
 why_it_matters: It gives a concrete mechanism and intervention for auditing unreliable reasoning on leaked inputs.
 curation_level: L4_chinese_review_ready
 verification:

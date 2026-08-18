@@ -2,27 +2,101 @@ id: thought-calibration-tts-2025
 title: 'Thought calibration: Efficient and confident test-time scaling'
 year: 2025
 venue: EMNLP 2025
-authors: ['Menghua Wu', 'Cai Zhou', 'Stephen Bates', 'Tommi Jaakkola']
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level]
-domains: [mathematical-reasoning, scientific-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://aclanthology.org/2025.emnlp-main.722/, arxiv: null, venue: https://aclanthology.org/2025.emnlp-main.722/, code: https://github.com/rmwu/thought-calibration, data: https://github.com/rmwu/thought-calibration, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2025.emnlp-main.722}
-data_object: {prompt_source: 'Held-out s1K-1.1 items and AIME24, GPQA Diamond, and MATH500 evaluation tasks.', trace_author: 'DeepSeek-R1-distilled Qwen models, QwQ 32B, and calibration probes.', answer_format: 'Growing thought traces, probe scores, early-stop decisions, and final answers.', process_fields: [prompt, thought_prefix, hidden_representation, probe_score, stopping_threshold, token_budget, stop_decision, final_answer, task_outcome], environment_or_substrate: 'Autoregressive reasoning generation with online stopping.', verifier_or_reward: 'Calibration loss and task correctness used for risk-controlled stopping decisions.', terminal_predicate: 'Stop when the calibrated rule judges further reasoning unlikely to add novel useful computation.'}
-recipe_metadata: {base_model: 'DeepSeek-R1-distilled Qwen 32B and Llama 70B variants, plus QwQ 32B.', teacher: null, generator: 'Reasoning language model with lightweight probes over hidden representations.', filtering_rule: 'Learn-then-Test calibration selects stopping thresholds that control early-stop risk.', sampling_protocol: 'Monitor a growing thought sequence online and terminate when thought growth plateaus under the calibrated rule.', rollout_count: 'One continuing reasoning trace per decision.', temperature: null, inference_budget: 'Number of thinking tokens saved through early stopping.', optimizer_or_scaffold: 'Thought calibration using reasoning-tree features, lightweight probes, and Learn-then-Test multiple-hypothesis control.'}
-audit: {source_mixture: 'Official EMNLP 2025 paper and official code-and-data repository.', split: 'The paper trains on held-out s1K-1.1 and evaluates distribution shift on AIME24, GPQA Diamond, and MATH500; see repository for exact splits.', decontamination: 'Not separately claimed in the checked source.', license: 'Verify repository and any inherited benchmark terms before reuse.', lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.722/ ; https://github.com/rmwu/thought-calibration', known_failure_modes: ['Hidden-state access is required for the lightweight probes.', 'Calibration guarantees depend on the stated sampling and calibration assumptions.', 'Out-of-distribution token savings are smaller.', 'Stopping too early can sacrifice task accuracy.'], citation_status: verified, confidence: high, notes: 'Official paper and repository checked on 2026-07-20. First-page affiliation: Massachusetts Institute of Technology.'}
-inclusion_reason: 'It makes the stopping point of a growing thought trace an explicitly calibrated test-time compute allocation decision.'
+authors:
+- Menghua Wu
+- Cai Zhou
+- Stephen Bates
+- Tommi Jaakkola
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- mathematical-reasoning
+- scientific-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.722/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.722/
+  code: https://github.com/rmwu/thought-calibration
+  data: https://github.com/rmwu/thought-calibration
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.722
+data_object:
+  prompt_source: Held-out s1K-1.1 items and AIME24, GPQA Diamond, and MATH500 evaluation tasks.
+  trace_author: DeepSeek-R1-distilled Qwen models, QwQ 32B, and calibration probes.
+  answer_format: Growing thought traces, probe scores, early-stop decisions, and final answers.
+  process_fields:
+  - prompt
+  - thought_prefix
+  - hidden_representation
+  - probe_score
+  - stopping_threshold
+  - token_budget
+  - stop_decision
+  - final_answer
+  - task_outcome
+  environment_or_substrate: Autoregressive reasoning generation with online stopping.
+  verifier_or_reward: Calibration loss and task correctness used for risk-controlled stopping decisions.
+  terminal_predicate: Stop when the calibrated rule judges further reasoning unlikely to add novel useful computation.
+recipe_metadata:
+  base_model: DeepSeek-R1-distilled Qwen 32B and Llama 70B variants, plus QwQ 32B.
+  teacher: null
+  generator: Reasoning language model with lightweight probes over hidden representations.
+  filtering_rule: Learn-then-Test calibration selects stopping thresholds that control early-stop risk.
+  sampling_protocol: Monitor a growing thought sequence online and terminate when thought growth plateaus under the calibrated
+    rule.
+  rollout_count: One continuing reasoning trace per decision.
+  temperature: null
+  inference_budget: Number of thinking tokens saved through early stopping.
+  optimizer_or_scaffold: Thought calibration using reasoning-tree features, lightweight probes, and Learn-then-Test multiple-hypothesis
+    control.
+audit:
+  source_mixture: Official EMNLP 2025 paper and official code-and-data repository.
+  split: The paper trains on held-out s1K-1.1 and evaluates distribution shift on AIME24, GPQA Diamond, and MATH500; see repository
+    for exact splits.
+  decontamination: Not separately claimed in the checked source.
+  license: Verify repository and any inherited benchmark terms before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.722/ ; https://github.com/rmwu/thought-calibration'
+  known_failure_modes:
+  - Hidden-state access is required for the lightweight probes.
+  - Calibration guarantees depend on the stated sampling and calibration assumptions.
+  - Out-of-distribution token savings are smaller.
+  - Stopping too early can sacrifice task accuracy.
+  citation_status: verified
+  confidence: high
+  notes: 'Official paper and repository checked on 2026-07-20. First-page affiliation: Massachusetts Institute of Technology.'
+inclusion_reason: It makes the stopping point of a growing thought trace an explicitly calibrated test-time compute allocation
+  decision.
 related: []
-tags: [test-time-compute, early-stopping, calibration, hidden-states, reasoning-tokens, efficiency]
+tags:
+- test-time-compute
+- early-stopping
+- calibration
+- hidden-states
+- reasoning-tokens
+- efficiency
 status: verified
-one_line_summary: 'Thought calibration uses lightweight hidden-state probes and risk control to stop a reasoning trace once further thought is unlikely to add useful work.'
-reading_priority: essential
-paper_type: Calibrated early-stopping study for test-time reasoning
-best_for: Readers reducing reasoning-token cost while retaining explicit control of early-stop risk.
-confidence: high
-why_it_matters: It treats “when to stop thinking” as a measurable and calibrated test-time budget decision rather than a fixed length heuristic.
+one_line_summary: Thought calibration uses lightweight hidden-state probes and risk control to stop a reasoning trace once
+  further thought is unlikely to add useful work.
+why_it_matters: It treats “when to stop thinking” as a measurable and calibrated test-time budget decision rather than a fixed
+  length heuristic.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official EMNLP record, PDF, author affiliation, code, and paper-stated released data checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP record, PDF, author affiliation, code, and paper-stated released data checked.
+category_ids:
+- scaling_rlvr_test_time_compute

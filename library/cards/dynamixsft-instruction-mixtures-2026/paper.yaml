@@ -88,10 +88,6 @@ tags:
 status: verified
 one_line_summary: DYNAMIX SFT updates source-level instruction-data mixture weights from one-step learning progress while
   preserving coverage with a prior and exploration floor.
-reading_priority: essential
-paper_type: Dynamic instruction-data mixture optimization study
-best_for: Readers designing adaptive source-level sampling for instruction fine-tuning.
-confidence: high
 why_it_matters: It makes the training-time decision over data-source allocation explicit and measurable.
 curation_level: L4_carded
 verification:

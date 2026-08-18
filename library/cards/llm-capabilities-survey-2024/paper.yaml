@@ -94,10 +94,6 @@ tags:
 one_line_summary: An ACL survey linking fundamental LLM capabilities to their roles in domain applications.
 why_it_matters: It gives readers a way to ask which ability is needed for an application instead of treating model strength
   as one number.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers comparing LLM capabilities, domain requirements, and evaluation limits.
-confidence: high
 status: verified
 needs:
 - unknown

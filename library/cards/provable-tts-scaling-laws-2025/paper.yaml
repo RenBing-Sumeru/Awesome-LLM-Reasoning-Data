@@ -1,28 +1,99 @@
 id: provable-tts-scaling-laws-2025
-title: 'Provable Scaling Laws for the Test-Time Compute of Large Language Models'
+title: Provable Scaling Laws for the Test-Time Compute of Large Language Models
 year: 2025
 venue: NeurIPS 2025
-authors: ['Yanxi Chen', 'Xuchen Pan', 'Yaliang Li', 'Bolin Ding', 'Jingren Zhou']
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [answer_level]
-domains: [mathematical-reasoning, general-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2411.19477, arxiv: https://arxiv.org/abs/2411.19477, venue: https://papers.neurips.cc/paper_files/paper/2025/hash/f3f607e4c13bd1cb8885de44b4ec45b7-Abstract-Conference.html, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2411.19477}
-data_object: {prompt_source: 'GPQA, MMLU-Pro, and MATH-500 benchmark prompts.', trace_author: 'Black-box language models sampled independently at inference time.', answer_format: 'Candidate solutions, pairwise comparison outcomes, tournament or league scores, and final selected answer.', process_fields: [prompt, candidate, comparison, vote, tournament_round, win_rate, total_calls, final_answer, correctness], environment_or_substrate: 'Black-box language-model inference.', verifier_or_reward: 'The language model performs pairwise candidate comparisons; no external verifier or reward model is required.', terminal_predicate: 'Benchmark answer correctness.'}
-recipe_metadata: {base_model: 'Llama 3.1, Qwen 2.5, GPT-4o, and QwQ-32B in reported experiments.', teacher: null, generator: 'Independent candidate sampling.', filtering_rule: 'Knockout winner or league average win-rate ranking.', sampling_protocol: 'Generate N candidates, then conduct pairwise LLM comparisons.', rollout_count: 'N candidates, with comparison count determined by tournament or league configuration.', temperature: null, inference_budget: 'Total number of language-model calls for generation and pairwise comparison.', optimizer_or_scaffold: 'Two-stage knockout-style and league-style inference algorithms.'}
-audit: {source_mixture: 'Official NeurIPS 2025 proceedings record, official OpenReview PDF text record, and arXiv record.', split: 'Official benchmark protocols; MMLU-Pro-S is a sampled 100-question-per-category subset in the reported experiments.', decontamination: 'Not separately claimed in the checked source.', license: 'Verify benchmark and API terms before reuse.', lineage: 'Primary sources: https://papers.neurips.cc/paper_files/paper/2025/hash/f3f607e4c13bd1cb8885de44b4ec45b7-Abstract-Conference.html and https://arxiv.org/abs/2411.19477', known_failure_modes: ['Guarantees require nonzero correct-generation probability and better-than-random pairwise comparison.', 'Majority or pairwise comparison quality can fail on correlated or systematically misleading candidates.', 'The call-count budget does not alone specify latency or monetary cost across providers.'], citation_status: verified, confidence: high, notes: 'Official sources checked on 2026-07-20. The official paper affiliation block lists Alibaba Group for all authors.'}
-inclusion_reason: 'It formalizes how candidate generation and self-comparison consume inference calls, with explicit error-scaling guarantees and empirical tests.'
+authors:
+- Yanxi Chen
+- Xuchen Pan
+- Yaliang Li
+- Bolin Ding
+- Jingren Zhou
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+- general-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2411.19477
+  arxiv: https://arxiv.org/abs/2411.19477
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/f3f607e4c13bd1cb8885de44b4ec45b7-Abstract-Conference.html
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2411.19477
+data_object:
+  prompt_source: GPQA, MMLU-Pro, and MATH-500 benchmark prompts.
+  trace_author: Black-box language models sampled independently at inference time.
+  answer_format: Candidate solutions, pairwise comparison outcomes, tournament or league scores, and final selected answer.
+  process_fields:
+  - prompt
+  - candidate
+  - comparison
+  - vote
+  - tournament_round
+  - win_rate
+  - total_calls
+  - final_answer
+  - correctness
+  environment_or_substrate: Black-box language-model inference.
+  verifier_or_reward: The language model performs pairwise candidate comparisons; no external verifier or reward model is
+    required.
+  terminal_predicate: Benchmark answer correctness.
+recipe_metadata:
+  base_model: Llama 3.1, Qwen 2.5, GPT-4o, and QwQ-32B in reported experiments.
+  teacher: null
+  generator: Independent candidate sampling.
+  filtering_rule: Knockout winner or league average win-rate ranking.
+  sampling_protocol: Generate N candidates, then conduct pairwise LLM comparisons.
+  rollout_count: N candidates, with comparison count determined by tournament or league configuration.
+  temperature: null
+  inference_budget: Total number of language-model calls for generation and pairwise comparison.
+  optimizer_or_scaffold: Two-stage knockout-style and league-style inference algorithms.
+audit:
+  source_mixture: Official NeurIPS 2025 proceedings record, official OpenReview PDF text record, and arXiv record.
+  split: Official benchmark protocols; MMLU-Pro-S is a sampled 100-question-per-category subset in the reported experiments.
+  decontamination: Not separately claimed in the checked source.
+  license: Verify benchmark and API terms before reuse.
+  lineage: 'Primary sources: https://papers.neurips.cc/paper_files/paper/2025/hash/f3f607e4c13bd1cb8885de44b4ec45b7-Abstract-Conference.html
+    and https://arxiv.org/abs/2411.19477'
+  known_failure_modes:
+  - Guarantees require nonzero correct-generation probability and better-than-random pairwise comparison.
+  - Majority or pairwise comparison quality can fail on correlated or systematically misleading candidates.
+  - The call-count budget does not alone specify latency or monetary cost across providers.
+  citation_status: verified
+  confidence: high
+  notes: Official sources checked on 2026-07-20. The official paper affiliation block lists Alibaba Group for all authors.
+inclusion_reason: It formalizes how candidate generation and self-comparison consume inference calls, with explicit error-scaling
+  guarantees and empirical tests.
 related: []
-tags: [test-time-compute, scaling-laws, candidate-aggregation, pairwise-comparison, theory]
+tags:
+- test-time-compute
+- scaling-laws
+- candidate-aggregation
+- pairwise-comparison
+- theory
 status: verified
-one_line_summary: 'The paper gives knockout and league aggregation algorithms with provable error decay as black-box LLM inference compute grows.'
-reading_priority: essential
-paper_type: Test-time scaling theory and empirical study
-best_for: Readers designing candidate aggregation without a separate verifier or reward model.
-confidence: high
+one_line_summary: The paper gives knockout and league aggregation algorithms with provable error decay as black-box LLM inference
+  compute grows.
 why_it_matters: It states the assumptions under which more generation and comparison calls can reliably improve a final answer.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official NeurIPS record, OpenReview PDF text record, author list, affiliation, and arXiv record checked; no code or data release was verified.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS record, OpenReview PDF text record, author list, affiliation, and arXiv record checked; no code
+    or data release was verified.
+category_ids:
+- scaling_rlvr_test_time_compute

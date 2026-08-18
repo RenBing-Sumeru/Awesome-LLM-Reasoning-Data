@@ -54,7 +54,8 @@ recipe_metadata:
   base_model: LLaMA-3.1-8B, Qwen2.5-7B-1M, or Qwen2.5-14B-1M Instruct.
   teacher: Qwen3-235B-A22B.
   generator: Qwen3-235B-A22B after clustering document chunks with BGE-M3 embeddings.
-  filtering_rule: Keep the best QA candidate per document only after two-stage rejection sampling and a judge score above 9/10.
+  filtering_rule: Keep the best QA candidate per document only after two-stage rejection sampling and a judge score above
+    9/10.
   sampling_protocol: 46K retained QA pairs; RL uses eight sampled responses per prompt for one epoch.
   rollout_count: 8
   temperature: not disclosed for the released training data generation
@@ -73,7 +74,8 @@ audit:
   citation_status: verified
   confidence: high
   notes: Paper PDF, ICLR status, author affiliations, code, dataset, released models, and main results were checked on 2026-07-15.
-inclusion_reason: It changes the RL training objective by making selected evidence chunks a supervised and reward-bearing part of each long-context record.
+inclusion_reason: It changes the RL training objective by making selected evidence chunks a supervised and reward-bearing
+  part of each long-context record.
 related: []
 tags:
 - long-context
@@ -82,7 +84,8 @@ tags:
 - reward-design
 status: verified
 one_line_summary: LongRLVR trains long-context models with a verifiable reward for evidence selection as well as answer correctness.
-why_it_matters: It makes the intermediate grounding record, rather than only the final answer, an explicit consumer of the RL objective.
+why_it_matters: It makes the intermediate grounding record, rather than only the final answer, an explicit consumer of the
+  RL objective.
 curation_level: L4_carded
 verification:
   link_verified: true

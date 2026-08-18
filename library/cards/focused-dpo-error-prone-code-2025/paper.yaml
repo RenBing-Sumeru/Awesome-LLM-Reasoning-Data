@@ -93,10 +93,6 @@ tags:
 status: verified
 one_line_summary: Focused-DPO identifies error-prone code segments from executable preference pairs and gives those segments
   greater DPO influence.
-reading_priority: essential
-paper_type: Executable preference-data construction and fine-grained optimization study
-best_for: Readers training code models where a few localized choices determine whether a program passes tests.
-confidence: high
 why_it_matters: It turns test-sensitive code differences into an explicit record field and optimization weight instead of
   averaging them with routine syntax.
 curation_level: L4_carded

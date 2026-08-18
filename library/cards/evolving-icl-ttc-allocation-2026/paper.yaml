@@ -1,28 +1,107 @@
 id: evolving-icl-ttc-allocation-2026
-title: 'Adaptive Test-Time Compute Allocation with Evolving In-Context Demonstrations'
+title: Adaptive Test-Time Compute Allocation with Evolving In-Context Demonstrations
 year: 2026
 venue: arXiv preprint
-authors: [Bowen Zuo, Dongruo Zhou, Yinglun Zhu]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [answer_level, full_episode]
-domains: [mathematical-reasoning, software-engineering, general-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2604.21018, arxiv: https://arxiv.org/abs/2604.21018, venue: null, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2604.21018}
-data_object: {prompt_source: 'MATH-500, LiveCodeBench, MinervaMath, GPQA-Diamond, and a 400-problem hard Reasoning Gym evaluation set.', trace_author: 'Gemini-2.5-flash-lite, GPT-4.1 Mini, and GPT-5 Nano responses generated at test time.', answer_format: 'Question-response pairs, verifier outcomes, active-set status, semantic-neighbor demonstrations, and final selected responses.', process_fields: [question, response, verifier_label, active_status, embedding, neighbor_demo, round, token_cost, final_answer], environment_or_substrate: 'Round-based test-set-level adaptive inference loop with evolving in-context prompts.', verifier_or_reward: 'Ground-truth correctness in the main coverage setting; reward-model, noisy-reward, and self-consistency variants are also evaluated.', terminal_predicate: 'A correct response eliminates a question from the active set, or the prescribed generation rounds are exhausted.'}
-recipe_metadata: {base_model: 'Gemini-2.5-flash-lite with and without thinking, GPT-4.1 Mini, and GPT-5 Nano.', teacher: 'Previously solved test questions used as retrieved in-context demonstrations.', generator: 'The evaluated language model conditioned on zero-shot or evolving neighbor demonstrations.', filtering_rule: 'Remove a question once its response meets the verifier threshold; concentrate later rounds on unresolved questions.', sampling_protocol: 'One warm-up round samples every question, then unresolved questions receive further K-sized batches conditioned on up to three semantically closest solved neighbors.', rollout_count: 'Four rounds by default; warm-up has one round; neighbor count is three.', temperature: 'See paper appendix for model-specific API settings.', inference_budget: 'Total generated samples and output tokens over all active questions.', optimizer_or_scaffold: 'Self-Evolving Test-Time Allocation with similarity-based in-context demonstration retrieval.'}
-audit: {source_mixture: 'Official arXiv paper.', split: 'Results average four random runs; details of split and API settings are in the paper appendix.', decontamination: 'The main method constructs demonstrations from the evaluation test set itself, so transductive use and benchmark comparability require explicit review.', license: 'Check API, benchmark, embedding model, and dataset terms before reuse.', lineage: 'https://arxiv.org/abs/2604.21018', known_failure_modes: [test-set-leakage-risk, incorrect-demonstration, verifier-error-propagation, retrieval-mismatch, context-overhead], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. It lists University of California, Riverside and Indiana University Bloomington. No official code or data release is linked in the paper or arXiv record.'}
-inclusion_reason: 'It jointly allocates test-time samples across unresolved inputs and changes the conditional generation distribution through evolving demonstrations.'
+authors:
+- Bowen Zuo
+- Dongruo Zhou
+- Yinglun Zhu
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical-reasoning
+- software-engineering
+- general-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2604.21018
+  arxiv: https://arxiv.org/abs/2604.21018
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2604.21018
+data_object:
+  prompt_source: MATH-500, LiveCodeBench, MinervaMath, GPQA-Diamond, and a 400-problem hard Reasoning Gym evaluation set.
+  trace_author: Gemini-2.5-flash-lite, GPT-4.1 Mini, and GPT-5 Nano responses generated at test time.
+  answer_format: Question-response pairs, verifier outcomes, active-set status, semantic-neighbor demonstrations, and final
+    selected responses.
+  process_fields:
+  - question
+  - response
+  - verifier_label
+  - active_status
+  - embedding
+  - neighbor_demo
+  - round
+  - token_cost
+  - final_answer
+  environment_or_substrate: Round-based test-set-level adaptive inference loop with evolving in-context prompts.
+  verifier_or_reward: Ground-truth correctness in the main coverage setting; reward-model, noisy-reward, and self-consistency
+    variants are also evaluated.
+  terminal_predicate: A correct response eliminates a question from the active set, or the prescribed generation rounds are
+    exhausted.
+recipe_metadata:
+  base_model: Gemini-2.5-flash-lite with and without thinking, GPT-4.1 Mini, and GPT-5 Nano.
+  teacher: Previously solved test questions used as retrieved in-context demonstrations.
+  generator: The evaluated language model conditioned on zero-shot or evolving neighbor demonstrations.
+  filtering_rule: Remove a question once its response meets the verifier threshold; concentrate later rounds on unresolved
+    questions.
+  sampling_protocol: One warm-up round samples every question, then unresolved questions receive further K-sized batches conditioned
+    on up to three semantically closest solved neighbors.
+  rollout_count: Four rounds by default; warm-up has one round; neighbor count is three.
+  temperature: See paper appendix for model-specific API settings.
+  inference_budget: Total generated samples and output tokens over all active questions.
+  optimizer_or_scaffold: Self-Evolving Test-Time Allocation with similarity-based in-context demonstration retrieval.
+audit:
+  source_mixture: Official arXiv paper.
+  split: Results average four random runs; details of split and API settings are in the paper appendix.
+  decontamination: The main method constructs demonstrations from the evaluation test set itself, so transductive use and
+    benchmark comparability require explicit review.
+  license: Check API, benchmark, embedding model, and dataset terms before reuse.
+  lineage: https://arxiv.org/abs/2604.21018
+  known_failure_modes:
+  - test-set-leakage-risk
+  - incorrect-demonstration
+  - verifier-error-propagation
+  - retrieval-mismatch
+  - context-overhead
+  citation_status: verified
+  confidence: high
+  notes: Official PDF checked on 2026-07-20. It lists University of California, Riverside and Indiana University Bloomington.
+    No official code or data release is linked in the paper or arXiv record.
+inclusion_reason: It jointly allocates test-time samples across unresolved inputs and changes the conditional generation distribution
+  through evolving demonstrations.
 related: []
-tags: [test-time-compute, adaptive-allocation, in-context-learning, retrieval, verification]
+tags:
+- test-time-compute
+- adaptive-allocation
+- in-context-learning
+- retrieval
+- verification
 status: verified
-one_line_summary: 'The method reallocates later inference rounds to unresolved queries and conditions them on successful, semantically related test-time demonstrations.'
-reading_priority: useful
-paper_type: Adaptive test-time allocation and evolving in-context learning study
-best_for: Readers studying test-set-level compute allocation and retrieval-conditioned test-time scaling.
-confidence: high
-why_it_matters: 'It exposes that a test-time budget changes not only how many samples are generated but also which successful generations can alter future sampling.'
+one_line_summary: The method reallocates later inference rounds to unresolved queries and conditions them on successful, semantically
+  related test-time demonstrations.
+why_it_matters: It exposes that a test-time budget changes not only how many samples are generated but also which successful
+  generations can alter future sampling.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official arXiv PDF checked; no official implementation or data release identified.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv PDF checked; no official implementation or data release identified.
+category_ids:
+- scaling_rlvr_test_time_compute

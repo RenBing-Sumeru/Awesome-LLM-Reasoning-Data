@@ -1,28 +1,101 @@
 id: atom-of-thoughts-tts-2025
-title: 'Atom of Thoughts for Markov LLM Test-Time Scaling'
+title: Atom of Thoughts for Markov LLM Test-Time Scaling
 year: 2025
 venue: NeurIPS 2025
-authors: ['Fengwei Teng', 'Quan Shi', 'Zhaoyang Yu', 'Jiayi Zhang', 'Yuyu Luo', 'Chenglin Wu', 'Zhijiang Guo']
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level, full_episode]
-domains: [mathematical-reasoning, software-engineering, multi-hop-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2502.12018, arxiv: https://arxiv.org/abs/2502.12018, venue: https://papers.nips.cc/paper_files/paper/2025/file/6b1018f844177088c380e1143d55cdfb-Paper-Conference.pdf, code: https://github.com/qixucen/atom, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2502.12018}
-data_object: {prompt_source: 'Six reported reasoning benchmarks, including HotpotQA.', trace_author: 'Configured language models and Atom of Thoughts state transitions.', answer_format: 'Dependency DAG, contracted atomic question state, optional search/reflection branch, and final answer.', process_fields: [input_problem, current_state, dependency_dag, subquestion, contraction, atomic_state, branch, completion, cost, final_answer], environment_or_substrate: 'Prompted language-model reasoning with optional tree search or reflective refinement.', verifier_or_reward: 'Self-contained subquestions are treated as verifiable; task success is evaluated by benchmark protocol.', terminal_predicate: 'Directly solvable atomic question and benchmark evaluation outcome.'}
-recipe_metadata: {base_model: 'Multiple reasoning and non-reasoning LLMs; gpt-4o-mini is explicitly reported for HotpotQA.', teacher: null, generator: 'Atom of Thoughts decomposition-contraction reasoning process.', filtering_rule: 'Contract a dependency-based DAG into an answer-equivalent simpler current state.', sampling_protocol: 'Iterate state transitions until directly solvable; can be combined with tree search and reflective refinement.', rollout_count: 'Framework and budget dependent.', temperature: null, inference_budget: 'Language-model invocations and prompt/completion tokens across atomic-state transitions.', optimizer_or_scaffold: 'Markovian decomposition-contraction scaffold.'}
-audit: {source_mixture: 'Official NeurIPS 2025 PDF, official arXiv record, and paper-linked code repository.', split: 'See the official paper for benchmark-specific protocols.', decontamination: 'Not separately claimed in the checked source.', license: 'Verify benchmark and repository licenses before reuse.', lineage: 'Primary sources: https://arxiv.org/abs/2502.12018 and https://github.com/qixucen/atom', known_failure_modes: ['DAG decomposition or contraction can omit a necessary dependency.', 'Atomic-state correctness is not a universal verifier guarantee.', 'Token reductions do not alone determine latency when multiple model calls or tools are used.'], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. First-page affiliations: HKUST(GZ); DeepWisdom; Renmin University of China.'}
-inclusion_reason: 'It explicitly redesigns the inference state and context budget for scalable multi-step reasoning.'
+authors:
+- Fengwei Teng
+- Quan Shi
+- Zhaoyang Yu
+- Jiayi Zhang
+- Yuyu Luo
+- Chenglin Wu
+- Zhijiang Guo
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+- software-engineering
+- multi-hop-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2502.12018
+  arxiv: https://arxiv.org/abs/2502.12018
+  venue: https://papers.nips.cc/paper_files/paper/2025/file/6b1018f844177088c380e1143d55cdfb-Paper-Conference.pdf
+  code: https://github.com/qixucen/atom
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.12018
+data_object:
+  prompt_source: Six reported reasoning benchmarks, including HotpotQA.
+  trace_author: Configured language models and Atom of Thoughts state transitions.
+  answer_format: Dependency DAG, contracted atomic question state, optional search/reflection branch, and final answer.
+  process_fields:
+  - input_problem
+  - current_state
+  - dependency_dag
+  - subquestion
+  - contraction
+  - atomic_state
+  - branch
+  - completion
+  - cost
+  - final_answer
+  environment_or_substrate: Prompted language-model reasoning with optional tree search or reflective refinement.
+  verifier_or_reward: Self-contained subquestions are treated as verifiable; task success is evaluated by benchmark protocol.
+  terminal_predicate: Directly solvable atomic question and benchmark evaluation outcome.
+recipe_metadata:
+  base_model: Multiple reasoning and non-reasoning LLMs; gpt-4o-mini is explicitly reported for HotpotQA.
+  teacher: null
+  generator: Atom of Thoughts decomposition-contraction reasoning process.
+  filtering_rule: Contract a dependency-based DAG into an answer-equivalent simpler current state.
+  sampling_protocol: Iterate state transitions until directly solvable; can be combined with tree search and reflective refinement.
+  rollout_count: Framework and budget dependent.
+  temperature: null
+  inference_budget: Language-model invocations and prompt/completion tokens across atomic-state transitions.
+  optimizer_or_scaffold: Markovian decomposition-contraction scaffold.
+audit:
+  source_mixture: Official NeurIPS 2025 PDF, official arXiv record, and paper-linked code repository.
+  split: See the official paper for benchmark-specific protocols.
+  decontamination: Not separately claimed in the checked source.
+  license: Verify benchmark and repository licenses before reuse.
+  lineage: 'Primary sources: https://arxiv.org/abs/2502.12018 and https://github.com/qixucen/atom'
+  known_failure_modes:
+  - DAG decomposition or contraction can omit a necessary dependency.
+  - Atomic-state correctness is not a universal verifier guarantee.
+  - Token reductions do not alone determine latency when multiple model calls or tools are used.
+  citation_status: verified
+  confidence: high
+  notes: 'Official PDF checked on 2026-07-20. First-page affiliations: HKUST(GZ); DeepWisdom; Renmin University of China.'
+inclusion_reason: It explicitly redesigns the inference state and context budget for scalable multi-step reasoning.
 related: []
-tags: [test-time-compute, markov-reasoning, decomposition, context-efficiency, search]
+tags:
+- test-time-compute
+- markov-reasoning
+- decomposition
+- context-efficiency
+- search
 status: verified
-one_line_summary: 'Atom of Thoughts converts a problem into answer-equivalent atomic states so inference compute targets the current subproblem rather than an accumulated history.'
-reading_priority: useful
-paper_type: Test-time scaling framework study
-best_for: Readers reducing historical-context overhead in multi-step reasoning or search.
-confidence: high
+one_line_summary: Atom of Thoughts converts a problem into answer-equivalent atomic states so inference compute targets the
+  current subproblem rather than an accumulated history.
 why_it_matters: It makes the state representation and context consumption explicit parts of the test-time compute decision.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official NeurIPS PDF, author affiliations, arXiv paper, and linked official code URL checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS PDF, author affiliations, arXiv paper, and linked official code URL checked.
+category_ids:
+- scaling_rlvr_test_time_compute

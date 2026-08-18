@@ -94,11 +94,6 @@ tags:
 status: verified
 one_line_summary: JPO learns from comparisons between complete instruction-response pairs, expanding preference optimization
   beyond fixed-context response rankings.
-reading_priority: essential
-paper_type: Joint preference-acquisition and optimization-objective study
-best_for: Readers designing preference datasets that need to capture relative helpfulness or task fulfillment across non-identical
-  instructions.
-confidence: high
 why_it_matters: It exposes preference signal that ordinary within-instruction rankings cannot record and makes that signal
   directly consumable by an alignment objective.
 curation_level: L4_carded

@@ -107,10 +107,6 @@ status: verified
 one_line_summary: MetaMathQA bootstraps both math questions and their worked solutions into a 395k-record public SFT dataset.
 why_it_matters: It made question transformation, not only response sampling, a first-class axis of synthetic mathematical
   reasoning data.
-reading_priority: must read
-paper_type: mathematical question bootstrapping and rationale data release
-best_for: Readers tracing the lineage of synthetic math SFT data or comparing question diversity with response diversity.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

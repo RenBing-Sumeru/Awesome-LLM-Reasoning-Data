@@ -76,8 +76,8 @@ audit:
     source: https://arxiv.org/pdf/2511.15958.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'JudgeBoard directly measures reasoning-judge reliability, exposes error asymmetry on wrong candidate answers,
-  and tests whether profiled small-model debate improves it.'
+inclusion_reason: JudgeBoard directly measures reasoning-judge reliability, exposes error asymmetry on wrong candidate answers,
+  and tests whether profiled small-model debate improves it.
 related: []
 tags:
 - audit

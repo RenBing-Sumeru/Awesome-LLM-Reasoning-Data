@@ -94,10 +94,6 @@ one_line_summary: LiteCoder scales terminal environments and collects 11,255 ver
   instruction-reasoning-command-observation sequence.
 why_it_matters: Small terminal datasets provide too few long-horizon successes to study how task diversity and environment
   scale affect language agents.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: terminal-agent SFT from 4B to 32B
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

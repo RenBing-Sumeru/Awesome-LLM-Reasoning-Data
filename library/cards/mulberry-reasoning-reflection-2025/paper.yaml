@@ -113,10 +113,6 @@ one_line_summary: Mulberry-260K uses four-model tree search to release image-gro
   for multimodal SFT.
 why_it_matters: It makes positive paths, sampled error-to-correction transitions, search budgets, and an SFT-ready release
   visible in one multimodal recipe.
-reading_priority: must read
-paper_type: multimodal reasoning-and-reflection dataset and collective search recipe
-best_for: Researchers building or auditing image-grounded rationale and reflection SFT data.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

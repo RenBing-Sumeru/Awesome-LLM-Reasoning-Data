@@ -75,7 +75,7 @@ audit:
     source: https://aclanthology.org/2025.emnlp-main.569.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: '该工作用保形预测量化 LLM judge 的评分不确定性，并审计其覆盖率与校准边界。'
+inclusion_reason: 该工作用保形预测量化 LLM judge 的评分不确定性，并审计其覆盖率与校准边界。
 related: []
 tags:
 - judge-reliability

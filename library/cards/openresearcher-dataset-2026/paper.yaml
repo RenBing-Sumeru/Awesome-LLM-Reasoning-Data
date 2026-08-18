@@ -102,10 +102,6 @@ one_line_summary: OpenResearcher bootstraps an offline evidence corpus, then gen
   trajectories without repeated live-web dependence.
 why_it_matters: Online research-trajectory synthesis is expensive and unstable because failed searches may reflect either
   a weak agent or missing documents.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: deep-research agent SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

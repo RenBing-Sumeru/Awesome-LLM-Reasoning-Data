@@ -56,10 +56,6 @@ tags:
 status: verified
 one_line_summary: The paper argues that verifier-guided RL or search scales test-time compute better than cloning expert traces
   when correct reasoning is heterogeneous.
-reading_priority: essential
-paper_type: Theoretical and empirical test-time scaling study
-best_for: Readers deciding whether to invest in verifiers rather than only synthetic reasoning traces.
-confidence: high
 why_it_matters: It identifies verification as a structural condition for sustained test-time scaling, not merely an optional
   evaluation component.
 curation_level: L4_carded

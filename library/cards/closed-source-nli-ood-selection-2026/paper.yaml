@@ -97,11 +97,6 @@ tags:
 status: verified
 one_line_summary: This study selects or replaces NLI fine-tuning records under a fixed API-training budget to improve OOD
   robustness of closed-source LLMs.
-reading_priority: useful
-paper_type: Fixed-budget robustness-oriented data selection study
-best_for: Readers using API fine-tuning who need to alter the training set rather than the objective or optimizer to improve
-  distributional robustness.
-confidence: high
 why_it_matters: It shows that training-set composition can be the only controllable optimization lever for closed-source fine-tuning
   and measures the resulting OOD trade-offs.
 curation_level: L4_carded

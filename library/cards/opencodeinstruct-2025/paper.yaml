@@ -96,10 +96,6 @@ one_line_summary: OpenCodeInstruct scales multiple generation algorithms to five
   status, and model judgments beside each solution.
 why_it_matters: Public code SFT sets are much smaller than pretraining corpora and often omit tests and judgments needed to
   distinguish executable solutions from plausible text.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: code SFT for Llama and Qwen families
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

@@ -88,10 +88,6 @@ tags:
 - survey
 why_it_matters: It separates failures in multimodal mathematical reasoning into evaluation, methodology, and challenge dimensions.
 one_line_summary: A Findings ACL 2025 survey of multimodal mathematical reasoning benchmarks, methods, and challenges.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers designing or evaluating mathematical reasoning tasks that contain more than plain text.
-confidence: high
 status: verified
 needs:
 - 'unknown: directly comparable experimental conditions across multimodal mathematical reasoning benchmarks'

@@ -86,10 +86,6 @@ tags:
 status: verified
 one_line_summary: Sticker-TTS turns previous reasoning traces into corrected compact cues that guide later test-time solution
   attempts.
-reading_priority: essential
-paper_type: Test-time scaling and history-aware iterative reasoning framework
-best_for: Readers studying how to reuse earlier reasoning attempts under a fixed inference budget.
-confidence: high
 why_it_matters: It gives historical reasoning an explicit compact representation that can be corrected and reused instead
   of repeatedly sampling from scratch.
 curation_level: L4_carded

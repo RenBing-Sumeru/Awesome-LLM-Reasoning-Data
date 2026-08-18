@@ -99,10 +99,6 @@ one_line_summary: MMFineReason distills and filters 1.8M multimodal long-CoT exa
   that retains most of the training gain.
 why_it_matters: It shows how source normalization, answer consistency, deduplication, and student-relative difficulty can
   make multimodal reasoning data more efficient.
-reading_priority: recommended
-paper_type: multimodal reasoning data construction and selection
-best_for: Researchers building or selecting multimodal long-CoT data for SFT and subsequent RL.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

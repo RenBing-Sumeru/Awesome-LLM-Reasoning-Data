@@ -96,10 +96,6 @@ tags:
 status: verified
 one_line_summary: TMAS coordinates parallel solution, verification, summarization, and two memory banks so later test-time
   iterations can reuse reliable progress without repeating strategies.
-reading_priority: useful
-paper_type: Multi-agent iterative test-time scaling study
-best_for: Readers designing long-horizon reasoning systems that must coordinate exploration, verification, and memory reuse.
-confidence: high
 why_it_matters: It treats cross-trajectory information retention as a controllable test-time resource rather than leaving
   parallel rollouts independent.
 curation_level: L4_carded

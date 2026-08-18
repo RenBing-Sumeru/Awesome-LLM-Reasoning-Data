@@ -97,10 +97,6 @@ tags:
 status: verified
 one_line_summary: Writing-RL selects long-form writing instructions by policy-to-reference quality margin and promotes the
   reference after each policy win.
-reading_priority: essential
-paper_type: Adaptive curriculum reinforcement-learning study for long-form writing
-best_for: Readers designing data selection and adaptive reference schedules for open-ended generation without verifiable answers.
-confidence: high
 why_it_matters: It makes the training record and reward target progressively harder instead of holding a static preference
   target throughout RL.
 curation_level: L4_carded

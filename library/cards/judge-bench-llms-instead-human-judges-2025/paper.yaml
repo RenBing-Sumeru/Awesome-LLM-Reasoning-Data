@@ -1,6 +1,5 @@
 id: judge-bench-llms-instead-human-judges-2025
-title: LLMs instead of Human Judges? A Large Scale Empirical Study across 20 NLP Evaluation
-  Tasks
+title: LLMs instead of Human Judges? A Large Scale Empirical Study across 20 NLP Evaluation Tasks
 year: 2025
 venue: ACL 2025
 authors:
@@ -81,26 +80,24 @@ recipe_metadata:
 audit:
   source_mixture: Official paper and official data or repository release.
   split: Use the split documented by the official release.
-  decontamination: Check overlap with downstream evaluation data before training or
-    reporting results.
+  decontamination: Check overlap with downstream evaluation data before training or reporting results.
   license: Check the official data release terms before reuse.
   lineage: https://github.com/dmg-illc/JUDGE-BENCH
   known_failure_modes:
   - Synthetic or model-generated feedback can carry evaluator bias.
   citation_status: verified
   confidence: high
-  notes: Title, authors, venue status, primary artifacts, and paper-front-page affiliations
-    were checked against official sources.
-inclusion_reason: The release exposes fine-grained factuality, safety, or judgment
-  feedback suitable for evaluation or post-training analysis.
+  notes: Title, authors, venue status, primary artifacts, and paper-front-page affiliations were checked against official
+    sources.
+inclusion_reason: The release exposes fine-grained factuality, safety, or judgment feedback suitable for evaluation or post-training
+  analysis.
 related: []
 tags:
 - track7
 - judgment-feedback
 - factuality
 one_line_summary: JUDGE-BENCH is the paper's released feedback or evaluation resource.
-why_it_matters: It makes a reusable feedback or evaluation surface available for auditing
-  or training reasoning systems.
+why_it_matters: It makes a reusable feedback or evaluation surface available for auditing or training reasoning systems.
 status: verified
 curation_level: L4_chinese_review_ready
 verification:

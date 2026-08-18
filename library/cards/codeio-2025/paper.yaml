@@ -112,10 +112,6 @@ one_line_summary: CODE I/O transforms 454.9K executable functions into 3.52M CoT
   the ODC-BY PythonEdu-Reasoning subset.
 why_it_matters: It exposes diverse program logic as natural-language reasoning supervision and makes prediction correctness,
   feedback, and revision visible in the serialized record.
-reading_priority: must read
-paper_type: execution-verified reasoning demonstration dataset and two-stage SFT recipe
-best_for: Researchers building broad reasoning SFT mixtures from executable code or auditing feedback-bearing correction traces.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

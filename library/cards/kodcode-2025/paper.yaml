@@ -114,10 +114,6 @@ one_line_summary: KodCode releases large CC BY-NC coding triplets and 268,211 ve
   difficulty, and contamination fields.
 why_it_matters: It makes both synthetic-code supervision and its executable acceptance evidence inspectable across twelve
   source families and several difficulty bands.
-reading_priority: must read
-paper_type: synthetic verified coding dataset and reasoning SFT recipe
-best_for: Researchers building test-verified coding SFT/RL data or auditing co-generated solutions and unit tests.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

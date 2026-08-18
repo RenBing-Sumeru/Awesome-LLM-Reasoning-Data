@@ -1,28 +1,98 @@
 id: trace-temporal-reasoning-aggregation-2026
-title: "Efficient Test-Time Scaling via Temporal Reasoning Aggregation"
+title: Efficient Test-Time Scaling via Temporal Reasoning Aggregation
 year: 2026
 venue: Findings of ACL 2026
-authors: [Jiakun Li, Xingwei He, Kefan Li, Hongzheng Chai, Hongyue Yu, Yuan Yuan]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [step_level, full_episode]
-domains: [mathematical-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2604.17304, arxiv: https://arxiv.org/abs/2604.17304, venue: null, code: https://github.com/qianfantianyuzhouzhou/TRACE, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2604.17304}
-data_object: {prompt_source: "OlympiadBench, MATH500, AIME24, AMC23, and AIME25 evaluations.", trace_author: "Reasoning language models producing segmented chain-of-thought steps.", answer_format: "Reasoning steps, induced answers, confidence scores, temporal stability scores, exit decisions, and final answers.", process_fields: [prompt, reasoning_step, induced_answer, answer_consistency, confidence_trajectory, exit_decision, final_answer], environment_or_substrate: "Online sliding-window early-exit inference.", verifier_or_reward: "Answer consistency and confidence trajectory derived from model generation probabilities.", terminal_predicate: "Benchmark correctness subject to a convergent-exit decision."}
-recipe_metadata: {base_model: "Qwen3, Gemini 2.5 Flash, and R1-Distilled-Llama models reported in the paper.", teacher: null, generator: "The running reasoning model.", filtering_rule: "Exit when answer consistency and confidence trajectory exceed the joint stability threshold.", sampling_protocol: "Segment reasoning online, induce intermediate answers, aggregate multi-step evidence in a sliding window, and continue or stop.", rollout_count: null, temperature: null, inference_budget: "Reasoning tokens and number of generated steps.", optimizer_or_scaffold: "Temporal Reasoning Aggregation for Convergent Exit (TRACE)."}
-audit: {source_mixture: "Official arXiv paper and official GitHub repository.", split: "See paper for protocols.", decontamination: "Not separately claimed.", license: "Check code, model, and benchmark terms before reuse.", lineage: "https://arxiv.org/abs/2604.17304", known_failure_modes: [false_convergence, answer_induction_error, confidence_miscalibration, window_sensitivity], citation_status: verified, confidence: high, notes: "ACL 2026 Findings status, Beihang affiliations, and official code checked on 2026-07-20."}
-inclusion_reason: "It makes online early-exit depend on temporal stability across reasoning steps rather than one instantaneous confidence value."
+authors:
+- Jiakun Li
+- Xingwei He
+- Kefan Li
+- Hongzheng Chai
+- Hongyue Yu
+- Yuan Yuan
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2604.17304
+  arxiv: https://arxiv.org/abs/2604.17304
+  venue: null
+  code: https://github.com/qianfantianyuzhouzhou/TRACE
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2604.17304
+data_object:
+  prompt_source: OlympiadBench, MATH500, AIME24, AMC23, and AIME25 evaluations.
+  trace_author: Reasoning language models producing segmented chain-of-thought steps.
+  answer_format: Reasoning steps, induced answers, confidence scores, temporal stability scores, exit decisions, and final
+    answers.
+  process_fields:
+  - prompt
+  - reasoning_step
+  - induced_answer
+  - answer_consistency
+  - confidence_trajectory
+  - exit_decision
+  - final_answer
+  environment_or_substrate: Online sliding-window early-exit inference.
+  verifier_or_reward: Answer consistency and confidence trajectory derived from model generation probabilities.
+  terminal_predicate: Benchmark correctness subject to a convergent-exit decision.
+recipe_metadata:
+  base_model: Qwen3, Gemini 2.5 Flash, and R1-Distilled-Llama models reported in the paper.
+  teacher: null
+  generator: The running reasoning model.
+  filtering_rule: Exit when answer consistency and confidence trajectory exceed the joint stability threshold.
+  sampling_protocol: Segment reasoning online, induce intermediate answers, aggregate multi-step evidence in a sliding window,
+    and continue or stop.
+  rollout_count: null
+  temperature: null
+  inference_budget: Reasoning tokens and number of generated steps.
+  optimizer_or_scaffold: Temporal Reasoning Aggregation for Convergent Exit (TRACE).
+audit:
+  source_mixture: Official arXiv paper and official GitHub repository.
+  split: See paper for protocols.
+  decontamination: Not separately claimed.
+  license: Check code, model, and benchmark terms before reuse.
+  lineage: https://arxiv.org/abs/2604.17304
+  known_failure_modes:
+  - false_convergence
+  - answer_induction_error
+  - confidence_miscalibration
+  - window_sensitivity
+  citation_status: verified
+  confidence: high
+  notes: ACL 2026 Findings status, Beihang affiliations, and official code checked on 2026-07-20.
+inclusion_reason: It makes online early-exit depend on temporal stability across reasoning steps rather than one instantaneous
+  confidence value.
 related: []
-tags: [test-time-compute, early-exit, temporal-aggregation, overthinking, reasoning-efficiency]
+tags:
+- test-time-compute
+- early-exit
+- temporal-aggregation
+- overthinking
+- reasoning-efficiency
 status: verified
-one_line_summary: "TRACE halts reasoning when answer consistency and confidence remain stable across recent reasoning steps."
-reading_priority: essential
-paper_type: Training-free temporal early-exit study
-best_for: Readers deploying safe adaptive stopping for long reasoning traces.
-confidence: high
-why_it_matters: "It treats convergence as a temporal property and directly reduces token waste from overthinking."
+one_line_summary: TRACE halts reasoning when answer consistency and confidence remain stable across recent reasoning steps.
+why_it_matters: It treats convergence as a temporal property and directly reduces token waste from overthinking.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official arXiv source and code repository checked."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv source and code repository checked.
+category_ids:
+- scaling_rlvr_test_time_compute

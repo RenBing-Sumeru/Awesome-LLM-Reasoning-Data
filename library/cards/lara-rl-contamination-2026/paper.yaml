@@ -70,8 +70,9 @@ audit:
   - Curation-level metadata only; inspect the original paper before reusing scores or examples.
   citation_status: verified
   confidence: medium
-  notes: arXiv record, public workshop page, and public artifact URL were verified. Layer-wise metrics detect reward-driven memorization after RL post-training.
-inclusion_reason: 'Layer-wise representation auditing for contamination signals after RL post-training.'
+  notes: arXiv record, public workshop page, and public artifact URL were verified. Layer-wise metrics detect reward-driven
+    memorization after RL post-training.
+inclusion_reason: Layer-wise representation auditing for contamination signals after RL post-training.
 related: []
 tags:
 - rl-contamination

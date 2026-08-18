@@ -120,11 +120,6 @@ one_line_summary: MuMath turns GSM8K and MATH into multi-perspective natural-lan
   a distinct approximately 751K scaled release.
 why_it_matters: It tests whether diversifying both the problem and the visible solution structure improves tool-free math
   reasoning, while exposing a useful but easy-to-miss release-version boundary.
-reading_priority: must read
-paper_type: multi-perspective mathematical instruction-data construction study
-best_for: Researchers augmenting math SFT data or comparing reformulation, backward construction, question alteration, nested
-  planning, and majority filtering.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

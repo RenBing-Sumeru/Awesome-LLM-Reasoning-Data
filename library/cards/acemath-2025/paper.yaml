@@ -120,11 +120,6 @@ one_line_summary: AceMath releases 2.26M, 1.63M, and 1.66M-row SFT stages for ge
   synthesis and filtering controls.
 why_it_matters: It makes a strong general-before-math SFT curriculum and its synthetic-data quality decisions reusable instead
   of reporting only the final models.
-reading_priority: must read
-paper_type: staged mathematical instruction-data release and post-training study
-best_for: Researchers constructing large math SFT mixtures or comparing prompt evolution, cross-model answer checks, and staged
-  curricula.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

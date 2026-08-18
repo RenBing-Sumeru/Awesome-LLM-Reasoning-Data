@@ -97,10 +97,6 @@ one_line_summary: GUI-Libra turns public GUI trajectories into 81K action-aligne
   with action-aware SFT and conservative RL under ambiguous step rewards.
 why_it_matters: It exposes the record schema, filters, and reward ambiguity needed to judge whether offline GUI supervision
   will transfer to online task completion.
-reading_priority: recommended
-paper_type: GUI reasoning dataset and post-training recipe
-best_for: Researchers constructing reasoning-and-action supervision for native GUI agents.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

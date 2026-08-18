@@ -88,11 +88,6 @@ tags:
 status: verified
 one_line_summary: The paper improves self-play DPO by ranking prompts with mean reward and retaining only the easiest 30 percent
   rather than mixing in difficult prompts.
-reading_priority: essential
-paper_type: Prompt-difficulty selection study for self-play preference optimization
-best_for: Readers building self-play DPO pipelines who need a prompt-level filter before spending rollout and reward-model
-  budget on preference pairs.
-confidence: high
 why_it_matters: It identifies the prompt as a first-class consumer-side decision in preference-data construction, not just
   a container for response sampling.
 curation_level: L4_carded

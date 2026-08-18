@@ -2,27 +2,100 @@ id: learning-how-hard-to-think-2025
 title: 'Learning How Hard to Think: Input-Adaptive Allocation of LM Computation'
 year: 2025
 venue: ICLR 2025
-authors: [Mehul Damani, Idan Shenfeld, Andi Peng, Andreea Bobu, Jacob Andreas]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [full_episode]
-domains: [mathematical-reasoning, code-generation, general-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/ff414825df833edb8b1839e3d5d495e9-Abstract-Conference.html, arxiv: https://arxiv.org/abs/2410.04707, venue: 'https://openreview.net/forum?id=6qUUgw9bAZ', code: null, data: null, project: null, huggingface: null, doi: null}
-data_object: {prompt_source: 'TACO code problems, Numina-CoT mathematics problems, and chat prompts.', trace_author: 'Base language models generate candidate responses under multiple sample or routing budgets.', answer_format: 'Prompt, hidden representation, predicted marginal reward vector, allocated budget, candidate responses, reward, and final selection.', process_fields: [prompt, hidden_state, marginal_reward, budget, samples, reward, final_answer], environment_or_substrate: 'Batch or independent online language-model decoding.', verifier_or_reward: 'Unit tests for code, a two-stage math oracle verifier, and reward-model preference for chat.', terminal_predicate: 'Passing all code tests, verified mathematical correctness, or response reward.'}
-recipe_metadata: {base_model: 'StarCoder-15B for code, Mathstral-7B for math, and Gemma models or value-augmented sampling for routing.', teacher: 'Not applicable; empirical rewards supervise a lightweight marginal-reward predictor.', generator: 'Best-of-k sampling followed by reranking, or weak-versus-strong decoder routing.', filtering_rule: 'Allocate each next budget unit to the query with the largest predicted marginal reward; offline allocation bins predictions.', sampling_protocol: 'Compare online and offline adaptive best-of-k with fixed best-of-k and an oracle allocation.', rollout_count: 'Budget-dependent; training labels are estimated by decoding at budgets up to Bmax.', temperature: 'See official paper for task-specific decoding.', inference_budget: 'Average budget constrained across a query batch, or matched in expectation for offline allocation.', optimizer_or_scaffold: 'Two-layer hidden-state MLP or LoRA marginal-reward predictor plus greedy constrained allocation.'}
-audit: {source_mixture: 'Official ICLR paper and official arXiv record.', split: 'Programming, mathematics, and dialogue tasks.', decontamination: 'No formal contamination audit is claimed.', license: 'Validate model, benchmark, and verifier licenses before reuse.', lineage: 'https://arxiv.org/abs/2410.04707', known_failure_modes: [marginal-reward-prediction-error, batch-dependence, distribution-shift, verifier-dependence, impossible-query-misallocation], citation_status: verified, confidence: high, notes: 'Official ICLR PDF checked on 2026-07-21. All authors list the Massachusetts Institute of Technology.'}
-inclusion_reason: 'It formalizes test-time computation as a constrained allocation problem and learns to direct samples or strong decoding to prompts with the highest predicted marginal benefit.'
+authors:
+- Mehul Damani
+- Idan Shenfeld
+- Andi Peng
+- Andreea Bobu
+- Jacob Andreas
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+- code-generation
+- general-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/ff414825df833edb8b1839e3d5d495e9-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2410.04707
+  venue: https://openreview.net/forum?id=6qUUgw9bAZ
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: TACO code problems, Numina-CoT mathematics problems, and chat prompts.
+  trace_author: Base language models generate candidate responses under multiple sample or routing budgets.
+  answer_format: Prompt, hidden representation, predicted marginal reward vector, allocated budget, candidate responses, reward,
+    and final selection.
+  process_fields:
+  - prompt
+  - hidden_state
+  - marginal_reward
+  - budget
+  - samples
+  - reward
+  - final_answer
+  environment_or_substrate: Batch or independent online language-model decoding.
+  verifier_or_reward: Unit tests for code, a two-stage math oracle verifier, and reward-model preference for chat.
+  terminal_predicate: Passing all code tests, verified mathematical correctness, or response reward.
+recipe_metadata:
+  base_model: StarCoder-15B for code, Mathstral-7B for math, and Gemma models or value-augmented sampling for routing.
+  teacher: Not applicable; empirical rewards supervise a lightweight marginal-reward predictor.
+  generator: Best-of-k sampling followed by reranking, or weak-versus-strong decoder routing.
+  filtering_rule: Allocate each next budget unit to the query with the largest predicted marginal reward; offline allocation
+    bins predictions.
+  sampling_protocol: Compare online and offline adaptive best-of-k with fixed best-of-k and an oracle allocation.
+  rollout_count: Budget-dependent; training labels are estimated by decoding at budgets up to Bmax.
+  temperature: See official paper for task-specific decoding.
+  inference_budget: Average budget constrained across a query batch, or matched in expectation for offline allocation.
+  optimizer_or_scaffold: Two-layer hidden-state MLP or LoRA marginal-reward predictor plus greedy constrained allocation.
+audit:
+  source_mixture: Official ICLR paper and official arXiv record.
+  split: Programming, mathematics, and dialogue tasks.
+  decontamination: No formal contamination audit is claimed.
+  license: Validate model, benchmark, and verifier licenses before reuse.
+  lineage: https://arxiv.org/abs/2410.04707
+  known_failure_modes:
+  - marginal-reward-prediction-error
+  - batch-dependence
+  - distribution-shift
+  - verifier-dependence
+  - impossible-query-misallocation
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR PDF checked on 2026-07-21. All authors list the Massachusetts Institute of Technology.
+inclusion_reason: It formalizes test-time computation as a constrained allocation problem and learns to direct samples or
+  strong decoding to prompts with the highest predicted marginal benefit.
 related: []
-tags: [test-time-compute, adaptive-allocation, best-of-k, routing, marginal-reward]
+tags:
+- test-time-compute
+- adaptive-allocation
+- best-of-k
+- routing
+- marginal-reward
 status: verified
-one_line_summary: 'This work predicts each prompt’s marginal return from extra decoding and uses those predictions to allocate sampling or strong-model calls under a shared compute budget.'
-reading_priority: essential
-paper_type: Input-adaptive test-time compute allocation study
-best_for: Readers building shared inference services where not every request should receive the same sample count or expensive decoding path.
-confidence: high
-why_it_matters: 'It gives a general optimization formulation for deciding which inputs deserve more test-time compute, rather than treating difficulty as a post-hoc statistic.'
+one_line_summary: This work predicts each prompt’s marginal return from extra decoding and uses those predictions to allocate
+  sampling or strong-model calls under a shared compute budget.
+why_it_matters: It gives a general optimization formulation for deciding which inputs deserve more test-time compute, rather
+  than treating difficulty as a post-hoc statistic.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official ICLR paper and arXiv record checked; no dedicated artifact release is reported.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR paper and arXiv record checked; no dedicated artifact release is reported.
+category_ids:
+- scaling_rlvr_test_time_compute

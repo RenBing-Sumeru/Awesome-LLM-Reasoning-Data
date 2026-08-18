@@ -68,7 +68,7 @@ audit:
   citation_status: verified
   confidence: high
   notes: Accepted ICLR study with official supplementary evaluation materials for reward-hacking mitigation.
-inclusion_reason: 'Mitigates reward hacking from reward-model over-optimization in Best-of-N selection.'
+inclusion_reason: Mitigates reward hacking from reward-model over-optimization in Best-of-N selection.
 related: []
 tags:
 - track13

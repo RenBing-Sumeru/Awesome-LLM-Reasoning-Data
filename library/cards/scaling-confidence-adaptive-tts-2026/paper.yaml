@@ -2,27 +2,103 @@ id: scaling-confidence-adaptive-tts-2026
 title: 'Scaling with Confidence: Calibrating Confidence of LLMs for Adaptive Test Time Scaling'
 year: 2026
 venue: arXiv preprint; ACL ARR 2026 submission
-authors: [Xuqing Yang, Yi Yuan, Shanzhe Lei, Xuhong Wang]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [answer_level, full_episode]
-domains: [mathematical-reasoning, multimodal-reasoning, knowledge-reasoning]
-training_use: [rlvr, test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2607.01612, arxiv: https://arxiv.org/abs/2607.01612, venue: 'https://openreview.net/forum?id=ZYGTJlgzLk', code: null, data: null, project: null, huggingface: null, doi: 'https://doi.org/10.48550/arXiv.2607.01612'}
-data_object: {prompt_source: 'Numina-NLI, WebInstruct-verified, LogicNLI, and LogiQA after task-specific filtering for training; text and multimodal benchmarks for evaluation.', trace_author: 'The trained model produces an answer together with a verbalized confidence value from 1 to 10.', answer_format: 'Question, answer, confidence, reference-accuracy tag, correctness label, and sequential sampling record.', process_fields: [prompt, answer, verbalized_confidence, correctness, reference_accuracy_tag, sample_count, stopping_decision], environment_or_substrate: 'Sequential inference-time sampling with a maximum response budget.', verifier_or_reward: 'C3RL combines correctness, confidence-calibration, and dataset-informed reference-accuracy rewards; CAS stops from calibrated confidence.', terminal_predicate: 'CAS stops when its confidence-based condition is met or the sampling budget is exhausted.'}
-recipe_metadata: {base_model: 'Qwen2.5-VL-7B-Instruct and Llama-3.2-3B-Instruct.', teacher: null, generator: 'The calibrated model samples one answer and verbalized confidence at a time.', filtering_rule: 'Training questions are filtered to retain answer formats whose correctness can be checked.', sampling_protocol: 'CAS updates answer and confidence sets after each response and stops when its confidence criterion reaches the selected threshold.', rollout_count: 'Up to 64 responses for the majority-voting comparison.', temperature: 'Reported in the paper implementation details.', inference_budget: 'Average sampled responses required to match the accuracy of 64-sample majority voting.', optimizer_or_scaffold: 'Reinforcement learning with the C3RL reward, followed by confidence-based adaptive sampling.'}
-audit: {source_mixture: 'Official arXiv PDF and ACL ARR OpenReview record.', split: 'Filtered reasoning data for training; in-domain, text OOD, and multimodal OOD evaluations.', decontamination: 'No separate contamination audit is claimed.', license: 'Code, data, and models are stated as planned releases; verify their terms when released.', lineage: 'https://arxiv.org/abs/2607.01612', known_failure_modes: [miscalibrated-confidence, answer-extraction-error, threshold-transfer, benchmark-contamination], citation_status: verified, confidence: high, notes: 'Official arXiv PDF checked on 2026-07-21. Its front page lists Shanghai Jiao Tong University, Southeast University, and Shanghai AI Laboratory. The paper says code, data, and models will be released but provides no public artifact URL in the checked version.'}
-inclusion_reason: 'It uses calibrated confidence to allocate or stop inference-time sampling, measuring the accuracy-budget frontier directly.'
+authors:
+- Xuqing Yang
+- Yi Yuan
+- Shanzhe Lei
+- Xuhong Wang
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical-reasoning
+- multimodal-reasoning
+- knowledge-reasoning
+training_use:
+- rlvr
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2607.01612
+  arxiv: https://arxiv.org/abs/2607.01612
+  venue: https://openreview.net/forum?id=ZYGTJlgzLk
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2607.01612
+data_object:
+  prompt_source: Numina-NLI, WebInstruct-verified, LogicNLI, and LogiQA after task-specific filtering for training; text and
+    multimodal benchmarks for evaluation.
+  trace_author: The trained model produces an answer together with a verbalized confidence value from 1 to 10.
+  answer_format: Question, answer, confidence, reference-accuracy tag, correctness label, and sequential sampling record.
+  process_fields:
+  - prompt
+  - answer
+  - verbalized_confidence
+  - correctness
+  - reference_accuracy_tag
+  - sample_count
+  - stopping_decision
+  environment_or_substrate: Sequential inference-time sampling with a maximum response budget.
+  verifier_or_reward: C3RL combines correctness, confidence-calibration, and dataset-informed reference-accuracy rewards;
+    CAS stops from calibrated confidence.
+  terminal_predicate: CAS stops when its confidence-based condition is met or the sampling budget is exhausted.
+recipe_metadata:
+  base_model: Qwen2.5-VL-7B-Instruct and Llama-3.2-3B-Instruct.
+  teacher: null
+  generator: The calibrated model samples one answer and verbalized confidence at a time.
+  filtering_rule: Training questions are filtered to retain answer formats whose correctness can be checked.
+  sampling_protocol: CAS updates answer and confidence sets after each response and stops when its confidence criterion reaches
+    the selected threshold.
+  rollout_count: Up to 64 responses for the majority-voting comparison.
+  temperature: Reported in the paper implementation details.
+  inference_budget: Average sampled responses required to match the accuracy of 64-sample majority voting.
+  optimizer_or_scaffold: Reinforcement learning with the C3RL reward, followed by confidence-based adaptive sampling.
+audit:
+  source_mixture: Official arXiv PDF and ACL ARR OpenReview record.
+  split: Filtered reasoning data for training; in-domain, text OOD, and multimodal OOD evaluations.
+  decontamination: No separate contamination audit is claimed.
+  license: Code, data, and models are stated as planned releases; verify their terms when released.
+  lineage: https://arxiv.org/abs/2607.01612
+  known_failure_modes:
+  - miscalibrated-confidence
+  - answer-extraction-error
+  - threshold-transfer
+  - benchmark-contamination
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF checked on 2026-07-21. Its front page lists Shanghai Jiao Tong University, Southeast University,
+    and Shanghai AI Laboratory. The paper says code, data, and models will be released but provides no public artifact URL
+    in the checked version.
+inclusion_reason: It uses calibrated confidence to allocate or stop inference-time sampling, measuring the accuracy-budget
+  frontier directly.
 related: []
-tags: [test-time-compute, confidence-calibration, adaptive-sampling, early-stopping, rlvr]
+tags:
+- test-time-compute
+- confidence-calibration
+- adaptive-sampling
+- early-stopping
+- rlvr
 status: verified
-one_line_summary: 'C3RL trains verbalized confidence to track correctness, then CAS uses that signal to stop easy queries early and reserve sampling for uncertain ones.'
-reading_priority: useful
-paper_type: Confidence-calibrated adaptive test-time scaling study
-best_for: Readers studying how calibrated uncertainty can control reasoning-sample budgets.
-confidence: high
-why_it_matters: 'It connects a training-time calibration objective to an explicit inference-time allocation rule and reports both quality and saved samples.'
+one_line_summary: C3RL trains verbalized confidence to track correctness, then CAS uses that signal to stop easy queries early
+  and reserve sampling for uncertain ones.
+why_it_matters: It connects a training-time calibration objective to an explicit inference-time allocation rule and reports
+  both quality and saved samples.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official paper and submission record checked; no released code/data URL appears in the paper.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and submission record checked; no released code/data URL appears in the paper.
+category_ids:
+- scaling_rlvr_test_time_compute

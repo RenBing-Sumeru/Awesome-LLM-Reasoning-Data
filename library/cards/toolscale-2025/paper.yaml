@@ -102,10 +102,6 @@ one_line_summary: ToolScale serializes difficult tool-routing scenarios with ini
   the task substrate for ToolOrchestra training.
 why_it_matters: Small orchestrators need explicit tasks and evaluation criteria to learn when to invoke expensive models or
   tools rather than always selecting the strongest option.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: reinforcement learning and task-conditioned orchestration training
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

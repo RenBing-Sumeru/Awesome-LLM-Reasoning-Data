@@ -91,10 +91,6 @@ tags:
 status: verified
 one_line_summary: The paper constructs DPO pairs from reward-distribution positions, preferring a μ−2σ rejected response over
   the minimum.
-reading_priority: essential
-paper_type: On-policy preference-data construction study
-best_for: Readers scaling response sampling for DPO without blindly using max-min pairs.
-confidence: high
 why_it_matters: It turns a reward-ranked response pool into a calibrated pair-selection policy for the DPO training consumer.
 curation_level: L4_carded
 verification:

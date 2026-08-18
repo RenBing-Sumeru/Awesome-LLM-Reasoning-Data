@@ -103,10 +103,6 @@ status: verified
 one_line_summary: LiveBench combines dated task releases, periodic replacement, and objective scoring so model results can
   be audited against a specific contamination-limited benchmark version.
 why_it_matters: It makes the benchmark version and checker part of the evidence instead of treating a public test set as timeless.
-reading_priority: must read
-paper_type: contamination-limited benchmark and evaluation protocol
-best_for: Readers designing versioned, objectively scored LLM evaluations or auditing benchmark leakage.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

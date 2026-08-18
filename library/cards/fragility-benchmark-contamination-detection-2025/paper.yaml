@@ -74,15 +74,17 @@ audit:
     source: https://arxiv.org/pdf/2510.02386.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'The central contribution audits contamination-detection failure in reasoning-model evaluation.'
+inclusion_reason: The central contribution audits contamination-detection failure in reasoning-model evaluation.
 related: []
 tags:
 - audit
 - benchmark-contamination
 - iclr-2026
 status: verified
-one_line_summary: PPO-style RL can erase contamination-detection signals after contaminated SFT, while CoT contamination of mature LRMs drives existing detectors toward chance.
-why_it_matters: It demonstrates that conventional contamination detectors can fail exactly in practical reasoning-model training pipelines.
+one_line_summary: PPO-style RL can erase contamination-detection signals after contaminated SFT, while CoT contamination of
+  mature LRMs drives existing detectors toward chance.
+why_it_matters: It demonstrates that conventional contamination detectors can fail exactly in practical reasoning-model training
+  pipelines.
 curation_level: L4_chinese_review_ready
 verification:
   link_verified: true

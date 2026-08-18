@@ -79,10 +79,6 @@ tags:
 status: verified
 one_line_summary: Classical search improves diffusion inference through verifier-guided Langevin local search and BFS/DFS
   global exploration.
-reading_priority: recommended
-paper_type: Diffusion test-time search study
-best_for: Readers studying non-autoregressive test-time scaling.
-confidence: high
 why_it_matters: It makes local refinement and global branching explicit compute-allocation choices.
 curation_level: L4_carded
 verification:

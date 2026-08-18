@@ -101,10 +101,6 @@ one_line_summary: Self-Instruct repeatedly asks GPT-3 to invent, filter, and ans
   82,439 synthetic SFT instances.
 why_it_matters: It provides the canonical inspectable loop for bootstrapping instruction data while exposing the quality limits
   of self-generated targets.
-reading_priority: must read
-paper_type: synthetic instruction-data generation and release
-best_for: Readers building self-generated instruction SFT data or auditing task diversity and teacher errors.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

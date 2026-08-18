@@ -90,10 +90,6 @@ tags:
 status: verified
 one_line_summary: ActiveDPO uses the target policy's projected implicit-reward gradients to actively acquire diverse, high-uncertainty
   preference pairs for iterative DPO.
-reading_priority: essential
-paper_type: Active preference-data acquisition and direct preference optimization study
-best_for: Readers designing label-efficient preference optimization with costly human judgments.
-confidence: high
 why_it_matters: It turns the current policy's own gradient geometry into an explicit and theoretically motivated rule for
   purchasing preference labels.
 curation_level: L4_carded

@@ -107,11 +107,6 @@ tags:
 status: verified
 one_line_summary: M2PO converts translation candidate sets into faithfulness-aware multi-pair preferences and trains them
   with a confidence-scheduled ranking objective.
-reading_priority: essential
-paper_type: Multi-perspective preference-data construction and multi-pair optimization study
-best_for: Readers designing preference data for translation or other tasks where fluent candidates can conceal partial factual
-  errors.
-confidence: high
 why_it_matters: It treats the full candidate set, rather than one best-worst pair, as the training object and ties data ranking
   to a changing optimization objective.
 curation_level: L4_carded

@@ -87,10 +87,6 @@ tags:
 - survey
 why_it_matters: It makes the safety implications of stronger reasoning capabilities explicit for readers evaluating deployment.
 one_line_summary: A Findings EMNLP 2025 survey of safety risks, attacks, and defenses for large reasoning models.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers studying safety concerns that arise specifically in powerful reasoning models.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable evaluation conditions across safety studies'

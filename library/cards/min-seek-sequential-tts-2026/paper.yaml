@@ -1,28 +1,92 @@
 id: min-seek-sequential-tts-2026
-title: "Thinking Long, but Short: Stable Sequential Test-Time Scaling for Large Reasoning Models"
+title: 'Thinking Long, but Short: Stable Sequential Test-Time Scaling for Large Reasoning Models'
 year: 2026
 venue: Findings of EACL 2026
-authors: [Michael R. Metel, Yufei Cui, Boxing Chen, Prasanna Parthasarathi]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [full_episode, answer_level]
-domains: [reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [scaling_report]
-artifacts: {paper: https://aclanthology.org/2026.findings-eacl.153/, arxiv: null, venue: https://aclanthology.org/2026.findings-eacl.153/, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2026.findings-eacl.153}
-data_object: {prompt_source: "Five reasoning tasks reported in the paper.", trace_author: "DeepSeek-R1 distilled reasoning models evaluated in the study.", answer_format: "Sequential reconstruction cycles and final answers.", process_fields: [prompt, initial_thought, reconstruction_cycle, kv_cache_state, final_answer], environment_or_substrate: "Training-free sequential test-time scaling.", verifier_or_reward: "Task outcome used for evaluation; no separate verifier is required by Min-Seek.", terminal_predicate: "Reasoning-task correctness."}
-recipe_metadata: {base_model: "DeepSeek-R1-Distill-Qwen-1.5B and 7B models reported in the paper.", teacher: null, generator: "Sequentially induced reconstruction cycles.", filtering_rule: "Retain the shortest generated reconstruction cycle in the KV cache.", sampling_protocol: "Repeated sequential thought generation; see paper.", rollout_count: null, temperature: null, inference_budget: "Number and length of induced thoughts plus KV-cache maintenance.", optimizer_or_scaffold: "Min-Seek custom KV-cache procedure."}
-audit: {source_mixture: "Official Findings of EACL 2026 paper and ACL Anthology record.", split: "Five reasoning tasks reported in the paper.", decontamination: "Not separately claimed.", license: "Verify underlying model and benchmark terms before reuse.", lineage: "https://aclanthology.org/2026.findings-eacl.153/", known_failure_modes: [shortest_thought_heuristic, model_specific_kv_behavior, custom_cache_implementation], citation_status: verified, confidence: high, notes: "Title, authors, venue, DOI, affiliation, and experimental description checked against the official ACL PDF on 2026-07-20."}
-inclusion_reason: "It directly changes how sequential inference computation and memory are retained to prevent degradation as reasoning length grows."
+authors:
+- Michael R. Metel
+- Yufei Cui
+- Boxing Chen
+- Prasanna Parthasarathi
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.findings-eacl.153/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-eacl.153/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-eacl.153
+data_object:
+  prompt_source: Five reasoning tasks reported in the paper.
+  trace_author: DeepSeek-R1 distilled reasoning models evaluated in the study.
+  answer_format: Sequential reconstruction cycles and final answers.
+  process_fields:
+  - prompt
+  - initial_thought
+  - reconstruction_cycle
+  - kv_cache_state
+  - final_answer
+  environment_or_substrate: Training-free sequential test-time scaling.
+  verifier_or_reward: Task outcome used for evaluation; no separate verifier is required by Min-Seek.
+  terminal_predicate: Reasoning-task correctness.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-1.5B and 7B models reported in the paper.
+  teacher: null
+  generator: Sequentially induced reconstruction cycles.
+  filtering_rule: Retain the shortest generated reconstruction cycle in the KV cache.
+  sampling_protocol: Repeated sequential thought generation; see paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Number and length of induced thoughts plus KV-cache maintenance.
+  optimizer_or_scaffold: Min-Seek custom KV-cache procedure.
+audit:
+  source_mixture: Official Findings of EACL 2026 paper and ACL Anthology record.
+  split: Five reasoning tasks reported in the paper.
+  decontamination: Not separately claimed.
+  license: Verify underlying model and benchmark terms before reuse.
+  lineage: https://aclanthology.org/2026.findings-eacl.153/
+  known_failure_modes:
+  - shortest_thought_heuristic
+  - model_specific_kv_behavior
+  - custom_cache_implementation
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, venue, DOI, affiliation, and experimental description checked against the official ACL PDF on 2026-07-20.
+inclusion_reason: It directly changes how sequential inference computation and memory are retained to prevent degradation
+  as reasoning length grows.
 related: []
-tags: [test-time-compute, sequential-scaling, kv-cache, reasoning-length, efficiency]
+tags:
+- test-time-compute
+- sequential-scaling
+- kv-cache
+- reasoning-length
+- efficiency
 status: verified
-one_line_summary: "Min-Seek stabilizes sequential test-time scaling by retaining only short reconstruction thoughts in a custom KV cache."
-reading_priority: useful
-paper_type: Training-free sequential test-time scaling study
-best_for: Readers studying long reasoning, inference stability, and KV-cache-efficient scaling.
-confidence: high
-why_it_matters: "It treats memory retention as a first-class control over whether additional reasoning steps help or destabilize a model."
+one_line_summary: Min-Seek stabilizes sequential test-time scaling by retaining only short reconstruction thoughts in a custom
+  KV cache.
+why_it_matters: It treats memory retention as a first-class control over whether additional reasoning steps help or destabilize
+  a model.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official ACL primary record checked; no official public code or dataset link was identified on that record."}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL primary record checked; no official public code or dataset link was identified on that record.
+category_ids:
+- scaling_rlvr_test_time_compute

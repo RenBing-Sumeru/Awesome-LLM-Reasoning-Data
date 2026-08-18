@@ -100,11 +100,6 @@ tags:
 status: verified
 one_line_summary: AAO reweights tokens in DPO preference pairs using their semantic similarity across chosen and rejected
   responses, reducing ambiguous supervision and emphasizing discriminative content.
-reading_priority: essential
-paper_type: Token-level preference-data weighting and optimization-objective study
-best_for: Readers studying whether a preference pair should be consumed uniformly when much of its chosen and rejected text
-  says the same thing.
-confidence: high
 why_it_matters: It makes semantic redundancy within a preference pair an auditable token-level training signal instead of
   letting identical content receive opposing DPO gradients.
 curation_level: L4_carded

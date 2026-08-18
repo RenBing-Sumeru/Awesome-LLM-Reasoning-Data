@@ -91,11 +91,6 @@ tags:
 status: verified
 one_line_summary: This paper shows that latent reasoning has unused Pass@N potential but weak reward-model separability, then
   tests geometric regularization to improve its test-time scaling.
-reading_priority: recommended
-paper_type: Continuous-space test-time scaling analysis
-best_for: Readers extending sampling and verifier-based scaling from textual chains of thought to latent or continuous reasoning
-  representations.
-confidence: high
 why_it_matters: It establishes that standard verifier recipes cannot simply be assumed to transfer from text traces to continuous
   thoughts, a key boundary for generalizing test-time scaling.
 curation_level: L4_carded

@@ -96,10 +96,6 @@ one_line_summary: HuatuoGPT-o1 filters medical exams into 40K verifiable problem
   the remaining half for answer-reward RL.
 why_it_matters: Open medical chat data lacks hard, objectively checkable problems for teaching complex reasoning and supporting
   stable reinforcement learning.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: medical CoT SFT followed by verifiable RL
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

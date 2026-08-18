@@ -89,11 +89,6 @@ tags:
 status: verified
 one_line_summary: CRPO selects translation preference pairs with both reward contrast and model uncertainty, concentrating
   DPO on records with higher learning value.
-reading_priority: useful
-paper_type: Confidence-and-reward preference data selection study
-best_for: Readers constructing translation preference pairs who need to distinguish merely high-quality examples from examples
-  that are still informative for the current model.
-confidence: high
 why_it_matters: It makes model confidence a selection signal alongside reward, so preference data is chosen for expected learning
   value rather than quality alone.
 curation_level: L4_carded

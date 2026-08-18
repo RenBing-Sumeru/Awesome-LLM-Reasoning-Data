@@ -101,11 +101,6 @@ tags:
 status: verified
 one_line_summary: Data Whisperer selects task-specific fine-tuning records by measuring how attention-weighted few-shot demonstrations
   improve query performance before any scoring-model training.
-reading_priority: essential
-paper_type: Training-free task-data selection study
-best_for: Readers selecting compact task-specific SFT subsets when they can inspect model attention but cannot afford a target-corpus
-  scoring fine-tune.
-confidence: high
 why_it_matters: It makes pre-training ICL behavior an explicit training-record utility signal and evaluates selection cost
   relative to the full fine-tuning budget.
 curation_level: L4_carded

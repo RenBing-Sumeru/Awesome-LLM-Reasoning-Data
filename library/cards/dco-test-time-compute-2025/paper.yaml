@@ -90,10 +90,6 @@ tags:
 status: verified
 one_line_summary: DCO aligns fine-tuning with a chosen pass@N test-time budget by limiting overconfidence and preserving useful
   answer diversity.
-reading_priority: essential
-paper_type: Test-time-compute-aligned fine-tuning study
-best_for: Readers co-designing reasoning-model training objectives and pass@N or proof-search budgets.
-confidence: high
 why_it_matters: It demonstrates that a training loss optimized for one sample can reduce performance when the deployed system
   relies on many samples.
 curation_level: L4_carded

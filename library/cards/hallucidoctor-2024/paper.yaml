@@ -94,10 +94,6 @@ status: verified
 one_line_summary: HalluciDoctor diagnoses and rewrites roughly 50K visual conversations whose answers contain unsupported
   image claims.
 why_it_matters: treating hallucination as a repairable property of training records rather than only a decoding failure
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: auditing and repairing a visual SFT mixture before training
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

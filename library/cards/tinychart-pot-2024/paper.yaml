@@ -93,10 +93,6 @@ status: verified
 one_line_summary: TinyChartData exposes chart questions with Python program-of-thought targets and final answers for compact
   chart SFT.
 why_it_matters: making executable chart programs a released instruction target for a compact chart model
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: training a small chart model to expose and execute numerical reasoning
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

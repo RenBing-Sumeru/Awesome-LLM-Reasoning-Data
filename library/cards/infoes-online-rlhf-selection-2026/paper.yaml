@@ -98,11 +98,6 @@ tags:
 status: verified
 one_line_summary: InfOES filters online RLHF experiences by their estimated influence on an objective-specific validation
   return before every policy update.
-reading_priority: essential
-paper_type: Objective-aware online RLHF experience-selection study
-best_for: Readers building RLHF systems that need to remove irrelevant or reward-corrupted rollouts while retaining compatibility
-  with standard RL optimizers.
-confidence: high
 why_it_matters: It directly connects each training experience to the gradient of the desired alignment objective instead of
   relying on generic difficulty or length heuristics.
 curation_level: L4_carded

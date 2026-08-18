@@ -76,10 +76,6 @@ tags:
 - data-selection
 status: verified
 one_line_summary: ADG selects instruction data by the geometry of multiple answers sampled from the target model.
-reading_priority: essential
-paper_type: Multi-answer instruction-data selection study
-best_for: Readers studying model-relative instruction selection and efficient supervised fine-tuning.
-confidence: high
 why_it_matters: It makes the connection between a data object and its training objective inspectable.
 curation_level: L4_carded
 verification:

@@ -92,11 +92,6 @@ tags:
 status: verified
 one_line_summary: Guided by Gut calibrates a model’s own step confidence with GRPO and uses it to guide lightweight tree search
   without a process reward model.
-reading_priority: essential
-paper_type: Efficient confidence-guided test-time scaling study
-best_for: Readers designing low-memory reasoning search who need to decide whether a model’s internal uncertainty can replace
-  a separately served verifier.
-confidence: high
 why_it_matters: 'It makes confidence calibration a deployment decision: a smaller model can spend inference compute on promising
   branches instead of paying to score every branch with an external model.'
 curation_level: L4_carded

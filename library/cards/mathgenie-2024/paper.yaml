@@ -130,11 +130,6 @@ one_line_summary: MathGenieData combines 81K code-integrated solutions, 30K veri
   math pairs in typed execution-aware records.
 why_it_matters: It makes solution-first question synthesis and rationale-bearing quality filtering independently inspectable
   in an openly readable math corpus.
-reading_priority: must read
-paper_type: solution-back-translation math dataset and verification-filtering study
-best_for: Researchers synthesizing math questions from solutions or auditing code-integrated demonstrations and model-written
-  verification rationales.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

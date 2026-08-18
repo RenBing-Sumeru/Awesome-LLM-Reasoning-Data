@@ -20,7 +20,6 @@ construction_layer:
 - release_audit
 artifacts:
   paper: https://aclanthology.org/2025.findings-emnlp.188/
-  arxiv: https://arxiv.org/abs/2509.15218
   arxiv: null
   code: https://github.com/RuijieH/LNE-Blocking
   data: https://github.com/RuijieH/LNE-Blocking
@@ -67,7 +66,7 @@ audit:
   confidence: high
   notes: 'Official paper/project and public artifact URL checked on 2026-07-18. Focus: contamination detection and response-blocking
     evaluation code.'
-inclusion_reason: '该工作通过污染检测和受控解码扰动，审计潜在泄漏基准上的模型真实性能。'
+inclusion_reason: 该工作通过污染检测和受控解码扰动，审计潜在泄漏基准上的模型真实性能。
 related: []
 tags:
 - contamination-audit

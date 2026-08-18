@@ -76,7 +76,7 @@ audit:
     source: https://aclanthology.org/2025.naacl-long.452.pdf
     checked_on: '2026-07-19'
     method: official PDF first-page author block
-inclusion_reason: 'It exposes a concrete reliability failure in LLM judges through a public counterfactual benchmark.'
+inclusion_reason: It exposes a concrete reliability failure in LLM judges through a public counterfactual benchmark.
 related: []
 tags:
 - audit

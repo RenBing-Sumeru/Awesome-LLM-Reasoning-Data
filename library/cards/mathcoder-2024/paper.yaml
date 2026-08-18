@@ -118,10 +118,6 @@ one_line_summary: MathCoder turns math problems into open trajectories that alte
   feedback, and continued reasoning, then trains models to consume that contract.
 why_it_matters: It makes execution feedback a serialized post-training data object and tests which gains come from interpolated
   problems, live execution, and loss placement.
-reading_priority: must read
-paper_type: executable mathematical reasoning-data construction study
-best_for: Readers building tool-interleaved math SFT data or auditing code execution, self-consistency, and trajectory provenance.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

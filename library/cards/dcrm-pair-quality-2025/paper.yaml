@@ -91,11 +91,6 @@ tags:
 status: verified
 one_line_summary: DCRM selects preference pairs whose reward-relevant contrast is large relative to their noisy lexical and
   model-probability differences.
-reading_priority: essential
-paper_type: Preference-pair quality metric and data-selection study
-best_for: Readers curating chosen-rejected response pairs for offline preference optimization who need an auditable criterion
-  beyond reward-gap maximization.
-confidence: high
 why_it_matters: It makes the usefulness of a preference pair a training-data decision, connecting pair construction directly
   to downstream preference-optimization outcomes.
 curation_level: L4_carded

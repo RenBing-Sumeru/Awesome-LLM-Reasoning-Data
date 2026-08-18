@@ -1,26 +1,65 @@
 id: art-scaling-test-time-compute-2025
-title: 'The Art of Scaling Test-Time Compute for Large Language Models'
+title: The Art of Scaling Test-Time Compute for Large Language Models
 year: 2025
 venue: arXiv preprint
-authors: [Aradhye Agarwal, Ayan Sengupta, Tanmoy Chakraborty]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [full_episode]
-domains: [mathematical-reasoning, scientific-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2512.02008, arxiv: https://arxiv.org/abs/2512.02008, venue: null, code: https://github.com/Aradhye2002/art_of_tts, data: null, project: null, huggingface: null, doi: null}
-audit: {source_mixture: 'Official arXiv paper and official GitHub repository.', split: 'Eight open models and four reasoning datasets.', decontamination: 'No formal audit is claimed.', license: 'Check model, benchmark, and repository licenses.', lineage: 'https://arxiv.org/abs/2512.02008', known_failure_modes: [model-horizon-misclassification, api-limited-search, benchmark-dependence], citation_status: verified, confidence: high, notes: 'Official paper checked on 2026-07-21. Authors are affiliated with Microsoft Research and IIT Delhi.'}
-inclusion_reason: 'It compares how model horizon, problem difficulty, and budget determine the best test-time scaling strategy.'
+authors:
+- Aradhye Agarwal
+- Ayan Sengupta
+- Tanmoy Chakraborty
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+- scientific-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2512.02008
+  arxiv: https://arxiv.org/abs/2512.02008
+  venue: null
+  code: https://github.com/Aradhye2002/art_of_tts
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+audit:
+  source_mixture: Official arXiv paper and official GitHub repository.
+  split: Eight open models and four reasoning datasets.
+  decontamination: No formal audit is claimed.
+  license: Check model, benchmark, and repository licenses.
+  lineage: https://arxiv.org/abs/2512.02008
+  known_failure_modes:
+  - model-horizon-misclassification
+  - api-limited-search
+  - benchmark-dependence
+  citation_status: verified
+  confidence: high
+  notes: Official paper checked on 2026-07-21. Authors are affiliated with Microsoft Research and IIT Delhi.
+inclusion_reason: It compares how model horizon, problem difficulty, and budget determine the best test-time scaling strategy.
 related: []
-tags: [test-time-scaling, strategy-selection, reasoning-horizon]
+tags:
+- test-time-scaling
+- strategy-selection
+- reasoning-horizon
 status: verified
-one_line_summary: 'This study maps when shortest-trace voting, beam search, or majority voting is the best use of test-time compute.'
-reading_priority: recommended
-paper_type: Large-scale test-time scaling comparison
-best_for: Readers choosing an inference strategy across heterogeneous reasoning models.
-confidence: high
-why_it_matters: 'It argues that no universal test-time strategy exists; the right policy depends on model horizon and compute budget.'
+one_line_summary: This study maps when shortest-trace voting, beam search, or majority voting is the best use of test-time
+  compute.
+why_it_matters: It argues that no universal test-time strategy exists; the right policy depends on model horizon and compute
+  budget.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official paper and code checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and code checked.
+category_ids:
+- scaling_rlvr_test_time_compute

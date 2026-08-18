@@ -93,10 +93,6 @@ one_line_summary: ODA closes the loop by ranking source corpora in OpenDataArena
   best-performing 500K-record mixture.
 why_it_matters: Open SFT mixtures are often assembled heuristically without feedback linking source-level data choices to
   downstream capability.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: general-purpose reasoning SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

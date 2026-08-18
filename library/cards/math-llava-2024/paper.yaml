@@ -112,10 +112,6 @@ one_line_summary: Math-LLaVA turns 40k selected images into an open 360k-record 
   measures the contribution of selection and four synthesis operations.
 why_it_matters: It exposes a compact, inspectable recipe for increasing questions per image and provides ablations that distinguish
   selection from synthetic record expansion.
-reading_priority: must read
-paper_type: multimodal mathematical instruction-data construction study
-best_for: Readers building image-grounded reasoning SFT sets or auditing teacher-generated short-answer demonstrations.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

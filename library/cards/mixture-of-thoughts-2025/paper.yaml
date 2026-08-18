@@ -100,10 +100,6 @@ one_line_summary: Mixture-of-Thoughts selects teachable prompts and packages tea
   source-labeled conversation mixture.
 why_it_matters: Reasoning distillation often maximizes trace volume without selecting prompts at a level where a student can
   learn, causing expensive demonstrations to add little usable supervision.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: Phi-4-reasoning SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

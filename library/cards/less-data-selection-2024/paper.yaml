@@ -91,10 +91,6 @@ status: verified
 one_line_summary: LESS releases gradient influence scores and task-specific instruction subsets selected from larger public
   pools.
 why_it_matters: ranking instruction records by training-gradient influence on an explicit target task
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: building a small task-targeted SFT subset from a large instruction pool
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

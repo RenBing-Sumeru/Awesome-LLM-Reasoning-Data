@@ -2,27 +2,99 @@ id: rl-guided-adaptive-sampling-2026
 title: 'Small RL Controller, Large Language Model: RL-Guided Adaptive Sampling for Test-Time Scaling'
 year: 2026
 venue: arXiv preprint
-authors: [Runpeng Dai, Tong Zheng, Rui Liu, Chengsong Huang, Hongtu Zhu]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [answer_level, full_episode]
-domains: [mathematical-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2606.03102, arxiv: https://arxiv.org/abs/2606.03102, venue: null, code: https://github.com/RunpengDai/RL-Guided-Adaptive-Sampling, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2606.03102}
-data_object: {prompt_source: 'A 200-question subset of DAPO for controller training; AIME24, AIME25, and HMMT25 for evaluation.', trace_author: 'Qwen3 models and GPT-4.1-nano sampled at inference time.', answer_format: 'Extracted final answers, answer-frequency statistics, sampling actions, and majority-vote predictions.', process_fields: [prompt, candidate_answer, answer_frequency, answer_entropy, sample_count, sampling_round, action, terminal_prediction], environment_or_substrate: 'Finite-horizon adaptive-sampling MDP around a fixed reasoning model.', verifier_or_reward: 'A running-majority terminal target plus penalties for sampling rounds and added candidates.', terminal_predicate: 'Controller stop action or maximum candidate budget; correctness is measured against benchmark answers.'}
-recipe_metadata: {base_model: 'Qwen3-0.6B-Thinking, Qwen3-1.7B-Thinking, Qwen3-4B-Instruct-Thinking, and GPT-4.1-nano.', teacher: null, generator: 'A fixed language-model sampler producing candidate reasoning responses.', filtering_rule: 'The learned policy continues only when expected benefit exceeds the latency and sample penalties.', sampling_protocol: 'Observe top answer counts, current sample count, and entropy; choose stop or request 1, 2, or 4 additional parallel samples; return majority vote on stopping.', rollout_count: '128 offline candidates per question are prepared; controller trajectories use a sampled budget of 32 candidates.', temperature: 'Model-specific settings reported in the paper.', inference_budget: 'Total sampled responses and adaptive sampling rounds, with token-level measurements also reported.', optimizer_or_scaffold: 'Four-layer MLP controller trained with PPO in a finite-horizon MDP.'}
-audit: {source_mixture: 'Official arXiv paper and official author-linked GitHub repository.', split: '200 DAPO questions for controller training; AIME24, AIME25, and HMMT25 for evaluation.', decontamination: 'Not separately claimed; the training subset and benchmark overlap policy should be checked before reuse.', license: 'Check repository, model, DAPO, and benchmark terms before reuse.', lineage: 'https://arxiv.org/abs/2606.03102', known_failure_modes: [answer-distribution-shift, majority-vote-error, reward-surrogate-mismatch, latency-hardware-mismatch], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. The paper lists University of North Carolina at Chapel Hill, University of Maryland, College Park, and Washington University in St. Louis, and links the official code repository.'}
-inclusion_reason: 'It learns an explicit policy for allocating extra samples and rounds at inference time under joint correctness, latency, and compute objectives.'
+authors:
+- Runpeng Dai
+- Tong Zheng
+- Rui Liu
+- Chengsong Huang
+- Hongtu Zhu
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2606.03102
+  arxiv: https://arxiv.org/abs/2606.03102
+  venue: null
+  code: https://github.com/RunpengDai/RL-Guided-Adaptive-Sampling
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2606.03102
+data_object:
+  prompt_source: A 200-question subset of DAPO for controller training; AIME24, AIME25, and HMMT25 for evaluation.
+  trace_author: Qwen3 models and GPT-4.1-nano sampled at inference time.
+  answer_format: Extracted final answers, answer-frequency statistics, sampling actions, and majority-vote predictions.
+  process_fields:
+  - prompt
+  - candidate_answer
+  - answer_frequency
+  - answer_entropy
+  - sample_count
+  - sampling_round
+  - action
+  - terminal_prediction
+  environment_or_substrate: Finite-horizon adaptive-sampling MDP around a fixed reasoning model.
+  verifier_or_reward: A running-majority terminal target plus penalties for sampling rounds and added candidates.
+  terminal_predicate: Controller stop action or maximum candidate budget; correctness is measured against benchmark answers.
+recipe_metadata:
+  base_model: Qwen3-0.6B-Thinking, Qwen3-1.7B-Thinking, Qwen3-4B-Instruct-Thinking, and GPT-4.1-nano.
+  teacher: null
+  generator: A fixed language-model sampler producing candidate reasoning responses.
+  filtering_rule: The learned policy continues only when expected benefit exceeds the latency and sample penalties.
+  sampling_protocol: Observe top answer counts, current sample count, and entropy; choose stop or request 1, 2, or 4 additional
+    parallel samples; return majority vote on stopping.
+  rollout_count: 128 offline candidates per question are prepared; controller trajectories use a sampled budget of 32 candidates.
+  temperature: Model-specific settings reported in the paper.
+  inference_budget: Total sampled responses and adaptive sampling rounds, with token-level measurements also reported.
+  optimizer_or_scaffold: Four-layer MLP controller trained with PPO in a finite-horizon MDP.
+audit:
+  source_mixture: Official arXiv paper and official author-linked GitHub repository.
+  split: 200 DAPO questions for controller training; AIME24, AIME25, and HMMT25 for evaluation.
+  decontamination: Not separately claimed; the training subset and benchmark overlap policy should be checked before reuse.
+  license: Check repository, model, DAPO, and benchmark terms before reuse.
+  lineage: https://arxiv.org/abs/2606.03102
+  known_failure_modes:
+  - answer-distribution-shift
+  - majority-vote-error
+  - reward-surrogate-mismatch
+  - latency-hardware-mismatch
+  citation_status: verified
+  confidence: high
+  notes: Official PDF checked on 2026-07-20. The paper lists University of North Carolina at Chapel Hill, University of Maryland,
+    College Park, and Washington University in St. Louis, and links the official code repository.
+inclusion_reason: It learns an explicit policy for allocating extra samples and rounds at inference time under joint correctness,
+  latency, and compute objectives.
 related: []
-tags: [test-time-compute, adaptive-sampling, reinforcement-learning, early-stopping, self-consistency]
+tags:
+- test-time-compute
+- adaptive-sampling
+- reinforcement-learning
+- early-stopping
+- self-consistency
 status: verified
-one_line_summary: 'RL-Guided Sampling trains a small CPU-deployable policy to stop or expand parallel reasoning samples under explicit cost penalties.'
-reading_priority: useful
-paper_type: RL-guided adaptive test-time sampling study
-best_for: Readers designing cost-aware stopping and parallel-sampling policies for reasoning models.
-confidence: high
-why_it_matters: 'It turns a hand-written sampling budget rule into a learned, auditable decision policy whose quality, latency, and sample costs are measured together.'
+one_line_summary: RL-Guided Sampling trains a small CPU-deployable policy to stop or expand parallel reasoning samples under
+  explicit cost penalties.
+why_it_matters: It turns a hand-written sampling budget rule into a learned, auditable decision policy whose quality, latency,
+  and sample costs are measured together.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official arXiv PDF and official code link checked.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv PDF and official code link checked.
+category_ids:
+- scaling_rlvr_test_time_compute

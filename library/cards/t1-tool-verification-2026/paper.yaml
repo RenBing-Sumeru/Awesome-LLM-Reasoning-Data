@@ -77,12 +77,10 @@ tags:
 - tools
 - small-language-models
 status: verified
-one_line_summary: T1 uses tools to remove memorization-heavy verification work before a small verifier ranks candidates under test-time scaling.
-reading_priority: essential
-paper_type: Tool-integrated verifier and test-time-compute scaling study
-best_for: Readers designing efficient verifiers or allocating inference budget between tool checks and language-model scoring.
-confidence: high
-why_it_matters: It treats verification capacity as part of the inference budget, rather than assuming a stronger verifier is free.
+one_line_summary: T1 uses tools to remove memorization-heavy verification work before a small verifier ranks candidates under
+  test-time scaling.
+why_it_matters: It treats verification capacity as part of the inference budget, rather than assuming a stronger verifier
+  is free.
 curation_level: L4_carded
 verification:
   link_verified: true
@@ -90,6 +88,7 @@ verification:
   verified_at: '2026-07-20'
   verified_by: curation
   confidence: high
-  notes: Official ICLR poster record and primary arXiv paper checked; no official code or standalone data release was declared in the checked sources.
+  notes: Official ICLR poster record and primary arXiv paper checked; no official code or standalone data release was declared
+    in the checked sources.
 category_ids:
 - scaling_rlvr_test_time_compute

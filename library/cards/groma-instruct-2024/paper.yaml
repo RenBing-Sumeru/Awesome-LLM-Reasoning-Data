@@ -89,10 +89,6 @@ tags:
 status: verified
 one_line_summary: Groma releases about 30K GPT-4V conversations that bind dialogue turns to localized visual tokens and boxes.
 why_it_matters: making localized visual tokens explicit fields that can be referenced throughout a natural dialogue
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: training a multimodal assistant that can discuss user-selected image regions
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

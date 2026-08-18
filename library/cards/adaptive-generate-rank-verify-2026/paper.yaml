@@ -2,27 +2,98 @@ id: adaptive-generate-rank-verify-2026
 title: 'Adaptive Generate-Rank-Verify: Inference-Time Search with Costly Verification'
 year: 2026
 venue: arXiv preprint
-authors: [Shaddin Dughmi, Mahdi Haghifam, Yusuf Hakan Kalayci]
-source_role: [scaling_study]
-verification_contract: [programmatic]
-supervision_granularity: [answer_level, full_episode]
-domains: [mathematical-reasoning, code-generation]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://arxiv.org/abs/2605.17609, arxiv: https://arxiv.org/abs/2605.17609, venue: null, code: null, data: null, project: null, huggingface: null, doi: 'https://doi.org/10.48550/arXiv.2605.17609'}
-data_object: {prompt_source: 'Mathematical reasoning and competitive-programming evaluation problems.', trace_author: 'A generator samples candidate answers; a reward model supplies cheap ranking scores.', answer_format: 'Prompt, candidate, reward score, verifier label, generation/verification scale, and first verified-positive outcome.', process_fields: [prompt, candidate, reward_score, verifier_label, generation_count, verification_count, total_cost], environment_or_substrate: 'Cost-sensitive generate-rank-verify search.', verifier_or_reward: 'A cheap reward score ranks candidates; an expensive exact-answer or hidden-test verifier supplies the terminal label.', terminal_predicate: 'Return only after an expensive verifier labels a candidate positive.'}
-recipe_metadata: {base_model: 'See official paper for task-specific generator and reward-model settings.', teacher: null, generator: 'A candidate generator paired with a cheap reward model and a costly verifier.', filtering_rule: 'ADAP progressively enlarges the generated pool and verifies top-ranked candidates.', sampling_protocol: 'Shellwise search over dyadic generation and verification scales.', rollout_count: 'Adaptive rather than fixed; cost is the primary reported quantity.', temperature: 'See official paper implementation settings.', inference_budget: 'Generation, reward-scoring, and verifier costs.', optimizer_or_scaffold: 'ADAP, a shellwise adaptive generate-rank-verify policy.'}
-audit: {source_mixture: 'Official arXiv PDF.', split: '83 coding problems and 22 mathematical problems are used in the reward-signal validation described in the paper.', decontamination: 'No separate contamination audit is claimed.', license: 'No public code or data artifact is linked in the checked paper version.', lineage: 'https://arxiv.org/abs/2605.17609', known_failure_modes: [nonmonotone-reward-ranking, verifier-cost-misspecification, reward-model-shift, hidden-test-variance], citation_status: verified, confidence: high, notes: 'Official arXiv PDF checked on 2026-07-21. Its front page lists University of Southern California and Toyota Technological Institute at Chicago; no public code or data URL is supplied.'}
-inclusion_reason: 'It formalizes and optimizes the joint allocation of generation, ranking, and costly verification calls at inference time.'
+authors:
+- Shaddin Dughmi
+- Mahdi Haghifam
+- Yusuf Hakan Kalayci
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical-reasoning
+- code-generation
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2605.17609
+  arxiv: https://arxiv.org/abs/2605.17609
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.17609
+data_object:
+  prompt_source: Mathematical reasoning and competitive-programming evaluation problems.
+  trace_author: A generator samples candidate answers; a reward model supplies cheap ranking scores.
+  answer_format: Prompt, candidate, reward score, verifier label, generation/verification scale, and first verified-positive
+    outcome.
+  process_fields:
+  - prompt
+  - candidate
+  - reward_score
+  - verifier_label
+  - generation_count
+  - verification_count
+  - total_cost
+  environment_or_substrate: Cost-sensitive generate-rank-verify search.
+  verifier_or_reward: A cheap reward score ranks candidates; an expensive exact-answer or hidden-test verifier supplies the
+    terminal label.
+  terminal_predicate: Return only after an expensive verifier labels a candidate positive.
+recipe_metadata:
+  base_model: See official paper for task-specific generator and reward-model settings.
+  teacher: null
+  generator: A candidate generator paired with a cheap reward model and a costly verifier.
+  filtering_rule: ADAP progressively enlarges the generated pool and verifies top-ranked candidates.
+  sampling_protocol: Shellwise search over dyadic generation and verification scales.
+  rollout_count: Adaptive rather than fixed; cost is the primary reported quantity.
+  temperature: See official paper implementation settings.
+  inference_budget: Generation, reward-scoring, and verifier costs.
+  optimizer_or_scaffold: ADAP, a shellwise adaptive generate-rank-verify policy.
+audit:
+  source_mixture: Official arXiv PDF.
+  split: 83 coding problems and 22 mathematical problems are used in the reward-signal validation described in the paper.
+  decontamination: No separate contamination audit is claimed.
+  license: No public code or data artifact is linked in the checked paper version.
+  lineage: https://arxiv.org/abs/2605.17609
+  known_failure_modes:
+  - nonmonotone-reward-ranking
+  - verifier-cost-misspecification
+  - reward-model-shift
+  - hidden-test-variance
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF checked on 2026-07-21. Its front page lists University of Southern California and Toyota Technological
+    Institute at Chicago; no public code or data URL is supplied.
+inclusion_reason: It formalizes and optimizes the joint allocation of generation, ranking, and costly verification calls at
+  inference time.
 related: []
-tags: [test-time-compute, verification, adaptive-search, reward-ranking, theory]
+tags:
+- test-time-compute
+- verification
+- adaptive-search
+- reward-ranking
+- theory
 status: verified
-one_line_summary: 'ADAP adaptively grows a candidate pool and verifies its top-ranked members, with a constant-factor cost guarantee under a monotone score-success assumption.'
-reading_priority: essential
-paper_type: Theoretical and empirical adaptive generate-rank-verify study
-best_for: Readers designing inference-time search systems where exact verification is much more expensive than reward scoring.
-confidence: high
-why_it_matters: 'It makes verifier calls a measured budget rather than a free post-processing step and exposes the assumption needed for adaptive ranking to work.'
+one_line_summary: ADAP adaptively grows a candidate pool and verifies its top-ranked members, with a constant-factor cost
+  guarantee under a monotone score-success assumption.
+why_it_matters: It makes verifier calls a measured budget rather than a free post-processing step and exposes the assumption
+  needed for adaptive ranking to work.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official paper verified; no code or data artifact is linked in the checked version.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper verified; no code or data artifact is linked in the checked version.
+category_ids:
+- scaling_rlvr_test_time_compute

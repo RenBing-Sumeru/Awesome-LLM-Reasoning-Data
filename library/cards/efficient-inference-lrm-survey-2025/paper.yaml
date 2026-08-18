@@ -91,10 +91,6 @@ tags:
 - survey
 why_it_matters: It separates reducing visible tokens from preserving the information needed for correct reasoning.
 one_line_summary: An NUS-led survey of efficient inference methods for long reasoning models.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers optimizing long reasoning traces under memory, latency, or token budgets.
-confidence: high
 status: verified
 needs:
 - 'unknown: fair comparisons across quality, latency, memory, and trace interpretability'

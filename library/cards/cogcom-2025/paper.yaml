@@ -120,10 +120,6 @@ status: verified
 one_line_summary: CogCoM releases visual manipulation chains whose grounding, OCR, and calculation results form evidence-bearing
   multimodal SFT targets.
 why_it_matters: It exposes a structured bridge from visual tools and golden answers to trainable multi-turn reasoning demonstrations.
-reading_priority: must read
-paper_type: visual chain-of-manipulations dataset and model report
-best_for: Researchers building or auditing evidence-bearing visual reasoning and tool-distillation data.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

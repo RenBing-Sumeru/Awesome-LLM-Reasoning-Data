@@ -87,10 +87,6 @@ tags:
 - survey
 why_it_matters: It helps readers distinguish an impressive answer from evidence about the process that produced it.
 one_line_summary: An ACL survey of what evidence explains how large reasoning models learn, reason, and fail.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers studying reasoning traces, reinforcement learning, or mechanistic evidence for model behavior.
-confidence: high
 status: verified
 needs:
 - 'unknown: a common experimental standard for causal claims about reasoning mechanisms'

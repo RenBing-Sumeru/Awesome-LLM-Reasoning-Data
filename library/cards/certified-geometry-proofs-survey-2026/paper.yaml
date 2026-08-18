@@ -81,10 +81,6 @@ tags:
 - acl-2026
 one_line_summary: A survey of hybrid systems that turn geometry problems into checked proof artifacts.
 why_it_matters: It helps readers distinguish a convincing geometry explanation from a proof accepted by an explicit verifier.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers studying geometry reasoning, autoformalization, and proof verification.
-confidence: high
 status: verified
 needs:
 - unknown

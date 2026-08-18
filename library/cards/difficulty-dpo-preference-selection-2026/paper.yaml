@@ -87,10 +87,6 @@ tags:
 status: verified
 one_line_summary: The method trains on preference pairs with the smallest DPO implicit reward gaps because those boundary
   cases provide the strongest learning signal.
-reading_priority: essential
-paper_type: Difficulty-based preference-data selection study
-best_for: Readers reducing alignment-training cost by ranking existing preference pairs before DPO or reward-model training.
-confidence: high
 why_it_matters: It provides a simple, model-aware criterion for turning DPO's implicit reward into a reusable data-selection
   decision.
 curation_level: L4_carded

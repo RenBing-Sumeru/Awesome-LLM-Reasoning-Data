@@ -112,10 +112,6 @@ one_line_summary: Kvasir-VQA-x1 turns atomic GI-endoscopy QAs into 159,549 exper
   demonstrations for clinical VQA training and robustness evaluation.
 why_it_matters: Existing gastrointestinal VQA data emphasizes atomic recognition and offers limited compositional reasoning
   or controlled robustness testing.
-reading_priority: must read
-paper_type: open medical multimodal instruction dataset and benchmark study
-best_for: clinical VQA fine-tuning, curriculum experiments, and visual-perturbation robustness audits
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

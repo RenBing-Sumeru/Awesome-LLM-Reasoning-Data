@@ -86,10 +86,6 @@ tags:
 - scaling-laws
 status: verified
 one_line_summary: A fitted transfer-and-scaling loss model selects SFT domain weights for a fixed token budget.
-reading_priority: essential
-paper_type: Supervised fine-tuning data-mixture optimization study
-best_for: Readers selecting domain proportions for expensive multi-domain SFT.
-confidence: high
 why_it_matters: It turns data-source allocation into an explicit, auditable optimization decision.
 curation_level: L4_carded
 verification:

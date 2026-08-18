@@ -99,11 +99,6 @@ tags:
 status: verified
 one_line_summary: COPR constrains continual preference updates with historical optimal-policy distributions so new feedback
   can be learned without collapsing earlier preferences.
-reading_priority: useful
-paper_type: Continual preference-optimization and policy-regularization study
-best_for: Readers building alignment systems that receive preference data over time and need to retain earlier behavior while
-  adapting to new tasks.
-confidence: high
 why_it_matters: It makes the arrival order and historical consumption of preference data explicit components of the training
   objective.
 curation_level: L4_carded

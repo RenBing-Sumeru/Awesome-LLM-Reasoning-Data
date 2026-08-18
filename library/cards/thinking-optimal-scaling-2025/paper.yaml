@@ -83,10 +83,6 @@ tags:
 status: verified
 one_line_summary: TOPS selects shortest correct effort-conditioned reasoning traces to train task-dependent test-time thinking
   length.
-reading_priority: essential
-paper_type: Test-time compute allocation and self-improvement study
-best_for: Readers training a reasoning model to choose an appropriate effort level per problem.
-confidence: high
 why_it_matters: It treats reasoning length as an allocation variable that can hurt accuracy when extended indiscriminately.
 curation_level: L4_carded
 verification:

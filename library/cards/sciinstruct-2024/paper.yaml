@@ -120,10 +120,6 @@ one_line_summary: SciInstruct turns answer-only science questions into open work
   self-reflection, outcome checking, and learned quality filtering.
 why_it_matters: It makes the transition from scarce answer-only scientific problems to reusable rationale SFT data explicit
   and evaluates both mixture components and filtering decisions.
-reading_priority: must read
-paper_type: scientific rationale-data construction and filtering study
-best_for: Readers building cross-domain scientific SFT mixtures or auditing self-reflective teacher traces.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

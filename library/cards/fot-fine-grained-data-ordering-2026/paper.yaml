@@ -96,10 +96,6 @@ tags:
 status: verified
 one_line_summary: FOT scores examples by model-relative difficulty, trains easy-to-hard in the first epoch, and restores random
   order thereafter.
-reading_priority: essential
-paper_type: Fine-grained training-data scheduling study
-best_for: Readers designing curriculum order for continued pre-training or supervised fine-tuning without discarding examples.
-confidence: high
 why_it_matters: It shows that the order in which data is consumed is itself a training decision, distinct from filtering or
   mixing the data beforehand.
 curation_level: L4_carded

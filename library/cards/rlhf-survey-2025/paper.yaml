@@ -91,11 +91,6 @@ status: verified
 one_line_summary: This survey separates RLHF into feedback acquisition, reward learning, and policy learning across control,
   robotics, and LLMs.
 why_it_matters: It reveals which data and assumptions support each stage instead of treating RLHF as one opaque operation.
-reading_priority: recommended
-paper_type: Cross-domain RLHF survey and audit framework
-best_for: Researchers locating feedback, reward-model, and policy assumptions before reading or designing a concrete RLHF
-  system.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

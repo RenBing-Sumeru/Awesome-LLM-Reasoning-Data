@@ -89,11 +89,6 @@ tags:
 status: verified
 one_line_summary: γ-PO converts each preference pair's reward margin into an instance-specific target, strengthening clear
   supervision and smoothing ambiguous supervision.
-reading_priority: useful
-paper_type: Dynamic target-margin preference optimization study
-best_for: Readers who already have preference pairs and need a model-aware way to reduce the influence of ambiguous labels
-  without dropping them outright.
-confidence: high
 why_it_matters: It treats confidence in a preference record as an optimization-time data-use decision instead of a fixed property
   of the corpus.
 curation_level: L4_carded

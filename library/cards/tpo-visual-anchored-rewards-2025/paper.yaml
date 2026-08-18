@@ -95,11 +95,6 @@ tags:
 status: verified
 one_line_summary: TPO dynamically rewards preference-pair tokens by how much their predictions depend on the original image
   rather than a corrupted image.
-reading_priority: essential
-paper_type: Visual-grounded token-level preference-optimization study
-best_for: Readers training vision-language models with existing preference pairs but no scalable token-level hallucination
-  annotations.
-confidence: high
 why_it_matters: It makes visual grounding a dynamic, per-token training reward instead of assigning the same preference signal
   to every response token.
 curation_level: L4_carded

@@ -86,10 +86,6 @@ tags:
 why_it_matters: It helps readers compare reasoning methods by what the prompt changes, which task is measured, and what evidence
   supports the claim.
 one_line_summary: An ACL 2023 survey of prompting methods used to elicit and study reasoning in language models.
-paper_type: Survey and resource overview
-reading_priority: strong
-best_for: Readers who need a structured starting point for language-model prompting and reasoning tasks.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable task protocols across the surveyed prompting papers'

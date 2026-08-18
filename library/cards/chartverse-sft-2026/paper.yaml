@@ -106,10 +106,6 @@ one_line_summary: ChartVerse generates charts from executable programs and relea
   long reasoning traces tied to known ground truth.
 why_it_matters: Web-scraped chart data is hard to scale and verify because the latent table, rendering code, and exact numerical
   answers are usually missing.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: chart-reasoning SFT with a separate 40K RL subset
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

@@ -95,10 +95,6 @@ tags:
 status: verified
 one_line_summary: FastTTS accelerates verifier-guided test-time reasoning on a single edge GPU through speculative beam extension,
   prefix-aware scheduling, and asymmetric generator-verifier memory allocation.
-reading_priority: essential
-paper_type: Test-time scaling serving-system paper
-best_for: Readers deploying verifier-guided reasoning search under strict GPU-memory and latency constraints.
-confidence: high
 why_it_matters: It treats test-time scaling as a systems scheduling problem and shows that the same search policy can be substantially
   faster without changing its algorithmic output.
 curation_level: L4_carded

@@ -91,11 +91,6 @@ tags:
 status: verified
 one_line_summary: This study shows that longer reasoning can reverse correct answers and proposes marginal-utility and flip-event
   analysis for selecting test-time budgets.
-reading_priority: recommended
-paper_type: Test-time compute scaling evaluation and efficiency analysis
-best_for: Readers choosing stopping budgets or evaluating adaptive reasoning systems that need accuracy-cost curves rather
-  than a single maximum-budget score.
-confidence: high
 why_it_matters: It supplies a concrete failure mode for indiscriminate test-time scaling and turns “when to stop” into a measurable
   allocation decision.
 curation_level: L4_carded

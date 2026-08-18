@@ -109,10 +109,6 @@ one_line_summary: LLaVA-OneVision-1.5 releases a 22M instruction mixture and an 
   the instruction stage from its 85M mid-training corpus and 67K RL set.
 why_it_matters: Open multimodal recipes often publish weights without the exact large instruction mixture, preventing controlled
   study of data balance and economical training.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: full-model multimodal SFT before optional RL
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

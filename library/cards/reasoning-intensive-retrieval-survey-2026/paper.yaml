@@ -85,11 +85,6 @@ why_it_matters: It helps readers separate ordinary semantic retrieval from retri
   reasoning.
 one_line_summary: An ACL 2026 survey of retrieval tasks where finding evidence depends on an inferential connection, not only
   semantic similarity.
-paper_type: Reasoning-intensive retrieval survey
-reading_priority: strong
-best_for: Readers designing retrieval benchmarks, retrievers, or rerankers that must connect a question to indirectly relevant
-  evidence.
-confidence: high
 status: verified
 needs:
 - 'unknown: directly comparable budgets and metrics across surveyed retrieval settings'

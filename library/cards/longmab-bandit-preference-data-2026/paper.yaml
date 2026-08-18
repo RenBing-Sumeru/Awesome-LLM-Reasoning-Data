@@ -103,11 +103,6 @@ tags:
 status: verified
 one_line_summary: LongMab uses bandit-guided context chunk rollouts to produce diverse, reward-ranked long-context response
   pairs for DPO.
-reading_priority: essential
-paper_type: Long-context preference-data construction study
-best_for: Readers constructing programmatically verifiable preference data for long-context question answering and studying
-  how evidence selection changes the pair distribution.
-confidence: high
 why_it_matters: It makes the context subset that generated an answer part of the preference-data construction process, not
   merely an inference-time retrieval choice.
 curation_level: L4_carded

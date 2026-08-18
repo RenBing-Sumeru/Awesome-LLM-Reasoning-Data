@@ -100,10 +100,6 @@ one_line_summary: Augmented Lean Formalisation mutates seed problems, writes rea
   only compiler-verified proofs in a 336K-record SFT set.
 why_it_matters: Formal proving data is limited by the cost of translating informal mathematics into diverse, executable Lean
   statements and proofs.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: autoregressive and diffusion-based theorem-prover SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

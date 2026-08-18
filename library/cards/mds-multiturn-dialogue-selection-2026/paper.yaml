@@ -87,10 +87,6 @@ tags:
 status: verified
 one_line_summary: MDS selects complete dialogue trajectories by combining user-intent coverage with entity-grounded and form-consistent
   structure.
-reading_priority: essential
-paper_type: Multi-turn dialogue instruction-data selection study
-best_for: Readers curating coherent, diverse conversation histories for dialogue SFT.
-confidence: high
 why_it_matters: It moves the SFT admission decision from isolated turns to the complete dialogue trajectory.
 curation_level: L4_carded
 verification:

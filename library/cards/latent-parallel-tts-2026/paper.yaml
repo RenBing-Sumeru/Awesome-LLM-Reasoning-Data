@@ -99,11 +99,6 @@ tags:
 status: verified
 one_line_summary: This work brings parallel sampling and reward-guided selection to latent reasoning by using dropout or noise
   for exploration and a step-level latent reward model for aggregation.
-reading_priority: recommended
-paper_type: Latent-reasoning test-time scaling study
-best_for: Readers extending pass@k-style inference scaling to continuous reasoning models that have neither token probabilities
-  nor textual process-reward inputs.
-confidence: high
 why_it_matters: It shows that inference scaling is not tied to textual chain-of-thought and supplies the sampling and scoring
   primitives needed to allocate compute in latent space.
 curation_level: L4_carded

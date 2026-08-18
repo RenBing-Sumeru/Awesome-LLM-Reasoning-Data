@@ -2,27 +2,106 @@ id: minimal-test-time-intervention-2026
 title: 'Less is More: Improving LLM Reasoning with Minimal Test-Time Intervention'
 year: 2026
 venue: ACL 2026 Long Papers
-authors: [Zhen Yang, Mingyang Zhang, Feng Chen, Ganggui Ding, Liang Hou, Xin Tao, Ying-Cong Chen]
-source_role: [scaling_study]
-verification_contract: [mixed]
-supervision_granularity: [token_level, full_episode]
-domains: [general-reasoning, code-generation, mathematical-reasoning, multimodal-reasoning]
-training_use: [test_time_compute, evaluation]
-construction_layer: [optimizer_scaffold, scaling_report]
-artifacts: {paper: https://aclanthology.org/2026.acl-long.921/, arxiv: null, venue: https://aclanthology.org/2026.acl-long.921/, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2026.acl-long.921}
-data_object: {prompt_source: 'MMLU-Pro, GPQA-Diamond, MATH500, AIME2024, HumanEval, HumanEvalPlus, LiveCodeBench, and spatial VLM benchmarks.', trace_author: 'Reasoning and vision-language models generate one trajectory while token entropy is monitored online.', answer_format: 'Prompt, token entropy, intervention decision, negative-prompt guidance logits, final response, and benchmark score.', process_fields: [prompt, token_entropy, cfg_activation, negative_prompt, guided_logits, final_answer, correctness, latency], environment_or_substrate: 'Training-free decoding with conditional KV-cache reuse.', verifier_or_reward: 'No external verifier or reward model; token entropy selects intervention positions.', terminal_predicate: 'Benchmark-specific task accuracy or execution metric.'}
-recipe_metadata: {base_model: 'DeepSeek-R1-7B, Ling-mini-2.0, Qwen3 8B/14B/32B, and Qwen3-8B-VL-Instruct.', teacher: 'Not applicable.', generator: 'Greedy or sampled decoding with entropy-triggered classifier-free guidance.', filtering_rule: 'Apply guidance only when token entropy exceeds threshold tau.', sampling_protocol: 'Compare direct inference, vanilla CFG at every position, and minimal test-time intervention over threshold values.', rollout_count: 'Eight sampling runs on AIME2024; see paper for other deterministic evaluations.', temperature: 'Greedy decoding in main tests; AIME sampling uses 0.6 temperature, top-p 0.95, and top-k 20.', inference_budget: 'One main trajectory plus a short negative-prompt branch only at high-entropy tokens.', optimizer_or_scaffold: 'Entropy-gated classifier-free guidance with KV-cache reuse and a two-token negative prompt.'}
-audit: {source_mixture: 'Official ACL paper.', split: 'General, coding, STEM, and visual-spatial evaluation suites.', decontamination: 'No formal contamination audit is claimed.', license: 'Check all model and benchmark licenses before reuse.', lineage: 'https://aclanthology.org/2026.acl-long.921/', known_failure_modes: [entropy-threshold-sensitivity, negative-prompt-dependence, logit-access-requirement, untested-closed-models, no-released-code], citation_status: verified, confidence: high, notes: 'Official ACL PDF checked on 2026-07-21. Authors list HKUST(GZ), Kuaishou Technology, AIML, Zhejiang University, Ant Group, and HKUST. The paper refers to code but does not provide a stable repository URL in the PDF.'}
-inclusion_reason: 'It controls test-time computation at token granularity, showing that sparse uncertainty-targeted decoding can improve reasoning without scaling every token or generating many full alternatives.'
+authors:
+- Zhen Yang
+- Mingyang Zhang
+- Feng Chen
+- Ganggui Ding
+- Liang Hou
+- Xin Tao
+- Ying-Cong Chen
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- token_level
+- full_episode
+domains:
+- general-reasoning
+- code-generation
+- mathematical-reasoning
+- multimodal-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.921/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.921/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.921
+data_object:
+  prompt_source: MMLU-Pro, GPQA-Diamond, MATH500, AIME2024, HumanEval, HumanEvalPlus, LiveCodeBench, and spatial VLM benchmarks.
+  trace_author: Reasoning and vision-language models generate one trajectory while token entropy is monitored online.
+  answer_format: Prompt, token entropy, intervention decision, negative-prompt guidance logits, final response, and benchmark
+    score.
+  process_fields:
+  - prompt
+  - token_entropy
+  - cfg_activation
+  - negative_prompt
+  - guided_logits
+  - final_answer
+  - correctness
+  - latency
+  environment_or_substrate: Training-free decoding with conditional KV-cache reuse.
+  verifier_or_reward: No external verifier or reward model; token entropy selects intervention positions.
+  terminal_predicate: Benchmark-specific task accuracy or execution metric.
+recipe_metadata:
+  base_model: DeepSeek-R1-7B, Ling-mini-2.0, Qwen3 8B/14B/32B, and Qwen3-8B-VL-Instruct.
+  teacher: Not applicable.
+  generator: Greedy or sampled decoding with entropy-triggered classifier-free guidance.
+  filtering_rule: Apply guidance only when token entropy exceeds threshold tau.
+  sampling_protocol: Compare direct inference, vanilla CFG at every position, and minimal test-time intervention over threshold
+    values.
+  rollout_count: Eight sampling runs on AIME2024; see paper for other deterministic evaluations.
+  temperature: Greedy decoding in main tests; AIME sampling uses 0.6 temperature, top-p 0.95, and top-k 20.
+  inference_budget: One main trajectory plus a short negative-prompt branch only at high-entropy tokens.
+  optimizer_or_scaffold: Entropy-gated classifier-free guidance with KV-cache reuse and a two-token negative prompt.
+audit:
+  source_mixture: Official ACL paper.
+  split: General, coding, STEM, and visual-spatial evaluation suites.
+  decontamination: No formal contamination audit is claimed.
+  license: Check all model and benchmark licenses before reuse.
+  lineage: https://aclanthology.org/2026.acl-long.921/
+  known_failure_modes:
+  - entropy-threshold-sensitivity
+  - negative-prompt-dependence
+  - logit-access-requirement
+  - untested-closed-models
+  - no-released-code
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF checked on 2026-07-21. Authors list HKUST(GZ), Kuaishou Technology, AIML, Zhejiang University, Ant
+    Group, and HKUST. The paper refers to code but does not provide a stable repository URL in the PDF.
+inclusion_reason: It controls test-time computation at token granularity, showing that sparse uncertainty-targeted decoding
+  can improve reasoning without scaling every token or generating many full alternatives.
 related: []
-tags: [test-time-scaling, entropy, classifier-free-guidance, efficient-decoding, reasoning]
+tags:
+- test-time-scaling
+- entropy
+- classifier-free-guidance
+- efficient-decoding
+- reasoning
 status: verified
-one_line_summary: 'MTI applies classifier-free guidance only to high-entropy tokens, improving reasoning while avoiding the cost of guiding every decoding position.'
-reading_priority: recommended
-paper_type: Token-level efficient test-time intervention study
-best_for: Readers with decoding-logit access who need an alternative to multi-trajectory search for improving reliability under tight latency and memory budgets.
-confidence: high
-why_it_matters: 'It makes the unit of test-time allocation a token-level uncertainty event rather than an entire chain, sample, or search branch.'
+one_line_summary: MTI applies classifier-free guidance only to high-entropy tokens, improving reasoning while avoiding the
+  cost of guiding every decoding position.
+why_it_matters: It makes the unit of test-time allocation a token-level uncertainty event rather than an entire chain, sample,
+  or search branch.
 curation_level: L4_carded
-verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official ACL paper checked; no stable dedicated artifact link is reported in the PDF.'}
-category_ids: [scaling_rlvr_test_time_compute]
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no stable dedicated artifact link is reported in the PDF.
+category_ids:
+- scaling_rlvr_test_time_compute

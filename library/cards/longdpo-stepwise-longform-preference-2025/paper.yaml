@@ -100,11 +100,6 @@ tags:
 status: verified
 one_line_summary: LongDPO uses MCTS, factual memory, and external critiques to build stepwise preference pairs for fine-grained
   long-form DPO.
-reading_priority: essential
-paper_type: Stepwise preference-data construction and long-form alignment study
-best_for: Readers building long-form generation alignment pipelines where whole-answer preferences hide the location of factual
-  or structural failures.
-confidence: high
 why_it_matters: It turns long-form training from an outcome-only preference problem into a sequence of selected and refined
   local decisions.
 curation_level: L4_carded

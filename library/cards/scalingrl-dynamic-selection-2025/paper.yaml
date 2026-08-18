@@ -99,11 +99,6 @@ tags:
 status: verified
 one_line_summary: ScalingRL turns a 220K mathematical prompt pool into a dynamically sampled 1.5K RL curriculum using difficulty,
   reasoning complexity, and reward adaptability.
-reading_priority: essential
-paper_type: Dynamic RL training-data selection study
-best_for: Readers designing compute-constrained mathematical RL who need an explicit, stage-dependent rule for deciding which
-  prompts produce the next policy updates.
-confidence: high
 why_it_matters: It treats data use as an optimization schedule, rather than assuming that a fixed high-quality subset remains
   useful throughout RL.
 curation_level: L4_carded

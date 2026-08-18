@@ -98,10 +98,6 @@ status: verified
 one_line_summary: WizardLM turns 52K seed instructions into a 250K candidate pool through explicit depth and breadth operations
   before teacher answering.
 why_it_matters: It makes the intended increase in instruction difficulty traceable before the response becomes SFT supervision.
-reading_priority: recommended
-paper_type: Evolved instruction-response data construction
-best_for: Researchers expanding simple seed instructions into more difficult SFT tasks with an auditable lineage.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

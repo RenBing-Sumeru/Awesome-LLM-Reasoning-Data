@@ -101,10 +101,6 @@ tags:
 status: verified
 one_line_summary: ER-PRM derives process labels from reference-policy completion rollouts under a KL-consistent entropy formulation,
   then uses them to train and apply a math reward model.
-reading_priority: essential
-paper_type: Entropy-regularized process-label construction, reward modeling, and policy-selection study
-best_for: Readers studying how rollout outcomes become step rewards and how a reward model subsequently filters training rationales.
-confidence: high
 why_it_matters: It changes the aggregation rule that turns verified future completions into process-label targets, linking
   reward construction directly to the KL-regularized optimization objective.
 curation_level: L4_carded

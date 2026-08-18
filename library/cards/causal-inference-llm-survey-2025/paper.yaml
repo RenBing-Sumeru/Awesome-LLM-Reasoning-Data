@@ -91,10 +91,6 @@ tags:
 why_it_matters: It distinguishes using causal ideas to evaluate language models from using language models to assist causal
   tasks.
 one_line_summary: A Findings NAACL 2025 survey of two-way collaboration between causal inference and language models.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers connecting causal reasoning with LLM evaluation, fairness, explainability, or causal discovery.
-confidence: high
 status: verified
 needs:
 - 'unknown: comparable assumptions and evaluation settings across cited work'

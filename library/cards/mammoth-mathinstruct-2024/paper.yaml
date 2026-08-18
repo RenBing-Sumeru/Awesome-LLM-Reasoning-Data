@@ -107,10 +107,6 @@ status: verified
 one_line_summary: MAmmoTH releases MathInstruct, a 260k-record hybrid CoT/PoT math SFT mixture with newly generated and execution-filtered
   rationales.
 why_it_matters: It makes rationale representation and source breadth explicit data variables for math generalization.
-reading_priority: must read
-paper_type: hybrid mathematical rationale dataset and SFT study
-best_for: Readers designing mixed natural-language and executable math-demonstration corpora.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

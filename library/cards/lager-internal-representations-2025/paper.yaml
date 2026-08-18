@@ -71,15 +71,17 @@ audit:
   citation_status: verified
   confidence: medium
   notes: Cross-layer score-token aggregation improves point-wise judge alignment but does not test adversarial robustness.
-inclusion_reason: 'Audits point-wise LLM judging by testing whether intermediate representations improve human-score alignment.'
+inclusion_reason: Audits point-wise LLM judging by testing whether intermediate representations improve human-score alignment.
 related: []
 tags:
 - llm-as-a-judge
 - internal-representations
 - audit
 status: verified
-one_line_summary: Aggregates score-token logits across frozen transformer layers to improve point-wise judge alignment with humans.
-why_it_matters: It makes the evaluator readout itself an auditable source of misalignment rather than treating final-token scores as fixed.
+one_line_summary: Aggregates score-token logits across frozen transformer layers to improve point-wise judge alignment with
+  humans.
+why_it_matters: It makes the evaluator readout itself an auditable source of misalignment rather than treating final-token
+  scores as fixed.
 curation_level: L4_chinese_review_ready
 verification:
   link_verified: true

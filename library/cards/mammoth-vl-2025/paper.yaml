@@ -116,10 +116,6 @@ one_line_summary: MAmmoTH-VL rewrites and filters 153 public multimodal sources 
   records using open models.
 why_it_matters: It demonstrates a fully open-model path from heterogeneous visual corpora to a training-scale reasoning mixture
   with explicit filtering ablations.
-reading_priority: must read
-paper_type: large-scale multimodal rationale dataset and construction recipe
-best_for: Researchers building or auditing large multimodal reasoning SFT mixtures with open teachers.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

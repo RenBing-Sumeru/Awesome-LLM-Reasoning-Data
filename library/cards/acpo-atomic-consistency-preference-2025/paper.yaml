@@ -97,11 +97,6 @@ tags:
 status: verified
 one_line_summary: ACPO turns agreement among sentence-level facts in sampled long-form answers into chosen-rejected pairs
   for factuality-oriented DPO.
-reading_priority: essential
-paper_type: Self-supervised preference-data construction and factuality alignment study
-best_for: Readers studying how repeated model outputs can become preference supervision without an external judge or knowledge
-  base.
-confidence: high
 why_it_matters: It makes atomic agreement, cluster frequency, and response ranking explicit data-construction decisions rather
   than relying on a stronger factuality judge.
 curation_level: L4_carded

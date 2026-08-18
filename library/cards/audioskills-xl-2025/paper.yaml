@@ -98,10 +98,6 @@ one_line_summary: AudioSkills-XL expands multiple audio sources into 8M capabili
   subset for reasoning-focused training.
 why_it_matters: Audio-language models lack a large openly documented instruction mixture spanning sound, music, speech, and
   reasoning instead of captioning alone.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: audio-language SFT and reasoning tuning
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

@@ -92,10 +92,6 @@ tags:
 why_it_matters: It turns benchmark selection from leaderboard following into a concrete comparison of capability, conditions,
   and metric.
 one_line_summary: A 2026 survey that explains why two “reasoning benchmark” scores are often not measuring the same thing.
-paper_type: Survey and benchmark framework
-reading_priority: strong
-best_for: Readers selecting, building, or interpreting reasoning benchmarks and their data.
-confidence: high
 status: verified
 needs:
 - 'unknown: shared reporting conventions for benchmark conditions and score semantics'

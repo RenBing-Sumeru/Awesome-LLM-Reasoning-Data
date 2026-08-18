@@ -86,10 +86,6 @@ tags:
 status: verified
 one_line_summary: FocalPO reweights DPO so preference pairs with correct current implicit rankings contribute more than misranked
   pairs.
-reading_priority: essential
-paper_type: Preference-pair weighting and optimization-objective study
-best_for: Readers deciding whether hard, currently misranked preference pairs should dominate an offline alignment update.
-confidence: high
 why_it_matters: It challenges DPO's default emphasis on pairs the model currently gets wrong and makes ranking state an explicit
   training-use signal.
 curation_level: L4_carded

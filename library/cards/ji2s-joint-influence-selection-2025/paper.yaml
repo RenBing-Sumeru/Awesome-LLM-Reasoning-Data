@@ -85,10 +85,6 @@ tags:
 status: verified
 one_line_summary: JI²S selects a compact instruction-tuning subset by combining marginal and pairwise joint influence relative
   to a human-preference proxy.
-reading_priority: recommended
-paper_type: Joint-influence instruction-data selection study
-best_for: Readers studying redundancy-aware selection for compact instruction fine-tuning.
-confidence: high
 why_it_matters: It makes interaction between records, not only individual quality, part of the SFT admission decision.
 curation_level: L4_carded
 verification:

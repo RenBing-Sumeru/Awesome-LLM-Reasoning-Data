@@ -90,10 +90,6 @@ tags:
 status: verified
 one_line_summary: FineVerify turns each sampled agent trajectory into sub-question-level checks, enabling a more reliable
   selection policy as the test-time trajectory budget grows.
-reading_priority: useful
-paper_type: Fine-grained verification for agentic test-time scaling
-best_for: Readers designing budgeted search agents whose final answers depend on several independently checkable claims.
-confidence: high
 why_it_matters: It shows that adding trajectories is useful only when the selector can inspect their multi-claim evidence
   rather than rely on a single confidence score.
 curation_level: L4_carded

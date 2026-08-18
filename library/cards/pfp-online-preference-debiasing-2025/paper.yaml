@@ -91,11 +91,6 @@ tags:
 status: verified
 one_line_summary: PFP preserves the feature distribution behind preference labels while generating and training on new online
   preference records.
-reading_priority: useful
-paper_type: Online preference-data construction and distribution-preserving optimization study
-best_for: Readers building iterative preference-learning pipelines that need to avoid feature collapse as self-generated feedback
-  accumulates.
-confidence: high
 why_it_matters: It turns the feature mix behind binary preferences into a constraint on what data is generated and consumed
   in each online-training round.
 curation_level: L4_carded

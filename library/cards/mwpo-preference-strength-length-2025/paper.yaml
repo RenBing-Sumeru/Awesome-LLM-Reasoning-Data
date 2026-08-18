@@ -98,11 +98,6 @@ tags:
 status: verified
 one_line_summary: MWPO weights each DPO preference pair by its implicit reward margin and response-length margin to improve
   alignment while counteracting verbosity.
-reading_priority: essential
-paper_type: Preference-data weighting and optimization-objective study
-best_for: Readers designing offline preference optimization when uncertain pair labels and length bias can both distort the
-  training update.
-confidence: high
 why_it_matters: It makes preference strength and length bias explicit record-level training signals rather than treating all
   chosen-rejected pairs equally.
 curation_level: L4_carded

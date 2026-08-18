@@ -97,5 +97,3 @@ category_ids:
 - benchmarks_evaluation_surfaces
 - preference_reward_feedback_data
 - judgment_rubric_domain_expert_data
-category:
-- audit_failure_contamination_verifier_attacks

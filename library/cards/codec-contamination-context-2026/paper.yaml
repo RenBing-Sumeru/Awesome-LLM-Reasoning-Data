@@ -71,7 +71,7 @@ audit:
   confidence: high
   notes: Official primary page and public artifact URL recorded on 2026-07-19. CoDeC measures the change induced by in-context
     examples to identify memorized benchmark data.
-inclusion_reason: '以同分布上下文造成的置信度下降构造可解释污染分数，并在已知训练语料模型上以 99.9% 数据集级 AUC 区分已见与未见数据。'
+inclusion_reason: 以同分布上下文造成的置信度下降构造可解释污染分数，并在已知训练语料模型上以 99.9% 数据集级 AUC 区分已见与未见数据。
 related: []
 tags:
 - track13

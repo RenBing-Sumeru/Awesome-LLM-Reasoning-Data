@@ -126,10 +126,6 @@ one_line_summary: ReST-EM samples math solutions or programs from the current po
   checks, and repeats SFT to turn verified self-generation into training data.
 why_it_matters: It provides a simple iterative recipe and shows exactly where verifier quality and repeated-prompt overfitting
   limit self-training.
-reading_priority: recommended
-paper_type: verifier-filtered iterative self-training
-best_for: Readers building self-training loops for mathematics or code with executable binary feedback.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

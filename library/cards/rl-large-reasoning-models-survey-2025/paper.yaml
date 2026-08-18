@@ -122,10 +122,6 @@ tags:
 - survey
 why_it_matters: It makes reward construction, rollouts, optimization, and evaluation visible as separate data decisions.
 one_line_summary: A TsinghuaC3I survey of the reinforcement-learning machinery that turns language models into reasoning models.
-paper_type: Survey and taxonomy
-reading_priority: strong
-best_for: Readers selecting reasoning training data, verifier signals, or RL post-training designs.
-confidence: high
 status: verified
 needs:
 - 'unknown: shared comparisons across rewards, verifiers, rollout budgets, and RL algorithms'

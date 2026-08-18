@@ -90,10 +90,6 @@ status: verified
 one_line_summary: SPIN releases base dialogues and iteration 0-3 policy responses that support repeated self-play fine-tuning.
 why_it_matters: turning the model's previous responses into an explicit, versioned negative side of an iterative training
   dataset
-reading_priority: must read
-paper_type: open instruction-data release and construction study
-best_for: bootstrapping an instruction model when a fixed human dialogue set is available
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

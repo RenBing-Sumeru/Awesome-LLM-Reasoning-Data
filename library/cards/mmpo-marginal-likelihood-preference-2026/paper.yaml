@@ -88,11 +88,6 @@ tags:
 status: verified
 one_line_summary: MMPO converts each offline preference pair into a normalized maximum-marginal-likelihood objective that
   implicitly up-weights the chosen response.
-reading_priority: useful
-paper_type: Offline preference-optimization objective study
-best_for: Readers comparing DPO-style objectives who need stable use of an existing preference dataset without training an
-  explicit reward model.
-confidence: high
 why_it_matters: It changes the optimization consumer of an unchanged preference dataset and empirically studies the trade-off
   between alignment gain and retained general capability.
 curation_level: L4_carded

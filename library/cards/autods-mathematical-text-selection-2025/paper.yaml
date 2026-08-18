@@ -76,10 +76,6 @@ tags:
 - data-selection
 status: verified
 one_line_summary: AutoDS ranks mathematical text with zero-shot generative-classifier logits before continual pretraining.
-reading_priority: essential
-paper_type: Mathematical-text curation and continual-pretraining study
-best_for: Readers studying model-relative corpus selection and mathematical continual pretraining.
-confidence: high
 why_it_matters: It makes the connection between a data object and its training objective inspectable.
 curation_level: L4_carded
 verification:

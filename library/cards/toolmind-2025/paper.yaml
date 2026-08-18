@@ -90,10 +90,6 @@ one_line_summary: ToolMind constructs a function graph, simulates realistic inte
   complete self-corrective trajectories.
 why_it_matters: Trajectory-level acceptance can hide a wrong intermediate tool call whose error propagates through every later
   turn.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: tool-use SFT
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

@@ -92,10 +92,6 @@ tags:
 status: verified
 one_line_summary: A controlled release of 1,000+ SFT runs finds base-model perplexity is a strong compatibility signal for
   choosing training data.
-reading_priority: essential
-paper_type: Large-scale supervised fine-tuning data and training-factor audit
-best_for: Readers validating SFT data-selection rules across base models and tasks.
-confidence: high
 why_it_matters: It shows that the data selection signal must be tied to the base model and downstream contract.
 curation_level: L4_carded
 verification:

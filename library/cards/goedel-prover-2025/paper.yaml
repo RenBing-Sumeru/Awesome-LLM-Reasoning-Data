@@ -122,10 +122,6 @@ one_line_summary: Goedel-Prover releases large-scale informal/formal Lean statem
   compiler-verified expert iteration.
 why_it_matters: It exposes statement style, faithfulness checks, proof search, compiler verification, and cumulative SFT as
   distinct data-quality decisions.
-reading_priority: must read
-paper_type: open formal-mathematics dataset, construction recipe, and prover report
-best_for: Researchers building Lean whole-proof corpora, autoformalization pipelines, or verifier-backed expert iteration.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

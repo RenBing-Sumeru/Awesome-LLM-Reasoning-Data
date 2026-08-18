@@ -93,10 +93,6 @@ one_line_summary: π2 turns Wikipedia tables into long-context QA with SQL/Pytho
   traces for data-efficient SFT.
 why_it_matters: It combines realistic unstructured contexts with an executable ground-truth path and releases the resulting
   training records.
-reading_priority: recommended
-paper_type: long-context reasoning dataset, generator, and benchmark
-best_for: Researchers constructing verifiable multi-document reasoning data for SFT.
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

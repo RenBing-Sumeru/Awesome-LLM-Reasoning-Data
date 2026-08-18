@@ -97,10 +97,6 @@ tags:
 status: verified
 one_line_summary: Diverse-NS creates DPO pairs whose chosen response is more diverse and better scored than the rejected response
   without exploiting shorter length.
-reading_priority: essential
-paper_type: Length-controlled preference-data selection study
-best_for: Readers building preference data for diverse open-ended generation while guarding against metric-driven length bias.
-confidence: high
 why_it_matters: It shows that a diversity objective changes the training record in a harmful way unless selection explicitly
   equalizes response length.
 curation_level: L4_carded

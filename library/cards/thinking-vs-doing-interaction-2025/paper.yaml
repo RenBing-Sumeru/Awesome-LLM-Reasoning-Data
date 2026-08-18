@@ -97,10 +97,6 @@ tags:
 status: verified
 one_line_summary: TTI scales a web agent’s test-time interaction horizon, then trains that behavior with a horizon curriculum
   so the agent can explore, backtrack, and re-plan.
-reading_priority: essential
-paper_type: Test-time interaction scaling and online reinforcement-learning study
-best_for: Readers studying compute allocation between per-step reasoning and environment interaction in agents.
-confidence: high
 why_it_matters: It shows that more test-time actions can acquire information unavailable to a longer reasoning trace before
   acting.
 curation_level: L4_carded

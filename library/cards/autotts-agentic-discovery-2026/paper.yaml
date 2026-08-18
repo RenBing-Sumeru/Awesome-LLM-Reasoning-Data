@@ -104,11 +104,6 @@ tags:
 status: verified
 one_line_summary: AutoTTS discovers test-time branching and stopping controllers in an offline replay environment, improving
   the accuracy-token frontier without hand-coding a fixed scaling rule.
-reading_priority: essential
-paper_type: Agentic test-time scaling controller discovery study
-best_for: Readers developing adaptive multi-trajectory reasoning systems that need a repeatable way to search allocation policies
-  rather than manually tune heuristics.
-confidence: high
 why_it_matters: It makes the allocation policy itself searchable and exposes an inexpensive offline route for comparing branch,
   probe, pruning, and stopping decisions.
 curation_level: L4_carded

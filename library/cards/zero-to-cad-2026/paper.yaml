@@ -95,10 +95,6 @@ one_line_summary: Zero-to-CAD uses tool-using agents to synthesize, execute, rep
   construction programs without real trajectories.
 why_it_matters: Real CAD datasets expose final geometry but rarely the editable construction history needed to train interpretable
   program-generating models.
-reading_priority: must read
-paper_type: open post-training dataset and construction study
-best_for: CAD program generation SFT and agent training
-confidence: high
 curation_level: L4_carded
 verification:
   link_verified: true

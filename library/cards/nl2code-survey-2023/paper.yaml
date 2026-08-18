@@ -86,10 +86,6 @@ tags:
 one_line_summary: An ACL 2023 survey of LLMs for converting natural-language descriptions into code.
 why_it_matters: It helps readers separate model scale, data quality, tuning, and executable evaluation when comparing NL2Code
   systems.
-paper_type: Survey
-reading_priority: strong
-best_for: Readers choosing NL2Code benchmarks or comparing code-generation models.
-confidence: high
 status: verified
 needs:
 - unknown
