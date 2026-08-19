@@ -43,7 +43,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from atlas import config, labels as L  # noqa: E402
-from atlas.cards import value_translations  # noqa: E402
+from atlas.cards import NEED_PREFIX, value_translations  # noqa: E402
 
 BLOCKS = ("data_object", "recipe_metadata", "audit", "verification")
 MEMORY = Path(__file__).resolve().parent / "data" / "zh_block_values.json"
@@ -96,6 +96,29 @@ def save_memory(memory: dict) -> None:
     MEMORY.write_text("{\n" + body + "\n}\n", encoding="utf-8")
 
 
+def need_texts(paper) -> list[str]:
+    """Gap labels and details shown under 尚存缺口 on the card."""
+    items = paper.get("needs") or []
+    if isinstance(items, str):
+        items = [items]
+    out = []
+    for item in items:
+        text = str(item or "").strip()
+        if not text:
+            continue
+        match = NEED_PREFIX.match(text)
+        if not match:
+            out.append(text)
+            continue
+        kind = match.group(1)
+        if kind not in L.NEEDS:
+            out.append(L.humanize(kind.replace("needs_", "")))
+        detail = (match.group(2) or "").strip()
+        if detail:
+            out.append(detail)
+    return out
+
+
 def corpus() -> collections.Counter:
     """Every value in a published card's curated blocks, with how often it appears."""
     seen = collections.Counter()
@@ -116,6 +139,8 @@ def corpus() -> collections.Counter:
                     text = str(item).strip()
                     if text:
                         seen[text] += 1
+        for text in need_texts(paper):
+            seen[text] += 1
     return seen
 
 

@@ -139,11 +139,29 @@ def split_need(text: str):
     """Needs come in three shapes: `needs_x: detail`, a bare `needs_x` tag, or free text."""
     match = NEED_PREFIX.match(str(text or ""))
     if not match:
-        return {"kind": None, "label": ["Gap", "缺口"], "html": md_to_html(str(text))}
+        source = str(text)
+        html = md_to_html(source)
+        row = {"kind": None, "label": ["Gap", "缺口"], "html": html}
+        html_zh = md_to_html(zh_value(source))
+        if html_zh != html:
+            row["html_zh"] = html_zh
+        return row
     kind = match.group(1)
     stem = kind.replace("needs_", "")
-    label = L.NEEDS.get(kind, (L.humanize(stem),) * 2)
-    return {"kind": kind, "label": list(label), "html": md_to_html((match.group(2) or "").strip())}
+    mapped = L.NEEDS.get(kind)
+    if mapped:
+        en, zh = mapped
+    else:
+        en = L.humanize(stem)
+        zh = zh_value(en)
+    detail = (match.group(2) or "").strip()
+    html = md_to_html(detail)
+    row = {"kind": kind, "label": [en, zh], "html": html}
+    if detail:
+        html_zh = md_to_html(zh_value(detail))
+        if html_zh != html:
+            row["html_zh"] = html_zh
+    return row
 
 
 def artifact_links(artifacts):

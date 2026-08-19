@@ -502,7 +502,9 @@ function drawerHtml(card) {
 
   const needs = card.needs?.length
     ? `<section class="dblock"><h3>${esc(T.needs)}</h3><ul class="needlist">${card.needs.map(need => (
-        `<li><span class="nk">${esc(pick(need.label, lang))}</span><span class="nv">${need.html || "—"}</span></li>`
+        `<li><span class="nk">${esc(pick(need.label, lang))}</span><span class="nv">${
+          (zh && need.html_zh) || need.html || "—"
+        }</span></li>`
       )).join("")}</ul></section>`
     : "";
 
