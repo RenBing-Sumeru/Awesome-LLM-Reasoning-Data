@@ -12,14 +12,6 @@
   "occurrences": 73
  },
  {
-  "source": "paper-specific audited outcome",
-  "occurrences": 70
- },
- {
-  "source": "Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require versioned evidence.",
-  "occurrences": 68
- },
- {
   "source": "Not a training recipe; this Card treats the work as an evaluation or audit surface.",
   "occurrences": 64
  },

@@ -79,7 +79,7 @@ const T = {
     explain: "解读",
     audit: "审计",
     compare: "对比",
-    curatedQuoted: "以下区块的字段名与判定已汉化；具体条目沿用原文表述，以便与一手论文逐条对照。",
+    curatedQuoted: "以下区块的字段名、判定与条目均已汉化；数字与标识符保持原样。如需与论文逐条对照，请切换到英文卡片。",
     yes: "是",
     no: "否",
     search: "关键词",
@@ -447,8 +447,8 @@ function fillSelects() {
 
 function kvBlock(title, rows) {
   if (!rows?.length) return "";
-  // Values carry a Chinese variant for the statuses and stock pointers that recur across
-  // cards. A card-specific sentence has no translation and falls back to the source text.
+  // Values prefer value_zh on the Chinese page (stock verdicts plus per-card sentences).
+  // Missing translations fall back to the English source.
   const zh = state.detailLang === 1;
   const body = rows.map(row => `<div class="kvrow">
     <dt>${esc(pick(row.label, state.detailLang))}</dt>
@@ -506,9 +506,8 @@ function drawerHtml(card) {
       )).join("")}</ul></section>`
     : "";
 
-  // Both pages render these blocks. Headings, field labels, statuses, and the stock
-  // "see the paper" pointers are translated; the sentences specific to one paper stay in
-  // the source wording, which the note explains rather than leaving the reader guessing.
+  // Both pages render these blocks. Headings, field labels, statuses, stock pointers,
+  // and card-specific sentences are translated on the Chinese page when value_zh exists.
   const curated = [
     kvBlock(T.dataObject, card.data_object),
     kvBlock(T.recipe, card.recipe_metadata),
