@@ -82,7 +82,7 @@
 
 Surveys, primers, classic post-training lineages, data documentation, and evaluation background for readers entering the field.
 
-- 适合读者: Use this track when you need the map before the terrain: vocabulary, taxonomies, historical lineages, and recurring audit questions.
+- 适合读者: 当你需要先看地图再进地形时用这个方向：术语、分类法、历史谱系，以及反复出现的审计问题。
 - 验证方式: 未知 39, 程序化 8, 混合 6, 需评审 4
 
 </details>
@@ -98,7 +98,7 @@ Surveys, primers, classic post-training lineages, data documentation, and evalua
 
 Instruction-response examples, human demonstrations, synthetic instructions, rationales, chain-of-thought traces, and teacher-written reasoning targets.
 
-- 适合读者: Use this track to understand how reasoning behavior is serialized before preference, verifier, or environment feedback is added.
+- 适合读者: 用这个方向理解：在加入偏好、验证器或环境反馈之前，推理行为是如何被序列化成数据的。
 - 验证方式: 混合 82, 程序化 35, 需评审 30, 环境判定 6
 
 </details>
@@ -108,7 +108,7 @@ Instruction-response examples, human demonstrations, synthetic instructions, rat
 
 Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, critiques, and rubric-conditioned feedback records.
 
-- 适合读者: Use this track to compare preference and reward signals before they become training objectives or evaluation proxies.
+- 适合读者: 用这个方向对比各类偏好与奖励信号——在它们变成训练目标或评测替代指标之前。
 - 验证方式: 需评审 90, 混合 17, 程序化 10, 环境判定 1
 
 </details>
@@ -118,7 +118,7 @@ Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, 
 
 Math answers, code execution, unit tests, proof checkers, symbolic predicates, answer extraction, and verifier robustness studies.
 
-- 适合读者: Use this track for the cleanest verifier-bearing reasoning records: final answers or artifacts checked by code, rules, tests, or formal systems.
+- 适合读者: 这里是最干净的一类带验证器推理记录：最终答案或产物由代码、规则、测试或形式系统来检查。
 - 验证方式: 程序化 108, 混合 12, 环境判定 6, 需评审 4
 
 </details>
@@ -128,7 +128,7 @@ Math answers, code execution, unit tests, proof checkers, symbolic predicates, a
 
 Step-level labels, process reward models, rollout values, first-error localization, automatic process supervision, and PRM evaluation.
 
-- 适合读者: Use this track to move from final-answer feedback to intermediate feedback attached to reasoning steps or trace states.
+- 适合读者: 用这个方向从「只看最终答案的反馈」走到「附着在推理步骤或轨迹状态上的中间反馈」。
 - 验证方式: 需评审 91, 混合 15, 程序化 6, 环境判定 3
 
 </details>
@@ -138,7 +138,7 @@ Step-level labels, process reward models, rollout values, first-error localizati
 
 Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCTS records, selected/rejected candidates, and test-time compute logs.
 
-- 适合读者: Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
+- 适合读者: 当关键数据不是一个答案，而是一组采样尝试、搜索路径、选择器分数或推理预算轨迹时，用这个方向。
 - 验证方式: 混合 46, 程序化 40, 需评审 19, 环境判定 8, 未知 4
 
 </details>
@@ -148,7 +148,7 @@ Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCT
 
 Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes, replayable trajectories, and terminal predicates.
 
-- 适合读者: Use this track to understand how interactive environments become post-training data sources and feedback contracts.
+- 适合读者: 用这个方向理解：交互式环境是如何变成后训练的数据来源与反馈契约的。
 - 验证方式: 混合 62, 程序化 35, 环境判定 34, 需评审 13, 未知 1
 
 </details>
@@ -158,7 +158,7 @@ Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes,
 
 LLM-as-judge data, human/expert judgment, medical and safety rubrics, factuality, legal and financial reasoning, and rubric reward models.
 
-- 适合读者: Use this track when correctness needs a rubric, expert judgment, grounding evidence, or calibrated evaluator rather than a cheap programmatic checker.
+- 适合读者: 当正确性需要评分标准、专家判断、证据锚定或经过校准的评估者，而不是一个廉价的程序化检查器时，用这个方向。
 - 验证方式: 需评审 91, 混合 17, 程序化 4, 环境判定 1
 
 </details>
@@ -174,7 +174,7 @@ LLM-as-judge data, human/expert judgment, medical and safety rubrics, factuality
 
 Prompt sourcing, teacher traces, rejection sampling, self-play, filtering, verifier refresh, open releases, lineage, and release metadata.
 
-- 适合读者: Use this track to learn how reasoning datasets are actually built, filtered, packaged, and released.
+- 适合读者: 用这个方向了解推理数据集在实践中究竟是怎么构建、筛选、打包和发布的。
 - 验证方式: 混合 61, 程序化 43, 需评审 19, 环境判定 12
 
 </details>
@@ -184,7 +184,7 @@ Prompt sourcing, teacher traces, rejection sampling, self-play, filtering, verif
 
 How data enters SFT, distillation, preference optimization, reward modeling, PRM training, RLVR, agent training, evaluation, reranking, and audit.
 
-- 适合读者: Use this track to connect a data object to the objective or system component that consumes it.
+- 适合读者: 用这个方向把一个数据对象，和真正消费它的训练目标或系统组件对应起来。
 - 验证方式: 需评审 59, 混合 40, 程序化 23, 未知 7, 环境判定 3
 
 </details>
@@ -194,7 +194,7 @@ How data enters SFT, distillation, preference optimization, reward modeling, PRM
 
 Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
 
-- 适合读者: Use this track to interpret claims about how much data, verifier strength, RL, and inference budget contribute to reasoning gains.
+- 适合读者: 用这个方向解读各种主张：数据量、验证器强度、强化学习与推理预算，各自对推理能力提升贡献了多少。
 - 验证方式: 混合 76, 程序化 21, 需评审 9, 未知 3, 环境判定 1
 
 </details>
@@ -204,7 +204,7 @@ Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling 
 
 Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contamination-resistant benchmarks.
 
-- 适合读者: Use this track to understand what an evaluation surface measures and whether it can safely become a feedback source.
+- 适合读者: 用这个方向理解一个评测面到底测了什么，以及它能否安全地被当作反馈来源。
 - 验证方式: 程序化 68, 混合 38, 环境判定 33, 需评审 18
 
 </details>
@@ -214,7 +214,7 @@ Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contami
 
 DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each frontier-style report discloses or hides about data.
 
-- 适合读者: Use this track to read frontier model reports as partial data-disclosure documents rather than only model-performance announcements.
+- 适合读者: 用这个方向把前沿模型报告读成「部分数据披露文件」，而不只是性能发布公告。
 - 验证方式: 混合 82, 未知 11, 程序化 10, 需评审 5, 环境判定 2
 
 </details>
@@ -224,7 +224,7 @@ DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each f
 
 Benchmark contamination, search-time leakage, hidden lineage, reward hacking, verifier gaming, LLM-as-judge attacks, spurious rewards, and reproducibility failures.
 
-- 适合读者: Use this track when you want to know how reasoning-data claims can fail and how to audit them before reuse.
+- 适合读者: 当你想知道推理数据的结论会怎样失效、以及复用前该如何审计它时，用这个方向。
 - 验证方式: 混合 88, 未知 7, 需评审 7, 程序化 4, 环境判定 2
 
 </details>
@@ -407,6 +407,54 @@ Benchmark contamination, search-time leakage, hidden lineage, reward hacking, ve
 </details>
 
 <details>
+<summary><b>进入数据团队</b> · 496 张匹配卡片</summary>
+
+覆盖后训练数据团队默认你已经掌握的那部分实务基础。
+
+1. [Training Software Engineering Agents and Verifiers with SWE-Gym](https://proceedings.mlr.press/v267/pan25g.html) (2025) — SWE-Gym 发布 2,438 个带仓库快照、容器环境和单元测试的 Python 工程任务，并把 491 条成功轨迹、5,564 条失败轨迹和 1,318/1,318 平衡 verifier 数据分开封装；但 Lite 数量、镜像 digest、轨迹谱系和各工件许可仍不一致。
+2. [An Illusion of Progress? Assessing the Current State of Web Agents](https://arxiv.org/abs/2504.01382) (2025) — Online-Mind2Web 发布 300 个会随真实网站变化的任务、评测代码、任务级标签与 WebJudge-7B，但未形成包含六类论文智能体全部截图/动作及网站快照的不可变轨迹语料。
+3. [AgentTrek: Agent Trajectory Synthesis via Guiding Replay with Web Tutorials](https://proceedings.iclr.cc/paper_files/paper/2025/hash/c681fb2bf1d785fbc766f3ea14758aab-Abstract-Conference.html) (2025) — AgentTrek 将 RedPajama 教程经筛选、结构化、live-browser guided replay 与 GPT-4o judgment 转为 GUI-agent SFT 数据；论文主张 23,430 个教程产生 10,398 条成功 trajectory，但当前 HF 只发布 52,594 条无 trajectory 映射的 text turn，未提供完整 multimodal/native traces、失败数据、license 或环境 manifest。
+4. [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](https://openreview.net/pdf?id=scPETXuAiY) (2025) — TinyV 先让 Prime Verifier 检查答案，仅在其拒绝时调用 1.5B 学习式验证器；公开对象包括 159,136 条平衡 SFT 数据、7,009 条困难提示和 250 条 HardVerify-Math，但 638K 前体池、实验所用 5K 清单、双裁判账本与 held-out 验证器评测未发布。
+5. [AgentRewardBench: Evaluating Automatic Evaluations of Web Agent Trajectories](https://arxiv.org/abs/2504.08942) (2025) — AgentRewardBench 发布 1,302 条网页智能体完整轨迹、专家标签与每条轨迹 15 组自动评估输出，用于审计 LLM judge 和环境规则，但不提供已获许可的确定性环境重放。
+6. [InSTA: Towards Internet-Scale Training For Agents](https://arxiv.org/abs/2502.06776) (2025) — InSTA 用 LLM 对 100 万个 Common Crawl 排名站点进行安全筛选与任务生成，再以 live Playwright rollout 和 LLM success judge 构造 web-agent SFT 数据；论文与 v2 的精确任务数为 146,746，但当前官方发布只有约 146K 条 task rows 与 recipe code，没有论文声称的完整 multimodal trajectories、失败样本、judge rationales 或 checkpoints。
+7. [MathCoder2: Better Math Reasoning from Continued Pretraining on Model-translated Mathematical Code](https://proceedings.iclr.cc/paper_files/paper/2025/file/bea94fe9c5573e74294657f692069d89-Paper-Conference.pdf) (2025) — MathCoder2 将筛选后的数学网页翻译为“条件—表达式—结果—Python”记录，与网页、合成、代码和教材数据组成论文报告的 19,487,652 文档、19,184,073,343 token 的 MathCode-Pile；当前公开数据仍是只有 train split 的 partial text-only 版本，且执行过滤、谱系、许可、去污染和 checkpoint 绑定均不完整。
+8. [Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model](https://proceedings.neurips.cc/paper_files/paper/2025/file/ed873d79e7c268c020c4b4db13a2812a-Paper-Conference.pdf) (2025) — Open-Reasoner-Zero 不经过 SFT 或蒸馏、直接从 Qwen2.5 Base 启动 PPO，按每题 64 条在线响应分配终局数学奖励并训练 token-value critic；但公开的是 prompt/参考答案、代码和权重，而不是论文运行的 rollout、失败轨迹、奖励或日志。
+9. [s1: Simple test-time scaling](https://aclanthology.org/2025.emnlp-main.1025/) (2025) — s1 从 59,029 道混合来源题目经生成成功、格式、Qwen 难度与 Claude 领域筛选得到 1,000 条 Gemini 蒸馏 s1K，再用 inference-time budget forcing 控制思考长度；但 s1K 仅 53.6% 被 judge 判对，公开 full59K 还缺 43 行。
+10. [WebSailor-V2: Bridging the Chasm to Proprietary Agents via Synthetic Data and Scalable Reinforcement Learning](https://openreview.net/pdf?id=HuP16O5SJf) (2025) — WebSailor-V2 报告了 3 万余条合成 instruction pair、经 rejection sampling 获得的 ReAct SFT 轨迹，以及跨离线 Wikipedia 与受管真实网络环境的 on-policy RL，但没有公开 V2 数据、代码、verifier 或完整成败轨迹。
+11. [On Data Engineering for Scaling LLM Terminal Capabilities](https://arxiv.org/abs/2602.21193) (2026) — 公开 366,154 条 train-only 终端 SFT episode；论文研究的完整混合共 490,520 条，其中 124,366 条 seed-based 轨迹尚未确认发布，且公开行没有规范化 outcome、reward 或 test result。
+12. [Herald: A Natural Language Annotated Lean 4 Dataset](https://proceedings.iclr.cc/paper_files/paper/2025/file/8c2bb821410066459be64d03a4dc5719-Paper-Conference.pdf) (2025) — Herald 按依赖层级对 Mathlib4 进行非形式化，检索 1,000 个人工示例，并通过 tactic state 与 LLM 改写扩充数据；它公开 579,883 条 statement rows 和 44,553 条 proof rows，但未公开完整构造代码、精确源版本、逐行 lineage、rejects 与去污染证据。
+13. [WebSailor: Navigating Super-human Reasoning for Web Agent](https://arxiv.org/abs/2507.02592) (2025) — WebSailor 用 2,000 余条成功的重构 ReAct 轨迹和 DUPO 的混合格式/答案奖励训练网页搜索 agent，但官方目前只发布了 20 条 QA 示例，并未发布完整成功或失败轨迹。
+14. [Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading](https://arxiv.org/abs/2607.08964) (2026) — LHTB 发布 46 个仅用于测试的容器化终端任务及确定性回合末子任务评分器，但未发布论文基线轨迹；当前 GitHub 公开全部任务的 tests/ 与 solution/，与 HF 的保留声明冲突。
+15. [MathSmith: Towards Extremely Hard Mathematical Reasoning by Forging Synthetic Problems with a Reinforced Policy](https://arxiv.org/abs/2508.05592) (2026) — MathSmith 用 PlanetMath 衍生概念训练并发布 Qwen3-8B 出题器，以结构、教师推理长度和同教师答案一致性奖励生成题目与构造 rationale；这些信号仍不是独立数学验证。
+16. [Odysseys: Benchmarking Web Agents on Realistic Long Horizon Tasks](https://arxiv.org/abs/2604.24964) (2026) — Odysseys 公开 200 个长程实时网页任务、1,225 条 rubric 和 200 份 OSWorld 配置及评分脚本，但没有公开来源浏览历史、完整模型轨迹、人工标签或可确定重放的网页状态。
+17. [SWE-CI: Evaluating Agent Capabilities in Maintaining Codebases via Continuous Integration](https://arxiv.org/abs/2603.03823) (2026) — SWE-CI 以 68 个公开 Python 仓库中的 100 个长期演化任务构造最长 20 轮 Architect–Programmer CI 轨迹，并已发布任务、Docker 环境、代码及 115 GB 轨迹；但版本漂移、测试验证器、归档完整性、回放、权利、隐私和凭据隔离仍需审计。
+18. [SWE-rebench V2: Language-Agnostic SWE Task Collection at Scale](https://arxiv.org/abs/2602.23866) (2026) — SWE-rebench V2 发布 32,079 个跨 20 种语言的预构建可执行仓库修复环境及 126,300 个 PR 衍生训练任务，并公开测试终态反馈与自动构造配方，但不可变回放、污染、权利与失败记录仍不完整。
+19. [Absolute Zero: Reinforced Self-play Reasoning with Zero Data](https://papers.nips.cc/paper_files/paper/2025/file/9837dc00ff67d176373268ed48042d49-Paper-Conference.pdf) (2025) — Absolute Zero 让同一 policy 在线提出并求解 Python deduction、abduction 与 induction 任务，以执行结果和八次 solver 尝试构造 RLVR reward；其“zero data”仅指 RL 阶段无外部人工或蒸馏任务答案数据，完整 rollout 并未发布。
+20. [Multi-modal Agent Tuning: Building a VLM-Driven Agent for Efficient Tool Usage](https://proceedings.iclr.cc/paper_files/paper/2025/hash/238747e153a84f50b43fd50fa8504f33-Abstract-Conference.html) (2025) — Multi-modal Agent Tuning 用 GPT-4o mini 生成查询、文件与 ReAct 轨迹并经可执行代码门槛和双重同源 judge 筛选，公开 21,168 条 MM-Traj 记录；其构造 recipe 可供研究，但许可冲突、schema 失败、缺少拒绝账本与独立正确性核验阻断直接训练复用。
+21. [PaperBench: Evaluating AI's Ability to Replicate AI Research](https://proceedings.mlr.press/v267/starace25a.html) (2025) — PaperBench 以 20 篇机器学习论文、8,316 个加权 rubric 叶节点和新鲜容器复现评估科研智能体，但官方并未发布覆盖 646 次论文实验的完整日志、快照、提交物、执行产物与逐叶裁判输出。
+22. [SWE Data Construction, Automatically!](https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/70/SWE-Data-Construction-Automatically-) (2026) — SWE-Factory 以四代理生成 Dockerfile 与评测脚本，并用 gold-patch fail-to-pass 退出码契约验证 issue-resolution 环境；它公开 671 条任务、2,809 条 messages-only 轨迹和 430 条 Gym 记录，但三者缺少逐行谱系与不可变环境绑定。
+23. [$\tau^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment](https://openreview.net/pdf?id=OC2z7iSQKa) (2025) — tau2-bench 发布双控制客服环境，从 2,285 个 telecom 完整组合中抽取 114 个评测任务，并保留状态/动作反馈及成功与失败轨迹；准确复用必须固定论文时代的 v0.1.0。
+24. [ITBench: Evaluating AI Agents across Diverse Real-World IT Automation Tasks](https://proceedings.mlr.press/v267/jha25a.html) (2025) — ITBench把真实IT运维问题组织为可部署环境中的工具调用episode，并发布静态场景与SRE轨迹；其价值在于明确stop与success契约，但跨版本映射、回放、污染、隐私和许可仍未解决。
+25. [OpenThoughts: Data Recipes for Reasoning Models](https://openreview.net/forum?id=mbqvBA12Dx) (2025) — OpenThoughts 用来源筛选、prompt 过滤、16 次 QwQ-32B 采样和完整 SFT 构成 120 万条数学/代码/科学推理数据；其主要价值是把构造选择变成可对照的 recipe，但答案未做正确性验证，且来源权利、逐条 provenance 与仓库密钥卫生问题阻断直接训练复用。
+26. [SiriuS: Self-improving Multi-agent Systems via Bootstrapped Reasoning](https://papers.nips.cc/paper_files/paper/2025/file/b45279ac82cb017a5f55ea7d3653193a-Paper-Conference.pdf) (2025) — SiriuS 用终局成功筛选角色级 SFT 记录，并通过 ground-truth-guided critique、regeneration、rephrasing 与下游 replay 修复失败轨迹；当前只公开五条 physics sample input，未公开论文 experience library、失败账本、feedback、模型或日志。
+27. [Training Long-Context, Multi-Turn Software Engineering Agents with Reinforcement Learning](https://arxiv.org/abs/2508.03501) (2025) — 论文从 21,336 个 SWE-rebench 任务筛出 7,249 个任务，以测试通过的 6,548 条自生成 episode 做 RFT，再以终局测试奖励训练长上下文 DAPO agent；其训练轨迹、代码与模型均未发布。
+28. [TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks](https://proceedings.neurips.cc/paper_files/paper/2025/file/0d744742f6fac4d1134c019b7cef3c8a-Paper-Datasets_and_Benchmarks_Track.pdf) (2024) — TheAgentCompany 将 175 个模拟公司任务、混合 checkpoint evaluator 与模型生成的结果、截图和完整评测轨迹连接起来，但轨迹日志许可、不可变环境版本、split、去污染、逐条 lineage、judge 校准和隐私同意仍未确认。
+29. [Collaborative Reasoner: Self-Improving Social Agents with Synthetic Conversations](https://papers.neurips.cc/paper_files/paper/2025/file/221ae0f5de12f7b9803af2656ee7902d-Paper-Conference.pdf) (2025) — Collaborative Reasoner（Coral）让两个对称的同模型 agents 对 reasoning problems 进行五路逐 turn 采样与五棵独立 conversation trees，通过 same-family LLM belief extraction 加 gold matching 构造 SFT targets 和 same-prefix DPO pairs；论文报告 8B/70B 接受 379.6K/311.3K turns，但没有公开 conversations、SFT/DPO rows、rejects、checkpoints、logs 或 splits。
+30. [MLGym: A New Framework and Benchmark for Advancing AI Research Agents](https://openreview.net/pdf/75f6e6aa5276a0b93fd3859ec7b41c92ee79cea8.pdf) (2025) — MLGym 将 13 个容器化 ML 研究任务表示为 thought/action/observation/state 与 evaluator score 轨迹；论文分析 624 条运行，而当前仓库为 676 对轨迹/结果文件，但无限 test-set validate、恒为 0 的 Gym reward、可变 latest 镜像与混合许可限制其复用。
+31. [Rethinking Data Selection at Scale: Random Selection is Almost All You Need](https://aclanthology.org/2025.findings-emnlp.146/) (2025) — 该 Findings of EMNLP 2025 研究在 OpenHermes 与 English WildChat 两个大池上比较六种 self-scoring selector、五次 random control 及 10K/50K SFT subset，显示复杂选择很少稳定胜过随机；其 token-length+K-means 实用 recipe 虽强，但公开代码只处理前 100 个 embedding 并选择 cluster center，不能复现论文的按 cluster 比例选择最长样本。
+32. [WebRL: Training LLM Web Agents via Self-Evolving Online Curriculum Reinforcement Learning](https://openreview.net/forum?id=oVKEAFjEqv) (2025) — WebRL 从 1,186 条 WebArena-Lite 种子示范出发，以失败驱动课程、学习型 ORM 和成功轨迹回放训练浏览器智能体；方法证据充分，但完整在线语料与复用许可仍未发布。
+33. [WEBSERV: A Full-Stack and RL-Ready Web Environment for Training Web Agents at Scale](https://arxiv.org/abs/2510.16252) (2025) — WebServ 公开了 726 条经成功筛选的 Claude 浏览器轨迹及 Incus 隔离式 GRPO 训练代码，但未公开失败轨迹、逐条结果标签、Qwen 在线 RL rollout、模型检查点或可固定复现的环境镜像。
+34. [CodeScout: An Effective Recipe for Reinforcement Learning of Code Search Agents](https://arxiv.org/abs/2603.17829) (2026) — CodeScout 发布 54,845 条 CodeScout-14B 与 CodeScout-4B 的完整终端代码搜索 RL rollout，保留多次尝试、分层定位奖励和 8,281 条零奖励失败轨迹；但公开行数超过论文名义预算，部分分组不完整，且数据许可与精确重放谱系仍为 unknown。
+35. [Efficient PRM Training Data Synthesis via Formal Verification](https://aclanthology.org/2026.findings-acl.403/) (2026) — FoVer 用 Z3 与 Isabelle/HOL 为形式逻辑和形式证明轨迹生成二元步骤标签，组成 FOVER-40K 并训练用于步骤判错与 Best-of-K 选择的 PRM。
+36. [TreePO: Enhancing Policy Efficacy and Inference Efficiency with Tree Modeling](https://openreview.net/forum?id=npsWK8rgYO) (2026) — TreePO以共享前缀分段树替代独立数学rollout，并用终局答案奖励构造层级子组优势；官方发布了代码、提示与检查点，但没有发布可重建论文训练过程的完整树记录。
+37. [AIMO-2 Winning Solution: Building State-of-the-Art Mathematical Reasoning Models with OpenMathReasoning dataset](https://arxiv.org/abs/2504.16891) (2025) — OpenMathReasoning 发布 5,678,317 条 CoT、Python-TIR、GenSelect 与 problem-only 记录；官方数据卡把论文早期 540K 题目口径更正为 306K 个有 solution 的唯一题目，另含 193,170 条仅题目记录，且仍缺原始 AoPS 抓取与逐条 verifier lineage。
+38. [DAPO: An Open-Source LLM Reinforcement Learning System at Scale](https://arxiv.org/abs/2503.14476) (2025) — DAPO 以 17K 整数答案数学题和每题 16 条在线 rollout 为对象，通过规则奖励、动态题组筛选、token-level loss 与长度塑形组织 RLVR；但当前公开 split 的重复块和来源谱系仍阻碍直接复用。
+39. [Holistic Agent Leaderboard: The Missing Infrastructure for AI Agent Evaluation](https://openreview.net/forum?id=vUaY1t64ZZ) (2025) — HAL 将九个异构 agent benchmark 统一为带任务 evaluator、成本与 Weave 调用轨迹的评测运行；但论文的 21,730 个 rollout、项目当前的 26,597 个 rollout 与 HF 当前 380 个加密 run archive 不能混为同一语料快照。
+40. [Leveraging Online Olympiad-Level Math Problems for LLMs Training and Contamination-Resistant Evaluation](https://proceedings.mlr.press/v267/mahdavi25a.html) (2025) — AoPS-Instruct 将 2024 年前的论坛问题与社区解答转为 647,255 条重写 SFT 记录，LiveAoPSBench 则用更严格的答案检查筛选较新的时间戳帖子；训练快照、逐记录来源与内容复用权利仍不完整。
+
+</details>
+
+<details>
 <summary><b>审计一个结论</b> · 72 张匹配卡片</summary>
 
 在复用一份推理数据之前，先知道这类结论会怎么失效。
@@ -462,6 +510,34 @@ Benchmark contamination, search-time leakage, hidden lineage, reward hacking, ve
 | [exports/](exports/) | 全部已发布卡片的 CSV、JSON 与 BibTeX，供站外复用。 |
 | [reports/](reports/) | 卡片库尚欠的工作：未发布卡片、归并的词表、重复项与归一改动。 |
 | [apps/ask-atlas/](apps/ask-atlas/) | Ask 后端。已发布的问答页面不依赖它即可运行。 |
+
+</details>
+
+<details>
+<summary>📖 术语表</summary>
+
+| 术语 | 定义 |
+|---|---|
+| **后训练** | 预训练之后进行的训练或适配，涵盖 SFT、蒸馏、偏好学习、奖励建模、过程监督、RLVR 与智能体训练。 |
+| **推理数据** | 用于教会、塑造、强化或审计推理行为的训练与评测记录。 |
+| **带验证器的样本** | 把任务与模型行为，同检查器、奖励、评审、评分标准或环境判定给出的反馈配成一对的数据条目。 |
+| **反馈接口** | 行为经由标签、检查器、奖励、评审或环境而变得可训练、可审计的那条边界。 |
+| **验证契约** | 规定「什么可以被检查、以何种粒度检查、会有哪些失效模式」的那套规则。 |
+| **终止判定** | 在环境层面用来判断一条智能体轨迹是否成功的条件。 |
+| **数据谱系** | 关于源语料、教师模型、生成器、解码策略、验证器、过滤规则、数据划分与复用路径的元数据。 |
+| **通过率区间** | 对一道题被解出的频率的估计，其取值依赖于基座模型与采样协议。 |
+| **发布卡** | 一份结构化报告，说明发布了什么、如何构建、如何验证，以及还缺什么。 |
+
+</details>
+
+<details>
+<summary>🔗 相关列表</summary>
+
+| 列表 | 关系与边界 |
+|---|---|
+| [Awesome LLM Reasoning](https://github.com/atfortes/Awesome-LLM-Reasoning) | 通用的推理方法列表。想看提示技巧、模型架构与推理方法就去那边；本图谱只关注这些方法所消费的数据对象。 |
+| [Awesome LLM Post-training](https://github.com/mbzuai-oryx/awesome-llm-post-training) | 同类的后训练列表，方法覆盖更广。本图谱刻意更窄——每个条目都必须写清数据对象，以及验证它的东西。 |
+| [Awesome Dataset Distillation](https://github.com/Guang000/Awesome-Dataset-Distillation) | 可作为参考的范例：一个长期维护的列表如何让引用、数据文件与静态站点保持同步。它的主题是数据集蒸馏，不是推理数据。 |
 
 </details>
 

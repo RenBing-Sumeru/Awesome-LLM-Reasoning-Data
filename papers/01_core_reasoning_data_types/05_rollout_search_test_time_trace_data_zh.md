@@ -1,10 +1,21 @@
 # 🔁 05 · 采样、搜索与推理时轨迹数据
 
-> Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCTS records, selected/rejected candidates, and test-time compute logs.
+> 多次采样、搜索树、best-of-N 样本、自一致性轨迹、MCTS 记录、被选中与被拒绝的候选，以及推理时计算日志。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **103** 张卡片 · **58** 必读
 
-Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
+当关键数据不是一个答案，而是一组采样尝试、搜索路径、选择器分数或推理预算轨迹时，用这个方向。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 多次采样与 best-of-N | 多组采样尝试及最终被选中的答案 | 只有被接受的轨迹是可见的 |
+| 搜索树与 MCTS | 树搜索、MCTS、验证器引导搜索与路径选择 | 树搜索策略或价值模型被隐去 |
+| 拒绝采样轨迹 | 筛选过程中产生的被接受与被拒绝候选 | 被拒绝的样本没有发布 |
+| 自一致性与重复采样 | 基于投票或一致性的重复采样推理 | 采样预算不可比 |
+| 推理时计算日志 | 思考预算、推理时扩展与运行期搜索轨迹 | 训练预算与推理预算的效应被混在一起 |
+| 长转短与从搜索蒸馏 | 用长搜索轨迹训练更短、更省的行为 | 教师的搜索痕迹变成了隐藏的数据谱系 |
 
 ## 必读
 

@@ -1,10 +1,22 @@
 # 🏗️ 08 · 数据构造与开源发布
 
-> Prompt sourcing, teacher traces, rejection sampling, self-play, filtering, verifier refresh, open releases, lineage, and release metadata.
+> 题目来源、教师轨迹、拒绝采样、自我博弈、筛选、验证器刷新、开源发布、数据谱系与发布元数据。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **107** 张卡片 · **76** 必读
 
-Use this track to learn how reasoning datasets are actually built, filtered, packaged, and released.
+用这个方向了解推理数据集在实践中究竟是怎么构建、筛选、打包和发布的。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 题目来源 | 题库、种子来源、许可、难度与基座模型通过率 | 题目来源被混合使用且没有署名 |
+| 教师轨迹生成 | 教师模型、轨迹策略、采样设置与蒸馏目标 | 教师身份或采样协议被隐去 |
+| 拒绝采样与搜索生成数据 | 候选生成、搜索预算、筛选与接受/拒绝样本 | 只发布了被接受的轨迹 |
+| 自我博弈与自我改进 | 自我改进、协同进化、生成器—验证器循环与课程设计 | 反馈回路会放大隐藏的捷径 |
+| 筛选与验证器刷新 | 答案过滤、评审过滤、去污染与验证器更新 | 过滤阈值变成了隐性的优化目标 |
+| 开源推理数据发布 | 开源数据集、代码、HF 发布、配方、消融与可复现性 | 数据集开源了，但配方细节没有 |
+| 数据谱系与发布元数据 | datasheet、数据划分、谱系、许可、版本与已知失效 | 复用时丢失了发布语境 |
 
 ## 必读
 

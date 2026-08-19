@@ -110,6 +110,16 @@ I18N = {
         "open_questions": "Open questions",
         "why_track": "Why this track exists",
         "how_to_read": "How to read this track",
+        "subfields": "Subfields",
+        "subfield_col": "Subfield",
+        "focus_col": "What it covers",
+        "risk_col": "What it usually hides",
+        "glossary": "Vocabulary",
+        "term_col": "Term",
+        "definition_col": "Definition",
+        "related_lists": "Related lists",
+        "list_col": "List",
+        "boundary_col": "How it relates",
         "back": "Back to all tracks",
         "card": "Card",
         "year": "Year",
@@ -188,6 +198,16 @@ I18N = {
         "open_questions": "开放问题",
         "why_track": "这个方向为什么存在",
         "how_to_read": "如何读这个方向",
+        "subfields": "子领域",
+        "subfield_col": "子领域",
+        "focus_col": "覆盖什么",
+        "risk_col": "通常会掩盖什么",
+        "glossary": "术语表",
+        "term_col": "术语",
+        "definition_col": "定义",
+        "related_lists": "相关列表",
+        "list_col": "列表",
+        "boundary_col": "关系与边界",
         "back": "返回全部方向",
         "card": "卡片",
         "year": "年份",
@@ -240,6 +260,36 @@ def card_link(entry: dict, prefix: str = "") -> str:
 
 # ---------------------------------------------------------------- track pages
 
+def track_text(track: dict, field: str, lang: str) -> str:
+    """Track prose in the requested language, falling back to English if untranslated."""
+    if lang == "zh":
+        return track.get(f"{field}_zh") or track.get(field, "")
+    return track.get(field, "")
+
+
+def render_subfields(track: dict, lang: str) -> list:
+    """The track's second level, with the failure each subfield tends to hide.
+
+    A track holds around a hundred cards, which is too many to browse without an
+    intermediate structure. `key_risk` is the part worth reading: it names what usually
+    goes wrong in that corner, so a reader knows what to look for before opening a paper.
+    """
+    subfields = track.get("subfields") or []
+    if not subfields:
+        return []
+    s = I18N[lang]
+    zh = lang == "zh"
+    out = [f"## {s['subfields']}", "", f"| {s['subfield_col']} | {s['focus_col']} | {s['risk_col']} |",
+           "|---|---|---|"]
+    for item in subfields:
+        name = item.get("name_zh") if zh else item.get("name")
+        focus = item.get("focus_zh") if zh else item.get("focus")
+        risk = item.get("key_risk_zh") if zh else item.get("key_risk")
+        out.append(f"| {md_escape(name)} | {md_escape(focus)} | {md_escape(risk)} |")
+    out.append("")
+    return out
+
+
 def render_track_page(track: dict, entries: list, lang: str) -> str:
     s = I18N[lang]
     index = lang_index(lang)
@@ -250,19 +300,22 @@ def render_track_page(track: dict, entries: list, lang: str) -> str:
     out = [
         f"# {track['emoji']} {track['order']:02d} · {name}",
         "",
-        f"> {md_escape(track['summary'])}",
+        f"> {md_escape(track_text(track, 'summary', lang))}",
         "",
         f"[{s['back']}](../README{s['suffix']}.md) · [{s['site']}]({SITE_URL}) · "
         f"**{len(mine)}** {s['papers']} · **{len(must)}** {s['read_first']}",
         "",
     ]
-    if track.get("reader_promise"):
-        out += [f"{md_escape(track['reader_promise'])}", ""]
+    promise = track_text(track, "reader_promise", lang)
+    if promise:
+        out += [f"{md_escape(promise)}", ""]
 
     if track.get("why"):
         out += [f"## {s['why_track']}", ""]
         out += [f"- {md_escape(item)}" for item in track["why"]]
         out.append("")
+
+    out += render_subfields(track, lang)
 
     if must:
         out += [
@@ -368,7 +421,7 @@ def render_contents(tracks: list, counts: dict, entries: list, lang: str) -> str
                 "",
                 f"{md_escape(track['summary'])}",
                 "",
-                f"- {s['best_for']}: {md_escape(track.get('reader_promise'))}",
+                f"- {s['best_for']}: {md_escape(track_text(track, 'reader_promise', lang))}",
                 f"- {s['contract_col']}: {contract_breakdown(track['id'], entries, lang)}",
                 "",
                 "</details>",
@@ -553,6 +606,37 @@ def render_learning_path(packs: list, lang: str) -> str:
     return "\n".join(out)
 
 
+def render_glossary(lang: str) -> list:
+    """The nine terms the cards assume the reader already has."""
+    terms = (config.read_yaml(config.LIBRARY / "glossary.yaml") or {}).get("terms") or []
+    if not terms:
+        return []
+    s = I18N[lang]
+    zh = lang == "zh"
+    out = ["<details>", f"<summary>📖 {s['glossary']}</summary>", "",
+           f"| {s['term_col']} | {s['definition_col']} |", "|---|---|"]
+    for item in terms:
+        term = item.get("term_zh") if zh else item.get("term")
+        body = item.get("definition_zh") if zh else item.get("definition")
+        out.append(f"| **{md_escape(term)}** | {md_escape(body)} |")
+    return out + ["", "</details>", ""]
+
+
+def render_related_lists(lang: str) -> list:
+    """Neighbouring lists, and why a reader might want one of them instead."""
+    lists = (config.read_yaml(config.LIBRARY / "related_lists.yaml") or {}).get("lists") or []
+    if not lists:
+        return []
+    s = I18N[lang]
+    zh = lang == "zh"
+    out = ["<details>", f"<summary>🔗 {s['related_lists']}</summary>", "",
+           f"| {s['list_col']} | {s['boundary_col']} |", "|---|---|"]
+    for item in lists:
+        why = item.get("why_related_zh") if zh else item.get("why_related")
+        out.append(f"| [{md_escape(item['title'])}]({item['url']}) | {md_escape(why)} |")
+    return out + ["", "</details>", ""]
+
+
 def render_readme(tracks: list, counts: dict, packs: list, by_id: dict, entries: list, lang: str) -> str:
     s = I18N[lang]
     index = lang_index(lang)
@@ -669,6 +753,8 @@ def render_readme(tracks: list, counts: dict, packs: list, by_id: dict, entries:
         "",
         "</details>",
         "",
+        *render_glossary(lang),
+        *render_related_lists(lang),
         f"## 🤝 {s['contributing']}",
         "",
         s["contributing_body"],

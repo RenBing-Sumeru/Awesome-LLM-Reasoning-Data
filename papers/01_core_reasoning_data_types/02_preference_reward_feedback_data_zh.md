@@ -1,10 +1,21 @@
 # 🤝 02 · 偏好与奖励反馈数据
 
-> Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, critiques, and rubric-conditioned feedback records.
+> 人类偏好、AI 反馈、奖励模型、DPO 式偏好对、标量奖励、批判，以及基于评分标准的反馈记录。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **113** 张卡片 · **58** 必读
 
-Use this track to compare preference and reward signals before they become training objectives or evaluation proxies.
+用这个方向对比各类偏好与奖励信号——在它们变成训练目标或评测替代指标之前。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 人类偏好数据与 RLHF | 人工对比数据、有用/无害反馈与 RLHF 奖励目标 | 标注者的假设与分歧被隐去 |
+| DPO 与偏好优化 | 直接用于偏好优化的成对数据 | 偏好对被脱离采集语境复用 |
+| 标量奖励与结果奖励数据 | 结果奖励标签、标量分数与训练奖励模型的目标 | 标量奖励掩盖了「为什么这个答案更好」 |
+| RLAIF 与合成反馈 | 模型生成的偏好、批判与 constitutional 反馈 | 把合成评审的行为当作人类偏好 |
+| 奖励模型基准 | RewardBench 式评测数据与奖励模型压力测试 | 基准上的偏好不能预测下游训练价值 |
+| 基于评分标准的奖励 | rubric 分数、批判加评分的记录与领域专用奖励信号 | rubric 的措辞会变成可被利用的奖励通道 |
 
 ## 必读
 

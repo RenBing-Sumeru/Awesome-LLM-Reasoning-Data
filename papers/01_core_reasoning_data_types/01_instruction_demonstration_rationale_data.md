@@ -6,6 +6,17 @@
 
 Use this track to understand how reasoning behavior is serialized before preference, verifier, or environment feedback is added.
 
+## Subfields
+
+| Subfield | What it covers | What it usually hides |
+|---|---|---|
+| 🧱 Instruction tuning / SFT data | instruction-response examples, demonstrations, and target behavior records | prompt sources and mixture weights are hidden |
+| 🧑‍🏫 Human demonstrations | human-written solutions, explanations, rationales, and expert demonstrations | human trace policy and expertise are unclear |
+| 🤖 Synthetic instruction data | self-instruct, teacher-generated tasks, and synthetic instruction mixtures | synthetic prompts collapse diversity or inherit teacher artifacts |
+| 🧠 Chain-of-thought / rationale data | rationales, CoT traces, self-consistency, and reasoning-style supervision | trace style is mistaken for faithful reasoning |
+| 🔁 Self-training / STaR | bootstrapped traces, self-training, critique loops, and filtered self-improvement | feedback loop repeats hidden errors or shortcuts |
+| ✂️ Long/short CoT distillation | teacher long traces, distilled short traces, and reasoning compression | distillation loses uncertainty and failed attempts |
+
 ## Read first
 
 | Paper | Year | Verified by | What it contributes |

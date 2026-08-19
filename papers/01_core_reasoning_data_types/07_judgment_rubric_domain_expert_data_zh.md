@@ -1,10 +1,23 @@
 # ⚖️ 07 · 评审、评分标准与领域专家数据
 
-> LLM-as-judge data, human/expert judgment, medical and safety rubrics, factuality, legal and financial reasoning, and rubric reward models.
+> 大模型评审数据、人工与专家评判、医学与安全评分标准、事实性、法律与金融推理，以及评分标准奖励模型。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **101** 张卡片 · **31** 必读
 
-Use this track when correctness needs a rubric, expert judgment, grounding evidence, or calibrated evaluator rather than a cheap programmatic checker.
+当正确性需要评分标准、专家判断、证据锚定或经过校准的评估者，而不是一个廉价的程序化检查器时，用这个方向。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 大模型评审数据 | 模型评审、偏好判定、评审提示词与评估模型 | 评审对文体、位置与提示词攻击敏感 |
+| 人工与专家评判 | 人工标注、专家裁定、分歧处理与评分标准设计 | 专业背景与裁定规范未被披露 |
+| 医学推理与健康评分标准 | 健康、生物医学、科学与基于证据的推理任务 | 评分标准没有针对高风险错误做校准 |
+| 安全推理数据 | 安全推理、拒答、越狱、有害性与护栏数据 | 看似安全的拒答取代了正确的领域推理 |
+| 事实性与证据锚定 | 论断、引证、检索锚定、事实核查与证据质量 | 规范的引用格式会掩盖无支撑的论断 |
+| 法律推理 | 法律问答、法条、判例推理、合同与专家法律评分标准 | 数据划分会泄漏模板或司法辖区假设 |
+| 金融推理 | 金融问答、表格与文本数值推理、财报与分析师式判断 | 数据划分会泄漏模板或被记住的公司事实 |
+| 评分标准奖励模型 | 把 rubric 当作可训练奖励，以及领域条件化的奖励模型 | rubric 分数被优化，却没有语义鲁棒性 |
 
 ## 必读
 

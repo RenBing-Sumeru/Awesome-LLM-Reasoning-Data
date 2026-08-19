@@ -1,0 +1,60 @@
+# The vocabulary the cards assume.
+#
+# These nine terms are the ones a reader has to hold in mind before the tracks make
+# sense: they name the objects that recur across every card. Definitions are editorial,
+# not quoted from any single paper, so they stay stable while the library grows.
+
+terms:
+- term: post-training
+  term_zh: 后训练
+  definition: Training or adaptation performed after pretraining, including SFT, distillation,
+    preference learning, reward modeling, process supervision, RLVR, and agent training.
+  definition_zh: 预训练之后进行的训练或适配，涵盖 SFT、蒸馏、偏好学习、奖励建模、过程监督、RLVR 与智能体训练。
+
+- term: reasoning data
+  term_zh: 推理数据
+  definition: Training or evaluation records intended to teach, shape, reinforce, or audit
+    reasoning behavior.
+  definition_zh: 用于教会、塑造、强化或审计推理行为的训练与评测记录。
+
+- term: verifier-bearing sample
+  term_zh: 带验证器的样本
+  definition: A data item that pairs a task and model behavior with feedback from a checker,
+    reward, judge, rubric, or environment predicate.
+  definition_zh: 把任务与模型行为，同检查器、奖励、评审、评分标准或环境判定给出的反馈配成一对的数据条目。
+
+- term: feedback interface
+  term_zh: 反馈接口
+  definition: The boundary where behavior becomes trainable or auditable through a label,
+    checker, reward, judge, or environment.
+  definition_zh: 行为经由标签、检查器、奖励、评审或环境而变得可训练、可审计的那条边界。
+
+- term: verification contract
+  term_zh: 验证契约
+  definition: The rules defining what can be checked, at what granularity, and with which
+    failure modes.
+  definition_zh: 规定「什么可以被检查、以何种粒度检查、会有哪些失效模式」的那套规则。
+
+- term: terminal predicate
+  term_zh: 终止判定
+  definition: An environment-level condition used to decide whether an agent trajectory
+    succeeded.
+  definition_zh: 在环境层面用来判断一条智能体轨迹是否成功的条件。
+
+- term: lineage
+  term_zh: 数据谱系
+  definition: Metadata about source corpus, teacher, generator, decoding policy, verifier,
+    filter, split, and reuse path.
+  definition_zh: 关于源语料、教师模型、生成器、解码策略、验证器、过滤规则、数据划分与复用路径的元数据。
+
+- term: pass-rate band
+  term_zh: 通过率区间
+  definition: A base-model- and sampling-protocol-dependent estimate of how often a prompt
+    is solved.
+  definition_zh: 对一道题被解出的频率的估计，其取值依赖于基座模型与采样协议。
+
+- term: release card
+  term_zh: 发布卡
+  definition: A structured report describing what was released, how it was built, how it
+    was verified, and what remains missing.
+  definition_zh: 一份结构化报告，说明发布了什么、如何构建、如何验证，以及还缺什么。

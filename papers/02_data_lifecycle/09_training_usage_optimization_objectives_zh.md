@@ -1,10 +1,23 @@
 # 🎯 09 · 训练用途与优化目标
 
-> How data enters SFT, distillation, preference optimization, reward modeling, PRM training, RLVR, agent training, evaluation, reranking, and audit.
+> 数据如何进入 SFT、蒸馏、偏好优化、奖励建模、PRM 训练、RLVR、智能体训练、评测、重排与审计。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **125** 张卡片 · **98** 必读
 
-Use this track to connect a data object to the objective or system component that consumes it.
+用这个方向把一个数据对象，和真正消费它的训练目标或系统组件对应起来。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| SFT 与指令微调 | 被当作监督目标行为使用的数据 | 目标文本掩盖了验证器与来源假设 |
+| 蒸馏 | 教师的输出、轨迹或策略被蒸馏进学生模型 | 教师谱系被隐去 |
+| 偏好优化 | 用于 DPO/IPO/KTO 式目标的成对反馈 | 偏好对的语境与下游用途不匹配 |
+| 奖励建模与结果奖励 | 用于训练结果奖励的标量或成对数据 | 奖励可能被过度优化 |
+| PRM 与过程监督 | 用于训练过程奖励的步骤级或轨迹级信号 | PRM 奖励的其实是轨迹的文体 |
+| RLVR 与验证器强化学习 | 在强化学习中使用的程序化或验证器奖励 | 验证器的假阳性变成了策略的激励 |
+| 智能体训练 | 用于智能体策略的环境 episode、工具轨迹或终止奖励 | 环境无法回放 |
+| 评测、重排与审计 | 用于打分、选择、报告或失效分析的数据 | 评测数据变成了训练数据 |
 
 ## 必读
 

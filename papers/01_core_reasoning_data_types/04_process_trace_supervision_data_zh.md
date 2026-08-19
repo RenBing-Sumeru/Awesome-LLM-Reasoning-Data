@@ -1,10 +1,21 @@
 # 🪜 04 · 过程与步骤监督数据
 
-> Step-level labels, process reward models, rollout values, first-error localization, automatic process supervision, and PRM evaluation.
+> 步骤级标注、过程奖励模型、rollout 价值、首错定位、自动过程监督，以及 PRM 评测。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **106** 张卡片 · **58** 必读
 
-Use this track to move from final-answer feedback to intermediate feedback attached to reasoning steps or trace states.
+用这个方向从「只看最终答案的反馈」走到「附着在推理步骤或轨迹状态上的中间反馈」。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 人工步骤级标注 | 人工标注的中间步骤与首个错误位置 | 步骤边界与标注规范存在歧义 |
+| 过程奖励模型 | PRM、过程验证器、校准与奖励模型训练 | 过程奖励上升而最终正确率并未提高 |
+| 采样价值监督 | rollout 价值、搜索派生标签与自动进度信号 | 采样策略把求解器强度泄漏进标签 |
+| 自动过程监督 | 无需密集人工标注的程序化或模型生成过程标签 | 自动标签会静默继承验证器偏差 |
+| 首错定位 | 解法从哪一步开始失效，以及这个信号如何被使用 | 定位到的错误与后续纠正没有因果联系 |
+| PRM 基准与评测 | ProcessBench、PRMBench、Qwen PRM 及过程奖励的评测面 | PRM 基准上的好成绩迁移不到训练用途 |
 
 ## 必读
 

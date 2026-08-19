@@ -1,10 +1,23 @@
 # 🧯 13 · 审计、污染与失效模式
 
-> Benchmark contamination, search-time leakage, hidden lineage, reward hacking, verifier gaming, LLM-as-judge attacks, spurious rewards, and reproducibility failures.
+> 基准污染、检索期泄漏、隐藏谱系、奖励投机、验证器博弈、大模型评审攻击、虚假奖励与可复现性失效。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **104** 张卡片 · **56** 必读
 
-Use this track when you want to know how reasoning-data claims can fail and how to audit them before reuse.
+当你想知道推理数据的结论会怎样失效、以及复用前该如何审计它时，用这个方向。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 基准污染 | 训练/测试重叠、过时评测与基准刷新 | 被记住的题目被当成推理能力的进步来报告 |
+| 检索期污染 | 由搜索、工具、检索或推理脚手架引入的污染 | 推理时的工具访问会泄漏答案轨迹 |
+| 隐藏谱系与教师泄漏 | 教师模型轨迹、合成数据继承与隐性特征传递 | 学生模型继承了未披露的教师痕迹 |
+| 奖励投机 | 奖励模型、测试或评审可能被当作捷径优化的各种方式 | 奖励上升而真实质量下降 |
+| 验证器博弈 | 模型利用检查器、答案格式或评审盲区 | 通过验证器的样本在语义上其实是错的 |
+| 大模型评审攻击 | 单 token 攻击、位置偏差、冗长偏差与提示词攻击 | 评审分数因与语义无关的原因而改变 |
+| 虚假奖励 | 捷径奖励、由记忆触发的奖励与错误行为的相关性 | 奖励在提升，模型学到的却是捷径 |
+| 可复现性失效 | 解码、评测、脚手架与数据报告层面的失效 | 在受控重跑下报告的收益消失了 |
 
 ## 必读
 

@@ -129,7 +129,10 @@ def load_tracks():
             "title": L.TRACK_SHORT.get(cid, cat.get("title", cid)),
             "title_zh": L.TRACK_ZH.get(cid, cat.get("title", cid)),
             "summary": cat.get("summary", ""),
+            "summary_zh": cat.get("summary_zh", ""),
             "reader_promise": cat.get("reader_promise", ""),
+            "reader_promise_zh": cat.get("reader_promise_zh", ""),
+            "subfields": cat.get("subfields") or [],
             "page": cat.get("file", ""),
             "integrated": cid in integrated,
         })

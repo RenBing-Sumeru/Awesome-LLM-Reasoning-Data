@@ -1,10 +1,22 @@
 # 📈 10 · 规模化、RLVR 与推理时计算
 
-> Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
+> 数据规模化、数据复用、RLVR 优化、验证器规模化、pass@k、采样预算、推理时计算与规模化归因。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **107** 张卡片 · **63** 必读
 
-Use this track to interpret claims about how much data, verifier strength, RL, and inference budget contribute to reasoning gains.
+用这个方向解读各种主张：数据量、验证器强度、强化学习与推理预算，各自对推理能力提升贡献了多少。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 数据规模化 | 样本的数量、多样性、难度与唯一性 | 唯一样本与重复采样被混为一谈 |
+| 数据复用与唯一性 | 复用次数、去重、重复题目与训练/测试重叠 | 同一来源的样本被当成新数据计入 |
+| 推理时计算 | 采样、搜索、自我批判、思考预算与推理时扩展 | 不同推理预算之间被直接比较 |
+| pass@k 与采样预算 | pass@k、重复采样、best-of-N 与考虑预算的评测 | 报告的提升掩盖了选择方式或预算变化 |
+| 验证器规模化 | 验证器强度、刷新频率与覆盖面如何随训练一起扩展 | 验证器会过时或变得容易被利用 |
+| RLVR 优化规模化 | 策略优化、奖励契约、课程设计与 rollout 策略 | 优化器或脚手架带来的收益被误记为数据收益 |
+| 规模化归因 | 把数据、验证器、优化器、模型与推理预算的效应分开 | 消融表没有隔离出改进的真正来源 |
 
 ## 必读
 

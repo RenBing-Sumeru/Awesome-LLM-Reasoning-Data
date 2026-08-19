@@ -6,6 +6,19 @@
 
 Use this track to connect a data object to the objective or system component that consumes it.
 
+## Subfields
+
+| Subfield | What it covers | What it usually hides |
+|---|---|---|
+| 🧱 SFT / instruction tuning | data used as supervised target behavior | target text hides verifier and source assumptions |
+| 📚 Distillation | teacher outputs, traces, or policies distilled into a student | teacher lineage is hidden |
+| ⚖️ Preference optimization | pairwise feedback for DPO/IPO/KTO-style objectives | pair context does not match downstream use |
+| 🎚️ Reward modeling / ORM | scalar or pairwise data used to train outcome rewards | reward can be overoptimized |
+| 🪜 PRM / process supervision | step-level or trace-level signals used to train process rewards | PRM rewards trace style |
+| 🏋️ RLVR / verifier RL | programmatic or verifier rewards used in RL | verifier false positives become policy incentives |
+| 🌐 Agent training | environment episodes, tool traces, or terminal rewards for agent policies | environment cannot be replayed |
+| 🧪 Evaluation / reranking / audit | data used for scoring, selection, reporting, or failure analysis | evaluation data becomes training data |
+
 ## Read first
 
 | Paper | Year | Verified by | What it contributes |

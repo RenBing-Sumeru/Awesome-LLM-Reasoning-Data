@@ -1,0 +1,26 @@
+# Neighbouring lists, and where this atlas draws its boundary against them.
+#
+# Each entry says why it is related rather than just linking it, because the useful
+# information for a reader is which list to open when this one is the wrong tool.
+
+lists:
+- id: awesome-llm-reasoning
+  title: Awesome LLM Reasoning
+  url: https://github.com/atfortes/Awesome-LLM-Reasoning
+  why_related: "A general reasoning-methods list. Read it for prompting, architectures, and
+    inference techniques; this atlas stays on the data objects those methods consume."
+  why_related_zh: 通用的推理方法列表。想看提示技巧、模型架构与推理方法就去那边；本图谱只关注这些方法所消费的数据对象。
+
+- id: awesome-llm-post-training
+  title: Awesome LLM Post-training
+  url: https://github.com/mbzuai-oryx/awesome-llm-post-training
+  why_related: "A companion-style post-training list with broader method coverage. This atlas
+    is narrower: every entry must name a data object and the thing that verifies it."
+  why_related_zh: 同类的后训练列表，方法覆盖更广。本图谱刻意更窄——每个条目都必须写清数据对象，以及验证它的东西。
+
+- id: awesome-dataset-distillation
+  title: Awesome Dataset Distillation
+  url: https://github.com/Guang000/Awesome-Dataset-Distillation
+  why_related: "A reference for how a long-lived list keeps citations, data files, and a
+    static site in sync. Its subject matter is dataset distillation rather than reasoning data."
+  why_related_zh: 可作为参考的范例：一个长期维护的列表如何让引用、数据文件与静态站点保持同步。它的主题是数据集蒸馏，不是推理数据。

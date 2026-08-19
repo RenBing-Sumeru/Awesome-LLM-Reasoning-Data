@@ -6,6 +6,17 @@
 
 Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
 
+## Subfields
+
+| Subfield | What it covers | What it usually hides |
+|---|---|---|
+| 🎲 Multiple rollouts / best-of-N | sets of sampled attempts and selected accepted answers | only accepted traces are visible |
+| 🌳 Search trees / MCTS | tree search, MCTS, verifier-guided search, and path selection | tree policy or value model is hidden |
+| 🔎 Rejection sampling traces | accepted and rejected candidates produced during filtering | rejected examples are not released |
+| 🧠 Self-consistency / repeated sampling | vote-based or agreement-based reasoning from repeated samples | sampling budget is not comparable |
+| ⏱️ Test-time compute logs | thinking budgets, inference-time scaling, and runtime search traces | training and inference budget effects are conflated |
+| ✂️ Long2short / distill-from-search | using long search traces to train shorter or cheaper behavior | teacher search artifacts become hidden data lineage |
+
 ## Read first
 
 | Paper | Year | Verified by | What it contributes |

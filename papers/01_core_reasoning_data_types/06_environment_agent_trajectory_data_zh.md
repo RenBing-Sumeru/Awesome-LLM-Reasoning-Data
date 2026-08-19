@@ -1,10 +1,22 @@
 # 🌐 06 · 环境与智能体轨迹数据
 
-> Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes, replayable trajectories, and terminal predicates.
+> 工具调用、网页与浏览器任务、应用与操作系统智能体、仓库级软件工程 episode、可回放轨迹与终止判定。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **100** 张卡片 · **41** 必读
 
-Use this track to understand how interactive environments become post-training data sources and feedback contracts.
+用这个方向理解：交互式环境是如何变成后训练的数据来源与反馈契约的。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 工具调用数据 | 工具调用、函数签名、API 库与工具使用轨迹 | 工具 schema 会变动，或掩盖执行失败 |
+| 网页与浏览器智能体 | 网页任务、浏览器状态、导航轨迹与页面观测 | 采集之后网页状态无法回放 |
+| 应用与移动端智能体 | 移动应用、app-world 任务、UI 动作与用户模拟器 | UI 状态与应用版本没有固定 |
+| 操作系统与桌面智能体 | 桌面/OS 任务、文件系统状态、shell 动作与多应用工作流 | 隐藏的环境状态使 episode 无法复现 |
+| 软件工程与仓库级智能体 | GitHub issue、代码补丁、测试、提交与仓库修复 episode | 仓库提交、测试与脚手架没有固定版本 |
+| 可回放轨迹数据 | 状态—动作—观测 schema、终止判定与失败轨迹 | 成功的记录无法被回放或审计 |
+| 智能体基准与终止判定 | 智能体评测套件、任务重置、终止判定与成败标签 | 报告了分数却没有可回放的判定条件 |
 
 ## 必读
 

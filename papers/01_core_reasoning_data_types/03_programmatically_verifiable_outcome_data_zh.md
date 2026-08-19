@@ -1,10 +1,21 @@
 # 🧮 03 · 可程序验证的结果数据
 
-> Math answers, code execution, unit tests, proof checkers, symbolic predicates, answer extraction, and verifier robustness studies.
+> 数学答案、代码执行、单元测试、证明检查器、符号判定、答案抽取，以及验证器鲁棒性研究。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **114** 张卡片 · **36** 必读
 
-Use this track for the cleanest verifier-bearing reasoning records: final answers or artifacts checked by code, rules, tests, or formal systems.
+这里是最干净的一类带验证器推理记录：最终答案或产物由代码、规则、测试或形式系统来检查。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 数学答案可验证数据 | 数学题、最终答案、解题轨迹与答案检查器 | 答案抽取与归一化会虚高分数 |
+| 数学 RLVR 数据集 | 用于拒绝采样、SFT、PRM 与 RLVR 的数学记录 | 数据复用与污染情况未被报告 |
+| 代码执行与单测数据 | 代码题、单元测试、生成测试、执行日志与修复任务 | 不稳定或已泄漏的测试变成了奖励 |
+| 形式化证明与 Lean 定理证明 | Lean、证明脚本、tactic 环境、定理陈述与证明检查器 | 证明只在未记录的环境下才成立 |
+| 验证器鲁棒性与答案抽取 | 假阳性、假阴性、检查器脆弱性与对抗性格式 | 模型学到的是验证器的怪癖而非任务能力 |
+| 程序化基准 | 其评分可能被当作后训练信号的评测集 | 基准评分未经审计就被复用为奖励 |
 
 ## 必读
 

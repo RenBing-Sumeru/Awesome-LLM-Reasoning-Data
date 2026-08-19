@@ -6,6 +6,17 @@
 
 Use this track to compare preference and reward signals before they become training objectives or evaluation proxies.
 
+## Subfields
+
+| Subfield | What it covers | What it usually hides |
+|---|---|---|
+| 🤝 Human preference data / RLHF | human comparison data, helpful/harmless feedback, and RLHF reward targets | annotator assumptions and disagreement are hidden |
+| ⚖️ DPO / preference optimization | pairwise data used directly for preference optimization | preference pairs are reused outside collection context |
+| 🎚️ Scalar reward / ORM data | outcome reward labels, scalar scores, and trained reward-model targets | scalar reward hides why an answer is better |
+| 🤖 RLAIF / synthetic feedback | model-generated preferences, critiques, and constitutional feedback | synthetic judge behavior is treated as human preference |
+| 🧪 Reward-model benchmarks | rewardbench-style evaluation data and reward-model stress tests | benchmark preference does not predict downstream training value |
+| 🧾 Rubric-conditioned rewards | rubric scores, critique-plus-score records, and domain-specific reward signals | rubric wording becomes an exploitable reward channel |
+
 ## Read first
 
 | Paper | Year | Verified by | What it contributes |

@@ -1,10 +1,21 @@
 # 🧭 00 · 基础入门与综述
 
-> Surveys, primers, classic post-training lineages, data documentation, and evaluation background for readers entering the field.
+> 面向初入该领域读者的综述、入门材料、经典后训练谱系、数据文档与评测背景。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **56** 张卡片 · **22** 必读
 
-Use this track when you need the map before the terrain: vocabulary, taxonomies, historical lineages, and recurring audit questions.
+当你需要先看地图再进地形时用这个方向：术语、分类法、历史谱系，以及反复出现的审计问题。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 后训练综述 | 后训练、推理模型与以数据为中心的大模型实践的领域地图 | 综述的分类法会掩盖具体的数据对象 |
+| 推理大模型综述 | 推理模型的技术谱系、主张与反复出现的评测范式 | 以模型为中心的叙述会遮蔽数据与验证器细节 |
+| 数据文档与数据说明书 | datasheet、data statement、谱系、许可与发布元数据 | 可复用的数据缺少来源溯源或授权语境 |
+| RLHF 与奖励模型综述 | 串联偏好数据、奖励模型与推理奖励的背景材料 | 通用对齐经验被过度套用到可验证推理上 |
+| 智能体数据与工具调用综述 | 工具、网页任务、操作系统任务与仓库级智能体的入门导览 | 智能体轨迹被当成聊天记录，而不是可回放的 episode |
+| 污染与评测综述 | 可复现性、数据污染、模型崩塌与基准刷新 | 基准分数的提升未经重叠检查就被采信 |
 
 ## 必读
 

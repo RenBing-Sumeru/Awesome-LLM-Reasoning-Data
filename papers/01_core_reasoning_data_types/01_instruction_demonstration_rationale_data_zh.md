@@ -1,10 +1,21 @@
 # 🧱 01 · 指令、示范与思维链数据
 
-> Instruction-response examples, human demonstrations, synthetic instructions, rationales, chain-of-thought traces, and teacher-written reasoning targets.
+> 指令—回答样例、人工示范、合成指令、推理过程、思维链轨迹，以及教师写出的推理目标。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **101** 张卡片 · **82** 必读
 
-Use this track to understand how reasoning behavior is serialized before preference, verifier, or environment feedback is added.
+用这个方向理解：在加入偏好、验证器或环境反馈之前，推理行为是如何被序列化成数据的。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 指令微调与 SFT 数据 | 指令—回答样例、示范，以及目标行为记录 | 题目来源与混配权重被隐去 |
+| 人工示范 | 人写的解法、解释、思路与专家示范 | 人工轨迹的撰写规范与专业背景不清 |
+| 合成指令数据 | self-instruct、教师生成任务与合成指令混配 | 合成题目会压缩多样性或继承教师的偏好痕迹 |
+| 思维链与推理过程数据 | 推理过程、CoT 轨迹、自一致性与推理风格监督 | 把轨迹的文体误当成真实的推理忠实度 |
+| 自训练与 STaR | 自举轨迹、自训练、批判循环与经过筛选的自我改进 | 反馈回路会不断复制隐藏的错误或捷径 |
+| 长短思维链蒸馏 | 教师长轨迹、蒸馏后的短轨迹与推理压缩 | 蒸馏会丢掉不确定性与失败尝试 |
 
 ## 必读
 

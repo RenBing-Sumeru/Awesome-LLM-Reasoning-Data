@@ -6,6 +6,18 @@
 
 Use this track to understand what an evaluation surface measures and whether it can safely become a feedback source.
 
+## Subfields
+
+| Subfield | What it covers | What it usually hides |
+|---|---|---|
+| 📐 Math benchmarks | math problem sets, answer extraction, verifier compatibility, and difficulty | short-answer normalization hides reasoning errors |
+| 💻 Code benchmarks | coding tasks, generated tests, hidden tests, repair tasks, and live coding | unit tests are brittle, leaked, or too narrow |
+| 🧾 Proof benchmarks | formal proof datasets, proof assistants, theorem statements, and checking | proof checker version and imports are not pinned |
+| 🌐 Agent benchmarks | web, tool, OS, app, and SWE environments with terminal predicates | benchmark episodes cannot be replayed |
+| ⚖️ Rubric/domain benchmarks | medical, safety, legal, finance, science, factuality, and expert rubrics | rubric or judge expertise is insufficiently disclosed |
+| 🧪 Reward-model benchmarks | reward model, LLM-judge, PRM, and rubric evaluation suites | benchmark reward preference does not reflect training value |
+| 🧯 Live / contamination-resistant benchmarks | live, refreshed, hidden, or contamination-aware evaluation | static benchmark becomes a training target |
+
 ## Read first
 
 | Paper | Year | Verified by | What it contributes |

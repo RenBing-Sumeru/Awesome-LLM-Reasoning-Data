@@ -6,6 +6,17 @@
 
 Use this track to read frontier model reports as partial data-disclosure documents rather than only model-performance announcements.
 
+## Subfields
+
+| Subfield | What it covers | What it usually hides |
+|---|---|---|
+| 🚀 DeepSeek-R1 family | RLVR, distillation, reasoning traces, and public recipe disclosure | report describes outcomes but not enough data partitions |
+| 🌙 Kimi reasoning reports | long-context reasoning, RL compute, and frontier inference budgets | test-time compute is mixed with training-data effects |
+| 🐉 Qwen reasoning/math/code reports | math, code, PRM, and open-weight reasoning model families | release cards do not separate SFT, RLVR, and evaluation data |
+| 🧠 Magistral / Phi / Nemotron style reports | open-weight reasoning reports with partial data and reward disclosures | model-card claims cannot be mapped to concrete data objects |
+| 🧪 RLVR recipe reports | reports that expose reward contracts, rollout policies, or RL scaffolds | RL gains are attributed without verifier coverage |
+| 🧬 What is disclosed vs hidden | data sources, filters, lineage, safety mixtures, and undisclosed partitions | opaque mixtures are reused as open recipes |
+
 ## Read first
 
 | Paper | Year | Verified by | What it contributes |

@@ -6,6 +6,17 @@
 
 Use this track when you need the map before the terrain: vocabulary, taxonomies, historical lineages, and recurring audit questions.
 
+## Subfields
+
+| Subfield | What it covers | What it usually hides |
+|---|---|---|
+| 🧭 Post-training surveys | field-level maps of post-training, reasoning models, and data-centric LLM practice | survey taxonomy hides concrete data objects |
+| 🧠 Reasoning LLM surveys | reasoning-model lineages, claims, and recurring evaluation patterns | model-centric framing obscures data and verifier details |
+| 📦 Data documentation / datasheets | datasheets, data statements, lineage, license, and release metadata | reusable data lacks provenance or consent context |
+| 🧪 RLHF / reward-model surveys | background linking preference data, reward models, and reasoning rewards | generic alignment lessons are over-applied to verifiable reasoning |
+| 🌐 Agent data / tool-use surveys | orientation for tools, web tasks, OS tasks, and repository agents | agent traces are treated as transcripts rather than replayable episodes |
+| 🧯 Contamination / evaluation surveys | reproducibility, contamination, model collapse, and benchmark refresh | benchmark deltas are accepted without overlap checks |
+
 ## Read first
 
 | Paper | Year | Verified by | What it contributes |

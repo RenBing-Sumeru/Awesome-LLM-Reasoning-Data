@@ -57,6 +57,17 @@ paths:
       source_role: [scaling_study]
       training_use: [rlvr, test_time_compute]
 
+  - id: industry
+    title: [Join a data team, 进入数据团队]
+    goal:
+      - Cover the practical ground a post-training data team expects you to already know.
+      - 覆盖后训练数据团队默认你已经掌握的那部分实务基础。
+    limit: 40
+    match:
+      source_role: [construction_recipe, data_release, verifier_reward, audit_failure]
+      training_use: [sft, rlvr, reward_modeling, evaluation]
+      priority: 必读
+
   - id: audit
     title: [Audit a claim, 审计一个结论]
     goal:

@@ -1,10 +1,22 @@
 # 🧰 11 · 基准与评测
 
-> Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contamination-resistant benchmarks.
+> 数学、代码、证明、智能体、评分标准与领域、奖励模型、实时、隐藏，以及抗污染的各类基准。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **121** 张卡片 · **36** 必读
 
-Use this track to understand what an evaluation surface measures and whether it can safely become a feedback source.
+用这个方向理解一个评测面到底测了什么，以及它能否安全地被当作反馈来源。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| 数学基准 | 数学题集、答案抽取、验证器兼容性与难度 | 短答案归一化会掩盖推理错误 |
+| 代码基准 | 编码任务、生成测试、隐藏测试、修复任务与实时编码 | 单元测试脆弱、已泄漏或覆盖过窄 |
+| 证明基准 | 形式化证明数据集、证明助手、定理陈述与检查 | 证明检查器版本与依赖导入没有固定 |
+| 智能体基准 | 带终止判定的网页、工具、操作系统、应用与软件工程环境 | 基准的 episode 无法回放 |
+| 评分标准与领域基准 | 医学、安全、法律、金融、科学、事实性与专家评分标准 | rubric 或评审者的专业背景披露不足 |
+| 奖励模型基准 | 奖励模型、大模型评审、PRM 与 rubric 评测套件 | 基准上的奖励偏好不反映训练价值 |
+| 实时与抗污染基准 | 实时、定期刷新、隐藏或考虑污染的评测 | 静态基准变成了训练目标 |
 
 ## 必读
 

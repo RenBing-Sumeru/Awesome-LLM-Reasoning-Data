@@ -1,10 +1,21 @@
 # 🚀 12 · 前沿模型报告与数据披露
 
-> DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each frontier-style report discloses or hides about data.
+> DeepSeek-R1、Kimi、Qwen、Magistral、Phi、Nemotron 与各类 RLVR 报告，以及它们在数据上披露或隐去了什么。
 
 [返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **104** 张卡片 · **78** 必读
 
-Use this track to read frontier model reports as partial data-disclosure documents rather than only model-performance announcements.
+用这个方向把前沿模型报告读成「部分数据披露文件」，而不只是性能发布公告。
+
+## 子领域
+
+| 子领域 | 覆盖什么 | 通常会掩盖什么 |
+|---|---|---|
+| DeepSeek-R1 系列 | RLVR、蒸馏、推理轨迹与公开配方披露 | 报告描述了结果，但数据分区披露不足 |
+| Kimi 推理报告 | 长上下文推理、强化学习算力与前沿推理预算 | 推理时计算与训练数据的效应被混在一起 |
+| Qwen 推理/数学/代码报告 | 数学、代码、PRM 与开放权重推理模型系列 | 发布卡没有区分 SFT、RLVR 与评测数据 |
+| Magistral / Phi / Nemotron 式报告 | 部分披露数据与奖励的开放权重推理报告 | 模型卡的主张无法对应到具体数据对象 |
+| RLVR 配方报告 | 披露奖励契约、rollout 策略或强化学习脚手架的报告 | 在验证器覆盖面不明的情况下就归因强化学习收益 |
+| 披露与未披露的边界 | 数据来源、过滤、谱系、安全混配与未披露分区 | 不透明的混配被当作开放配方复用 |
 
 ## 必读
 
