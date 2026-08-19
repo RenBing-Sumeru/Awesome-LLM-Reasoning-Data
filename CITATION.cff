@@ -5,7 +5,7 @@ authors:
   - name: "RenBing-Sumeru"
 repository-code: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
 url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
-date-released: 2026-08-18
+date-released: 2026-08-19
 version: "1.0.0"
 license: "MIT"
 abstract: "A curated, link-verified learning atlas for post-training reasoning data, covering data objects, verifier contracts, process supervision, RLVR, agent trajectories, frontier reports, benchmarks, and audit failures."
