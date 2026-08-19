@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "说明带噪验证器仍可支持强化学习，对 RLVR 很有启发。",
     "updated_at": "2026-07-19T00:00:00Z"
   },
   "updated_at": "2026-07-18T13:25:10Z"

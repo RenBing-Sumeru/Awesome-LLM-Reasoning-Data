@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2510.02386",
     "data": "https://github.com/ASTRAL-Group/LRM_Conta_Detection_Arena"
   },
-  "review_note": "正式 ICLR 2026 论文与公开代码入口已核验；卡片已完成，等待人工判决。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
-  "updated_at": "2026-07-18T00:00:00Z"
-  ,"manual_annotation": {
+  "updated_at": "2026-07-18T00:00:00Z",
+  "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "揭示 PPO 类后训练会系统性隐藏推理基准污染信号，直接限定现有检测器在真实训练管线中的可信范围。",
     "updated_at": "2026-07-24T00:00:00Z"
   }
 }

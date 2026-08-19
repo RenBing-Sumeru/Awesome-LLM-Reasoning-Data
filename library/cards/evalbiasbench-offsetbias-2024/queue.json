@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T06:53:00Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "分析裁判模型的长度偏好、风格偏好等六类偏差，并提供去偏训练数据 不是常用bench",
     "updated_at": "2026-07-15T06:53:00Z"
   }
 }

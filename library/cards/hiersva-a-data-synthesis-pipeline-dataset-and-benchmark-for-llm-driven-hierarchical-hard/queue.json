@@ -6,14 +6,12 @@
     "code": "https://github.com/HierSVAAnon/HierSVACodeAndArtifacts",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-26T13:53:46Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 HierSVA，含342个RTL模块和含bug深层子集",
     "updated_at": "2026-07-26T13:53:46Z"
   }
 }

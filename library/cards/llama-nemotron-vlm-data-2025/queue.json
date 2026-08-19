@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2501.14818",
     "data": "https://huggingface.co/datasets/nvidia/Llama-Nemotron-VLM-Dataset-v1"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-27T11:33:08Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "多模态数据",
     "updated_at": "2026-07-27T11:33:08Z"
   }
 }

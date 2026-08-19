@@ -6,14 +6,12 @@
     "code": "https://github.com/facebookresearch/testgeneval",
     "project": "https://testgeneval.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T12:01:52Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 TestGenEval，含1210组真实代码—测试文件对",
     "updated_at": "2026-07-18T12:01:52Z"
   }
 }

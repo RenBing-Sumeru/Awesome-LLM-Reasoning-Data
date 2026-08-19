@@ -6,14 +6,12 @@
     "code": "https://github.com/swefficiency/swefficiency",
     "project": "https://swefficiency.com/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T07:45:03Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布498个真实负载优化任务，提供速度基线和关联测试",
     "updated_at": "2026-07-18T07:45:03Z"
   }
 }

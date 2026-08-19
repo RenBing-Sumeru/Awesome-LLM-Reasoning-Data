@@ -6,7 +6,6 @@
   "updated_at": "2026-07-14T08:24:27Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建了一个可自行部署和重置的完整网页环境，覆盖电商、论坛、代码协作和内容管理等领域，同时提供 812 个长程任务及相应的程序化验证器，web agent",
     "updated_at": "2026-07-14T08:24:27Z"
   }
 }

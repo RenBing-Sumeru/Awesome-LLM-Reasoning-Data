@@ -5,14 +5,12 @@
     "data": "https://huggingface.co/datasets/Goedel-LM/Goedel-Pset-v1",
     "code": "https://github.com/Goedel-LM/Goedel-Prover"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T13:56:42Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "lean data",
     "updated_at": "2026-07-14T13:56:42Z"
   }
 }

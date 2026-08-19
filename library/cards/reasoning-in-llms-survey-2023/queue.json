@@ -12,14 +12,10 @@
   "category_ids": [
     "foundations_and_primers"
   ],
-  "reason_to_include": "Reasoning LLM survey",
-  "decision_reason": "Reasoning LLM survey",
   "search_status": "promoted",
-  "review_note": "",
   "updated_at": "2026-07-11T09:11:27Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "Reasoning LLM survey",
     "updated_at": "2026-07-11T09:11:27Z"
   }
 }

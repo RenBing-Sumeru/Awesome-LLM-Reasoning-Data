@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T02:29:38Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "揭示通用智能体的顺序扩展受上下文上限、并行扩展受验证缺口限制",
     "updated_at": "2026-07-21T02:29:38Z"
   }
 }

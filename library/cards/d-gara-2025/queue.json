@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T14:13:08Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "暂缓 Android Agent 遇到权限弹窗、电量警告、更新提示、网络异常等真实干扰时是否仍能完成任务 GUI 新 中稿",
     "updated_at": "2026-07-15T14:13:08Z"
   }
 }

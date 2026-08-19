@@ -5,14 +5,12 @@
     "dataset": "https://huggingface.co/datasets/mattymchen/codejudgebench",
     "code": "https://github.com/hongchaoy/CodeJudgeBench"
   },
-  "review_note": "Official arXiv paper, paper-linked Hugging Face dataset, and official code repository verified.",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以 5,352 个经验证代码候选对覆盖生成、修复和单测判别，直接量化 LLM 判别器的能力、顺序敏感性与提示依赖。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

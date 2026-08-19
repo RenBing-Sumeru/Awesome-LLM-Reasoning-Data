@@ -5,14 +5,12 @@
     "code": null,
     "data": null
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "training_usage_optimization_objectives"
   ],
   "updated_at": "2026-07-16T08:55:31Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用经因果干预验证的内部特征筛选 SFT 数据",
     "updated_at": "2026-07-16T08:55:31Z"
   }
 }

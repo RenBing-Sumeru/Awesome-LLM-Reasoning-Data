@@ -12,11 +12,9 @@
   "category_ids": [
     "data_construction_open_release_recipes"
   ],
-  "reason_to_include": "智能体解决仓库实例",
   "updated_at": "2026-07-12T03:29:09Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "通过训练智能体自动构建仓库环境和任务，仓库丰富实例充足",
     "updated_at": "2026-07-12T03:29:09Z"
   }
 }

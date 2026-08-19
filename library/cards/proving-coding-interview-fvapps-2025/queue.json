@@ -6,14 +6,12 @@
     "code": null,
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T07:42:41Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布4,715个Lean代码规格与证明任务，可由编译器终局验证程序正确性",
     "updated_at": "2026-07-18T07:42:41Z"
   }
 }

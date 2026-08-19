@@ -4,14 +4,12 @@
     "paper": "https://proceedings.mlr.press/v235/chen24j.html",
     "data": "https://huggingface.co/collections/UCLA-AGI/datasets-spin-65c3624e98d4b589bbc76f3a"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-27T08:55:49Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "self training",
     "updated_at": "2026-07-27T08:55:49Z"
   }
 }

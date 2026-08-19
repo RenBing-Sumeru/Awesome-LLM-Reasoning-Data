@@ -6,14 +6,12 @@
     "code": "https://github.com/bigcode-project/bigcodebench",
     "project": "https://bigcode-bench.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-24T09:01:21Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建 BigCodeBench benchmark，含 1,140 个跨 139 个库的 Python 任务，下载量很高",
     "updated_at": "2026-07-24T09:01:21Z"
   }
 }

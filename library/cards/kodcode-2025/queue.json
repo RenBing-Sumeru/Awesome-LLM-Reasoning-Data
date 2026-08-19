@@ -5,14 +5,12 @@
     "data": "https://huggingface.co/datasets/KodCode/KodCode-V1-SFT-R1",
     "code": "https://github.com/KodCode-AI/kodcode"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T12:12:54Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "coding数据",
     "updated_at": "2026-07-14T12:12:54Z"
   }
 }

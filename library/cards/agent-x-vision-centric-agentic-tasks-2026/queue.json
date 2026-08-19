@@ -6,14 +6,12 @@
     "code": "https://github.com/mbzuai-oryx/Agent-X",
     "project": "https://github.com/mbzuai-oryx/Agent-X"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T07:58:22Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "828项人审视觉代理任务，分开评估步骤、推理链与结果",
     "updated_at": "2026-07-17T07:58:22Z"
   }
 }

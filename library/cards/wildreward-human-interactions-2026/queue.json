@@ -5,14 +5,12 @@
     "data": "https://github.com/THU-KEG/WildReward",
     "code": "https://github.com/THU-KEG/WildReward"
   },
-  "review_note": "L4 材料已准备，等待人工判定。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-15T08:13:48Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "含18.6万条四级满意度标签的 WildFB，以真实用户后续行为替代专门偏好对",
     "updated_at": "2026-07-15T08:13:48Z"
   }
 }

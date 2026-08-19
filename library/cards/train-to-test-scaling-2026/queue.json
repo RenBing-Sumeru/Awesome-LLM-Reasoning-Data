@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:57:57Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "把训练规模、训练 token 与推理采样次数放进同一总计算预算优化，解释测试时扩展如何改变最优训练策略",
     "updated_at": "2026-07-20T08:57:57Z"
   }
 }

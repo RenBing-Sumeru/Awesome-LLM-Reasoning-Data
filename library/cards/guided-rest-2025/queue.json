@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "把推理轨迹最优解作为逐步信息诸如模型搜索过程，数据量有20万个，也足够",
     "updated_at": "2026-07-12T14:21:00Z"
   },
   "updated_at": "2026-07-12T14:21:00Z"

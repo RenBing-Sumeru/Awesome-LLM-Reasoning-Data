@@ -5,7 +5,6 @@
   "updated_at": "2026-07-14T12:51:54Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "不确定，测评跨平台这个应用面比较小 挺新的一篇论文用界面理解、元素定位、任务执行和多 Agent 协作四个层级统一评测 Windows、macOS、Linux、iOS、Android 和 Web Agent。",
     "updated_at": "2026-07-14T12:51:54Z"
   }
 }

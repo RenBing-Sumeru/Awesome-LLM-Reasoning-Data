@@ -6,14 +6,12 @@
     "code": "https://github.com/ByteDance-Seed/AInsteinBench",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T14:26:43Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "建立面向科学仓库、由真实维护者修改驱动的可执行评测面，覆盖六类科学领域，一千多条数据",
     "updated_at": "2026-07-18T14:26:43Z"
   }
 }

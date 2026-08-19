@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开的大规模 rubric 与偏好数据将显式约束和隐式原则转为可训练、可审计的奖励信号。",
     "updated_at": "2026-07-24T00:00:00Z"
   },
   "updated_at": "2026-07-24T00:00:00Z"

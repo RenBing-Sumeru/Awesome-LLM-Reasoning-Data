@@ -6,14 +6,12 @@
     "code": "https://github.com/HippoCamp-AI/HippoCamp",
     "project": "https://hippocamp-ai.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T08:35:51Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布真实个人电脑环境中的证据与失败步骤标注，下载量巨大",
     "updated_at": "2026-07-17T08:35:51Z"
   }
 }

@@ -6,15 +6,12 @@
     "data": "https://huggingface.co/datasets/UCSC-VLAA/MedReason",
     "model": "https://huggingface.co/UCSC-VLAA/MedReason-8B"
   },
-  "review_note": "Check PrimeKG coverage, GPT-4o path/pruning prompts, answer-recovery false positives, upstream medical-data terms, and clinician-evaluation scope.",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
-  "reason_to_include": "knowledge-graph-grounded medical reasoning demonstrations",
   "updated_at": "2026-07-14T13:45:32Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "医学数据",
     "updated_at": "2026-07-14T13:45:32Z"
   }
 }

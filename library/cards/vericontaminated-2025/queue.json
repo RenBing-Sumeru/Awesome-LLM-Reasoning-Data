@@ -1,11 +1,14 @@
 {
   "title": "VeriContaminated: Assessing LLM-Driven Verilog Coding for Data Contamination",
-  "candidate_links": {"paper": "https://doi.org/10.1109/ICLAD65226.2025.00017", "data": "https://github.com/DfX-NYUAD/VeriContaminated"},
-  "review_note": "全文核对论文与官方代码。",
-  "category_ids": ["audit_failure_contamination_verifier_attacks"],
+  "candidate_links": {
+    "paper": "https://doi.org/10.1109/ICLAD65226.2025.00017",
+    "data": "https://github.com/DfX-NYUAD/VeriContaminated"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以双检测器和受控缓解实验揭示 Verilog 基准污染会扭曲代码生成评测，并量化去污染与功能准确率的权衡。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

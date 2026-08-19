@@ -6,14 +6,12 @@
     "code": "https://github.com/wilyub/VeriThoughts",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-24T09:20:28Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布 VeriThoughts 数据集，含约 20,173 条 Verilog 推理记录和 291 个测试题，以形式等价检查标注",
     "updated_at": "2026-07-24T09:20:28Z"
   }
 }

@@ -5,7 +5,6 @@
   "updated_at": "2026-07-14T08:18:44Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布 LFQA-HP-1M，提供 130 万条长文本问答人工成对偏好，数据量大，适合研究细粒度奖励建模与评审偏差",
     "updated_at": "2026-07-14T08:18:44Z"
   }
 }

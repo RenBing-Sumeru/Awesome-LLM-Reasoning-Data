@@ -5,7 +5,6 @@
   "updated_at": "2026-07-13T13:52:42Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "hf 16,389 862ref 2kstar 平衡llm评测长度和指令质量",
     "updated_at": "2026-07-13T13:52:42Z"
   }
 }

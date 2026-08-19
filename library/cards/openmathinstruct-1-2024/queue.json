@@ -5,14 +5,12 @@
     "data": "https://huggingface.co/datasets/nvidia/OpenMathInstruct-1",
     "code": "https://github.com/NVIDIA-NeMo/Skills"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T11:55:08Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "NVIDIA数学sft数据",
     "updated_at": "2026-07-14T11:55:08Z"
   }
 }

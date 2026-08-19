@@ -6,14 +6,12 @@
     "code": "https://github.com/THUDM/CaRR",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-16T12:27:41Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "将引文支撑转成细粒度奖励，深度检索推理方向代表性强",
     "updated_at": "2026-07-16T12:27:41Z"
   }
 }

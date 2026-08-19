@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://aclanthology.org/2026.cl-1.1/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-22T14:20:09Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "LLM-Oasis 构建端到端事实性评测样本与判定流程，含81,275 份事实文本和同量伪事实文本",
     "updated_at": "2026-07-22T14:20:09Z"
   }
 }

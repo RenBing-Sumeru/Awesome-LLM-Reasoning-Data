@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2504.21318",
     "data": "https://huggingface.co/datasets/open-r1/Mixture-of-Thoughts"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-27T11:22:51Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "sft data",
     "updated_at": "2026-07-27T11:22:51Z"
   }
 }

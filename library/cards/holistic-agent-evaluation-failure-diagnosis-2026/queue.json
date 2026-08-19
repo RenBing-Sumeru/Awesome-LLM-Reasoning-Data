@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T07:21:10Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "Agent诊断，不是bench",
     "updated_at": "2026-07-15T07:21:10Z"
   }
 }

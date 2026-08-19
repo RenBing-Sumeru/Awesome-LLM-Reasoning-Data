@@ -5,7 +5,6 @@
   "updated_at": "2026-07-14T12:51:19Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "mmlu原始版本，历史意义，虽然现在得分普遍高 1w+ ref",
     "updated_at": "2026-07-14T12:51:19Z"
   }
 }

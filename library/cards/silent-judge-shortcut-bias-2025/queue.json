@@ -1,1 +1,9 @@
-{"category_ids":["audit_failure_contamination_verifier_attacks"],"manual_annotation":{"search_status":"promoted","decision_reason":"用受控线索交换量化来源与时间捷径，并发现理由的线索承认率为零，直接审计 LLM judge 的不忠实性。","updated_at":"2026-07-20T00:00:00Z"}}
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

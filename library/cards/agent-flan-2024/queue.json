@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://aclanthology.org/2024.findings-acl.557/"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T12:21:15Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "agentic数据，能力平衡",
     "updated_at": "2026-07-14T12:21:15Z"
   }
 }

@@ -4,14 +4,12 @@
     "paper": "https://doi.org/10.1145/3711896.3737109",
     "data": "https://huggingface.co/datasets/GraphPRM/GraphSilo"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T08:46:11Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布11万图推理样本及自动步骤标签",
     "updated_at": "2026-07-17T08:46:11Z"
   }
 }

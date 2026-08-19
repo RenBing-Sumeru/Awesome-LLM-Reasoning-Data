@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T13:05:58Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用轻量 RL 控制器动态分配采样轮次与并行样本，直接优化准确率、延迟和计算成本的权衡",
     "updated_at": "2026-07-20T13:05:58Z"
   }
 }

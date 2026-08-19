@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://openreview.net/forum?id=N8N0hgNDRt"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T12:04:07Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "同时改写问题和解答来构造数学sft数据。",
     "updated_at": "2026-07-14T12:04:07Z"
   }
 }

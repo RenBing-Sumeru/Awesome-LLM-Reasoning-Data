@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.emnlp-main.679/",
     "data": "https://huggingface.co/datasets/kevinpro/R-PRM"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:27:22Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布步骤判断和解释理由，可训练可解释过程奖励",
     "updated_at": "2026-07-17T12:27:22Z"
   }
 }

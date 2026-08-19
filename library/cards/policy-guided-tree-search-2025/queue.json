@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "PGTS 用 PPO 训练 GPS 图策略，搜索扩展数据",
     "updated_at": "2026-07-25T06:39:02Z"
   },
   "updated_at": "2026-07-25T06:39:02Z"

@@ -4,14 +4,12 @@
     "paper": "https://openreview.net/pdf?id=CoBxmXThM6",
     "data": "https://huggingface.co/datasets/sunblaze-ucb/AgentSynth"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T10:24:09Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "可验证长程电脑任务，难度可控，适合代理规划监督",
     "updated_at": "2026-07-16T10:24:09Z"
   }
 }

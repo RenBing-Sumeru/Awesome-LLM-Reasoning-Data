@@ -6,14 +6,12 @@
     "code": null,
     "project": "https://huggingface.co/datasets/AtlaAI/counsel"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T14:22:24Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "225条Agent 轨迹和约1.13K条人工元评测标注",
     "updated_at": "2026-07-16T14:22:24Z"
   }
 }

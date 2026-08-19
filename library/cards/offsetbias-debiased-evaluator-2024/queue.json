@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布 OffsetBias 与 EvalBiasBench，针对长度、格式等系统性评审偏差构造去偏偏好数据",
     "updated_at": "2026-07-14T07:29:09Z"
   },
   "updated_at": "2026-07-14T07:29:09Z"

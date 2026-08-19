@@ -6,14 +6,12 @@
     "code": "https://github.com/swe-perf/swe-perf",
     "project": "https://swe-perf.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T07:44:25Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布140个性能优化任务，以单测和运行时间共同验证补丁",
     "updated_at": "2026-07-18T07:44:25Z"
   }
 }

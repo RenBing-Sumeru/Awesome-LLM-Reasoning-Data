@@ -4,13 +4,11 @@
     "paper": "https://arxiv.org/abs/2602.03806",
     "data": "https://github.com/OSU-NLP-Group/cobalt"
   },
-  "review_note": "COLM 论文：已完成全文精读、卡片与人工筛选。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "正式 COLM 论文把错误测试反馈导致的上下文奖励投机定义为可测失败模式，并验证扰动轨迹可显著降低该风险。",
     "updated_at": "2026-07-24T12:00:00Z"
   },
   "updated_at": "2026-07-24T12:00:00Z"

@@ -4,14 +4,12 @@
     "paper": "https://openaccess.thecvf.com/content/ICCV2025/html/Gao_MMAT-1M_A_Large_Reasoning_Dataset_for_Multimodal_Agent_Tuning_ICCV_2025_paper.html",
     "data": "https://huggingface.co/datasets/VIS-MPU-Agent/MMAT-1M"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T08:37:34Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布百万级多模态反思、检索和工具交互轨迹",
     "updated_at": "2026-07-17T08:37:34Z"
   }
 }

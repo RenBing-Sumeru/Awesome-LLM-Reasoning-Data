@@ -6,14 +6,12 @@
     "code": "https://github.com/Purewhite2019/rethinking_autoformalization",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判定。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-19T12:11:58Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "Con-NF 用961个定理和1,348个形式对象检验自动形式化忠实度",
     "updated_at": "2026-07-19T12:11:58Z"
   }
 }

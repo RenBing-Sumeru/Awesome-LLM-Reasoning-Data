@@ -6,7 +6,6 @@
   "updated_at": "2026-07-14T19:17:51Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "SWE-rebench自动从GitHub持续提取可执行的真实交互任务，同时按时间窗口生成新鲜评测集 103ref",
     "updated_at": "2026-07-14T19:17:51Z"
   }
 }

@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T03:47:51Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "更像数据集不像bench",
     "updated_at": "2026-07-15T03:47:51Z"
   }
 }

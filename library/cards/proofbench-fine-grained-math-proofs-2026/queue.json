@@ -4,14 +4,12 @@
     "paper": "https://openreview.net/pdf?id=ky5iqwZSXI",
     "data": "https://huggingface.co/datasets/wenjiema02/ProofBench"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-24T08:48:58Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "145 道题、435 份专家评分证明：用评分细则和 0–7 分标注判断自然语言证明的部分正确性",
     "updated_at": "2026-07-24T08:48:58Z"
   }
 }

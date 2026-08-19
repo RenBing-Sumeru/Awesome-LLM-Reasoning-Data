@@ -6,14 +6,12 @@
     "code": "https://github.com/tlb-22/Euclean",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-19T09:37:07Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "为18.4万道几何题补上Lean形式化，语句能否成立可直接编译检查，规模很适合自动形式化训练",
     "updated_at": "2026-07-19T09:37:07Z"
   }
 }

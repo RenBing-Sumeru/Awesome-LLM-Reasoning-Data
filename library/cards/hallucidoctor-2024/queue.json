@@ -4,14 +4,12 @@
     "paper": "https://openaccess.thecvf.com/content/CVPR2024/html/Yu_HalluciDoctor_Mitigating_Hallucinatory_Toxicity_in_Visual_Instruction_Data_CVPR_2024_paper.html",
     "data": "https://drive.google.com/file/d/1M0dZwF6nPuZMLeAH44VhFj0RCS4KxL5D/view?usp=sharing"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-27T11:38:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "多模态数据去幻觉，包含开源数据",
     "updated_at": "2026-07-27T11:38:00Z"
   }
 }

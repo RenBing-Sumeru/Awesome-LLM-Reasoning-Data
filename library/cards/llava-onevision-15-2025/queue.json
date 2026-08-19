@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2509.23661",
     "data": "https://huggingface.co/datasets/mvp-lab/LLaVA-OneVision-1.5-Instruct-Data"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-27T11:31:06Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "多模态训练recipe，包含数据",
     "updated_at": "2026-07-27T11:31:06Z"
   }
 }

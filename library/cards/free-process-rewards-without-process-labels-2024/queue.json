@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开带最终正确性标签的数学推理轨迹，约 32.9K 组多响应rollout数据，但主要价值在于改变了过程监督数据的构建方式，引用量139",
     "updated_at": "2026-07-14T14:21:02Z"
   },
   "updated_at": "2026-07-14T14:21:02Z"

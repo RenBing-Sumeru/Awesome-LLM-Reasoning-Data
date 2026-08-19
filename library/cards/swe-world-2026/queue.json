@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "16,550 个 task、26K SWT / 21K SWR 监督样本和 5.7K policy-SFT trajectories",
     "updated_at": "2026-07-22T02:20:42Z"
   },
   "updated_at": "2026-07-22T02:20:42Z",

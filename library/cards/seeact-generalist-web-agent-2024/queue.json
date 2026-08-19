@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T09:36:51Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "历史影响较高，当前评测利用率下降 ref601 851star 研究视觉模型如何理解网页并把计划准确定位到可点击元素",
     "updated_at": "2026-07-15T09:36:51Z"
   }
 }

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "包含CoT数据的构建流程，数据量大，有代码和hf数据集",
     "updated_at": "2026-07-13T06:54:29Z"
   },
   "updated_at": "2026-07-13T06:54:29Z"

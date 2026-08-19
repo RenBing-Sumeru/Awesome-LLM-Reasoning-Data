@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.findings-acl.306/",
     "code": "https://github.com/HuihuiChyan/UnlimitedJudge"
   },
-  "review_note": "Official ACL paper and public code repository verified.",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以跨评测格式、对抗偏差、细粒度属性和提示适应性实验揭示微调判别模型的外推失效，直接服务于自动评测可靠性审计。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

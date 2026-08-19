@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T08:52:41Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "根据早期过程奖励信号，在并行采样与束搜索之间动态分配测试时预算",
     "updated_at": "2026-07-21T08:52:41Z"
   }
 }

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "把推理数据生成程序化，并且涵盖从生成器-验证器-采样-RL训练评测的完整流程。spotlight文章，推荐入库",
     "updated_at": "2026-07-12T12:20:32Z"
   },
   "updated_at": "2026-07-12T12:20:32Z"

@@ -6,7 +6,6 @@
   "updated_at": "2026-07-14T08:24:38Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "和swe-rebench 有点像，但强调多语言、多操作系统、环境自动构建和持续扩展，持续更新 hfdownload 6,867",
     "updated_at": "2026-07-14T08:24:38Z"
   }
 }

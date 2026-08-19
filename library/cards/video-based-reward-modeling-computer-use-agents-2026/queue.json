@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2603.10178",
     "data": "https://huggingface.co/datasets/lime-nlp/ExeVR-53K"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:01:41Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布5.3万条执行视频、奖励与对抗步骤标注",
     "updated_at": "2026-07-17T12:01:41Z"
   }
 }

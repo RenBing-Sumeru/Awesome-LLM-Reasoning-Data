@@ -6,14 +6,12 @@
     "code": "https://github.com/tangzhy/RealCritic",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-25T10:20:30Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建 2,093 条问题—初答—批评—修正链，以修正后答案是否提升衡量批评有效性",
     "updated_at": "2026-07-25T10:20:30Z"
   }
 }

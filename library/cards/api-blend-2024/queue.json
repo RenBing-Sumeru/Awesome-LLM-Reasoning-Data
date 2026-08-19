@@ -5,7 +5,6 @@
   "updated_at": "2026-07-13T09:41:09Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "将多个来源包装成api，利用价值比较低",
     "updated_at": "2026-07-13T09:41:09Z"
   }
 }

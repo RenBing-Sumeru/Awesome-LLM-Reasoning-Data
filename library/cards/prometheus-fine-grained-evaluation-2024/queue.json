@@ -6,14 +6,12 @@
     "code": "https://github.com/prometheus-eval/prometheus",
     "project": "https://kaistai.github.io/prometheus/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-25T10:17:58Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布 1,000 条细粒度 rubric、2 万条指令和 10 万条带 GPT-4 反馈的回答，训练可解释评分模型",
     "updated_at": "2026-07-25T10:17:58Z"
   }
 }

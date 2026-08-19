@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T15:25:02Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "系统验证测试时扩展在视觉语言模型上的收益、成本与过度推理风险",
     "updated_at": "2026-07-20T15:25:02Z"
   }
 }

@@ -5,14 +5,12 @@
     "data": "https://huggingface.co/datasets/MathGenie/MathGenieData",
     "code": "https://github.com/MathGenie/MathGenie"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T13:55:31Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "数学sft data改写。同时改写解答和问题。",
     "updated_at": "2026-07-14T13:55:31Z"
   }
 }

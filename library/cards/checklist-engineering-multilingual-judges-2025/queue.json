@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.globalnlp-1.21/",
     "code": "https://github.com/mghiasvand1/CE-Judge"
   },
-  "review_note": "Official ACL paper and paper-linked code repository verified.",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以无需微调的动态双向核对清单提升多语言判别的可解释性和跨语言可靠性，并在点评与成对评测上给出对照证据。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

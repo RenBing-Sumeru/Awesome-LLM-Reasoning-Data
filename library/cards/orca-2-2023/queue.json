@@ -12,14 +12,10 @@
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
-  "reason_to_include": "通过设计蒸馏时的prompt来生成更好的sft数据",
-  "decision_reason": "通过设计蒸馏时的prompt来生成更好的sft数据",
   "search_status": "promoted",
-  "review_note": "",
   "updated_at": "2026-07-11T09:25:34Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "通过设计蒸馏时的prompt来生成更好的sft数据",
     "updated_at": "2026-07-11T09:25:34Z"
   }
 }

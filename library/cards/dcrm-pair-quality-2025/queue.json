@@ -5,14 +5,12 @@
     "code": "https://github.com/HCY123902/DCRM",
     "data": null
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "training_usage_optimization_objectives"
   ],
   "updated_at": "2026-07-16T07:23:30Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "直接定义并验证了如何选择更有训练价值的偏好回答对",
     "updated_at": "2026-07-16T07:23:30Z"
   }
 }

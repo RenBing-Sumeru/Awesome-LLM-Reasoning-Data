@@ -6,14 +6,12 @@
     "code": "https://github.com/allenai/WildBench",
     "project": "https://huggingface.co/spaces/allenai/WildBench"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-25T10:59:23Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "从百万级真实对话中筛选 1,024 个难题，并为每题建立检查清单以校准开放回答裁判，下载量高",
     "updated_at": "2026-07-25T10:59:23Z"
   }
 }

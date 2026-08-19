@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://openreview.net/forum?id=0SRGbRbngJ"
   },
-  "review_note": "Track 13: official primary paper page recorded; artifact availability is explicit.",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以 KL 分布对齐、交叉熵稳定项和对抗训练，使 LLM 判决分布贴近人类分布并抵抗有限标注带来的分布扰动。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

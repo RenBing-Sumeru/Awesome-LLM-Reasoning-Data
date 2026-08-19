@@ -1,1 +1,9 @@
-{"category_ids":["audit_failure_contamination_verifier_attacks"],"manual_annotation":{"search_status":"promoted","decision_reason":"用新旧生成器响应与未见问题的受控分布漂移实验，直接量化微调 judge 的保鲜期与更新风险。","updated_at":"2026-07-20T00:00:00Z"}}
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

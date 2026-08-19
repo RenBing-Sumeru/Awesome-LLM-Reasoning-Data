@@ -6,14 +6,12 @@
     "code": "https://github.com/RUCBM/AgentProcessBench",
     "project": "https://rucbm.github.io/AgentProcessBench-Homepage/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T14:26:14Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "8,509 个人工三值步骤标签，agent首错诊断",
     "updated_at": "2026-07-16T14:26:14Z"
   }
 }

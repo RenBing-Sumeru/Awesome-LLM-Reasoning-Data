@@ -4,14 +4,12 @@
     "paper": "https://ojs.aaai.org/index.php/AAAI/article/view/40797",
     "data": "https://huggingface.co/datasets/GenPRM/GenPRM-MATH-Data"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:14:09Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布推理步骤与验证标签，可训练生成式PRM",
     "updated_at": "2026-07-17T12:14:09Z"
   }
 }

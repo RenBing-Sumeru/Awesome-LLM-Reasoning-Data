@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.naacl-long.452/",
     "data": "https://github.com/DongryeolLee96/EMBER"
   },
-  "review_note": "已精读：以反事实认识性标记审计 LLM 评判器对不确定性表达的偏差。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-24T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以可控反事实基准证明评判器会惩罚不确定性表达，直接揭示偏好与评测信号的可靠性风险。",
     "updated_at": "2026-07-24T00:00:00Z"
   }
 }

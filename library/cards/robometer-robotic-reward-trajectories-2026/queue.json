@@ -6,14 +6,12 @@
     "code": "https://github.com/robometer/robometer",
     "project": "https://robometer.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-17T05:59:05Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "百万机器人轨迹含失败偏好，规模和具身迁移价值突出",
     "updated_at": "2026-07-17T05:59:05Z"
   }
 }

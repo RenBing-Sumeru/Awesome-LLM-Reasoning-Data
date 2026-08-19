@@ -12,14 +12,10 @@
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
-  "reason_to_include": "用prompt诱导cot的工作，较为基础",
-  "decision_reason": "用prompt诱导cot的工作，较为基础",
   "search_status": "promoted",
-  "review_note": "",
   "updated_at": "2026-07-11T08:23:10Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用prompt诱导cot的工作，较为基础",
     "updated_at": "2026-07-11T08:23:10Z"
   }
 }

@@ -4,10 +4,8 @@
     "paper": "https://arxiv.org/abs/2507.16587",
     "data": null
   },
-  "review_note": "纳入正式池：用可执行测试和三人标注量化代码评审的假阳性、失败与偏差。",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "纳入正式池：用可执行测试和三人标注量化代码评审的假阳性、失败与偏差。",
     "updated_at": "2026-07-21T00:00:00Z"
   },
   "category_ids": [

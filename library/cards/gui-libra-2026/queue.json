@@ -12,11 +12,9 @@
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
-  "reason_to_include": "GUI action-aligned reasoning data",
   "updated_at": "2026-07-12T14:19:52Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "gui reasoning data合成",
     "updated_at": "2026-07-12T14:19:52Z"
   }
 }

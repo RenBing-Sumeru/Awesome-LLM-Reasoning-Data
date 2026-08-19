@@ -4,14 +4,12 @@
     "paper": "https://proceedings.mlr.press/v267/zhou25ah.html",
     "data": "https://huggingface.co/datasets/yifeizhou/pae-data"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T12:51:35Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "真实视觉代理任务配人工复核轨迹，适合多模态评测补充",
     "updated_at": "2026-07-16T12:51:35Z"
   }
 }

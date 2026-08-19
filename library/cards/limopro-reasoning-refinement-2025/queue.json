@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T08:56:01Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "通过针对性细化推理过程，在更少测试时计算下提升复杂推理的准确性与稳定性",
     "updated_at": "2026-07-21T08:56:01Z"
   }
 }

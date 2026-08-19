@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:55:10Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "研究如何结合模型生成信号与过程奖励信号，在固定预算下更有效地选择推理结果",
     "updated_at": "2026-07-20T08:55:10Z"
   }
 }

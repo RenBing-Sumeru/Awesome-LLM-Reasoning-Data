@@ -6,14 +6,12 @@
     "code": null,
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-19T08:41:24Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用自动规则筛出紧凑的合成推理样本，公开约 9K 条合成推理记录",
     "updated_at": "2026-07-19T08:41:24Z"
   }
 }

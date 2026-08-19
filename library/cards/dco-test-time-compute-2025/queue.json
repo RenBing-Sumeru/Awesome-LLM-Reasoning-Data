@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T10:14:22Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "证明训练目标必须与 pass@N 推理预算共同设计",
     "updated_at": "2026-07-20T10:14:22Z"
   }
 }

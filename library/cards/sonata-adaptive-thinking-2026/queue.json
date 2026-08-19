@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:53:42Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "研究模型在推理阶段何时转入潜在思考以调节计算，是自适应测试时计算分配问题",
     "updated_at": "2026-07-20T08:53:42Z"
   }
 }

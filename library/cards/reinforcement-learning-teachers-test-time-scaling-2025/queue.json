@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "使用强化学习学习教师推理轨迹，学生对解答的解释也用于奖励。强化学习方法学习轨迹生成，有一定价值",
     "updated_at": "2026-07-12T06:06:04Z"
   },
   "updated_at": "2026-07-12T06:06:04Z"

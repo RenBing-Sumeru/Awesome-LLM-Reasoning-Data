@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T09:58:22Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "把去噪量与推理块大小纳入测试时计算分配",
     "updated_at": "2026-07-21T09:58:22Z"
   }
 }

@@ -4,14 +4,12 @@
     "paper": "https://papers.neurips.cc/paper_files/paper/2025/file/54e1381d0c0598127b90af4c940fd3d9-Paper-Conference.pdf",
     "data": "https://huggingface.co/datasets/reasonrag/RAG_ProGuide"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:19:53Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布13K检索过程偏好对，可比较两类奖励训练",
     "updated_at": "2026-07-17T12:19:53Z"
   }
 }

@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T13:07:03Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用同一次前向中的保留 logits 预测奖励与剩余长度，实现无额外模型调用的自适应测试时搜索",
     "updated_at": "2026-07-20T13:07:03Z"
   }
 }

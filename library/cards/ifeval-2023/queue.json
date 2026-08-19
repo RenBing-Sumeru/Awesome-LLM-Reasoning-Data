@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T09:24:30Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "ref1242 经典论文 仍是指令遵循领域最常见、实现最成熟的 benchmark 之一",
     "updated_at": "2026-07-15T09:24:30Z"
   }
 }

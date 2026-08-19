@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T11:45:47Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用 A* 风格搜索把小模型的测试时计算投入最有希望的部分推导与自我修订分支",
     "updated_at": "2026-07-21T11:45:47Z"
   }
 }

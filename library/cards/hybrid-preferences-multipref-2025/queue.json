@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建含 1 万条双重标注样本的 MultiPref，为同一批样本同时提供人类与 AI 偏好标注，适合研究混合反馈与数据成本权衡",
     "updated_at": "2026-07-14T08:36:36Z"
   },
   "updated_at": "2026-07-14T08:36:36Z"

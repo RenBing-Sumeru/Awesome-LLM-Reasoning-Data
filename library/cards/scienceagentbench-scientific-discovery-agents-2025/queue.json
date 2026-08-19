@@ -4,14 +4,12 @@
     "paper": "https://openreview.net/pdf?id=6z4YKr0GK6",
     "data": "https://huggingface.co/datasets/osunlp/ScienceAgentBench"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-24T08:57:19Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "ScienceAgentBench 含102个任务，覆盖44篇论文4个学科，由 9 位领域专家核验，下载量高",
     "updated_at": "2026-07-24T08:57:19Z"
   }
 }

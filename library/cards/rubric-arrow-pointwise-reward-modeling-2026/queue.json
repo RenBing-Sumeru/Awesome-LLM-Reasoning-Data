@@ -6,14 +6,12 @@
     "code": null,
     "project": "https://huggingface.co/collections/OpenRubrics/rubricarrow"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判定。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-21T13:16:28Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "RubricARROW-Judge-SFT 包含11.9万条指令、细则、回答和评分记录，规模大",
     "updated_at": "2026-07-21T13:16:28Z"
   }
 }

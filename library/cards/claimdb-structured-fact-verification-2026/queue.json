@@ -6,14 +6,12 @@
     "code": "https://claimdb.github.io",
     "project": "https://claimdb.github.io"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判定。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-21T12:28:52Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "ClaimDB 为51,369条声明配数据库证据和三类事实标签，把结构化事实核验变成可训练、可程序评测的推理任务",
     "updated_at": "2026-07-21T12:28:52Z"
   }
 }

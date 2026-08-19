@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "16K 个 query，每条超过五个可分解约束",
     "updated_at": "2026-07-18T13:10:01Z"
   },
   "updated_at": "2026-07-18T13:10:01Z",

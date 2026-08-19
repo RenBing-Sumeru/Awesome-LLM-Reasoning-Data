@@ -6,14 +6,12 @@
     "code": "https://github.com/Sphere-AI-Lab/FormalMATH-Bench",
     "project": "https://sphere-ai-lab.github.io/FormalMATH/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T14:07:21Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 FormalMATH-All，含5,560道跨领域Lean4形式化数学题，引用量52",
     "updated_at": "2026-07-18T14:07:21Z"
   }
 }

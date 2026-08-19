@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.findings-acl.604/",
     "data": "https://drive.google.com/uc?id=1tqZyqzyE7NnJdUJlwwfcwnPUFMafKdfA"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:28:38Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布专家、偏离和校准后轨迹，可学习步骤纠偏",
     "updated_at": "2026-07-17T12:28:38Z"
   }
 }

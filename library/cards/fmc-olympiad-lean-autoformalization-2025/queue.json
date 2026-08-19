@@ -6,14 +6,12 @@
     "code": "https://github.com/JadeXie1205/FMC",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T11:27:56Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 FMC：3,922道奥数自然语言题与9,787个Lean形式化陈述",
     "updated_at": "2026-07-18T11:27:56Z"
   }
 }

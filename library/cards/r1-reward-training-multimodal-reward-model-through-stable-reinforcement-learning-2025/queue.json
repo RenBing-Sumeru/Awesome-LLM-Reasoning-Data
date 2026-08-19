@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2505.02835",
     "data": "https://huggingface.co/datasets/yifanzhang114/R1-Reward-RL"
   },
-  "review_note": "L4 材料已准备，等待人工判定。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-15T13:57:17Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "数据来源主要为整合20万条既有多模态偏好对，做了格式统一与标签平衡、新增推理标注与难例筛选",
     "updated_at": "2026-07-15T13:57:17Z"
   }
 }

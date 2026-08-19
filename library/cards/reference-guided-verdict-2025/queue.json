@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.winlp-main.37/",
     "data": null
   },
-  "review_note": "已完整精读：用参考答案约束多 LLM judge 的二元多数投票，并与人工多数比较。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "正式 WiNLP 论文，提供有参考答案的多 judge 校准证据及清晰的二元判决边界。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

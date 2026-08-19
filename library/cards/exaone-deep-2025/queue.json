@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "三种模型开源权重，训练数据轨迹数量多，32B",
     "updated_at": "2026-07-29T04:11:48Z"
   },
   "updated_at": "2026-07-29T04:11:48Z",

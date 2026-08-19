@@ -4,13 +4,11 @@
     "paper": "https://arxiv.org/abs/2502.17259",
     "code": "https://github.com/facebookresearch/meta-seal"
   },
-  "review_note": "已完成全文精读与官方发表、代码核验。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布前水印将基准污染从不可证实的事后猜测变为具有明确假阳性率的白盒审计，且受控实验证明其能随分数虚增检出记忆信号。",
     "updated_at": "2026-07-24T10:45:00Z"
   },
   "updated_at": "2026-07-24T10:45:00Z"

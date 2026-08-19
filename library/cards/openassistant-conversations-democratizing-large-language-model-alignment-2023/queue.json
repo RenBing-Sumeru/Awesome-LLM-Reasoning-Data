@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建并公开了 OASST1 数据集，可用于指令微调、奖励模型训练和人类偏好对齐",
     "updated_at": "2026-07-12T10:20:22Z"
   },
   "updated_at": "2026-07-12T10:20:22Z"

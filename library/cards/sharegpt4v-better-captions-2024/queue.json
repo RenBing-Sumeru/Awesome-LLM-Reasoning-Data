@@ -4,14 +4,12 @@
     "paper": "https://doi.org/10.1007/978-3-031-72643-9_22",
     "data": "https://huggingface.co/datasets/Lin-Chen/ShareGPT4V"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-27T09:02:47Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "多模态数据，引用挺多",
     "updated_at": "2026-07-27T09:02:47Z"
   }
 }

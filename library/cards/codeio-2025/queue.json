@@ -5,14 +5,12 @@
     "data": "https://huggingface.co/datasets/hkust-nlp/CodeIO-PyEdu-Reasoning",
     "code": "https://github.com/hkust-nlp/CodeIO"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T12:17:50Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "让模型预测函数生成结果来构建code reasoning data",
     "updated_at": "2026-07-14T12:17:50Z"
   }
 }

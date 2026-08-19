@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2505.15277",
     "data": "https://huggingface.co/datasets/LangAGI-Lab/WebPRMCollection_preference_pair"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:04:51Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布网页代理步骤偏好对与检查清单",
     "updated_at": "2026-07-17T12:04:51Z"
   }
 }

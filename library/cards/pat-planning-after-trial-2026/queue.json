@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T11:47:46Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以代码执行失败为触发信号，只在直接生成全部失败时才支付规划与递归分解成本",
     "updated_at": "2026-07-21T11:47:46Z"
   }
 }

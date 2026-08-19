@@ -5,7 +5,6 @@
   "updated_at": "2026-07-14T12:51:07Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "mmlu增强版，现在常评测这个 2k+ ref",
     "updated_at": "2026-07-14T12:51:07Z"
   }
 }

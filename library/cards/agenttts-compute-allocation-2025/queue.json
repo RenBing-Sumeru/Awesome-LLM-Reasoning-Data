@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T10:13:57Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "研究多阶段工作流如何分配测试时总计算预算",
     "updated_at": "2026-07-20T10:13:57Z"
   }
 }

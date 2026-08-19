@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "数据量大管饱，对于benchmark数据提供了一种更完善的验证策略",
     "updated_at": "2026-07-13T02:37:03Z"
   },
   "updated_at": "2026-07-13T02:37:03Z"

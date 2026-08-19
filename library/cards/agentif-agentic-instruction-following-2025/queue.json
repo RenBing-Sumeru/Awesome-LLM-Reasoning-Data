@@ -4,14 +4,12 @@
     "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/file/51bb3a8a33610a25aae074bfc51b1b1f-Paper-Datasets_and_Benchmarks_Track.pdf",
     "data": "https://huggingface.co/datasets/THU-KEG/AgentIF"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-22T12:00:15Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "AGENTIF 含 707 条人工标注指令，将代理任务拆成可核验的原子约束，规模待核，能补足工具代理指令遵循的评测数据",
     "updated_at": "2026-07-22T12:00:15Z"
   }
 }

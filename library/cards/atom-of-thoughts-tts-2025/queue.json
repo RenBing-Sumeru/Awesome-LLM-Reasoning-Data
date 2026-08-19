@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T13:04:09Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "将长推理拆成可搜索的原子状态，提升马尔可夫式测试时扩展的效率与可控性",
     "updated_at": "2026-07-20T13:04:09Z"
   }
 }

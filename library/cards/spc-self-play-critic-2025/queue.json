@@ -12,11 +12,9 @@
   "category_ids": [
     "data_construction_open_release_recipes"
   ],
-  "reason_to_include": "对抗性训练，数学推理，多数据集",
   "updated_at": "2026-07-12T03:42:27Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "训练了两个模型，采用对抗学习的事项，感觉是生成器-验证器的一种新范式",
     "updated_at": "2026-07-12T03:42:27Z"
   }
 }

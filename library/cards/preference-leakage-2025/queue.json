@@ -4,10 +4,12 @@
     "paper": "https://arxiv.org/abs/2502.01534",
     "data": "https://github.com/David-Li0406/Preference-Leakage"
   },
-  "review_note": "已精读：以 preference leakage score 揭示生成器—judge 关联造成的系统性偏好偏置。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
-  "manual_annotation": {"search_status":"promoted","decision_reason":"ICML 正式论文与公开代码数据直接量化 LLM judge 的谱系污染风险。","updated_at":"2026-07-20T00:00:00Z"}
+  "manual_annotation": {
+    "search_status": "promoted",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
 }

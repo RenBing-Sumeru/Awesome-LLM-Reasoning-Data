@@ -6,14 +6,12 @@
     "code": "https://github.com/multi-agent-systems-failure-taxonomy/MAST",
     "project": "https://sites.google.com/berkeley.edu/mast/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T12:10:53Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "千级协作轨迹配结构化失效分类",
     "updated_at": "2026-07-16T12:10:53Z"
   }
 }

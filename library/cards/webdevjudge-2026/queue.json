@@ -4,13 +4,11 @@
     "paper": "https://openreview.net/forum?id=CCSPm6V5EF",
     "data": "https://openreview.net/forum?id=CCSPm6V5EF"
   },
-  "review_note": "Restored ICLR 2026 oral card.",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "654 个部署网页偏好对、query 条件化 rubric 与 502 个可行性测试能直接审计网页 judge 的偏差和执行盲点。",
     "updated_at": "2026-07-24T12:00:00Z"
   },
   "updated_at": "2026-07-24T12:00:00Z"

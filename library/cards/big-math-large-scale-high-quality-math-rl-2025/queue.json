@@ -6,14 +6,12 @@
     "code": "https://github.com/SynthLabsAI/big-math",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T13:20:03Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "Big-Math 汇集25.1万道可判定答案的数学题，规模大下载量高",
     "updated_at": "2026-07-18T13:20:03Z"
   }
 }

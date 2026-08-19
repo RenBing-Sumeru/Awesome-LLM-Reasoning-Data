@@ -6,14 +6,12 @@
     "code": "https://github.com/pzy2000/SolEval",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T12:10:19Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布1507个Solidity仓库任务",
     "updated_at": "2026-07-18T12:10:19Z"
   }
 }

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "CL-bench 包含 500 个复杂真实上下文、1,899 个任务和 31,607 条专家验证 rubric，下载量高",
     "updated_at": "2026-07-21T12:30:54Z"
   },
   "updated_at": "2026-07-21T12:30:54Z"

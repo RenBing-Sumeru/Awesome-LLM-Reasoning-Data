@@ -6,14 +6,12 @@
     "code": "https://github.com/amazon-science/SWE-PolyBench",
     "project": "https://amazon-science.github.io/SWE-PolyBench/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T14:02:41Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布2,110个四语言仓库任务和Docker测试，下载量还行",
     "updated_at": "2026-07-18T14:02:41Z"
   }
 }

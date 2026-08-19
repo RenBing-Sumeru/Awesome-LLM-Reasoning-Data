@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T08:52:59Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "说明文本空间的验证器重排序并不能直接迁移到潜在推理，并定位了扩展失败原因",
     "updated_at": "2026-07-21T08:52:59Z"
   }
 }

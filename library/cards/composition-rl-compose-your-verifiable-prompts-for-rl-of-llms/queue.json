@@ -6,14 +6,12 @@
     "code": "https://github.com/XinXU-USTC/Composition-RL",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-19T08:39:20Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "提供132万条组合式可验证提示",
     "updated_at": "2026-07-19T08:39:20Z"
   }
 }

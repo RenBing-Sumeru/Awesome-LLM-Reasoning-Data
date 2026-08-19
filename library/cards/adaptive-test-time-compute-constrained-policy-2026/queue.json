@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "测试时计算采样，从数学数据集中获取3万条响应",
     "updated_at": "2026-07-29T04:15:13Z"
   },
   "updated_at": "2026-07-29T04:15:13Z",

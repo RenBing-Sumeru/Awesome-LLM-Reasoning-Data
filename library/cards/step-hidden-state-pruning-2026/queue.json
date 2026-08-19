@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T08:54:25Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "在 KV 缓存饱和时剪去低质量轨迹，将并行推理延迟降低 45%–70%",
     "updated_at": "2026-07-21T08:54:25Z"
   }
 }

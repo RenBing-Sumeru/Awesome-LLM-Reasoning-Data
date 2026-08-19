@@ -6,14 +6,12 @@
     "code": "https://github.com/Zhou-Zoey/RMB-Reward-Model-Benchmark",
     "project": "https://github.com/Zhou-Zoey/RMB-Reward-Model-Benchmark"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-16T13:19:39Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "近两万真实偏好比较，兼测配对和Best-of-N奖励能力",
     "updated_at": "2026-07-16T13:19:39Z"
   }
 }

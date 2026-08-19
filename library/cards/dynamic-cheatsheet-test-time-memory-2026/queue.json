@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T12:08:24Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "让多次推理的经验以可审计记忆跨任务累积",
     "updated_at": "2026-07-21T12:08:24Z"
   }
 }

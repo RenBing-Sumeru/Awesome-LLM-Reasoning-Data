@@ -4,10 +4,8 @@
     "paper": "https://openreview.net/forum?id=OBaK9JSbHk",
     "code": "https://github.com/yale-nlp/AlignEval"
   },
-  "review_note": "Track 13: official primary paper page recorded; artifact availability is explicit.",
   "manual_annotation": {
-    "search_status": "promoted",
-    "decision_reason": "以强 oracle 筛选的固定偏好对构建可复用对齐评测，并有开源代码与数据支持复核。"
+    "search_status": "promoted"
   },
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"

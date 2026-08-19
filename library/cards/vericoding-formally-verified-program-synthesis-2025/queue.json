@@ -6,14 +6,12 @@
     "code": "https://github.com/Beneficial-AI-Foundation/vericoding-benchmark",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T08:00:38Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布覆盖12,504个Dafny、Verus和Lean规格任务的benchmark",
     "updated_at": "2026-07-18T08:00:38Z"
   }
 }

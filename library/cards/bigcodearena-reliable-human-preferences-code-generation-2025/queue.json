@@ -5,7 +5,6 @@
   "updated_at": "2026-07-14T11:37:38Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "由真实代码对话整理出来的 4,700 条多轮成对人类偏好样本",
     "updated_at": "2026-07-14T11:37:38Z"
   }
 }

@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T03:38:46Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "识别 12 类潜在 LLM-as-a-Judge 偏差，不算benchmark ref384",
     "updated_at": "2026-07-15T03:38:46Z"
   }
 }

@@ -12,11 +12,9 @@
   "category_ids": [
     "data_construction_open_release_recipes"
   ],
-  "reason_to_include": "蒸馏，教师轨迹，数学训练题，思维链",
   "updated_at": "2026-07-13T02:34:52Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "蒸馏时学生模型不一定能学到长的思维链和大教师模型的能力，整体上与数据构建方法关系不太大",
     "updated_at": "2026-07-13T02:34:52Z"
   }
 }

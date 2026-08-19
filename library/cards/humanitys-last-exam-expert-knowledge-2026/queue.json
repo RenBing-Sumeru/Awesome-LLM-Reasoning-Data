@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2501.14249",
     "data": "https://lastexam.ai/"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-22T15:03:27Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "Benchmark，2,500 道题、百余学科，由领域专家出题并同行复核",
     "updated_at": "2026-07-22T15:03:27Z"
   }
 }

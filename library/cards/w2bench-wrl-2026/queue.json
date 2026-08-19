@@ -2,6 +2,9 @@
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
-  "manual_annotation": {"search_status": "promoted", "decision_reason": "需求删除构造可审计的写作排序信号，并以公开代码/数据连接 reward model 评测与 RL 训练；复用前须人工核验诱导排序。", "updated_at": "2026-07-24T12:00:00Z"},
+  "manual_annotation": {
+    "search_status": "promoted",
+    "updated_at": "2026-07-24T12:00:00Z"
+  },
   "updated_at": "2026-07-24T12:00:00Z"
 }

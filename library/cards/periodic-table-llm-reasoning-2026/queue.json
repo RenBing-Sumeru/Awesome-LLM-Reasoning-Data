@@ -5,7 +5,6 @@
   "updated_at": "2026-07-26T11:30:31Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "总结了当前大型语言模型推理能力的发展现状及其局限，包括元推理、自进化推理框架、多模态推理以及社会情境驱动的推理",
     "updated_at": "2026-07-26T11:30:31Z"
   }
 }

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "ICLR oral，自训练产生推理轨迹，本方法从抽象化的一般规则再到实例化任务场景来构造数据",
     "updated_at": "2026-07-12T09:28:54Z"
   },
   "updated_at": "2026-07-12T09:28:54Z"

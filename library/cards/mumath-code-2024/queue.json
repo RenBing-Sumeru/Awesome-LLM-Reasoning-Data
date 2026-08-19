@@ -5,14 +5,12 @@
     "data": "https://huggingface.co/datasets/weihao1/MuMath-Code-Data",
     "code": "https://github.com/youweihao-tal/MuMath-Code"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T13:38:25Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "code 增强的math reasoning数据",
     "updated_at": "2026-07-14T13:38:25Z"
   }
 }

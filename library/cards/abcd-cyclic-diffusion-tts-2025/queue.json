@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T12:21:47Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "把扩散模型的循环、分支与停止决策直接作为测试时计算预算的自适应分配问题",
     "updated_at": "2026-07-21T12:21:47Z"
   }
 }

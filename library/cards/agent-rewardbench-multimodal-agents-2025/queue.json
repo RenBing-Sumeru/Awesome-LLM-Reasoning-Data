@@ -6,14 +6,12 @@
     "code": "https://github.com/Quester-one/Agent-RewardBench",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-17T05:45:19Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "感知规划安全统一比较，补足真实多模态代理奖励评测",
     "updated_at": "2026-07-17T05:45:19Z"
   }
 }

@@ -4,14 +4,12 @@
     "paper": "https://openaccess.thecvf.com/content/CVPR2026/html/Tan_General_Process_Reward_Modeling_for_Robotic_Reinforcement_Learning_CVPR_2026_paper.html",
     "data": "https://huggingface.co/datasets/tanhuajie2001/Robo-Dopamine-GRM-Dataset"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:13:44Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布机器人多视角进展标签，可训练具身过程奖励",
     "updated_at": "2026-07-17T12:13:44Z"
   }
 }

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "含 1 万条编程指令、4 万个模型回答，用于代码对齐的细粒度偏好监督数据集",
     "updated_at": "2026-07-14T11:22:58Z"
   },
   "updated_at": "2026-07-14T11:22:58Z"

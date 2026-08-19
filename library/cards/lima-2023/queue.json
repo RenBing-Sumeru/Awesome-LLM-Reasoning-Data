@@ -12,14 +12,10 @@
   "category_ids": [
     "foundations_and_primers"
   ],
-  "reason_to_include": "data recipe",
-  "decision_reason": "data recipe",
   "search_status": "promoted",
-  "review_note": "",
   "updated_at": "2026-07-11T11:06:59Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "data recipe",
     "updated_at": "2026-07-11T11:06:59Z"
   }
 }

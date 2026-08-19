@@ -4,10 +4,12 @@
     "paper": "https://openreview.net/forum?id=T7tfgX37ql",
     "data": null
   },
-  "review_note": "已精读：PAJAMA 以可执行程序代替直接 LLM 判决，降低成本并改善一致性与偏差。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
-  "manual_annotation": {"search_status":"promoted","decision_reason":"ICML PRAL 正式论文，以可审计程序评测器直接回应 LLM judge 的成本与偏差风险。","updated_at":"2026-07-20T00:00:00Z"}
+  "manual_annotation": {
+    "search_status": "promoted",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
 }

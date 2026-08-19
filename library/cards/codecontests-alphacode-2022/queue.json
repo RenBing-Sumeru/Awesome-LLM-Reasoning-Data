@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T04:02:11Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "竞赛代码生成系统 算生成数据的，不算benchmark",
     "updated_at": "2026-07-15T04:02:11Z"
   }
 }

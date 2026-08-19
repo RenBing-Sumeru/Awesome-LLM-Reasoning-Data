@@ -5,7 +5,6 @@
   "updated_at": "2026-07-17T07:11:23Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "暂缓 lean4相关的 形式化证明 无法评定好坏 但机构没听说过",
     "updated_at": "2026-07-17T07:11:23Z"
   }
 }

@@ -4,10 +4,8 @@
     "paper": "https://arxiv.org/abs/2605.20744",
     "data": "https://github.com/MajoRoth/hack-verifiable-environments"
   },
-  "review_note": "已按 arXiv 原文完成双语精读卡片，并核对可验证环境的检测契约和公开代码。",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以确定性触发器分离奖励投机和真实任务成功，测试床与代码可直接复核。",
     "updated_at": "2026-07-24T03:30:00Z"
   },
   "category_ids": [

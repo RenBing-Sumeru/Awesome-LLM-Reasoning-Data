@@ -9,11 +9,9 @@
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
-  "reason_to_include": "executable agent demonstrations with self-correction",
   "updated_at": "2026-07-14T12:20:02Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "agentic数据",
     "updated_at": "2026-07-14T12:20:02Z"
   }
 }

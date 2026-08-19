@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T11:45:27Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用验证、双层记忆和多智能体协作，让多轮测试时推理避免重复探索并复用可靠中间结论",
     "updated_at": "2026-07-21T11:45:27Z"
   }
 }

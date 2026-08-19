@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建约17万组多轮对话偏好数据，分别覆盖有用性与无害性，奠定助手奖励建模和 RLHF 训练的经典数据基础",
     "updated_at": "2026-07-14T14:07:56Z"
   },
   "updated_at": "2026-07-14T14:07:56Z"

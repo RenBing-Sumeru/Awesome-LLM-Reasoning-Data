@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "直接研究模型钻验证器漏洞的问题，是 RLVR 风险的重要证据。",
     "updated_at": "2026-07-19T00:00:00Z"
   },
   "updated_at": "2026-07-18T13:18:30Z"

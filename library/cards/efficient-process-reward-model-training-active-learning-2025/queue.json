@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2504.10559",
     "data": "https://huggingface.co/datasets/sail/ActPRMData"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T08:18:52Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布66万条主动筛选的数学步骤监督记录",
     "updated_at": "2026-07-17T08:18:52Z"
   }
 }

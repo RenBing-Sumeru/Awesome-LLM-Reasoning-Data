@@ -6,14 +6,12 @@
     "code": "https://github.com/Just-Curieous/Curie/tree/main/benchmark/exp_bench",
     "project": "https://amberljc.github.io/blog/2025-05-11-exp-bench.html"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T11:25:06Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 EXP-Bench：从51篇论文构建的461个研究实验任务，含待补全代码和执行评测",
     "updated_at": "2026-07-18T11:25:06Z"
   }
 }

@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T13:09:19Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "将验证器引导搜索的测试时算力调度落到边缘设备的延迟与显存约束上",
     "updated_at": "2026-07-20T13:09:19Z"
   }
 }

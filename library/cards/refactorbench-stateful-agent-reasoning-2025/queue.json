@@ -6,14 +6,12 @@
     "code": "https://github.com/microsoft/RefactorBench",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-24T09:17:57Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建 RefactorBench benchmark，含 100 个真实仓库重构任务",
     "updated_at": "2026-07-24T09:17:57Z"
   }
 }

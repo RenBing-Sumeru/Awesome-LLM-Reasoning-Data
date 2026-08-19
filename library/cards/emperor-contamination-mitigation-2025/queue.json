@@ -4,10 +4,8 @@
     "paper": "https://openreview.net/forum?id=TuvDxubEfE",
     "code": "https://github.com/ASTRAL-Group/BDC_mitigation_assessment"
   },
-  "review_note": "Track 13: official primary page and public artifact recorded.",
   "manual_annotation": {
-    "search_status": "promoted",
-    "decision_reason": "以逐题保真度与污染抵抗力审计改写基准，方法、实证和官方代码均可复核。"
+    "search_status": "promoted"
   },
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"

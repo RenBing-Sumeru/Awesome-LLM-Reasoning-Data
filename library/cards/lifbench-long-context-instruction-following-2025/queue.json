@@ -6,14 +6,12 @@
     "code": "https://github.com/SheldonWu0327/LIF-Bench-2024",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-25T09:36:14Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "提供 2,766 条长上下文指令，并将复杂要求拆为可程序验证的 rubric 项",
     "updated_at": "2026-07-25T09:36:14Z"
   }
 }

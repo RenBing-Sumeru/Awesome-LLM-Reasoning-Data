@@ -4,13 +4,11 @@
     "paper": "https://openreview.net/forum?id=jVyUlri4Rw",
     "data": "https://openreview.net/attachment?id=jVyUlri4Rw&name=supplementary_material"
   },
-  "review_note": "arXiv preprint and ICLR 2026 submission status recorded.",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "该论文以人类一致性而非单纯相关性审计 LLM 裁判，并公开数据、代码与排行榜，适合纳入正式池。",
     "updated_at": "2026-07-21T02:30:00Z"
   },
   "updated_at": "2026-07-21T02:30:00Z"

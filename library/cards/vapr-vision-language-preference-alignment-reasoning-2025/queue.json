@@ -6,14 +6,12 @@
     "code": null,
     "project": "https://vap-r.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-18T12:19:45Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 VaPR-30K：3万对视觉题目、推理回答及困难负例",
     "updated_at": "2026-07-18T12:19:45Z"
   }
 }

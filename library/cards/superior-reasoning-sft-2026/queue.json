@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2601.09088",
     "data": "https://huggingface.co/datasets/Alibaba-Apsara/Superior-Reasoning-SFT-gpt-oss-120b"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-27T08:52:10Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "sft data",
     "updated_at": "2026-07-27T08:52:10Z"
   }
 }

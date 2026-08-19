@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2604.26653",
     "data": "https://huggingface.co/datasets/searchsim/agentsim-atc"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T10:19:08Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "含十万级证据绑定步骤标签，能训练可追溯的RAG过程判断",
     "updated_at": "2026-07-16T10:19:08Z"
   }
 }

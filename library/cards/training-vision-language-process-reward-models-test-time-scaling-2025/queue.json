@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2509.23250",
     "data": "https://huggingface.co/datasets/ob11/VL-PRM300K"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T11:57:17Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布30万视觉推理轨迹及视觉/推理首错位置",
     "updated_at": "2026-07-17T11:57:17Z"
   }
 }

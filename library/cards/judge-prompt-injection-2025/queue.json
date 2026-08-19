@@ -4,13 +4,11 @@
     "paper": "https://doi.org/10.1145/3658644.3690291",
     "code": "https://github.com/ShiJiawenwen/JudgeDeceiver"
   },
-  "review_note": "CCS 2024 正式论文；官方公开 JudgeDeceiver 代码，未找到官方可下载攻击数据集。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "manual_annotation": {
-    "search_status": "promoted",
-    "decision_reason": "以可复核的优化攻击、跨位置评测与防御失效率直接审计 LLM 裁判的注入风险，适合纳入正式池。"
+    "search_status": "promoted"
   },
   "updated_at": "2026-07-24T00:00:00Z"
 }

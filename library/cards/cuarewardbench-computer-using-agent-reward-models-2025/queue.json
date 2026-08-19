@@ -6,14 +6,12 @@
     "code": "https://github.com/Tencent/CUARewardBench",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-18T14:24:32Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "272条人工成功/失败轨迹和346个关键步骤正确性标注，覆盖10类软件与7种 Agent",
     "updated_at": "2026-07-18T14:24:32Z"
   }
 }

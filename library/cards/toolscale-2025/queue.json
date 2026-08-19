@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2511.21689",
     "data": "https://huggingface.co/datasets/nvidia/ToolScale"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-27T08:42:06Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "agentic data",
     "updated_at": "2026-07-27T08:42:06Z"
   }
 }

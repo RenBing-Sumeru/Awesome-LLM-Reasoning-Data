@@ -6,14 +6,12 @@
     "code": "https://github.com/wxxy0719/PhysReason",
     "project": "https://dxzxy12138.github.io/PhysReason/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T12:48:53Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "物理题配逐步判分和首错，适合科学推理评测补集",
     "updated_at": "2026-07-16T12:48:53Z"
   }
 }

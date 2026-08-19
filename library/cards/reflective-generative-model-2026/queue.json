@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:53:53Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以反思式生成与过程轨迹选择支持可控思考长度，直接优化推理阶段的计算使用",
     "updated_at": "2026-07-20T08:53:53Z"
   }
 }

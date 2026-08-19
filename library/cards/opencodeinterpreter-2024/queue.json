@@ -5,14 +5,12 @@
     "data": "https://huggingface.co/datasets/m-a-p/Code-Feedback",
     "code": "https://github.com/OpenCodeInterpreter/OpenCodeInterpreter"
   },
-  "review_note": "L4 材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T14:34:11Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "有点类似agentic coding data构建。有开源数据集。有点老",
     "updated_at": "2026-07-14T14:34:11Z"
   }
 }

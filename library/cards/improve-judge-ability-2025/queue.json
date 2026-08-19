@@ -4,13 +4,11 @@
     "paper": "https://aclanthology.org/2025.emnlp-main.712/",
     "data": "https://huggingface.co/datasets/R-I-S-E/RISE-Judge-SFT-20K"
   },
-  "review_note": "EMNLP 2025 正式论文；官方已公开模型权重与 SFT、DPO 训练数据。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "manual_annotation": {
-    "search_status": "promoted",
-    "decision_reason": "两阶段训练明确公开了裁判数据筛选与偏差控制，并以 RewardBench 和下游偏好训练检验信号效用，适合纳入正式池。"
+    "search_status": "promoted"
   },
   "updated_at": "2026-07-21T00:00:00Z"
 }

@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.acl-long.1540/",
     "data": "https://huggingface.co/datasets/sxiong/SWAP"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:12:55Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布状态图、候选动作和轨迹分数，可监督结构化规划；但主线是世界模型规划算法",
     "updated_at": "2026-07-17T12:12:55Z"
   }
 }

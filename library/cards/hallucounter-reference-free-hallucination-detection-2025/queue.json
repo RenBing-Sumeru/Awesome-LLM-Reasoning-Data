@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://aclanthology.org/2025.findings-ijcnlp.20/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-22T13:34:50Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "HalluCounter 收集真实使用场景中的无参考幻觉案例，适合训练不依赖标准答案的事实性裁判",
     "updated_at": "2026-07-22T13:34:50Z"
   }
 }

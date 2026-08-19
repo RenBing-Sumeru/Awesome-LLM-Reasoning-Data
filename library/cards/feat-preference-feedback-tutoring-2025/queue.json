@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建 5,500 条人工排序的 DIRECT-Manual 与 4,440 条自动偏好标注的 DIRECT-Generated，支持教育场景奖励模型与 DPO",
     "updated_at": "2026-07-14T09:11:29Z"
   },
   "updated_at": "2026-07-14T09:11:29Z"

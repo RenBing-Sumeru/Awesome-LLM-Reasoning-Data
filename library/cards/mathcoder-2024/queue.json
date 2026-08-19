@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://openreview.net/forum?id=z8TW0ttBPp"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T12:06:05Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "构建自然语言推理和code混合的数学reasoning数据。",
     "updated_at": "2026-07-14T12:06:05Z"
   }
 }

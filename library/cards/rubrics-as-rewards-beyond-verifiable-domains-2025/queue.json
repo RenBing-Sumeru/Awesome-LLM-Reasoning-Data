@@ -6,14 +6,12 @@
     "code": null,
     "project": "https://labs.scale.com/papers/rubrics_as_rewards"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-16T13:14:29Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "科学题量规直接进GRPO，扩展可验证任务之外的奖励",
     "updated_at": "2026-07-16T13:14:29Z"
   }
 }

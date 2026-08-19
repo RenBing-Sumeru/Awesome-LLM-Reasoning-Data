@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "规划任务及规则混合验证的 Gym 交互环境，报告 2,651 个 train 和 471 个 test 场景",
     "updated_at": "2026-07-21T13:59:33Z"
   },
   "updated_at": "2026-07-21T13:59:33Z",

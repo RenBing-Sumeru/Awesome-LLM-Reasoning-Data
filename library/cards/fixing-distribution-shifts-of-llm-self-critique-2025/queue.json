@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "引入教师模型SFT，然后还有强化学习，明确的数据构建pipeline",
     "updated_at": "2026-07-15T07:52:48Z"
   },
   "updated_at": "2026-07-15T07:52:48Z"

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "揭示 LLM 裁判易受微小提示操纵，直接关联自动评测可靠性。",
     "updated_at": "2026-07-19T00:00:00Z"
   },
   "updated_at": "2026-07-18T13:15:32Z"

@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "智能体工具调用，mcp，构建 600 个在六类 server 范围／调用依赖组合上均衡的 query",
     "updated_at": "2026-07-22T10:11:48Z"
   },
   "updated_at": "2026-07-22T10:11:48Z",

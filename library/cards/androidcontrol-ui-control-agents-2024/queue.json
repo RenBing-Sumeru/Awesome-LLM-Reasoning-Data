@@ -5,7 +5,6 @@
   "updated_at": "2026-07-14T12:55:26Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "没想好，不一定留 数据多，在androidbench方面一个比较好的bench 构建 AndroidControl 人类示范数据集，并系统测量 UI Agent 的域内、域外性能如何随训练数据规模增长",
     "updated_at": "2026-07-14T12:55:26Z"
   }
 }

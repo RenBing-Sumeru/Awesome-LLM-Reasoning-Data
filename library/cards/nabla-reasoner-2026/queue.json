@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:55:30Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "把推理阶段的额外计算用于文本空间中的迭代优化，提供区别于采样搜索的测试时扩展路径",
     "updated_at": "2026-07-20T08:55:30Z"
   }
 }

@@ -6,14 +6,12 @@
     "code": "https://github.com/SalesforceAIResearch/ReasoningJudgeBench",
     "project": "https://github.com/SalesforceAIResearch/ReasoningJudgeBench"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-16T14:15:06Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "benchmark工作，跨八基准正负答案对，下载量大",
     "updated_at": "2026-07-16T14:15:06Z"
   }
 }

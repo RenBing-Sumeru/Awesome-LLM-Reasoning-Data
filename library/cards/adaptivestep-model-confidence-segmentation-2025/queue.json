@@ -6,14 +6,12 @@
     "code": "https://github.com/Lux0926/ASPRM",
     "project": "https://github.com/Lux0926/ASPRM"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T12:49:19Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "十万训练记录研究自适应切步，对粒度建模有参考价值",
     "updated_at": "2026-07-16T12:49:19Z"
   }
 }

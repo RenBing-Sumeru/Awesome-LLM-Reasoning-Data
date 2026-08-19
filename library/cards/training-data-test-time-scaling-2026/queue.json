@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:57:41Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "研究训练数据条件如何影响额外推理计算的收益与失效边界，直接解释测试时扩展何时有效",
     "updated_at": "2026-07-20T08:57:41Z"
   }
 }

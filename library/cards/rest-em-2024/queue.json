@@ -12,14 +12,10 @@
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
-  "reason_to_include": "针对binary feedback task的自训练",
-  "decision_reason": "针对binary feedback task的自训练",
   "search_status": "promoted",
-  "review_note": "",
   "updated_at": "2026-07-11T13:54:55Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "针对binary feedback task的自训练",
     "updated_at": "2026-07-11T13:54:55Z"
   }
 }

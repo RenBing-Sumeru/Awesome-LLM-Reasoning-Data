@@ -4,14 +4,12 @@
     "paper": "https://openaccess.thecvf.com/content/CVPR2026/html/Kuckreja_Pixels_Dont_Lie_But_Your_Detector_Might_Bootstrapping_MLLM-as-a-Judge_for_CVPR_2026_paper.html",
     "data": "https://huggingface.co/datasets/MBZUAI/DeepfakeJudge-Dataset"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-26T05:49:16Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "DeepfakeJudge 约含 2,050 个样本，同时提供视觉线索、推理评分和偏好对",
     "updated_at": "2026-07-26T05:49:16Z"
   }
 }

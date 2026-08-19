@@ -6,14 +6,12 @@
     "code": "https://github.com/PRIME-RL/PRIME",
     "project": "https://huggingface.co/blog/ganqu/prime"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-16T13:06:19Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "七十万隐式过程偏好记录，直接连接PRM与数理代码RL",
     "updated_at": "2026-07-16T13:06:19Z"
   }
 }

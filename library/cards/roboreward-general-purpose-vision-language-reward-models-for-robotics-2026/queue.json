@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2601.00675",
     "data": "https://huggingface.co/datasets/teetone/RoboReward"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-15T11:59:24Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布5.41万条真实机器人轨迹及1–5级进度奖励，属于轨迹级标量奖励数据",
     "updated_at": "2026-07-15T11:59:24Z"
   }
 }

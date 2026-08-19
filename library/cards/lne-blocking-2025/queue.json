@@ -4,10 +4,8 @@
     "paper": "https://github.com/RuijieH/LNE-Blocking",
     "data": "https://github.com/RuijieH/LNE-Blocking"
   },
-  "review_note": "已完成正式论文精读：该方法以 LNE 条件化 Blocking 缓解污染基准中的记忆性回答。",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以可复现的污染检测和受控解码审计基准分数，适合纳入正式池。",
     "updated_at": "2026-07-20T13:00:00Z"
   },
   "category_ids": [

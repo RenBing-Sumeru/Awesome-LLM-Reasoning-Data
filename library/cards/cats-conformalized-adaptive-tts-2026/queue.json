@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T11:46:12Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "在用户指定错误风险上限下自动选择最低成本的推理强度",
     "updated_at": "2026-07-21T11:46:12Z"
   }
 }

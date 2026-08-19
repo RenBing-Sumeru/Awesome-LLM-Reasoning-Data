@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2604.10493",
     "data": "https://huggingface.co/datasets/mahirlabibdihan/swe-prm-collection"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-18T14:16:32Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "算法工作，同时公开了配套的动作级过程监督数据集，超过 1.5万条动作级训练样本",
     "updated_at": "2026-07-18T14:16:32Z"
   }
 }

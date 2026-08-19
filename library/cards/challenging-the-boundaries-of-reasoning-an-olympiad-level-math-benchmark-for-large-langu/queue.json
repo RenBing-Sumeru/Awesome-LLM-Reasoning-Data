@@ -6,14 +6,12 @@
     "code": "https://github.com/RUCAIBox/OlymMATH",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-19T11:39:49Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 OlymMATH-LEAN，150道奥赛级Lean形式题及大规模推理轨迹，下载量还行",
     "updated_at": "2026-07-19T11:39:49Z"
   }
 }

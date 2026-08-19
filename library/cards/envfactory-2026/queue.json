@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "85 个 verified environment、七个 domain 中的 842 个 tool、1,622 个 SFT conversation 和 953 个 RL conversation",
     "updated_at": "2026-07-22T11:34:01Z"
   },
   "updated_at": "2026-07-22T11:34:01Z",

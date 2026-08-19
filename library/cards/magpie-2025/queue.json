@@ -7,15 +7,12 @@
     "data": "https://huggingface.co/datasets/Magpie-Align/Magpie-Pro-300K-Filtered",
     "project": "https://magpie-align.github.io/"
   },
-  "review_note": "Check seedless instruction extraction, teacher-distribution inheritance, filter choices, Llama 3 data terms, and controlled SFT comparisons.",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
-  "reason_to_include": "seedless synthetic instruction-response demonstrations",
   "updated_at": "2026-07-14T13:50:27Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "从开源模型合成instruction数据的方法。优点是不需要手工提供instruction prompt来进行蒸馏，而是instruction prompt也由模型生成。",
     "updated_at": "2026-07-14T13:50:27Z"
   }
 }

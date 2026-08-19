@@ -12,14 +12,10 @@
   "category_ids": [
     "foundations_and_primers"
   ],
-  "reason_to_include": "开源posttrain dataset recipe",
-  "decision_reason": "开源posttrain dataset recipe",
   "search_status": "promoted",
-  "review_note": "",
   "updated_at": "2026-07-11T08:44:37Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "开源posttrain dataset recipe",
     "updated_at": "2026-07-11T08:44:37Z"
   }
 }

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以人工验证的分层语境揭示通用奖励模型对仇恨解释的错误偏好，并提供可复现代码，适合作为敏感内容解释评分的审计基线。",
     "updated_at": "2026-07-26T00:00:00Z"
   },
   "updated_at": "2026-07-19T12:58:49Z"

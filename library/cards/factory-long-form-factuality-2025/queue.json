@@ -6,14 +6,12 @@
     "code": null,
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判定。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-21T12:45:57Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "FACTORY 将长回答拆成带证据URL和引用片段的事实判断，适合训练Judge逐项检查长文是否真正有依据",
     "updated_at": "2026-07-21T12:45:57Z"
   }
 }

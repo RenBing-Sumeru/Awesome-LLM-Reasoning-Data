@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://aclanthology.org/2024.findings-emnlp.268/"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T12:07:52Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "多模态数学推理数据",
     "updated_at": "2026-07-14T12:07:52Z"
   }
 }

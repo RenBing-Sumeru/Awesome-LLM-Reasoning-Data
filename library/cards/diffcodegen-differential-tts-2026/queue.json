@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-21T08:54:56Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用覆盖引导差分测试替代额外模型验证调用，在代码生成中实现低成本候选选择",
     "updated_at": "2026-07-21T08:54:56Z"
   }
 }

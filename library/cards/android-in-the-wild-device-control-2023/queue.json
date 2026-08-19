@@ -5,7 +5,6 @@
   "updated_at": "2026-07-13T13:58:48Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "可再考虑 数据规模远大于早期移动 GUI 数据集，具有奠基性，但比较老 443ref",
     "updated_at": "2026-07-13T13:58:48Z"
   }
 }

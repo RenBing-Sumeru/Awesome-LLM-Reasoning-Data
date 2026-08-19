@@ -6,14 +6,12 @@
     "code": "https://github.com/intervention-training/int",
     "project": "https://intervention-training.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T12:14:53Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布首错干预和修补轨迹，可监督错误归因",
     "updated_at": "2026-07-17T12:14:53Z"
   }
 }

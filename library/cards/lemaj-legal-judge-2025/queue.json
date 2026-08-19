@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.nllp-1.23/",
     "data": null
   },
-  "review_note": "纳入正式池：以法律数据点分解长答案，并以专家判断验证无参考法律评审的可靠性。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-21T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "纳入正式池：以法律数据点分解长答案，并以专家判断验证无参考法律评审的可靠性。",
     "updated_at": "2026-07-21T00:00:00Z"
   }
 }

@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.acl-long.737/",
     "data": "https://github.com/AlignRM/CheemsRM"
   },
-  "review_note": "可纳入：ACL 2025 正式论文，公开中文基准、偏好数据与代码，能直接支撑奖励模型可靠性审计。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-24T12:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "可纳入：ACL 2025 正式论文，公开中文基准、偏好数据与代码，能直接支撑奖励模型可靠性审计。",
     "updated_at": "2026-07-24T12:00:00Z"
   }
 }

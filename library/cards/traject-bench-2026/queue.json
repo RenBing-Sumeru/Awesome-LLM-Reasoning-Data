@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "本身为本次benchmark，包含工具调用数据",
     "updated_at": "2026-07-29T04:55:39Z"
   },
   "updated_at": "2026-07-29T04:55:39Z",

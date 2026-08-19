@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T09:51:55Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "从覆盖率、ROC 与次优性角度刻画测试时验证器的能力边界，为选择和校准推理候选提供理论化依据",
     "updated_at": "2026-07-20T09:51:55Z"
   }
 }

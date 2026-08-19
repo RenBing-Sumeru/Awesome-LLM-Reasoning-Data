@@ -6,14 +6,12 @@
     "code": null,
     "project": "https://vl-rewardbench.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-18T12:23:04Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 VL-RewardBench：1,250个人工核验图文偏好样本，覆盖感知、幻觉和数学推理",
     "updated_at": "2026-07-18T12:23:04Z"
   }
 }

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "揭示检索和测试时搜索引入的数据污染，直接影响评测可信度。",
     "updated_at": "2026-07-19T00:00:00Z"
   },
   "updated_at": "2026-07-12T14:24:27Z"

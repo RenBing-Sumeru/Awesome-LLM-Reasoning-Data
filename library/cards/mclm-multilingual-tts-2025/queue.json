@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T10:15:07Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "在 55 种语言中验证测试时扩展，说明英语收益不能直接外推为多语言收益",
     "updated_at": "2026-07-20T10:15:07Z"
   }
 }

@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "面向长上下文开放生成的 33K 偏好数据补足了通用奖励模型难以评估完整性与幻觉的缺口。",
     "updated_at": "2026-07-24T00:00:00Z"
   },
   "updated_at": "2026-07-24T00:00:00Z"

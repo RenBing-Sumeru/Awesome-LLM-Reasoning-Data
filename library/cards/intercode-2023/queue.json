@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T09:20:36Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "有点老 交互式代码与Agent研究中有影响 但现在用SWE-bench比较多 ref263",
     "updated_at": "2026-07-15T09:20:36Z"
   }
 }

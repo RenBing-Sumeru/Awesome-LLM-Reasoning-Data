@@ -6,14 +6,12 @@
     "code": "https://github.com/MPBench/MPBench",
     "project": "https://mpbench.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T11:58:03Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "多模态轨迹带首错和错误类别，过程错误定位契约清晰",
     "updated_at": "2026-07-16T11:58:03Z"
   }
 }

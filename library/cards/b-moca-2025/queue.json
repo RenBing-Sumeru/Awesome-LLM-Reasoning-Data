@@ -5,7 +5,6 @@
   "updated_at": "2026-07-14T10:16:45Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "在 Android 环境中随机改变图标布局、壁纸、语言和设备设置，测试 Agent 对未见设备配置的泛化 Android的少保留",
     "updated_at": "2026-07-14T10:16:45Z"
   }
 }

@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2026.healing-1.12/",
     "data": null
   },
-  "review_note": "正式 HeaLing 2026 论文已精读；代码与数据发布未确认。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-24T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "生成器会系统性改变医疗 LLM 评判的一致性，且专家标注对齐实验证明其可作为受限条件下的审计基线。",
     "updated_at": "2026-07-24T00:00:00Z"
   }
 }

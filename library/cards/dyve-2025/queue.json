@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "包含轨迹生成-过滤-数据合成-sft完整流程，数据量也足够",
     "updated_at": "2026-07-13T04:16:55Z"
   },
   "updated_at": "2026-07-13T04:16:55Z"

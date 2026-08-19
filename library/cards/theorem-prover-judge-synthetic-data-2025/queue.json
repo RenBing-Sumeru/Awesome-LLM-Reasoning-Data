@@ -13,11 +13,9 @@
     "programmatically_verifiable_outcome_data",
     "data_construction_open_release_recipes"
   ],
-  "reason_to_include": "数学推理，形式验证",
   "updated_at": "2026-07-11T13:42:14Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "数学推理，形式验证",
     "updated_at": "2026-07-11T13:42:14Z"
   }
 }

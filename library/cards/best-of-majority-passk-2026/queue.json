@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:56:55Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "从理论上研究 pass@k 推理扩展中如何聚合候选答案，是测试时采样预算与决策规则的核心问题",
     "updated_at": "2026-07-20T08:56:55Z"
   }
 }

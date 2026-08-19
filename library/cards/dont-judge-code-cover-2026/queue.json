@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://aclanthology.org/2026.findings-eacl.70/"
   },
-  "review_note": "Track 13: official primary paper page recorded; artifact availability is explicit.",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "在五种语言、六类表层偏差和多种 LLM 判别器上显示，变量、注释等语义等价变化会系统性抬高或压低代码判决，生成测试用例也未消除该问题。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

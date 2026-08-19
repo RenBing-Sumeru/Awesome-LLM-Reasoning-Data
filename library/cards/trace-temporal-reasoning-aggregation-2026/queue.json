@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T13:05:41Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "以跨步骤的答案一致性和置信度轨迹进行早停，直接减少过度思考的令牌浪费",
     "updated_at": "2026-07-20T13:05:41Z"
   }
 }

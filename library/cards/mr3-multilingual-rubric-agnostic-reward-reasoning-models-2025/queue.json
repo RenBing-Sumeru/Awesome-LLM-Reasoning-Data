@@ -4,14 +4,12 @@
     "paper": "https://arxiv.org/abs/2510.01146",
     "data": "https://github.com/rubricreward/mr3"
   },
-  "review_note": "L4 材料已准备，等待人工判定。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-15T14:30:28Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布10万条覆盖72种语言、含rubric、评价推理与评分标签的多任务奖励数据",
     "updated_at": "2026-07-15T14:30:28Z"
   }
 }

@@ -6,14 +6,12 @@
     "code": "https://github.com/microsoft/prose/tree/main/misc/SWE-Sharp-Bench",
     "project": "https://aka.ms/swesharparxiv"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T07:46:47Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "150 个 C#/.NET 真实仓库任务，首个专门面向 C#/.NET 的可复现 SWE-bench 风格 benchmark",
     "updated_at": "2026-07-18T07:46:47Z"
   }
 }

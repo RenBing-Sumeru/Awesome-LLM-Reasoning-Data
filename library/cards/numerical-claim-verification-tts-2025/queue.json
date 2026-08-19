@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T09:51:18Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用过程验证器筛选多条核查路径，并按声明复杂度选择性分配推理预算，展示了测试时扩展在数值事实核查中的定向使用",
     "updated_at": "2026-07-20T09:51:18Z"
   }
 }

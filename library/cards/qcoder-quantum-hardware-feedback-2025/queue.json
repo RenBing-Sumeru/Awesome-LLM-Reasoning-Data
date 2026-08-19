@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2025.inlg-main.43/",
     "data": "https://qcoder-bench.github.io/"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-26T05:52:45Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "QCoder 以量子代码竞赛题和模拟器反馈评估代码推理，并用错误类型与执行信号定位失败原因，1.5万条数据",
     "updated_at": "2026-07-26T05:52:45Z"
   }
 }

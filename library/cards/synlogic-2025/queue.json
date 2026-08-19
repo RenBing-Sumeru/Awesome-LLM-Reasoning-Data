@@ -13,11 +13,9 @@
     "programmatically_verifiable_outcome_data",
     "data_construction_open_release_recipes"
   ],
-  "reason_to_include": "数学与代码的多种验证器，人工实现规则，自动模型检测",
   "updated_at": "2026-07-11T13:48:50Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "数学与代码的多种验证器，人工实现规则，自动模型检测",
     "updated_at": "2026-07-11T13:48:50Z"
   }
 }

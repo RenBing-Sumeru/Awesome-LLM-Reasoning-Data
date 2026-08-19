@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:53:18Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "通过工具验证来指导小模型在推理阶段分配额外计算，属于验证驱动的测试时扩展",
     "updated_at": "2026-07-20T08:53:18Z"
   }
 }

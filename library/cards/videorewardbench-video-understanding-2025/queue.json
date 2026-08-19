@@ -6,14 +6,12 @@
     "code": null,
     "project": "https://videorewardbench.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-18T13:55:09Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "视频偏好bench，覆盖感知知识推理，下载量还行",
     "updated_at": "2026-07-18T13:55:09Z"
   }
 }

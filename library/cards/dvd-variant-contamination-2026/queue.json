@@ -4,10 +4,8 @@
     "paper": "https://openreview.net/forum?id=Ubi631nNbI",
     "data": "https://openreview.net/attachment?id=Ubi631nNbI&name=supplementary_material"
   },
-  "review_note": "Track 13 round 3: official source and public artifact link recorded; venue status is preserved in the card.",
   "manual_annotation": {
-    "search_status": "promoted",
-    "decision_reason": "提出针对语义变体泄漏的可检验方差检测，但投稿已撤回且补充材料与机构信息仍需独立核验。"
+    "search_status": "promoted"
   },
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"

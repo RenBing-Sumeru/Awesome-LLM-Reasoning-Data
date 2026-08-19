@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "RL自训练配方，模型较小",
     "updated_at": "2026-07-15T13:46:31Z"
   },
   "updated_at": "2026-07-15T13:46:31Z"

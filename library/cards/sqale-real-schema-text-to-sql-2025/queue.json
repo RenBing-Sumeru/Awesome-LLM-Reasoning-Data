@@ -6,14 +6,12 @@
     "code": "https://github.com/trl-lab/SQaLe-Library",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],
   "updated_at": "2026-07-18T08:04:21Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布50万经SQL执行验证的真实schema问答三元组，规模大",
     "updated_at": "2026-07-18T08:04:21Z"
   }
 }

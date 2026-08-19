@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T08:55:56Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "让多个验证代理共同评估候选答案，直接探索验证器数量与推理时计算扩展的关系",
     "updated_at": "2026-07-20T08:55:56Z"
   }
 }

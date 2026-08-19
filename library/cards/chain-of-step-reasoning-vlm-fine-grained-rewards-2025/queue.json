@@ -6,14 +6,12 @@
     "code": "https://github.com/baaivision/CoS",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-16T11:52:13Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "近十万视觉步骤奖励数据，可直接用于重排和RL",
     "updated_at": "2026-07-16T11:52:13Z"
   }
 }

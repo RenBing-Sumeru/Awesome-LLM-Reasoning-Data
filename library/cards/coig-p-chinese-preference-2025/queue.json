@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "约100万组中文偏好对，覆盖对话、代码、数学等六类任务，规模大且支持中文奖励模型和偏好对齐",
     "updated_at": "2026-07-14T11:17:54Z"
   },
   "updated_at": "2026-07-14T11:17:54Z"

@@ -4,13 +4,11 @@
     "paper": "https://arxiv.org/abs/2511.15958",
     "data": "https://huggingface.co/papers/2511.15958"
   },
-  "review_note": "AAAI 2026 official primary page recorded.",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "该正式发表论文用学生答错时准确率与直接裁判协议揭示推理评估失效，适合纳入正式池。",
     "updated_at": "2026-07-21T02:30:00Z"
   },
   "updated_at": "2026-07-21T02:30:00Z"

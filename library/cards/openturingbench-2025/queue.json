@@ -4,10 +4,12 @@
     "paper": "https://2025.emnlp.org/program/main_papers/",
     "data": "https://2025.emnlp.org/program/main_papers/"
   },
-  "review_note": "公开基准将改写、人机混合、领域迁移和未见生成器纳入同一压力测试，能直接暴露检测器的泛化缺口。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
-  "manual_annotation": {"search_status":"promoted","decision_reason":"公开基准以人机混合、改写、领域迁移和未见生成器暴露检测与归因失效，数据和正式论文可复用，适合纳入正式池。","updated_at":"2026-07-20T12:00:00Z"}
+  "manual_annotation": {
+    "search_status": "promoted",
+    "updated_at": "2026-07-20T12:00:00Z"
+  }
 }

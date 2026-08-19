@@ -1,8 +1,15 @@
 {
   "title": "Reproducing, Analyzing, and Detecting Reward Hacking in Rubric-Based Reinforcement Learning",
-  "candidate_links": {"paper": "https://arxiv.org/abs/2606.04923", "data": "https://github.com/THUAIS-Lab/CHERRL"},
-  "review_note": "可纳入：公开可复现环境将 judge 偏差、奖励分叉和奖励投机起点置于同一受控审计面。",
-  "category_ids": ["audit_failure_contamination_verifier_attacks"],
-  "manual_annotation": {"search_status": "promoted", "decision_reason": "可纳入：公开环境与代码支持复现单偏差奖励投机、起点定位和检测器审计。", "updated_at": "2026-07-24T12:00:00Z"},
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.04923",
+    "data": "https://github.com/THUAIS-Lab/CHERRL"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "updated_at": "2026-07-24T12:00:00Z"
+  },
   "updated_at": "2026-07-24T12:00:00Z"
 }

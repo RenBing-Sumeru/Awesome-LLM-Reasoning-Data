@@ -4,14 +4,12 @@
     "paper": "https://github.com/Cominclip/OmniVerifier",
     "data": "https://github.com/Cominclip/OmniVerifier"
   },
-  "review_note": "将视觉核验做成可生成的反馈模块，并以顺序式测试时细化改善多模态生成结果。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "该文发布 16 类视觉验证基准与可复现 verifier，并明确模型 judge 评测边界；已核验为 ICLR 2026 Oral，适合纳入正式池。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

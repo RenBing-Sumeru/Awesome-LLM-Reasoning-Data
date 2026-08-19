@@ -5,7 +5,6 @@
   "updated_at": "2026-07-14T10:34:38Z",
   "manual_annotation": {
     "search_status": "rejected",
-    "decision_reason": "让 Agent 在真实 Windows 环境操作浏览器、文档、表格、设置和软件 和项目关系不大",
     "updated_at": "2026-07-14T10:34:38Z"
   }
 }

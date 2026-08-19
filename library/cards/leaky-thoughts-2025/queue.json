@@ -4,7 +4,6 @@
   ],
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "实证分析推理轨迹泄漏风险，对数据安全与污染审计很关键。",
     "updated_at": "2026-07-19T00:00:00Z"
   },
   "updated_at": "2026-07-18T13:19:32Z"

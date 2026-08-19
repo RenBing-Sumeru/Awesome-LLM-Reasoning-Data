@@ -4,14 +4,12 @@
     "paper": "https://openreview.net/forum?id=YfFRMts4R2",
     "data": "https://openreview.net/attachment?id=YfFRMts4R2&name=supplementary_material"
   },
-  "review_note": "纳入正式池：以层级表示几何而非输出熵审计 RL 后训练污染，并在受控扰动下优于输出级基线。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-24T14:38:27Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "纳入正式池：以层级表示几何而非输出熵审计 RL 后训练污染，并在受控扰动下优于输出级基线。",
     "updated_at": "2026-07-24T14:38:27Z"
   }
 }

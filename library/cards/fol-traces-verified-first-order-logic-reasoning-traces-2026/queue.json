@@ -4,14 +4,12 @@
     "paper": "https://aclanthology.org/2026.findings-eacl.115/",
     "data": "https://huggingface.co/datasets/fol-traces/fol-traces"
   },
-  "review_note": "L4 材料已准备，等待人工判断。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T08:28:21Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布程序验证的一阶逻辑推理轨迹及复杂度信息",
     "updated_at": "2026-07-17T08:28:21Z"
   }
 }

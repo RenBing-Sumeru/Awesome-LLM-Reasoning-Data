@@ -1,7 +1,6 @@
 {
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "正负例数据构造，rollout",
     "updated_at": "2026-07-25T05:46:21Z"
   },
   "updated_at": "2026-07-25T05:46:21Z"

@@ -4,14 +4,12 @@
     "paper": "https://openreview.net/forum?id=jXhXr53hdG",
     "data": "https://github.com/jiakuan929/ContamReasoning"
   },
-  "review_note": "官方论文页与公开代码已核验；代码提供污染诊断和干预实验，但数据发布细节需在复现前再核对。",
   "category_ids": [
     "audit_failure_contamination_verifier_attacks"
   ],
   "updated_at": "2026-07-20T00:00:00Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "从机制层面解释污染推理并提供可运行的分析与干预代码，适合纳入评测可靠性研究。",
     "updated_at": "2026-07-20T00:00:00Z"
   }
 }

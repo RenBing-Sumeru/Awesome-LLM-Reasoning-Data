@@ -44,6 +44,9 @@ DESCRIPTIVE = [
 
 REQUIRED = CRITICAL + DESCRIPTIVE
 
+# Free-text curator rationales. Kept out of the repository; see private_notes().
+PRIVATE_NOTE_FIELDS = ("decision_reason", "review_note", "note", "reason_to_include")
+
 # Fields a card may carry beyond the required set. Anything else is batch residue.
 #
 # `batch` records which mining run or candidate file a card came from and `track0_subfield`
@@ -68,6 +71,34 @@ ZH_HEADER_FIELDS = ("one_line_summary_ch", "reading_priority_ch", "paper_type_ch
                     "best_for_ch", "confidence_ch", "authors_ch")
 PRIORITIES = {"必读", "可读", "暂缓", "不推荐"}
 UNTRANSLATED = re.compile(r"[A-Za-z][A-Za-z ,\-']{34,}")
+
+
+def private_notes(directory: Path) -> list:
+    """Reject curator prose in `queue.json`.
+
+    Batches arrive with free-text rationales such as why a paper was turned down. They
+    are blunt judgements about named papers written for internal use, nothing reads them,
+    and publishing them would put private opinions about other people's work in a public
+    repository. Only `manual_annotation.search_status` is consumed, so the prose has no
+    reason to be here. This is an error, not a warning: once merged it is public.
+    """
+    path = directory / "queue.json"
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return [f"{directory.name}: queue.json does not parse"]
+    if not isinstance(data, dict):
+        return []
+    found = {key for key in PRIVATE_NOTE_FIELDS if key in data}
+    annotation = data.get("manual_annotation")
+    if isinstance(annotation, dict):
+        found |= {f"manual_annotation.{k}" for k in PRIVATE_NOTE_FIELDS if k in annotation}
+    return [
+        f"{directory.name}: queue.json carries curator prose ({field}); strip it before merging"
+        for field in sorted(found)
+    ]
 
 
 def check_card(directory: Path, tracks: set, vocab: dict, published: bool):
@@ -96,6 +127,8 @@ def check_card(directory: Path, tracks: set, vocab: dict, published: bool):
             warnings.append(f"{name}: unexpected field {field}")
         if "one_line" in paper:
             warnings.append(f"{name}: still carries the legacy one_line field")
+
+    errors += private_notes(directory)
 
     for field in LIST_FIELDS & set(paper):
         if paper[field] is not None and not isinstance(paper[field], list):

@@ -5,7 +5,6 @@
   "updated_at": "2026-07-15T12:18:22Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "第三方经常评测御三家，不过御三家自己不测 ref1240 数据库相关常测 将自然语言转成可执行且高效的 SQL，涉及大型真实数据库和外部知识",
     "updated_at": "2026-07-15T12:18:22Z"
   }
 }

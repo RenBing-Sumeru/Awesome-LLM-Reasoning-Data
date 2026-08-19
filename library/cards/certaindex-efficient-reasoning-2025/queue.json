@@ -2,11 +2,9 @@
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "review_note": "L4 材料已准备，等待人工判决。",
   "updated_at": "2026-07-20T12:27:40Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "用答案稳定性决定早停与算力调度，直接优化推理阶段的计算分配",
     "updated_at": "2026-07-20T12:27:40Z"
   }
 }

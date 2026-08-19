@@ -12,11 +12,9 @@
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
-  "reason_to_include": "teacher-distilled multimodal long-CoT data",
   "updated_at": "2026-07-12T13:42:02Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "多模态推理数据蒸馏",
     "updated_at": "2026-07-12T13:42:02Z"
   }
 }

@@ -3,14 +3,12 @@
   "candidate_links": {
     "paper": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/02ee6b7295f720407b56c457b34c54d5-Abstract-Datasets_and_Benchmarks_Track.html"
   },
-  "review_note": "L4 双语材料已准备，等待人工判决。",
   "category_ids": [
     "instruction_demonstration_rationale_data"
   ],
   "updated_at": "2026-07-14T11:47:27Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "科学cot数据，25k条",
     "updated_at": "2026-07-14T11:47:27Z"
   }
 }

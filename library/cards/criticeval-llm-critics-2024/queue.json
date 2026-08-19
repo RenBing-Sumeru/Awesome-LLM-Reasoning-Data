@@ -6,14 +6,12 @@
     "code": "https://github.com/open-compass/CriticEval",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "judgment_rubric_domain_expert_data"
   ],
   "updated_at": "2026-07-25T08:49:36Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "覆盖 9 类场景的反馈、比较、修正和元反馈任务，系统评估模型批评能力而非只看最终答案",
     "updated_at": "2026-07-25T08:49:36Z"
   }
 }

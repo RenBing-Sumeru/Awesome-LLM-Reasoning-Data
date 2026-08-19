@@ -6,14 +6,12 @@
     "code": null,
     "project": "https://mc-search-project.github.io/"
   },
-  "review_note": "L4 卡片材料已准备，等待人工判决。",
   "category_ids": [
     "process_trace_supervision_data"
   ],
   "updated_at": "2026-07-17T08:36:58Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "发布图文多跳证据链与检索规划过程数据",
     "updated_at": "2026-07-17T08:36:58Z"
   }
 }

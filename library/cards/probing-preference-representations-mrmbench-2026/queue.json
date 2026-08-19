@@ -6,14 +6,12 @@
     "code": "https://github.com/wangclnlp/MRMBench",
     "project": null
   },
-  "review_note": "L4 卡片材料已准备，等待人工判断。",
   "category_ids": [
     "preference_reward_feedback_data"
   ],
   "updated_at": "2026-07-18T12:36:23Z",
   "manual_annotation": {
     "search_status": "promoted",
-    "decision_reason": "公开 MRMBench，约16.7万条六维偏好实例以诊断奖励模型的真实偏好能力",
     "updated_at": "2026-07-18T12:36:23Z"
   }
 }
