@@ -1,5 +1,5 @@
 - 官方来源：https://openreview.net/forum?id=jVyUlri4Rw
 - 会议/状态：ICLR 2026 submission
 - 数据/代码入口：https://openreview.net/attachment?id=jVyUlri4Rw&name=supplementary_material
-- Track 13 收录理由：Public submission materials define a benchmark for factual judge reliability.
+- Track 13 收录理由：公开的投稿材料定义了一个衡量事实性裁判可靠度的基准。
 - 使用边界：请以官方 release 的许可、split 与复现说明为准。

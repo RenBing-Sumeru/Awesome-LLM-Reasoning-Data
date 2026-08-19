@@ -34,7 +34,7 @@ artifacts:
   data: https://huggingface.co/datasets/Reviewerly/RottenReviews
   project: null
   huggingface: https://huggingface.co/datasets/Reviewerly/RottenReviews
-  doi: 10.1145/3746252.3761506
+  doi: https://doi.org/10.1145/3746252.3761506
   venue: https://doi.org/10.1145/3746252.3761506
   openreview: null
   acl: null

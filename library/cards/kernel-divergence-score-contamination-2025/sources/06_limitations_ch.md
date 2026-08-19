@@ -1,4 +1,1 @@
-以下为中文维护摘要，术语以原文和官方 artifact 为准。
-- The audit conclusion is conditional on the benchmark, model family, and detector assumptions evaluated in the paper.
-- Public artifacts can change after publication; record a revision hash before reuse.
-- A passed detector or verifier does not prove absence of semantic leakage or reward hacking in another setting.
+KDS 需要白盒 embedding 和微调，其成对 kernel 的计算量随样本数呈平方增长。受控标签只能证明该分数对重叠敏感，并不能证明模型预训练语料的真实来源。结果依赖模型、层位、微调配方以及时间与领域漂移；该分数无法指认究竟是哪个来源或哪一条样本发生了泄漏。

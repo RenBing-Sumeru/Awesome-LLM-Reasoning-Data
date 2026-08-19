@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 456" role="img" aria-label="14 个 track 的卡片覆盖度">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 456" role="img" aria-label="14 个方向的卡片覆盖度">
 <rect width="560" height="456" fill="#ffffff"/>
 <g font-family="Inter, -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif">
-<text x="24" y="30" font-size="11" letter-spacing="1.8" fill="#8f8a7d">卡片覆盖度 · 14 个 TRACK</text>
+<text x="24" y="30" font-size="11" letter-spacing="1.8" fill="#8f8a7d">卡片覆盖度 · 14 个方向</text>
 <line x1="24" y1="42" x2="536" y2="42" stroke="#e6e1d5"/>
 <text x="24" y="70" font-size="9.5" font-family="ui-monospace, Menlo, monospace" fill="#8f8a7d">00</text>
 <text x="46" y="70" font-size="11" fill="#1d1b16">基础入门与综述</text>
@@ -60,5 +60,5 @@
 <rect x="246" y="400" width="213" height="9" fill="#b0447c" fill-opacity="0.82"/>
 <text x="467" y="408" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">104</text>
 <line x1="24" y1="430" x2="536" y2="430" stroke="#e6e1d5"/>
-<text x="24" y="446" font-size="10.5" fill="#6f6a5e">1285 张卡片 · 14 / 14 个 track 已接入</text>
+<text x="24" y="446" font-size="10.5" fill="#6f6a5e">1285 张卡片 · 14 / 14 个方向已接入</text>
 </g></svg>

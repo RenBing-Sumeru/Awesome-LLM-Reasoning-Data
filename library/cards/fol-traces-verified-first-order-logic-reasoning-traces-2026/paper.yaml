@@ -33,7 +33,7 @@ artifacts:
   data: https://huggingface.co/datasets/fol-traces/fol-traces
   project: null
   huggingface: https://huggingface.co/datasets/fol-traces/fol-traces
-  doi: 10.18653/v1/2026.findings-eacl.115
+  doi: https://doi.org/10.18653/v1/2026.findings-eacl.115
   venue: null
   openreview: null
   acl: https://aclanthology.org/2026.findings-eacl.115/

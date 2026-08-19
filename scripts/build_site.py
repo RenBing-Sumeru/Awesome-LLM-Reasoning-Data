@@ -62,11 +62,11 @@ def coverage_svg(tracks, counts, lang: str) -> str:
     height = top + row * len(tracks) + 34
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" '
-        f'role="img" aria-label="{"14 个 track 的卡片覆盖度" if zh else "Card coverage across 14 tracks"}">',
+        f'role="img" aria-label="{f"{len(tracks)} 个方向的卡片覆盖度" if zh else f"Card coverage across {len(tracks)} tracks"}">',
         f'<rect width="{width}" height="{height}" fill="#ffffff"/>',
         '<g font-family="Inter, -apple-system, BlinkMacSystemFont, \'PingFang SC\', sans-serif">',
         f'<text x="24" y="30" font-size="11" letter-spacing="1.8" fill="#8f8a7d">'
-        f'{"卡片覆盖度 · 14 个 TRACK" if zh else "CARD COVERAGE · 14 TRACKS"}</text>',
+        f'{f"卡片覆盖度 · {len(tracks)} 个方向" if zh else f"CARD COVERAGE · {len(tracks)} TRACKS"}</text>',
         f'<line x1="24" y1="42" x2="{width - 24}" y2="42" stroke="#e6e1d5"/>',
     ]
     bar_x, bar_max = 246, width - 24 - 246 - 34
@@ -108,7 +108,7 @@ def coverage_svg(tracks, counts, lang: str) -> str:
                 f'{escape(tail)}</text>'
             )
     footer = (
-        f'{counts["cards"]} 张卡片 · {counts["tracks_covered"]} / {counts["tracks_total"]} 个 track 已接入'
+        f'{counts["cards"]} 张卡片 · {counts["tracks_covered"]} / {counts["tracks_total"]} 个方向已接入'
         if zh else
         f'{counts["cards"]} cards · {counts["tracks_covered"]} of {counts["tracks_total"]} tracks integrated'
     )

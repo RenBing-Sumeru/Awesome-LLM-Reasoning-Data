@@ -1,5 +1,3 @@
-以下为中文维护摘要，术语以原文和官方 artifact 为准。
-- Ask what exact record carries the audit signal.
-- Separate a verified output from a semantically correct solution.
-- Check whether the evaluation assumes white-box access, fixed prompts, or controlled contamination.
-- Do not treat a public repository as proof of a stable, uncontaminated benchmark.
+1. 关键消融是适配：不做微调，信号就会崩塌。
+2. gamma 在 .001–1 之间稳定，取 10 时明显偏弱；靠后的层信号最强，单轮 SGD 效果最好。
+3. 保留五个独立采样的子集，不要把受控的 seen/unseen 构造读成真实网络污染比例的估计。

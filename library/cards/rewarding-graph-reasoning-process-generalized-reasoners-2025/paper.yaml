@@ -34,7 +34,7 @@ artifacts:
   data: https://huggingface.co/datasets/GraphPRM/GraphSilo
   project: null
   huggingface: https://huggingface.co/datasets/GraphPRM/GraphSilo
-  doi: 10.1145/3711896.3737109
+  doi: https://doi.org/10.1145/3711896.3737109
   venue: null
   openreview: null
   acl: null

@@ -35,7 +35,7 @@ artifacts:
   data: https://huggingface.co/datasets/sxiong/SWAP
   project: null
   huggingface: https://huggingface.co/datasets/sxiong/SWAP
-  doi: 10.18653/v1/2025.acl-long.1540
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1540
   venue: null
   openreview: null
   acl: https://aclanthology.org/2025.acl-long.1540/

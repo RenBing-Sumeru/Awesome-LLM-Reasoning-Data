@@ -65,7 +65,7 @@ artifacts:
   data: https://github.com/jiangshdd/ReviewCritique
   project: null
   huggingface: null
-  doi: 10.18653/v1/2024.emnlp-main.292
+  doi: https://doi.org/10.18653/v1/2024.emnlp-main.292
   venue: https://aclanthology.org/2024.emnlp-main.292/
   openreview: null
   acl: https://aclanthology.org/2024.emnlp-main.292/

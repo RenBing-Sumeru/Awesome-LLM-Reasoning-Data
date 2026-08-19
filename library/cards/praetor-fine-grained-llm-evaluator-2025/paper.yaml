@@ -34,7 +34,7 @@ artifacts:
   data: https://github.com/tjunlp-lab/Praetor
   project: null
   huggingface: null
-  doi: 10.18653/v1/2025.acl-long.513
+  doi: https://doi.org/10.18653/v1/2025.acl-long.513
   venue: https://aclanthology.org/2025.acl-long.513/
   openreview: null
   acl: https://aclanthology.org/2025.acl-long.513/

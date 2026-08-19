@@ -1,4 +1,3 @@
-以下为中文维护摘要，术语以原文和官方 artifact 为准。
-- The primary source reports its own controlled comparisons and task coverage.
-- Evidence boundary: this Card does not transfer the reported metric beyond the source’s models, benchmarks, or access assumptions.
-- Reuse check: reproduce the official protocol before interpreting a gain as clean generalization.
+- 主来源报告的是它自己的受控对比与任务覆盖范围。
+- 证据边界：本卡片不会把所报指标外推到原文的模型、基准与访问假设之外。
+- 复用检查：在把提升读成干净的泛化之前，先复现官方协议。

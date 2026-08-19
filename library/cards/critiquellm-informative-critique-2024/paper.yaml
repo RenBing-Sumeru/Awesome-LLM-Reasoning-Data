@@ -37,7 +37,7 @@ artifacts:
   data: https://github.com/thu-coai/CritiqueLLM
   project: null
   huggingface: null
-  doi: 10.18653/v1/2024.acl-long.704
+  doi: https://doi.org/10.18653/v1/2024.acl-long.704
   venue: https://aclanthology.org/2024.acl-long.704/
   openreview: null
   acl: https://aclanthology.org/2024.acl-long.704/
