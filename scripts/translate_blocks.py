@@ -259,6 +259,23 @@ def translate(batch_size: int, limit: int, timeout: int, retries: int) -> int:
 NUMBER = re.compile(r"\d+(?:[.,]\d+)*")
 CODE = re.compile(r"`([^`]+)`")
 
+# A figure the translation dropped is the failure worth blocking on. A figure it gained is
+# almost always correct Chinese: month names and spelled-out numbers become digits, so
+# "August-November 2024" gains 8 and 11 and "Thirteen tasks" gains 13.
+#
+# A source number followed by a scale word is also exempt, because Chinese regroups by
+# 万 and 亿 rather than by thousands: "10 billion" is properly written 100 亿, which changes
+# the digits without changing the quantity.
+SCALED = re.compile(r"(\d+(?:[.,]\d+)*)\s*(?:-|\s)?\s*(billion|million|trillion|thousand|bn|k|m|b)\b",
+                    re.I)
+
+
+def dropped_numbers(source: str, target: str) -> list:
+    """Figures present in the source that no longer appear in the translation."""
+    exempt = set(SCALED.findall(source) and [m[0] for m in SCALED.findall(source)])
+    present = set(NUMBER.findall(target))
+    return sorted(n for n in NUMBER.findall(source) if n not in present and n not in exempt)
+
 
 def check() -> int:
     memory = load_memory()
@@ -279,12 +296,17 @@ def check() -> int:
         if not str(target).strip():
             note("empty translation", source, target)
             continue
-        if not re.search(r"[\u4e00-\u9fff]", target) and needs_translation(source):
-            note("no Chinese in the result", source, target)
-        # A changed figure is the failure that matters: these values are checked against
-        # the paper, so a silently rewritten number is worse than no translation at all.
-        if sorted(NUMBER.findall(source)) != sorted(NUMBER.findall(target)):
-            note("numbers differ from the source", source, target)
+        # Only worth reporting when the model returned the source untouched and the source
+        # was a sentence. A short value left alone is usually right: an identifier, a venue
+        # string, or a name that should not be translated at all.
+        if (target.strip() == source.strip() and len(source.split()) >= 4
+                and not re.search(r"[\u4e00-\u9fff]", target)):
+            note("returned unchanged", source, target)
+        # These values get compared against the paper, so a figure the translation lost is
+        # worse than no translation at all.
+        missing = dropped_numbers(source, target)
+        if missing:
+            note(f"dropped the figure {', '.join(missing)}", source, target)
         if sorted(CODE.findall(source)) != sorted(CODE.findall(target)):
             note("backticked identifiers differ", source, target)
         if len(target) > max(120, len(source) * 2):
@@ -309,9 +331,10 @@ def check() -> int:
                 print(f"           {sample}")
     else:
         print("\nno problems found")
-    # Only a changed number or a dropped identifier blocks: the rest is review material.
-    blocking = problems["numbers differ from the source"] + problems["backticked identifiers differ"] \
-        + problems["empty translation"]
+    # A lost figure, a mangled identifier, or an empty result blocks. Everything else is
+    # review material: it needs a human eye, not a red build.
+    blocking = (problems["backticked identifiers differ"] + problems["empty translation"]
+                + sum(count for kind, count in problems.items() if kind.startswith("dropped the figure")))
     return 1 if blocking else 0
 
 
