@@ -1,0 +1,77 @@
+# Chinese renderings for the recurring values inside the curated blocks.
+#
+# Only two kinds of value belong here.
+#
+# `status` covers verdicts and confidence levels — the values a reader reads as part of
+# the interface rather than as a fact about the paper. Left in English they look like the
+# page failed to translate.
+#
+# `phrase` covers the stock pointers a curator writes when a detail lives in the source
+# rather than in the card.
+#
+# What deliberately stays in English: dataset and model names, metrics, and the literal
+# field names of a released record. `process_fields: [prompt, response, final_answer]`
+# lists the actual keys in the published data, so translating them would describe a
+# schema that does not exist. Card-specific factual sentences are also left alone; they
+# are quotations traceable to the primary source, and the nine reading sections already
+# carry the Chinese narrative.
+
+status:
+  "True": 是
+  "False": 否
+  "true": 是
+  "false": 否
+  high: 高
+  medium: 中
+  low: 低
+  verified: 已核验
+  partial: 部分核验
+  unverified: 未核验
+  pending: 待核验
+  unknown: 未知
+  curation: 策展
+  paper_curator: 论文策展人
+  card_writer: 卡片撰写人
+  paper-specific: 视论文而定
+  "Paper-specific.": 视论文而定。
+  provenance: 来源溯源
+  mixed: 混合
+  none: 无
+  "N/A": 不适用
+  not_established: 尚未确立
+  "not established": 尚未确立
+  "Not established.": 尚未确立。
+  yes: 是
+  no: 否
+
+phrase:
+  "see paper": 见原论文
+  "See paper.": 见原论文。
+  "see the paper": 见原论文
+  "See the official paper.": 见官方论文。
+  "See official paper.": 见官方论文。
+  "See primary paper.": 见一手论文。
+  "see official artifact": 见官方产物
+  "See the official artifact.": 见官方产物。
+  "see release": 见发布页
+  "See release.": 见发布页。
+  "see the release": 见发布页
+  "See the official release.": 见官方发布页。
+  "See the official dataset.": 见官方数据集。
+  "See the official repository.": 见官方仓库。
+  "See official paper or data card.": 见官方论文或数据卡。
+  "See the official paper and released dataset.": 见官方论文与已发布数据集。
+  "See the official paper and dataset.": 见官方论文与数据集。
+  "See the official paper and repository.": 见官方论文与仓库。
+  "See the paper and release documentation.": 见论文与发布文档。
+  "See the paper's documented construction procedure.": 见论文中记录的构造流程。
+  "See the official model card.": 见官方模型卡。
+  "See the official data card.": 见官方数据卡。
+  "See the official documentation.": 见官方文档。
+  "Check the repository before reuse.": 复用前请先核对仓库。
+  "Check the license before reuse.": 复用前请先核对许可。
+  "Not disclosed.": 未披露。
+  "not disclosed": 未披露
+  "Not reported.": 未报告。
+  "not reported": 未报告
+  "Not applicable.": 不适用。

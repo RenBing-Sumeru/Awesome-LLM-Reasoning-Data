@@ -8,6 +8,7 @@ vocabulary is recorded so a caller can refuse to publish it.
 from __future__ import annotations
 
 import collections
+import functools
 import json
 import re
 from pathlib import Path
@@ -61,19 +62,56 @@ def write_json(path: Path, payload) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 
 
-def render_value(value):
+@functools.lru_cache(maxsize=1)
+def value_translations() -> dict:
+    """Chinese renderings for the values that recur across cards.
+
+    See `scripts/data/zh_values.yaml` for what belongs here and what deliberately does
+    not. Anything absent is emitted unchanged, so an untranslated value degrades to the
+    source wording rather than disappearing.
+    """
+    data = config.read_yaml(Path(__file__).resolve().parent.parent / "data" / "zh_values.yaml")
+    table = {}
+    for group in ("status", "phrase"):
+        for key, zh in (data.get(group) or {}).items():
+            table[str(key).strip()] = str(zh)
+            table[str(key).strip().lower()] = str(zh)
+    return table
+
+
+def zh_value(text: str) -> str:
+    table = value_translations()
+    raw = str(text).strip()
+    return table.get(raw) or table.get(raw.lower()) or str(text)
+
+
+def render_value(value, zh: bool = False):
     """Normalize a nested-object value into {kind, ...} for the client."""
+    pick = (lambda item: zh_value(item)) if zh else (lambda item: item)
     if isinstance(value, list):
-        return {"kind": "list", "items": [md_to_html(str(item)) for item in value if item not in (None, "")]}
+        return {"kind": "list",
+                "items": [md_to_html(str(pick(item))) for item in value if item not in (None, "")]}
     if isinstance(value, bool):
         return {"kind": "flag", "value": value}
-    return {"kind": "text", "html": md_to_html(str(value))}
+    return {"kind": "text", "html": md_to_html(str(pick(value)))}
 
 
 def pairs_payload(spec, obj):
+    """Both languages for every pair, so the Chinese card is not an empty shell.
+
+    The labels were always bilingual; only the values were English, which is why the
+    Chinese page used to link across to the English one instead of rendering these blocks.
+    """
     out = []
     for key, label_en, label_zh, value in L.ordered_pairs(spec, obj):
-        out.append({"key": key, "label": [label_en, label_zh], "value": render_value(value)})
+        row = {"key": key, "label": [label_en, label_zh], "value": render_value(value)}
+        # Only carry a Chinese value when it differs. Most values are card-specific
+        # sentences with no entry in the table, and shipping a byte-identical copy of
+        # them would double this payload to say nothing; the client falls back to `value`.
+        translated = render_value(value, zh=True)
+        if translated != row["value"]:
+            row["value_zh"] = translated
+        out.append(row)
     return out
 
 
