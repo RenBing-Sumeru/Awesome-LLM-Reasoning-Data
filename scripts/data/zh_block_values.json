@@ -1,0 +1,4 @@
+{
+ "paper-specific audited outcome": "视论文而定的已审计结果",
+ "Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require versioned evidence.": "公开基准记录可能泄漏进未来的训练数据；实时、隐藏或定期刷新的评测集能降低这种风险。"
+}

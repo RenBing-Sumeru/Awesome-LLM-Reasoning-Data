@@ -79,10 +79,27 @@ def value_translations() -> dict:
     return table
 
 
+@functools.lru_cache(maxsize=1)
+def value_memory() -> dict:
+    """Machine translations for the card-specific sentences, keyed by source string.
+
+    Produced by `scripts/translate_blocks.py`; absent until that has been run. The
+    hand-written table wins over it, so correcting a machine translation means adding the
+    value to `zh_values.yaml` rather than editing a generated file.
+    """
+    path = Path(__file__).resolve().parent.parent / "data" / "zh_block_values.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+
+
 def zh_value(text: str) -> str:
     table = value_translations()
     raw = str(text).strip()
-    return table.get(raw) or table.get(raw.lower()) or str(text)
+    return table.get(raw) or table.get(raw.lower()) or value_memory().get(raw) or str(text)
 
 
 def render_value(value, zh: bool = False):

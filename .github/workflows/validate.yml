@@ -26,6 +26,10 @@ jobs:
       # the library, not that the library itself is well formed.
       - name: Validate the card library
         run: python scripts/validate_library.py --max-warnings 16
+      # A machine translation that quietly rewrote a figure would be worse than no
+      # translation, since these values are meant to be checked against the paper.
+      - name: Check block translations
+        run: python scripts/translate_blocks.py --check
       # `library/` is the only source of truth; these checks re-render into a temporary
       # directory and fail if anything committed drifts from the cards.
       - name: Check published site
