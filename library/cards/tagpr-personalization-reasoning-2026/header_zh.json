@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TagPR 构建带语义标签的个性化推理轨迹，并结合结构奖励、用户感知的序列偏好模型和分阶段强化学习进行后训练。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "个性化推理轨迹构建与混合监督方法",
+  "best_for_ch": "研究个性化模型后训练、推理轨迹标注或用户感知奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Song Jin、Juntian Zhang、Ruyu Lyu、Yong Liu、Xun Zhang、Yufei Zhang、Fei Jiang、Guojun Yin、Wei Lin、Rui Yan",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-10-03"
+}
