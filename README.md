@@ -52,7 +52,7 @@ Pick the path that matches your goal:
 |---|---|
 | 2026-08-17 | All **14 tracks** are integrated. The library holds **1285 published cards** with **23130 bilingual sections**. |
 | 2026-08-17 | Collapsed papers filed under more than one entry_id, folded the facet vocabulary onto `library/vocabulary.yaml`, and made every Chinese field Chinese-only. |
-| 2026-08-17 | Rebuilt the site, READMEs, and track pages from the library, so every count here is reproducible. **241 cards** stay unpublished by review. |
+| 2026-08-17 | Rebuilt the site, READMEs, and track pages from the library, so every count here is reproducible. **242 cards** stay unpublished by review. |
 
 > Review stays conservative: a card any curator rejected, or that nobody ruled on, stays out of the published pool instead of being promoted.
 
@@ -65,7 +65,7 @@ Pick the path that matches your goal:
 | Tracks with cards | 14 / 14 |
 | Must-read cards | 676 |
 | Bilingual sections | 23130 |
-| Held back by review | 241 |
+| Held back by review | 242 |
 
 </details>
 

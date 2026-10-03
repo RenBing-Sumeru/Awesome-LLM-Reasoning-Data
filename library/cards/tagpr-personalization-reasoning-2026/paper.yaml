@@ -1,0 +1,134 @@
+id: tagpr-personalization-reasoning-2026
+title: 'TagPR: Tag-Guided Process Supervision for Personalization Reasoning in Large Language Models'
+year: 2026
+venue: EMNLP 2026 Main (accepted; arXiv v2)
+authors:
+- Song Jin
+- Juntian Zhang
+- Ruyu Lyu
+- Yong Liu
+- Xun Zhang
+- Yufei Zhang
+- Fei Jiang
+- Guojun Yin
+- Wei Lin
+- Rui Yan
+source_role:
+- process_supervision
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- personalization
+- natural-language-understanding
+- text-generation
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- process_supervision
+- reinforcement_learning
+construction_layer:
+- trace_writing
+- filtering_curation
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2509.23140
+  arxiv: https://arxiv.org/abs/2509.23140
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  acl: null
+  bibtex: null
+data_object:
+  prompt_source: LaMP training queries and user-history profiles (Section 3.2).
+  trace_author: Qwen3-235B-A22B-Thinking-2507 generates candidates; GPT-4o judges retained reasoning and annotates
+    tags.
+  answer_format: A semantically tagged reasoning chain followed by a task answer; serialized release schema is unknown.
+  process_fields:
+  - query
+  - user_profile
+  - reasoning_chain
+  - semantic_tags
+  - answer
+  - user_id
+  - preference_pair
+  - reward_score
+  environment_or_substrate: Profile-conditioned personalized understanding and text generation.
+  verifier_or_reward: Programmatic tag/format checks and reference-based task rewards, plus a learned sequence-level
+    user-aware preference reward.
+  terminal_predicate: Task-dependent correctness or reference-based generation score; tag checks establish structural
+    compliance, not semantic correctness of each step.
+recipe_metadata:
+  base_model: Qwen3-8B policy; PRMU initialized from Skywork-Reward-V2-Qwen3-0.6B.
+  teacher: Qwen3-235B-A22B-Thinking-2507; GPT-4o for judging and tag annotation.
+  generator: Six LaMP tasks, 1,000 sampled training instances per task, 16 candidate reasoning chains per instance
+    (Section 3.2).
+  filtering_rule: Retain correctly answered samples, then reasoning judged by GPT-4o with score >15; consolidate
+    exploratory tags into nine via K-means and reannotate using that vocabulary.
+  sampling_protocol: Approximately 2,000 retained tagged SFT instances; separate PRP and PQP preference sets of
+    approximately 10,000 samples each. RL uses separately sampled LaMP training examples.
+  rollout_count: 16
+  temperature: null
+  inference_budget: The SFT-construction generator samples 16 candidates. The later policy-training rollout samples
+    five responses with temperature 1.0 and top-p 1.0 (Appendix A.1).
+  optimizer_or_scaffold: Tagged SFT, then guided RL with composite rewards, followed by exploratory RL with foundation
+    rewards; policy optimization uses GSPO.
+audit:
+  source_mixture: LaMP training queries and profiles, model-generated reasoning traces, GPT-4o judgments/tags, and
+    constructed PRP/PQP preference pairs.
+  split: Training uses LaMP training data. The main LaMP evaluation uses validation tasks; additional reported evaluations
+    use LongLaMP, PGraphRAG, and a Dianping-based benchmark. Exact released record IDs are unknown.
+  decontamination: unknown; verify record-level overlap and teacher-data exposure before reproduction.
+  license: unknown for newly constructed traces, preference pairs, and Dianping-derived data; no verified public
+    artifact release supplied.
+  lineage: arXiv:2509.23140 v1 first released 2025-09-27; v2 revised 2026-09-29. Final title and all ten authors
+    verified on the official v2 abs page. EMNLP 2026 Main acceptance is author-provided; proceedings link is not
+    yet pinned.
+  known_failure_modes:
+  - Structural tag compliance does not establish semantic step correctness or faithful use of the profile.
+  - Sequence-level preference scores can inherit the proxy labels used to construct PRP/PQP.
+  - Public data/code/checkpoint availability, exact serialization, licenses, and record-level overlap controls remain
+    unverified.
+  citation_status: verified
+  confidence: high
+  notes: Prepared by a paper author from the primary paper. This contribution does not assert approval by an atlas
+    maintainer.
+inclusion_reason: Documents a tagged-trace construction recipe and hybrid structural/preference supervision for
+  personalization reasoning post-training.
+related: []
+tags:
+- personalization
+- tagged-reasoning
+- user-aware-reward
+- staged-rl
+one_line_summary: TagPR constructs semantically tagged personalization reasoning traces and uses structural rewards
+  plus a user-aware sequence preference model for staged post-training.
+why_it_matters: Provides a concrete recipe for reasoning-trace construction, preference-pair labeling, and mixed
+  supervision beyond mathematics and code, with an explicit boundary between structural checks and semantic correctness.
+status: verified
+needs:
+- Official EMNLP proceedings or ACL Anthology record.
+- Public tagged SFT and PRP/PQP preference data, serialization, and licenses.
+- Official code, checkpoints, and exact reproduction instructions.
+- Record-level overlap/decontamination details and the Dianping data release policy.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-10-03'
+  verified_by: paper-author primary-source review
+  confidence: high
+  notes: Official arXiv v2 title and ten authors verified. Only the paper link is pinned; no public code, data,
+    or model release is claimed.
+category_ids:
+- process_trace_supervision_data
