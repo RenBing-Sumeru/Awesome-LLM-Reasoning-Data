@@ -8,7 +8,7 @@
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Website](https://img.shields.io/badge/website-live-0f766e)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![Ask](https://img.shields.io/badge/Ask-demo%20preview-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
-[![Cards](https://img.shields.io/badge/cards-1285-2563eb)](library/cards/)
+[![Cards](https://img.shields.io/badge/cards-1286-2563eb)](library/cards/)
 [![Tracks](https://img.shields.io/badge/tracks-14%2F14-0f766e)](papers/README_zh.md)
 [![Must read](https://img.shields.io/badge/must%20read-676-ea580c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -50,7 +50,7 @@
 
 | 日期 | 更新内容 |
 |---|---|
-| 2026-08-17 | **14 个方向**全部接入，卡片库有 **1285 张已发布卡片**、**23130 个双语章节**。 |
+| 2026-08-17 | **14 个方向**全部接入，卡片库有 **1286 张已发布卡片**、**23148 个双语章节**。 |
 | 2026-08-17 | 合并了同一论文的重复条目，把各方向的词表归并到 `library/vocabulary.yaml`，并让每个中文字段不再混入英文。 |
 | 2026-08-17 | 站点、README 与方向页全部由卡片库重建，因此这里的每个数字都可复现。**241 张卡片**因审核未通过而不发布。 |
 
@@ -61,10 +61,10 @@
 
 | 指标 | 数量 |
 |---|---:|
-| 已发布卡片 | 1285 |
+| 已发布卡片 | 1286 |
 | 已接入方向 | 14 / 14 |
 | 必读卡片 | 676 |
-| 双语章节 | 23130 |
+| 双语章节 | 23148 |
 | 审核未通过 | 241 |
 
 </details>
@@ -190,12 +190,12 @@ How data enters SFT, distillation, preference optimization, reward modeling, PRM
 </details>
 
 <details>
-<summary><code>10</code> <b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute_zh.md">📈 规模化、RLVR 与推理时计算</a></b> · 107 张卡片</summary>
+<summary><code>10</code> <b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute_zh.md">📈 规模化、RLVR 与推理时计算</a></b> · 108 张卡片</summary>
 
 Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
 
 - 适合读者: 用这个方向解读各种主张：数据量、验证器强度、强化学习与推理预算，各自对推理能力提升贡献了多少。
-- 验证方式: 混合 76, 程序化 21, 需评审 9, 未知 3, 环境判定 1
+- 验证方式: 混合 77, 程序化 21, 需评审 9, 未知 3, 环境判定 1
 
 </details>
 

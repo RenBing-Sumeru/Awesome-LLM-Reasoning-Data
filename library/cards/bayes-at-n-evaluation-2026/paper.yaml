@@ -1,0 +1,104 @@
+id: bayes-at-n-evaluation-2026
+title: 'Don''t Pass@k: A Bayesian Framework for Large Language Model Evaluation'
+year: 2026
+venue: ICLR 2026
+authors:
+- Mohsen Hariri
+- Amirhossein Samandar
+- Michael Hinczewski
+- Vipin Chaudhary
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://iclr.cc/virtual/2026/poster/10009669
+  arxiv: https://arxiv.org/abs/2510.04265
+  venue: https://iclr.cc/virtual/2026/poster/10009669
+  code: https://github.com/mohsenhariri/scorio
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: AIME'24, AIME'25, HMMT'25, and BrUMO'25 mathematical reasoning benchmarks; synthetic
+    success-rate simulations.
+  trace_author: Twenty evaluated reasoning-model configurations in the mathematical benchmark study.
+  answer_format: Integer outcome categories for each question and repeated trial, with a category-weight
+    vector.
+  process_fields:
+  - question
+  - model
+  - trial
+  - category
+  - rubric_weight
+  environment_or_substrate: Fixed-benchmark repeated-sampling evaluation.
+  verifier_or_reward: Correctness and formatting signals; some categorical rubrics also use calibrated
+    CompassVerifier-3B label probabilities.
+  terminal_predicate: A recorded correctness or rubric category per response; posterior performance is
+    computed from category counts.
+recipe_metadata:
+  base_model: Twenty reasoning-model configurations; model list in Appendix G.2.
+  teacher: null
+  generator: Repeated stochastic model responses plus simulations with known success probabilities.
+  filtering_rule: Outcomes are retained as categories; invalid/off-task responses can receive their own
+    category.
+  sampling_protocol: 'Appendix G.3: temperature 0.6, top-p 0.95, batch size 1, seeds 1234 through 1313.'
+  rollout_count: 80
+  temperature: 0.6
+  inference_budget: Up to 80 trials per model and benchmark question.
+  optimizer_or_scaffold: Closed-form Dirichlet-multinomial posterior calculation implemented in Scorio.
+audit:
+  source_mixture: Official ICLR 2026 poster record, arXiv v4, and the paper-linked Scorio repository.
+  split: Evaluation on four mathematical reasoning benchmarks; no training-data split is introduced by
+    the estimator.
+  decontamination: No new decontamination guarantee; the estimator does not correct benchmark contamination.
+  license: arXiv v4 is CC BY 4.0; Scorio is MIT licensed. Benchmark and dataset reuse terms were not audited.
+  lineage: https://arxiv.org/html/2510.04265v4
+  known_failure_modes:
+  - correlated_trials
+  - rubric_misspecification
+  - verifier_label_errors
+  - unjustified_informative_prior
+  - unresolved_finite_budget_comparisons
+  citation_status: verified
+  confidence: high
+  notes: Metadata, posterior method, mathematical benchmark setup, and shared code link checked on 2026-10-20.
+    This is distinct from the ACL 2026 ranking paper.
+inclusion_reason: It makes the trial budget and uncertainty explicit when interpreting reasoning-model
+  evaluation and sampling-based comparisons.
+related:
+- ranking-reasoning-tts-2026
+tags:
+- bayesian-evaluation
+- categorical-outcomes
+- sampling-budget
+- weighted-rubrics
+- uncertainty
+status: verified
+one_line_summary: Bayes@N estimates performance and sampling uncertainty from repeated correctness or
+  rubric outcomes using a Dirichlet model.
+why_it_matters: Reasoning-data and sampling-budget comparisons need to distinguish measured score differences
+  from finite-trial uncertainty.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-10-20'
+  verified_by: author contribution
+  confidence: high
+  notes: ICLR and arXiv metadata and public Scorio code checked; dataset-specific links remain unpinned.
+needs:
+- No paper-specific dataset permalink has been pinned for this card.
+- Benchmark and dataset reuse terms need separate review.
+category_ids:
+- scaling_rlvr_test_time_compute

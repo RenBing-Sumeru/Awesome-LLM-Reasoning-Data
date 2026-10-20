@@ -1,0 +1,1 @@
+Mohsen Hariri、Amirhossein Samandar、Michael Hinczewski、Vipin Chaudhary：《Don't Pass@k: A Bayesian Framework for Large Language Model Evaluation》，ICLR 2026。会议官方记录：https://iclr.cc/virtual/2026/poster/10009669 。预印本编号 arXiv:2510.04265，首次发表于 2025 年 10 月 5 日。本卡的方法与实验说明依据 2026 年 5 月 12 日的第四版：https://arxiv.org/abs/2510.04265 。共用代码实现：https://github.com/mohsenhariri/scorio 。
