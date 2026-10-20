@@ -45,8 +45,8 @@
 <text x="510" y="304" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">125</text>
 <text x="24" y="330" font-size="9.5" font-family="ui-monospace, Menlo, monospace" fill="#8f8a7d">10</text>
 <text x="46" y="330" font-size="11" fill="#1d1b16">规模化、RLVR 与推理时计算</text>
-<rect x="246" y="322" width="219" height="9" fill="#b0447c" fill-opacity="0.82"/>
-<text x="473" y="330" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">107</text>
+<rect x="246" y="322" width="221" height="9" fill="#b0447c" fill-opacity="0.82"/>
+<text x="475" y="330" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">108</text>
 <text x="24" y="356" font-size="9.5" font-family="ui-monospace, Menlo, monospace" fill="#8f8a7d">11</text>
 <text x="46" y="356" font-size="11" fill="#1d1b16">基准与评测</text>
 <rect x="246" y="348" width="248" height="9" fill="#b0447c" fill-opacity="0.82"/>
@@ -60,5 +60,5 @@
 <rect x="246" y="400" width="213" height="9" fill="#b0447c" fill-opacity="0.82"/>
 <text x="467" y="408" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">104</text>
 <line x1="24" y1="430" x2="536" y2="430" stroke="#e6e1d5"/>
-<text x="24" y="446" font-size="10.5" fill="#6f6a5e">1285 张卡片 · 14 / 14 个方向已接入</text>
+<text x="24" y="446" font-size="10.5" fill="#6f6a5e">1286 张卡片 · 14 / 14 个方向已接入</text>
 </g></svg>

@@ -8,7 +8,7 @@
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Website](https://img.shields.io/badge/website-live-0f766e)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![Ask](https://img.shields.io/badge/Ask-demo%20preview-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
-[![Cards](https://img.shields.io/badge/cards-1285-2563eb)](library/cards/)
+[![Cards](https://img.shields.io/badge/cards-1286-2563eb)](library/cards/)
 [![Tracks](https://img.shields.io/badge/tracks-14%2F14-0f766e)](papers/README.md)
 [![Must read](https://img.shields.io/badge/must%20read-676-ea580c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -50,7 +50,7 @@ Pick the path that matches your goal:
 
 | Date | Update |
 |---|---|
-| 2026-08-17 | All **14 tracks** are integrated. The library holds **1285 published cards** with **23130 bilingual sections**. |
+| 2026-08-17 | All **14 tracks** are integrated. The library holds **1286 published cards** with **23148 bilingual sections**. |
 | 2026-08-17 | Collapsed papers filed under more than one entry_id, folded the facet vocabulary onto `library/vocabulary.yaml`, and made every Chinese field Chinese-only. |
 | 2026-08-17 | Rebuilt the site, READMEs, and track pages from the library, so every count here is reproducible. **241 cards** stay unpublished by review. |
 
@@ -61,10 +61,10 @@ Pick the path that matches your goal:
 
 | Metric | Count |
 |---|---:|
-| Published cards | 1285 |
+| Published cards | 1286 |
 | Tracks with cards | 14 / 14 |
 | Must-read cards | 676 |
-| Bilingual sections | 23130 |
+| Bilingual sections | 23148 |
 | Held back by review | 241 |
 
 </details>
@@ -190,12 +190,12 @@ How data enters SFT, distillation, preference optimization, reward modeling, PRM
 </details>
 
 <details>
-<summary><code>10</code> <b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md">📈 Scaling / RLVR / TTC</a></b> · 107 cards</summary>
+<summary><code>10</code> <b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md">📈 Scaling / RLVR / TTC</a></b> · 108 cards</summary>
 
 Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
 
 - Best for: Use this track to interpret claims about how much data, verifier strength, RL, and inference budget contribute to reasoning gains.
-- Verified by: Mixed 76, Programmatic 21, Judgment required 9, Unknown 3, Environmental 1
+- Verified by: Mixed 77, Programmatic 21, Judgment required 9, Unknown 3, Environmental 1
 
 </details>
 

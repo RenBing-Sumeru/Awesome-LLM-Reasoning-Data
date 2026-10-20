@@ -2,7 +2,7 @@
 
 > 数据规模化、数据复用、RLVR 优化、验证器规模化、pass@k、采样预算、推理时计算与规模化归因。
 
-[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **107** 张卡片 · **63** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **108** 张卡片 · **63** 必读
 
 用这个方向解读各种主张：数据量、验证器强度、强化学习与推理预算，各自对推理能力提升贡献了多少。
 
@@ -53,6 +53,7 @@
 | [CATS: Conformalized Adaptive Test-Time Scaling](https://openreview.net/forum?id=mXuUomGc0I) | 2026 | CAO Workshop at ICLR 2026 Oral | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=cats-conformalized-adaptive-tts-2026) |
 | [Chronos: Learning Temporal Dynamics of Reasoning Chains for Test-Time Scaling](https://aclanthology.org/2026.findings-acl.1376/) | 2026 | Findings of ACL 2026 | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=chronos-temporal-tts-2026) |
 | [Code Generation by Differential Test Time Scaling](https://arxiv.org/abs/2605.20473) | 2026 | arXiv preprint | 程序化 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=diffcodegen-differential-tts-2026) |
+| [Don't Pass@k: A Bayesian Framework for Large Language Model Evaluation](https://iclr.cc/virtual/2026/poster/10009669) | 2026 | ICLR 2026 | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=bayes-at-n-evaluation-2026) |
 | [Dynamic Cheatsheet: Test-Time Learning with Adaptive Memory](https://aclanthology.org/2026.eacl-long.333/) | 2026 | EACL 2026 Long Papers | 未知 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dynamic-cheatsheet-test-time-memory-2026) |
 | [Efficient Test-Time Scaling via Temporal Reasoning Aggregation](https://arxiv.org/abs/2604.17304) | 2026 | Findings of ACL 2026 | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=trace-temporal-reasoning-aggregation-2026) |
 | [FastTTS: Accelerating Test-Time Scaling for Edge LLM Reasoning](https://arxiv.org/abs/2509.00195) | 2026 | ASPLOS 2026 | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=fasttts-edge-test-time-scaling-2026) |

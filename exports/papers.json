@@ -6715,6 +6715,59 @@
     "card": "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/tree/main/library/cards/docksmith-2026"
   },
   {
+    "entry_id": "bayes-at-n-evaluation-2026",
+    "title": "Don't Pass@k: A Bayesian Framework for Large Language Model Evaluation",
+    "year": 2026,
+    "venue": "ICLR 2026",
+    "authors": [
+      "Mohsen Hariri",
+      "Amirhossein Samandar",
+      "Michael Hinczewski",
+      "Vipin Chaudhary"
+    ],
+    "tracks": [
+      "scaling_rlvr_test_time_compute"
+    ],
+    "priority": "可读",
+    "facets": {
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "construction_layer": [
+        "scaling_report"
+      ]
+    },
+    "domains": [
+      "mathematical-reasoning"
+    ],
+    "tags": [
+      "bayesian-evaluation",
+      "categorical-outcomes",
+      "sampling-budget",
+      "weighted-rubrics",
+      "uncertainty"
+    ],
+    "one_line_summary": {
+      "en": "Bayes@N estimates performance and sampling uncertainty from repeated correctness or rubric outcomes using a Dirichlet model.",
+      "zh": "Bayes@N 用 Dirichlet 模型，根据多次试验的正确性或评分分类结果估计性能及其采样不确定性。"
+    },
+    "primary_link": "https://iclr.cc/virtual/2026/poster/10009669",
+    "artifacts": {
+      "code": "https://github.com/mohsenhariri/scorio"
+    },
+    "card": "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/tree/main/library/cards/bayes-at-n-evaluation-2026"
+  },
+  {
     "entry_id": "dont-judge-code-cover-2026",
     "title": "Don’t Judge Code by Its Cover: On the Robustness of LLM-as-a-Judge for Code Evaluation",
     "year": 2026,

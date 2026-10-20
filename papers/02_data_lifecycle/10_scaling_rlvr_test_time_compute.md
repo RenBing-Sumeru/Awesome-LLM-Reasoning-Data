@@ -2,7 +2,7 @@
 
 > Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
 
-[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **107** cards · **63** Read first
+[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **108** cards · **63** Read first
 
 Use this track to interpret claims about how much data, verifier strength, RL, and inference budget contribute to reasoning gains.
 
@@ -53,6 +53,7 @@ Use this track to interpret claims about how much data, verifier strength, RL, a
 | [CATS: Conformalized Adaptive Test-Time Scaling](https://openreview.net/forum?id=mXuUomGc0I) | 2026 | CAO Workshop at ICLR 2026 Oral | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=cats-conformalized-adaptive-tts-2026) |
 | [Chronos: Learning Temporal Dynamics of Reasoning Chains for Test-Time Scaling](https://aclanthology.org/2026.findings-acl.1376/) | 2026 | Findings of ACL 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=chronos-temporal-tts-2026) |
 | [Code Generation by Differential Test Time Scaling](https://arxiv.org/abs/2605.20473) | 2026 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=diffcodegen-differential-tts-2026) |
+| [Don't Pass@k: A Bayesian Framework for Large Language Model Evaluation](https://iclr.cc/virtual/2026/poster/10009669) | 2026 | ICLR 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=bayes-at-n-evaluation-2026) |
 | [Dynamic Cheatsheet: Test-Time Learning with Adaptive Memory](https://aclanthology.org/2026.eacl-long.333/) | 2026 | EACL 2026 Long Papers | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dynamic-cheatsheet-test-time-memory-2026) |
 | [Efficient Test-Time Scaling via Temporal Reasoning Aggregation](https://arxiv.org/abs/2604.17304) | 2026 | Findings of ACL 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=trace-temporal-reasoning-aggregation-2026) |
 | [FastTTS: Accelerating Test-Time Scaling for Edge LLM Reasoning](https://arxiv.org/abs/2509.00195) | 2026 | ASPLOS 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=fasttts-edge-test-time-scaling-2026) |

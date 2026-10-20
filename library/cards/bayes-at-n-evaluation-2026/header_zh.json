@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Bayes@N 用 Dirichlet 模型，根据多次试验的正确性或评分分类结果估计性能及其采样不确定性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "贝叶斯评测方法与采样预算分析（ICLR 2026）",
+  "best_for_ch": "需要解释推理模型评分差异、重复采样预算和分级评分结果的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mohsen Hariri、Amirhossein Samandar、Michael Hinczewski、Vipin Chaudhary（凯斯西储大学）",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ]
+}
