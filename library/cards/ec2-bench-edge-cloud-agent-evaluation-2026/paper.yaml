@@ -1,0 +1,121 @@
+id: ec2-bench-edge-cloud-agent-evaluation-2026
+title: 'Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution'
+year: 2026
+venue: arXiv 2026
+authors:
+- Pengcheng Huang
+- Zhenghao Liu
+- Shixin Ren
+- Shi Yu
+- Sijia Yao
+- Yukun Yan
+- Chaojun Xiao
+- Maosong Sun
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- llm_agents
+- tool_use
+- edge_cloud
+- privacy
+training_use:
+- evaluation
+construction_layer:
+- reward_verifier_layer
+category_ids:
+- benchmarks_evaluation_surfaces
+artifacts:
+  paper: https://arxiv.org/abs/2610.17816
+  arxiv: https://arxiv.org/abs/2610.17816
+  code: https://github.com/OpenBMB/EC2-Bench/tree/4c635dfc23e0622ae1fd9b587199787d8c7dbb2a
+  data: https://huggingface.co/datasets/chengpingan/EC2-Bench
+  project: https://passionate11.github.io/ec2-bench-project-page/
+data_object:
+  prompt_source: 128 executable digital-workspace tasks; 100 have fine-grained sensitivity annotations.
+  trace_author: The evaluated agent produces execution trajectories under edge-only, cloud-only, or collaboration
+    configurations; this is an evaluation task release, not a claimed SFT/RL corpus.
+  answer_format: Task instruction and initial workspace support an agent episode with tool actions, observations,
+    final artifacts, task-specific grading, cloud-call logs, and privacy-exposure checks.
+  process_fields:
+  - task specification
+  - workspace
+  - tool/action observations
+  - completion score
+  - cloud token usage
+  - cloud-visible context
+  - sensitivity units
+  environment_or_substrate: OpenClaw digital-workspace execution. Paper experiments used E2B sandboxes; the inspected
+    public release provides per-task Docker environments.
+  verifier_or_reward: Task-specific rule checks, environment-state auditing, and rubric-based model judgment for
+    completion; an LLM judge matches sensitive units against cloud-visible contexts.
+  terminal_predicate: Task completion is a weighted task-specific score; Pass3 requires score >0.7 in all three
+    runs. Privacy exposure is evaluated separately on the 100 annotated tasks.
+recipe_metadata:
+  base_model: Paper evaluates Qwen3.5-2B/9B as representative edges, Qwen3.5-27B and Qwen3.7-Plus as stronger proxies,
+    and GLM-5.3 as the primary cloud model.
+  teacher: 'No training teacher: this is an evaluation study. GPT-5.4-mini supplies semantic task and privacy judgment
+    in the reported protocol.'
+  generator: Execute matched task/model/harness configurations under query routing, per-step routing, edge-controlled
+    delegation, or edge-controlled advisory.
+  filtering_rule: No SFT/RL selection recipe is claimed; privacy scoring is restricted to tasks with sensitivity
+    annotations.
+  sampling_protocol: Three independent executions per task-configuration, with averages and Pass3 reported.
+  rollout_count: Three runs per task-configuration in the paper; no complete training rollout corpus is inferred.
+  temperature: unknown for the exact paper-run decoding configuration inspected for this card.
+  inference_budget: Task-specific runtime budgets; public release and paper environment settings must be pinned
+    separately.
+  optimizer_or_scaffold: OpenClaw evaluation scaffold; four collaboration strategies plus edge-only/cloud-only comparisons,
+    not a newly trained agent policy.
+audit:
+  source_mixture: The official release documents tasks adapted from prior OpenClaw-style benchmarks and workspace
+    materials, with task-specific checks and sensitivity annotations.
+  split: Evaluation suite of 128 tasks, with privacy annotation on a 100-task subset; not presented here as a training
+    split.
+  decontamination: 'unknown: independent model-pretraining contamination and task-overlap audits were not performed
+    for this card.'
+  license: The inspected code repository declares MIT; verify dataset, adapted task/assets, models, and third-party
+    terms separately.
+  lineage: Official paper Sections 4-5 and Appendix A.9, project page, task release, and OpenBMB code at 4c635dfc23e0622ae1fd9b587199787d8c7dbb2a.
+  release_version: 4c635dfc23e0622ae1fd9b587199787d8c7dbb2a
+  known_failure_modes:
+  - A model judge can miss or over-detect semantically paraphrased sensitive content.
+  - Privacy exposure covers annotated cloud-visible information, not every possible data channel or a formal privacy
+    guarantee.
+  - Cloud pricing, caching, model versions, and sandbox/runtime settings can change cost and task outcomes.
+  - Evaluation tasks and model-run logs must not be silently reclassified as training data.
+  citation_status: verified
+  confidence: medium
+  notes: Primary paper, official project/code/data links and inspected release were checked. Paper E2B experiments
+    are distinguished from the public Docker implementation. No independent 128-task rerun was performed.
+inclusion_reason: An agent evaluation surface whose mixed task checks and sensitivity annotations define explicit
+  task-performance and cloud-boundary privacy feedback contracts.
+related: []
+tags:
+- agent-evaluation
+- edge-cloud
+- privacy-exposure
+- task-verification
+status: partial
+one_line_summary: EC2-Bench releases 128 executable workspace evaluation tasks, 100 with privacy annotations, jointly
+  scoring agent task performance, cloud resource use, and annotated information exposed to cloud collaborators.
+why_it_matters: It separates successful agent execution from resource use and cloud-visible sensitive information;
+  its evaluation feedback should not be mistaken for a released agent-training dataset.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  full_release_verified: false
+  verified_at: '2026-11-11'
+  verified_by: contributor
+  confidence: medium
+  notes: Primary paper and official artifacts inspected; historical paper-run replay, complete trajectory-manifest
+    reconciliation and all third-party data rights remain unverified.
+needs:
+- 'needs_replay: pin paper-era E2B runtime/model/judge configurations and independently rerun tasks'
+- 'needs_lineage: reconcile exact historical task/trajectory manifests with the inspected public release'
+- 'needs_license: verify independent dataset and adapted-task/asset rights'

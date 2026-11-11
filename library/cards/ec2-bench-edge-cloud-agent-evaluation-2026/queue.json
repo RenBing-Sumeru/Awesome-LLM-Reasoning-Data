@@ -1,0 +1,18 @@
+{
+  "title": "Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2610.17816",
+    "arxiv": "https://arxiv.org/abs/2610.17816",
+    "code": "https://github.com/OpenBMB/EC2-Bench/tree/4c635dfc23e0622ae1fd9b587199787d8c7dbb2a",
+    "data": "https://huggingface.co/datasets/chengpingan/EC2-Bench",
+    "project": "https://passionate11.github.io/ec2-bench-project-page/"
+  },
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-11-11T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "updated_at": "2026-11-11T00:00:00Z"
+  }
+}

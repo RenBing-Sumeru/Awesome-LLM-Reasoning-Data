@@ -7598,6 +7598,67 @@
     "card": "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/tree/main/library/cards/embodied-reasoner-2026"
   },
   {
+    "entry_id": "ec2-bench-edge-cloud-agent-evaluation-2026",
+    "title": "Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution",
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "authors": [
+      "Pengcheng Huang",
+      "Zhenghao Liu",
+      "Shixin Ren",
+      "Shi Yu",
+      "Sijia Yao",
+      "Yukun Yan",
+      "Chaojun Xiao",
+      "Maosong Sun"
+    ],
+    "tracks": [
+      "benchmarks_evaluation_surfaces"
+    ],
+    "priority": "可读",
+    "facets": {
+      "source_role": [
+        "benchmark"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "evaluation"
+      ],
+      "construction_layer": [
+        "reward_verifier_layer"
+      ]
+    },
+    "domains": [
+      "llm_agents",
+      "tool_use",
+      "edge_cloud",
+      "privacy"
+    ],
+    "tags": [
+      "agent-evaluation",
+      "edge-cloud",
+      "privacy-exposure",
+      "task-verification"
+    ],
+    "one_line_summary": {
+      "en": "EC2-Bench releases 128 executable workspace evaluation tasks, 100 with privacy annotations, jointly scoring agent task performance, cloud resource use, and annotated information exposed to cloud collaborators.",
+      "zh": "EC²-Bench 发布 128 个工作空间评测任务，其中 100 个有隐私标注，联合测量任务表现、云端资源和向云模型暴露的敏感信息。"
+    },
+    "primary_link": "https://arxiv.org/abs/2610.17816",
+    "artifacts": {
+      "code": "https://github.com/OpenBMB/EC2-Bench/tree/4c635dfc23e0622ae1fd9b587199787d8c7dbb2a",
+      "data": "https://huggingface.co/datasets/chengpingan/EC2-Bench",
+      "project": "https://passionate11.github.io/ec2-bench-project-page/"
+    },
+    "card": "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/tree/main/library/cards/ec2-bench-edge-cloud-agent-evaluation-2026"
+  },
+  {
     "entry_id": "mlr-structured-multi-level-modeling-2026",
     "title": "Enhancing Language Model Reasoning with Structured Multi-Level Modeling",
     "year": 2026,
@@ -22291,6 +22352,71 @@
     "primary_link": "https://arxiv.org/abs/2504.04718",
     "artifacts": {},
     "card": "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/tree/main/library/cards/t1-tool-verification-2026"
+  },
+  {
+    "entry_id": "toolmaster-trial-execution-data-2026",
+    "title": "Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction",
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "authors": [
+      "Xingjie Gao",
+      "Pengcheng Huang",
+      "Zhenghao Liu",
+      "Yukun Yan",
+      "Shuo Wang",
+      "Zulong Chen",
+      "Chen Qian",
+      "Ge Yu",
+      "Yu Gu"
+    ],
+    "tracks": [
+      "environment_agent_trajectory_data"
+    ],
+    "priority": "可读",
+    "facets": {
+      "source_role": [
+        "construction_recipe",
+        "data_release"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "sft",
+        "agent_training",
+        "reinforcement_learning"
+      ],
+      "construction_layer": [
+        "trace_writing",
+        "filtering_curation",
+        "optimizer_scaffold"
+      ]
+    },
+    "domains": [
+      "tool_use",
+      "llm_agents"
+    ],
+    "tags": [
+      "tool-use",
+      "trajectory-data",
+      "sft",
+      "grpo",
+      "model-judged-reward"
+    ],
+    "one_line_summary": {
+      "en": "ToolMaster releases trial-and-execution SFT conversations and trains tool-use policies with teacher-filtered demonstrations followed by GRPO using format and model-judged correctness rewards.",
+      "zh": "ToolMaster 发布试用与执行相结合的工具示范会话，先进行监督微调，再使用格式与模型正确性奖励进行 GRPO。"
+    },
+    "primary_link": "https://arxiv.org/abs/2601.12762",
+    "artifacts": {
+      "code": "https://github.com/NEUIR/ToolMaster/tree/3bd49c8290a1a139b1a12371826f2911afa422e0",
+      "data": "https://github.com/NEUIR/ToolMaster/blob/3bd49c8290a1a139b1a12371826f2911afa422e0/data/for_sft/G123_sft_train_data.json"
+    },
+    "card": "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/tree/main/library/cards/toolmaster-trial-execution-data-2026"
   },
   {
     "entry_id": "terminal-bench-command-line-agents-2026",

@@ -29,8 +29,8 @@
 <text x="465" y="200" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">103</text>
 <text x="24" y="226" font-size="9.5" font-family="ui-monospace, Menlo, monospace" fill="#8f8a7d">06</text>
 <text x="46" y="226" font-size="11" fill="#1d1b16">环境与智能体轨迹数据</text>
-<rect x="246" y="218" width="205" height="9" fill="#2563eb" fill-opacity="0.82"/>
-<text x="459" y="226" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">100</text>
+<rect x="246" y="218" width="207" height="9" fill="#2563eb" fill-opacity="0.82"/>
+<text x="461" y="226" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">101</text>
 <text x="24" y="252" font-size="9.5" font-family="ui-monospace, Menlo, monospace" fill="#8f8a7d">07</text>
 <text x="46" y="252" font-size="11" fill="#1d1b16">评审、评分标准与领域专家数据</text>
 <rect x="246" y="244" width="207" height="9" fill="#2563eb" fill-opacity="0.82"/>
@@ -49,8 +49,8 @@
 <text x="473" y="330" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">107</text>
 <text x="24" y="356" font-size="9.5" font-family="ui-monospace, Menlo, monospace" fill="#8f8a7d">11</text>
 <text x="46" y="356" font-size="11" fill="#1d1b16">基准与评测</text>
-<rect x="246" y="348" width="248" height="9" fill="#b0447c" fill-opacity="0.82"/>
-<text x="502" y="356" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">121</text>
+<rect x="246" y="348" width="250" height="9" fill="#b0447c" fill-opacity="0.82"/>
+<text x="504" y="356" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">122</text>
 <text x="24" y="382" font-size="9.5" font-family="ui-monospace, Menlo, monospace" fill="#8f8a7d">12</text>
 <text x="46" y="382" font-size="11" fill="#1d1b16">前沿模型报告与数据披露</text>
 <rect x="246" y="374" width="213" height="9" fill="#b0447c" fill-opacity="0.82"/>
@@ -60,5 +60,5 @@
 <rect x="246" y="400" width="213" height="9" fill="#b0447c" fill-opacity="0.82"/>
 <text x="467" y="408" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#6f6a5e">104</text>
 <line x1="24" y1="430" x2="536" y2="430" stroke="#e6e1d5"/>
-<text x="24" y="446" font-size="10.5" fill="#6f6a5e">1285 张卡片 · 14 / 14 个方向已接入</text>
+<text x="24" y="446" font-size="10.5" fill="#6f6a5e">1287 张卡片 · 14 / 14 个方向已接入</text>
 </g></svg>

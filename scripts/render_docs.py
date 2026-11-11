@@ -657,7 +657,7 @@ def render_readme(tracks: list, counts: dict, packs: list, by_id: dict, entries:
     structure = "\n".join(f"| {path} | {what} |" for path, what in STRUCTURE[lang])
     verdicts = "\n".join(f"| {verdict} | {meaning} |" for verdict, meaning in VERDICTS[lang])
     updates = "\n".join(f"| {date} | {text} |" for date, text in [
-        ("2026-08-17", {
+        ("2026-11-11", {
             "en": f"All **{counts['tracks_total']} tracks** are integrated. The library holds "
                   f"**{counts['cards']} published cards** with **{counts['sections']} bilingual sections**.",
             "zh": f"**{counts['tracks_total']} 个方向**全部接入，卡片库有 **{counts['cards']} 张已发布卡片**、"

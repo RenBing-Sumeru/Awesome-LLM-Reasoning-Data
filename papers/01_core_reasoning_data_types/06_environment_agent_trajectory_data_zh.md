@@ -2,7 +2,7 @@
 
 > 工具调用、网页与浏览器任务、应用与操作系统智能体、仓库级软件工程 episode、可回放轨迹与终止判定。
 
-[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **100** 张卡片 · **41** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **101** 张卡片 · **41** 必读
 
 用这个方向理解：交互式环境是如何变成后训练的数据来源与反馈契约的。
 
@@ -70,6 +70,7 @@
 | [SWE-CI: Evaluating Agent Capabilities in Maintaining Codebases via Continuous Integration](https://arxiv.org/abs/2603.03823) | 2026 | arXiv preprint | 程序化 / 环境判定 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=swe-ci-2026) |
 | [SWE-rebench V2: Language-Agnostic SWE Task Collection at Scale](https://arxiv.org/abs/2602.23866) | 2026 | ICML 2026 | 程序化 / 环境判定 / 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=swe-rebench-v2-2026) |
 | [SWE-World: Building Software Engineering Agents in Docker-Free Environments](https://arxiv.org/abs/2602.03419) | 2026 | arXiv preprint | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=swe-world-2026) |
+| [Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762) | 2026 | arXiv 2026 | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=toolmaster-trial-execution-data-2026) |
 | [TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks](https://arxiv.org/abs/2605.22535) | 2026 | arXiv preprint | 程序化 / 环境判定 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=terminalworld-2026) |
 | [V-Droid: Advancing Mobile GUI Agent Through Generative Verifiers](https://doi.org/10.1145/3795866.3796681) | 2026 | ACM MobiCom 2026 | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=v-droid-2025) |
 | [Who&When Pro: Can LLMs Really Attribute Failures in AI Agents?](https://arxiv.org/abs/2607.09996) | 2026 | arXiv preprint | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=who-when-pro-2026) |
