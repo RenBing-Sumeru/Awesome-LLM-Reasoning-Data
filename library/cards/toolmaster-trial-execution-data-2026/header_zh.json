@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ToolMaster 发布试用与执行相结合的工具示范会话，先进行监督微调，再使用格式与模型正确性奖励进行 GRPO。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "工具交互轨迹构造与混合反馈训练研究",
+  "best_for_ch": "研究工具使用示范、探索行为、自我纠错和模型评审奖励的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Xingjie Gao、Pengcheng Huang、Zhenghao Liu、Yukun Yan、Shuo Wang、Zulong Chen、Chen Qian、Ge Yu、Yu Gu",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-11-11T00:00:00Z"
+}

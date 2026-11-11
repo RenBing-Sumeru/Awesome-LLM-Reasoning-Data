@@ -2,7 +2,7 @@
 
 > Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contamination-resistant benchmarks.
 
-[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **121** cards · **36** Read first
+[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **122** cards · **36** Read first
 
 Use this track to understand what an evaluation surface measures and whether it can safely become a feedback source.
 
@@ -47,6 +47,7 @@ Use this track to understand what an evaluation surface measures and whether it 
 | [CodeJudgeBench: Benchmarking LLM-as-a-Judge for Coding Tasks](https://aclanthology.org/2026.acl-long.888/) | 2026 | ACL 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=codejudgebench-2025) |
 | [ComplexMCP: Evaluation of LLM Agents in Dynamic, Interdependent, and Large-Scale Tool Sandbox](https://openreview.net/pdf?id=3u1M9wokD7) | 2026 | ICML 2026 | Programmatic / Environmental | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=complex-mcp-2026) |
 | [Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision](https://arxiv.org/abs/2604.10182) | 2026 | ICLR 2026 / arXiv | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=credit-budgeted-icpc-style-coding-2026) |
+| [Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution](https://arxiv.org/abs/2610.17816) | 2026 | arXiv 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=ec2-bench-edge-cloud-agent-evaluation-2026) |
 | [Harness-Bench: Measuring Harness Effects across Models in Realistic Agent Workflows](https://arxiv.org/abs/2605.27922) | 2026 | arXiv preprint / Diagnostic Benchmark 2026 | Environmental / Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=harness-bench-harness-effects-2026) |
 | [ProBench: Benchmarking GUI Agents with Accurate Process Information](https://ojs.aaai.org/index.php/AAAI/article/view/39974) | 2026 | AAAI Conference on Artificial Intelligence (AAAI-26) | Programmatic / Environmental / Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=probench-2026) |
 | [SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks](https://arxiv.org/abs/2602.12670) | 2026 | arXiv | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=skillsbench-2026) |

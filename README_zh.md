@@ -8,7 +8,7 @@
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Website](https://img.shields.io/badge/website-live-0f766e)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![Ask](https://img.shields.io/badge/Ask-demo%20preview-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
-[![Cards](https://img.shields.io/badge/cards-1285-2563eb)](library/cards/)
+[![Cards](https://img.shields.io/badge/cards-1287-2563eb)](library/cards/)
 [![Tracks](https://img.shields.io/badge/tracks-14%2F14-0f766e)](papers/README_zh.md)
 [![Must read](https://img.shields.io/badge/must%20read-676-ea580c)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -50,7 +50,7 @@
 
 | 日期 | 更新内容 |
 |---|---|
-| 2026-08-17 | **14 个方向**全部接入，卡片库有 **1285 张已发布卡片**、**23130 个双语章节**。 |
+| 2026-11-11 | **14 个方向**全部接入，卡片库有 **1287 张已发布卡片**、**23166 个双语章节**。 |
 | 2026-08-17 | 合并了同一论文的重复条目，把各方向的词表归并到 `library/vocabulary.yaml`，并让每个中文字段不再混入英文。 |
 | 2026-08-17 | 站点、README 与方向页全部由卡片库重建，因此这里的每个数字都可复现。**241 张卡片**因审核未通过而不发布。 |
 
@@ -61,10 +61,10 @@
 
 | 指标 | 数量 |
 |---|---:|
-| 已发布卡片 | 1285 |
+| 已发布卡片 | 1287 |
 | 已接入方向 | 14 / 14 |
 | 必读卡片 | 676 |
-| 双语章节 | 23130 |
+| 双语章节 | 23166 |
 | 审核未通过 | 241 |
 
 </details>
@@ -144,12 +144,12 @@ Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCT
 </details>
 
 <details>
-<summary><code>06</code> <b><a href="papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data_zh.md">🌐 环境与智能体轨迹数据</a></b> · 100 张卡片</summary>
+<summary><code>06</code> <b><a href="papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data_zh.md">🌐 环境与智能体轨迹数据</a></b> · 101 张卡片</summary>
 
 Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes, replayable trajectories, and terminal predicates.
 
 - 适合读者: 用这个方向理解：交互式环境是如何变成后训练的数据来源与反馈契约的。
-- 验证方式: 混合 62, 程序化 35, 环境判定 34, 需评审 13, 未知 1
+- 验证方式: 混合 63, 程序化 35, 环境判定 34, 需评审 13, 未知 1
 
 </details>
 
@@ -200,12 +200,12 @@ Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling 
 </details>
 
 <details>
-<summary><code>11</code> <b><a href="papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces_zh.md">🧰 基准与评测</a></b> · 121 张卡片</summary>
+<summary><code>11</code> <b><a href="papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces_zh.md">🧰 基准与评测</a></b> · 122 张卡片</summary>
 
 Math, code, proof, agent, rubric/domain, reward-model, live, hidden, and contamination-resistant benchmarks.
 
 - 适合读者: 用这个方向理解一个评测面到底测了什么，以及它能否安全地被当作反馈来源。
-- 验证方式: 程序化 68, 混合 38, 环境判定 33, 需评审 18
+- 验证方式: 程序化 68, 混合 39, 环境判定 33, 需评审 18
 
 </details>
 

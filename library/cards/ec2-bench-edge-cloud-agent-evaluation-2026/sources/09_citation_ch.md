@@ -1,0 +1,1 @@
+作者为黄鹏程等，完整作者表与正式英文题名见本卡元数据和原文。论文于 2026 年以 arXiv:2610.17816 发布。[论文](https://arxiv.org/abs/2610.17816)、[固定版本代码](https://github.com/OpenBMB/EC2-Bench/tree/4c635dfc23e0622ae1fd9b587199787d8c7dbb2a)、[数据](https://huggingface.co/datasets/chengpingan/EC2-Bench)、[项目页](https://passionate11.github.io/ec2-bench-project-page/)。

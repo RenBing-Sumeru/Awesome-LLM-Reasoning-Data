@@ -1,0 +1,1 @@
+作者为 Xingjie Gao、黄鹏程等；英文作者表及正式题名以本卡元数据和原文为准。论文于 2026 年以 arXiv:2601.12762 发布。[论文](https://arxiv.org/abs/2601.12762)、[固定版本代码](https://github.com/NEUIR/ToolMaster/tree/3bd49c8290a1a139b1a12371826f2911afa422e0)、[已检查的监督示范文件](https://github.com/NEUIR/ToolMaster/blob/3bd49c8290a1a139b1a12371826f2911afa422e0/data/for_sft/G123_sft_train_data.json)。

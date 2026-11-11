@@ -1,0 +1,126 @@
+id: toolmaster-trial-execution-data-2026
+title: Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction
+year: 2026
+venue: arXiv 2026
+authors:
+- Xingjie Gao
+- Pengcheng Huang
+- Zhenghao Liu
+- Yukun Yan
+- Shuo Wang
+- Zulong Chen
+- Chen Qian
+- Ge Yu
+- Yu Gu
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- tool_use
+- llm_agents
+training_use:
+- sft
+- agent_training
+- reinforcement_learning
+construction_layer:
+- trace_writing
+- filtering_curation
+- optimizer_scaffold
+category_ids:
+- environment_agent_trajectory_data
+artifacts:
+  paper: https://arxiv.org/abs/2601.12762
+  arxiv: https://arxiv.org/abs/2601.12762
+  code: https://github.com/NEUIR/ToolMaster/tree/3bd49c8290a1a139b1a12371826f2911afa422e0
+  data: https://github.com/NEUIR/ToolMaster/blob/3bd49c8290a1a139b1a12371826f2911afa422e0/data/for_sft/G123_sft_train_data.json
+data_object:
+  prompt_source: Queries selected from the ToolBench training split; the paper reports 1,500 selected SFT queries
+    and 800 RL queries.
+  trace_author: DeepSeek-V3.1 generates tool-trialing and execution trajectories and is also used for trajectory
+    filtering.
+  released_object: The pinned G123_sft_train_data.json contains 1,444 query records, each with one conversation
+    instance; counted directly on 2026-11-11.
+  process_fields:
+  - query
+  - query_id
+  - tool_doc
+  - instances
+  - conversations
+  - role
+  - content
+  answer_format: Each query record supplies tool documentation and a role/content conversation containing reasoning,
+    tool calls, tool observations, and a final answer.
+  environment_or_substrate: ToolBench-derived API tool-use environment; official setup uses StableToolBench and
+    MirrorAPI-Cache.
+  verifier_or_reward: Synthesis filtering uses a model judge for task success and trial/planning/self-correction
+    behavior. GRPO adds binary format and model-judged answer-correctness rewards.
+  terminal_predicate: The learned correctness judge checks whether the final response resolves the query; executable
+    tool feedback is an observation, not an independent proof of final correctness.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct, Qwen3-8B, and Qwen3-14B in the paper.
+  teacher: DeepSeek-V3.1 for synthesis and filtering; the paper identifies DeepSeek-V3 as the GRPO correctness judge.
+  generator: Prompt the teacher to explore tools before execution, then concatenate trial and execution sub-trajectories.
+  filtering_rule: Retain successful trajectories satisfying the planning, explicit trialing, and self-correction
+    guidelines described in Section 3.2 and Appendix A.2.
+  sampling_protocol: SFT on teacher trajectories, followed by on-policy grouped GRPO rollouts; group size four in
+    the reported setup.
+  rollout_count: Four generations per prompt for GRPO; the complete historical rollout corpus size is not verified.
+  temperature: 0.1 for reported inference; full synthesis sampling metadata is not verified.
+  inference_budget: Reported inference max_tokens 8192; API/backend settings must be pinned separately.
+  optimizer_or_scaffold: Three SFT epochs, followed by GRPO with a format reward plus a learned answer-correctness
+    reward.
+audit:
+  source_mixture: ToolBench training queries, teacher-generated trajectories, API observations, model-based filtering,
+    and online policy rollouts.
+  split: Training queries come from ToolBench training; evaluation uses StableToolBench, TMDB, and ToolHop. Exact
+    query-level lineage and overlap audit are not independently verified.
+  decontamination: 'unknown: no independent model-pretraining contamination or cross-dataset overlap audit was performed
+    for this card.'
+  license: The appendix lists upstream benchmark licenses; standalone rights and provenance for the derived SFT
+    conversation file require separate verification.
+  lineage: Pinned NEUIR release 3bd49c8290a1a139b1a12371826f2911afa422e0; selected queries -> DeepSeek-V3.1 trial/execution
+    synthesis -> behavioral/success filtering -> SFT -> GRPO.
+  release_version: 3bd49c8290a1a139b1a12371826f2911afa422e0
+  known_failure_modes:
+  - Model-judged success and behavior filters can produce false acceptance or rejection.
+  - Tool/backend changes can alter observations and replay outcomes.
+  - The paper reports 1,500 selected SFT queries, while this pinned public file contains 1,444 query records; the
+    exact reconciliation is unknown.
+  citation_status: verified
+  confidence: medium
+  notes: Checked primary paper Sections 3-4 and Appendix A.2, official README, and the complete pinned SFT JSON.
+    No GPU training or historical experiment replay was performed.
+inclusion_reason: A concrete teacher-trajectory construction and mixed-feedback recipe that turns tool trialing,
+  execution, and self-correction into SFT conversations and agent-policy training.
+related: []
+tags:
+- tool-use
+- trajectory-data
+- sft
+- grpo
+- model-judged-reward
+status: partial
+one_line_summary: ToolMaster releases trial-and-execution SFT conversations and trains tool-use policies with teacher-filtered
+  demonstrations followed by GRPO using format and model-judged correctness rewards.
+why_it_matters: It distinguishes reusable interaction demonstrations from online policy rollouts and makes the learned
+  judge, behavior filter, and environment feedback part of the data contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  full_release_verified: false
+  verified_at: '2026-11-11'
+  verified_by: contributor
+  confidence: medium
+  notes: Official paper/code linkage and pinned public SFT data inspected; complete historical rollout lineage,
+    derived-data rights, and replay remain unverified.
+needs:
+- 'needs_lineage: reconcile the 1,500 selected SFT queries with 1,444 released query records and pin historical
+  rollout manifests'
+- 'needs_license: verify standalone terms for the derived SFT conversations'
+- 'needs_replay: independently reproduce the paper configuration and benchmark splits'

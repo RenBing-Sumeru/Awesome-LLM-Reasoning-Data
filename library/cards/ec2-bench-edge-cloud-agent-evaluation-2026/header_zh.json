@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "EC²-Bench 发布 128 个工作空间评测任务，其中 100 个有隐私标注，联合测量任务表现、云端资源和向云模型暴露的敏感信息。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "端云智能体评测基准与隐私反馈研究",
+  "best_for_ch": "研究智能体任务验证、端云协作成本与隐私评测的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Pengcheng Huang、Zhenghao Liu、Shixin Ren、Shi Yu、Sijia Yao、Yukun Yan、Chaojun Xiao、Maosong Sun",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-11-11T00:00:00Z"
+}

@@ -2,7 +2,7 @@
 
 > Tool calls, web/browser tasks, app and OS agents, repository-level SWE episodes, replayable trajectories, and terminal predicates.
 
-[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **100** cards · **41** Read first
+[Back to all tracks](../README.md) · [Project website](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **101** cards · **41** Read first
 
 Use this track to understand how interactive environments become post-training data sources and feedback contracts.
 
@@ -70,6 +70,7 @@ Use this track to understand how interactive environments become post-training d
 | [SWE-CI: Evaluating Agent Capabilities in Maintaining Codebases via Continuous Integration](https://arxiv.org/abs/2603.03823) | 2026 | arXiv preprint | Programmatic / Environmental | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=swe-ci-2026) |
 | [SWE-rebench V2: Language-Agnostic SWE Task Collection at Scale](https://arxiv.org/abs/2602.23866) | 2026 | ICML 2026 | Programmatic / Environmental / Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=swe-rebench-v2-2026) |
 | [SWE-World: Building Software Engineering Agents in Docker-Free Environments](https://arxiv.org/abs/2602.03419) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=swe-world-2026) |
+| [Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762) | 2026 | arXiv 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=toolmaster-trial-execution-data-2026) |
 | [TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks](https://arxiv.org/abs/2605.22535) | 2026 | arXiv preprint | Programmatic / Environmental | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=terminalworld-2026) |
 | [V-Droid: Advancing Mobile GUI Agent Through Generative Verifiers](https://doi.org/10.1145/3795866.3796681) | 2026 | ACM MobiCom 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=v-droid-2025) |
 | [Who&When Pro: Can LLMs Really Attribute Failures in AI Agents?](https://arxiv.org/abs/2607.09996) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=who-when-pro-2026) |

@@ -2,7 +2,7 @@
 
 > 数学、代码、证明、智能体、评分标准与领域、奖励模型、实时、隐藏，以及抗污染的各类基准。
 
-[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **121** 张卡片 · **36** 必读
+[返回全部方向](../README_zh.md) · [项目网站](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **122** 张卡片 · **36** 必读
 
 用这个方向理解一个评测面到底测了什么，以及它能否安全地被当作反馈来源。
 
@@ -47,6 +47,7 @@
 | [CodeJudgeBench: Benchmarking LLM-as-a-Judge for Coding Tasks](https://aclanthology.org/2026.acl-long.888/) | 2026 | ACL 2026 | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=codejudgebench-2025) |
 | [ComplexMCP: Evaluation of LLM Agents in Dynamic, Interdependent, and Large-Scale Tool Sandbox](https://openreview.net/pdf?id=3u1M9wokD7) | 2026 | ICML 2026 | 程序化 / 环境判定 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=complex-mcp-2026) |
 | [Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision](https://arxiv.org/abs/2604.10182) | 2026 | ICLR 2026 / arXiv | 程序化 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=credit-budgeted-icpc-style-coding-2026) |
+| [Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution](https://arxiv.org/abs/2610.17816) | 2026 | arXiv 2026 | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=ec2-bench-edge-cloud-agent-evaluation-2026) |
 | [Harness-Bench: Measuring Harness Effects across Models in Realistic Agent Workflows](https://arxiv.org/abs/2605.27922) | 2026 | arXiv preprint / Diagnostic Benchmark 2026 | 环境判定 / 程序化 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=harness-bench-harness-effects-2026) |
 | [ProBench: Benchmarking GUI Agents with Accurate Process Information](https://ojs.aaai.org/index.php/AAAI/article/view/39974) | 2026 | AAAI Conference on Artificial Intelligence (AAAI-26) | 程序化 / 环境判定 / 需评审 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=probench-2026) |
 | [SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks](https://arxiv.org/abs/2602.12670) | 2026 | arXiv | 混合 | [卡片](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=skillsbench-2026) |
